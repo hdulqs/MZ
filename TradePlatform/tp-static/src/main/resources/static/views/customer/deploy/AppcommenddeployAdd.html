@@ -1,0 +1,74 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommenddeployList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-28 16:07:54      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppCommendDeploy</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/deploy/appcommenddeploy/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<hry-select id="ddlRegType1"
+						url="{{HRY.host}}{{HRY.modules.exchange}}dictionary/appdiconelevel/findbykey?Q_pDickey_eq_String=commendType"
+						placeholder="交易方配置" name="itemName" value="itemValue"
+						selectId="states" dataTableSerch >
+			</hry-select>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="RankRatio" ng-model="formData.RankRatio" /> <label for="RankRatio">推荐奖励比例</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="StandardValue" ng-model="formData.StandardValue" /> <label for="StandardValue">奖励最小值</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="transactionNumber" ng-model="formData.transactionNumber" /> <label for="transactionNumber">交易笔数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="MaxHierarchy" ng-model="formData.MaxHierarchy" /> <label for=MaxHierarchy>最大奖励层级</label>
+				</div>
+			</div>
+			
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="MinHierarchy" ng-model="formData.MinHierarchy" /> <label for=MinHierarchy>最小奖励层级</label>
+				</div>
+			</div>
+			<div class="col s12 m6" ng-if="requiresPermissions('customer','/commend/appcommenduser/editadd')">
+				<div class="input-field">
+					<input type="text" id="reserveMoney" ng-if="requiresPermissions('customer','/commend/appcommenduser/editadd')" ng-model="formData.reserveMoney" /> <label for=reserveMoney>平台扣除比例</label>
+				</div>
+			</div>
+			<!-- <div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="states" ng-model="formData.states" /> <label for="states">states</label>
+				</div>
+			</div> -->
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

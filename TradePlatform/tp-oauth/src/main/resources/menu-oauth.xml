@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<menu key="jituanpeizhi" name="公司配置" url="/company/jtpz" shiroUrl="/company/jtpz" isOpen="0" isOutLink="0" orderNo="" />
+<!-- 	<menu key="fengongsiguanli" name="分公司管理" url="/company/subcompany/list/anon" shiroUrl="/company/subcompany/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="fengongsiguanli_add" name="添加分公司"  shiroUrl="/company/subcompany/addbase"></function>
+		<function key="fengongsiguanli_see" name="查看分公司"  shiroUrl="/company/subcompany/see"></function>
+		<function key="fengongsiguanli_modify" name="修改分公司"  shiroUrl="/company/subcompany/modify"></function>
+		<function key="fengongsiguanli_remove" name="删除分公司"  shiroUrl="/company/subcompany/remove"></function>
+	</menu> -->
+	<menu key="zuzhibumenguanli" name="组织部门管理"  url="/company/org/user/appuser/list/0/anon" shiroUrl="/company/apporganization/list" isOpen="0" isOutLink="0" orderNo="" >
+		<!-- <function key="zuzhibumenguanli_addshop" name="添加门店"  shiroUrl="/company/apporganization/addshop"></function> -->
+		<function key="zuzhibumenguanli_add" name="添加部门"  shiroUrl="/company/apporganization/add"></function>	
+		<function key="zhanghaoguanli_list" name="账号列表"  shiroUrl="/user/appuser/list"></function>
+		<function key="zhanghaoguanli_see" name="查看账号"  shiroUrl="/user/appuser/see"></function>
+		<function key="zhanghaoguanli_add" name="添加账号"  shiroUrl="/user/appuser/add"></function>
+		<function key="zhanghaoguanli_modify" name="修改账号"  shiroUrl="/user/appuser/modify"></function>
+		<function key="zhanghaoguanli_remove" name="删除账号"  shiroUrl="/user/appuser/remove"></function>
+		<function key="zhanghaoguanli_resetpw" name="重置密码"  shiroUrl="/user/appuser/resetpw"></function>
+	</menu>
+		
+	<menu key="zuzhijigoutu" name="组织结构图" url="/company/zzjgt" shiroUrl="/company/zzjgt" isOpen="0" isOutLink="0" orderNo="" />
+<!-- 	<menu key="renyuanguanxitu" name="人员关系图" url="/company/rjgxt" shiroUrl="/company/rjgxt" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="shangxiajipeizhi" name="上下级配置" url="/user/appuserlevel/list/anon" shiroUrl="/user/appuserlevel/list" isOpen="0" isOutLink="0" orderNo="" />
+ -->	
+	<menu key="jueseguanli" name="角色管理" url="/user/approle/list/anon" shiroUrl="/user/approle/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="jueseguanli_see" name="查看角色"  shiroUrl="/user/approle/see"></function>
+		<function key="jueseguanli_add" name="添加角色"  shiroUrl="/user/approle/add"></function>
+		<function key="jueseguanli_modify" name="修改角色"  shiroUrl="/user/approle/modify"></function>
+		<function key="jueseguanli_remove" name="删除角色"  shiroUrl="/user/approle/remove"></function>
+	</menu>
+<!--<menu key="quanxianguali" name="权限管理"  url="/user/appresource/list/anon" shiroUrl="/user/appresource/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="quanxianguanli_see" name="查看权限"  shiroUrl="/user/appresource/see"></function>
+		<function key="quanxianguanli_add" name="添加权限"  shiroUrl="/user/appresource/add"></function>
+		<function key="quanxianguanli_modify" name="修改权限"  shiroUrl="/user/appresource/modify"></function>
+		<function key="quanxianguanli_remove" name="删除权限"  shiroUrl="/user/appresource/remove"></function>
+	</menu> -->
+</root>

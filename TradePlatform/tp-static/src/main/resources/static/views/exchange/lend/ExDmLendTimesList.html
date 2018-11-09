@@ -1,0 +1,135 @@
+<style>
+	.layui-layer-content {
+		overflow: hidden !important;
+	}
+</style>
+
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+	<div class="row">
+		<hry-search/>
+		<div class="col s12 m9 l9 " >
+			<div class="row">
+
+
+				<!-- 用户账号 -->
+				<div class="col m2 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.userName_LIKE" dataTableSerch> <label for="input_lname">用户账号</label>
+					</div>
+				</div>
+
+				<!-- 用户名称账号 -->
+				<div class="col m2 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.trueName_LIKE" dataTableSerch> <label for="input_lname">用户姓名</label>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row right-align mb-10">
+	<!-- 通过按钮 -->
+	<a class="btn pr-10 pl-10"    ng-click="fnConfirm()"><i class="fa fa-plus-circle " aria-hidden="true"></i>通过</a>
+	<!-- 驳回按钮 -->
+	<a class="btn pr-10 pl-10" ng-click="fnInvalid1()"><i class="fa fa-search-plus " aria-hidden="true"></i>驳回</a>
+
+	<!-- 驳回按钮 -->
+	<a class="btn pr-10 pl-10"  ng-click="fnInvalid()"><i class="fa fa-search-plus " aria-hidden="true"></i>批量驳回</a>
+
+	<!-- 刷新按钮 -->
+	<a class="btn pr-10 pl-10" ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+
+	<!-- 导出按钮 -->
+	<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+</div>
+<!-- /Handle -->
+
+
+<!-- 分公司管理 -->
+<div class="">
+
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2" class="display table table-bordered table-striped table-hover">
+				<thead>
+				<tr>
+					<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+					<th>用户账号</th>
+					<th>实际姓名</th>
+					<th>申请的杠杆倍数</th>
+					<th>申请的时间</th>
+					<th>申请状态</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+<!-- 充值通过弹出窗 -->
+<div class="row hide" id="fnConfirmDiv">
+	<div class="col s2 "></div>
+	<div class="col s8 ">
+		<form ng-submit="fnConfirmSubmit()">
+			<p class="center mb-20">用户名：{{confirm.userName}}</p>
+			<p class="center mb-20">申请杠杆倍数：{{confirm.lendTimes}}</p>
+			<p class="center mb-20">预警线(%)<input type="text" id="lengRiskRate" > </p>
+			<p class="center mb-20">平仓线(%)<input type="text" id="lengPing" > </p>
+			<p class="center mb-20">
+				<button class="btn" type="submit">确认</button>
+				<a class="btn" onclick="layer.closeAll();">取消</a>
+			</p>
+
+		</form>
+	</div>
+</div>
+
+
+<!-- 充值驳回弹出窗 -->
+<div class="row hide" id="fnInvalidDiv">
+	<div class="col s2 "></div>
+	<div class="col s8 ">
+		<form ng-submit="fnInvalidSubmit()">
+			<p class="center mb-20">用户名：{{invalid.userName}}</p>
+			<p class="center mb-20">申请杠杆倍数：{{invalid.lendTimes}}</p>
+			<hr/>
+			<p class="center mb-20">驳回理由：</p>
+			<textarea id="description" style="height: 50px;" required/>
+			<br>
+			<span id="message" style="color:red"></span>
+			<p class="center mb-20">
+				<button class="btn" type="submit">确认驳回</button>
+				<a class="btn" onclick="layer.closeAll();">取消</a>
+			</p>
+		</form>
+	</div>
+</div>
+
+
+<!-- 充值驳回弹出窗 -->
+<div class="row hide" id="fnInvalidDiv1">
+	<div class="col s2 "></div>
+	<div class="col s8 ">
+		<form ng-submit="fnInvalidSubmit1()">
+			驳回理由:<textarea id="reason1" class="materialize-textarea" length="120"></textarea>
+
+			<br>
+			<span id="message"    style="color:red"></span>
+			<p class="center mb-20">
+				<button class="btn" type="submit">确认驳回</button>
+				<a class="btn" onclick="layer.closeAll();">取消</a>
+			</p>
+			<span   style="color:red">TIPS:驳回操作不可逆，请确认充值操作无效</span>
+		</form>
+	</div>
+</div>
+

@@ -1,0 +1,109 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ApppersoninfoList.html     -->
+ <!-- @author:      zhangcb  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-22 18:25:52      -->
+
+<div class="page-title">
+	<div class="row">
+	<div class="col s12 m9 l4">
+
+     <div class="row">
+           
+		<div class="col s4">
+			<div class="input-field">
+				<input type="text" id="input_uname" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">会员账号</label>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="input-field">
+				<input type="text" id="input_tname" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_lname">姓名</label>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="input-field">
+				<input type="text" id="input_cid" ng-model="serchData.cardId_like" dataTableSerch> <label for="input_lname">证件号码</label>
+			</div>
+		</div>
+		<div class="col s4">
+					<div class="input-field">
+				      	<select id="Q_type" class="select2"  data-allow-clear="true"    data-placeholder="申请内容" >
+						  <option value="">修改手机号</option>
+						  <option value="1">修改邮箱</option>
+						  <option value="2">修改银行卡</option>
+						</select>
+			   		</div>
+		</div>
+		
+		<div class="col s4">
+					<div class="input-field">
+				      	<select id="Q_state" class="select2"  data-allow-clear="true"    data-placeholder="处理状态" >
+						  <option value="">待处理</option>
+						  <option value="1">已处理</option>
+						  <option value="2">已拒绝</option>
+						</select>
+			   		</div>
+		</div>
+	</div>
+        </div>
+		<div class="col s12 m6 l5 right-align pr-30">
+			<div class="row">
+				<!--修改 -->
+				<a class="btn" ng-if="true" ng-click="modificationPass()">通过</a>
+				<a class="btn" ng-if="true" ng-click="modificationRefuse()">拒绝</a>
+				<!--刷新按钮 -->
+				<a class="btn" ng-click="fnList()">刷新</a>
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>用户账号</th>
+						<th>真实姓名</th>
+						<th>申请内容</th>
+						<th>申请时间</th>
+						<th>申请协议</th>
+						<th>处理状态</th>
+						<th>处理时间</th>
+						<th>拒绝原因</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<!-- 通过窗口 -->
+<div class="hide" id="PassWindow">
+	<form ng-submit="fnPass()">
+		<div class="col s6 ">
+			<b>{{param}}</b><input style="width:300px;margin-top:30px;" type="text" ng-model="formData.param" readonly required>
+		</div>
+		<p class="center mb-20">
+			<button class="btn" type="submit">确认</button>
+		</p>
+	</form>
+</div>
+
+<!-- 通过窗口 -->
+<div class="hide" id="RefuseWindow">
+	<form ng-submit="fnRefuse()">
+		<div class="col s6 ">
+			驳回原因<input type="text" ng-model="formData.refuseReason" required>
+		</div>
+		<p class="center mb-20">
+			<button class="btn" type="submit">确认</button>
+		</p>
+	</form>
+</div>

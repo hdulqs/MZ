@@ -1,0 +1,81 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ApppersoninfoList.html     -->
+ <!-- @author:      zhangcb  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-22 18:25:52      -->
+
+<div class="page-title">
+	<div class="row">
+		<div class="col s12 m6 l7">
+				<h4>
+					<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">注销用户查看</span>
+				</h4>
+		</div>
+		<div class="col s12 m6 l5 right-align pr-30">
+			<div class="row">
+				<!--刷新按钮 -->
+				<a class="btn" ng-click="fnList()">刷新</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<div class="col s12 m9 l4">
+		<div class="row">
+			<div class="col m3 s12">
+				<div class="input-field">
+					<input type="text" id="input_uname" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">会员账号</label>
+				</div>	
+			</div>
+			<div class="col m3 s12">
+				<div class="input-field">
+					<input type="text" id="input_tname" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_lname">姓名</label>
+				</div>
+			</div>
+			<div class="col m3 s12">
+				<div class="input-field">
+					<input type="text" id="input_cid" ng-model="serchData.cardId_like" dataTableSerch> <label for="input_lname">证件号码</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>用户账号</th>
+						<th>真实姓名</th>
+						<th>证件类型</th>
+						<th>证件号</th>
+						<th>注册时间</th>
+						<th>归属会员</th>
+						<th>操作</th>
+						<th>注销原因</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<div id="lockCustomer" class="hide" >
+
+手持身份证照片 <img src="{{HRY.host}}/{{appPersonInfo.handIdCardUrl}}" alt="" class="media-object"><br>
+身份证正面照片 <img src="{{HRY.host}}/{{appPersonInfo.idCardFrontUrl}}" alt="" class="media-object"><br>
+身份证反面照片<img src="{{HRY.host}}/{{appPersonInfo.idCardBackUrl}}" alt="" class="media-object"><br>
+手持协议照片<img src="{{HRY.host}}/{{appPersonInfo.handDealUrl}}" alt="" class="media-object"><br>
+
+ <input type="button" ng-click="submitTmie()" value="关闭查看" ></input>
+ </div>
+
+

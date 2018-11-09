@@ -1,0 +1,68 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+			    <div class="col m3 s12">
+			    	  <div class="input-field">
+			     		   <input id="fristData"   class="pikaday" type="text" readonly dataTableSerch> <label for="input_text">查询日期</label>
+			     	 </div>
+			    </div>
+			    
+			    <div class="col m3 s12">
+					<div class="input-field">
+				      	<select id="customerType" class="select2"  data-allow-clear="true"    data-placeholder="用户类型" >
+						<option value="">不限</option>
+						  <option value="1">甲</option>
+						  <option value="2">乙</option>
+						  <option value="3">丙</option>
+						</select>
+			   		</div>
+			     </div>
+			    
+			      </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+        <input class="btn pr-10 pl-10" style="background-color:gray;"  type = "button" ng-click="querySpecific()" value="查询"></input>
+				<!-- 刷新按钮 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+
+    <!-- /Handle -->
+
+
+<!-- 分公司管理 -->
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+				<table  border="1">
+					 <tr>
+					    <th>用户账号</th>
+					    <th>姓名</th>
+					    <th>用户角色</th>
+					    <th>期初净资产</th>
+					    <th>期末净资产</th>
+					    <th>盈亏合计</th>
+					    <th>结算日</th>
+					  </tr>
+					  <tr ng-repeat="list in totalCustomerProfitForReport">
+					  	<td>{{list.userName}}</td>
+					  	<td>{{list.trueName}}</td>
+					  	<td ng-if="list.customerType == 1">甲类用户</td>
+					  	<td ng-if="list.customerType == 2">乙类用户</td>
+					  	<td ng-if="list.customerType == 3">丙类用户</td>
+					  	<td>{{list.beginNetAsset}}</td>
+					  	<td>{{list.endNetAsset}}</td>
+					  	<td ng-if="list.totalMoney == null">0</td>
+					  	<td ng-if="list.totalMoney != null">{{list.totalMoney}}</td>
+					  	<td>{{list.modified}}</td>
+					  </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+

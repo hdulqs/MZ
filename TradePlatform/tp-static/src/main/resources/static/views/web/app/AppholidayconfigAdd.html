@@ -1,0 +1,51 @@
+   
+	<form ng-submit="processForm()">
+	
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>节日配置</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content"> 
+
+		<div class="row ">
+	          
+	           <div class="col s12 l3"> 
+		           <div class="input-field"> 
+					       <input id="name" type="text" name="remark" ng-model="formData.name"   />
+						   <label for="name">节日名称</label>
+				  </div>
+			   </div>
+			   
+			   <div class="col s12 l3"> 
+			      <div class="input-field"> 
+					      <input id="beginDate" type="text" class="pikaday" ng-model="formData.beginDate"   />
+				<label for="name">开始时间(格式为yyyy-MM-dd)</label>
+				  </div> 
+	          </div>
+	          
+	        <div class="col s12 l3">
+				<div class="input-field"> 
+				       <input id="endDate" type="text"   class="pikaday" ng-model="formData.endDate"   />
+				    <label for="name">结束时间(格式为yyyy-MM-dd)</label>
+				    </div>
+			</div> 
+        </div>  
+	
+	<input type="hidden" name="appResourceSet" id="appResourceSet"  />
+	
+	<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+	
+</form>
+			
+
+		
+
+

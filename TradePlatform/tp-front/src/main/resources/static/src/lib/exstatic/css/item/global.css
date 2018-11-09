@@ -1,0 +1,51 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+html, body {
+	  padding: 0;
+    border: 0;
+    margin: 0;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    background-color: #FFFFFF;
+    position: relative;
+	}
+a:link {color: #000;text-decoration:none;}
+a:visited {color:#9c9c9c;text-decoration:none;}
+a:active {color:#666;text-decoration:none;}
+a:hover {color:#666;text-decoration:none;}
+img, input{border:0px;}
+ol, ul { list-style: none; margin:0; padding:0; }
+hr {margin:0; padding:0;}
+table{empty-cells:show;border-collapse: collapse; margin:0 auto;}
+:focus{outline:0px;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+
+/*左浮*/
+.fl {
+    float: left;
+}
+
+/*右浮*/
+.fr {
+    float: right;
+}
+
+/*清除浮动*/
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.w {
+    width: 1210px;
+    margin: 0 auto;
+}

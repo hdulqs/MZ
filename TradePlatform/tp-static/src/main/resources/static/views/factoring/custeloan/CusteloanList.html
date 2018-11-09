@@ -1,0 +1,83 @@
+ <!-- With Search -->
+	<div class="card-panel" >
+		<h4>用户列表 </h4>
+		<div class="row">
+			<div class="col s12 ">
+				<div  >
+					<input type="hidden" name="id" id="id"/>
+					<!-- 增加按钮 -->
+						<a class="btn" href="#/factoring/custeloan/custeloan/add/n">添加</a>
+					<!-- 编辑按钮 -->
+						<a class="btn"  ng-click="seeOrUpdate(selected,'update')">修改</a>
+					<!-- 删除按钮 -->
+						<a class="btn" ng-click="remove(selected)" >删除</a>
+					
+					<!-- 查看按钮 -->
+						<a class="btn" ng-click="seeOrUpdate(selected,'see')" >查看</a>
+					
+					<!-- 刷新按钮 -->
+						<a class="btn" ng-click="refresh()" >刷新</a>
+					
+					</div>
+			</div>
+		</div>
+		<form  ng-submit="search()">
+		<div class="row">
+			<div class="col m3 s12">
+		      <div class="input-field">
+		        <input id="input_fname" type="text" ng-model="searchData.Q_name_like_String">
+		        <label for="input_fname">企业名称</label>
+		      </div>
+		    </div>
+			<div class="col m3 s12">
+		      <div class="input-field">
+		        <input id="input_lname" type="text"  ng-model="searchData.Q_organizeCode_like_String">
+		        <label for="input_lname">企业组织机构代码</label>
+		      </div>
+		    </div>
+			<div class="col m3 s12">
+				<div class="input-field">
+					<input id="input_city" type="text" ng-model="searchData.Q_shopName_like_String">
+					<label for="input_city">所属门店</label>
+			   </div>
+		    </div>
+			<div class="col m3 s12">
+		      <div class="row">				
+					<div class="col s12">
+							 <button class="waves-effect btn" type="submit">查询</button>
+							<a class="btn" ng-click="s_reset()" >重置</a>
+					</div>
+				</div>
+		    </div>
+		</div>
+		</form>
+		
+		<div class="row">	
+		<div class="col s12 17"  >
+				<table id="table1" datatable=""  dt-options="dtOptions"  dt-columns="dtColumns"   class="display table table-bordered table-striped table-hover">
+				<thead>
+				 <tr>
+				 <th><input type="checkbox" id="checkboxAll" ng-model="selectAll" ng-click="fnToggleAll(selectAll, selected)"> <label for="checkboxAll"> </label></th> 
+                	<th>ID</th>
+	                <th>所属门店</th>
+	                <th>企业名称</th>
+	                <th>组织机构代码</th>
+	                <th>营业执照号码</th>
+	                <th>联系人</th>
+	                <th>联系电话</th>
+	                <th>企业成立日期</th>
+	                <th>行业类别</th>
+	            </tr>
+	            </thead>
+          
+				</table>
+
+			</div>
+		</div>
+		
+		
+	</div>
+	
+<script>
+
+</script>

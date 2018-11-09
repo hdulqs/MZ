@@ -1,0 +1,1 @@
+ALTER TABLE app_commend_trade  ADD (personType INT(20),currentMoney DECIMAL(20,10));

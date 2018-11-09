@@ -1,0 +1,53 @@
+
+		<div class="card-panel">
+		
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s5 ">
+				<form ng-submit="processForm()">
+					<div class="input-field"> 
+					   <input type="text" name="title" id="input_title" ng-model="formData.title" />
+				       <label for="input_title">API接口标题</label>
+				     </div>
+				     <div class="input-field"> 
+				      <input type="text" name="description" id="input_description" ng-model="formData.description" required />
+				       <label for="input_description">描述</label>
+				     </div>
+					 <div class="input-field"> 
+				       <input type="text" name="version" id="input_version" ng-model="formData.version" required />
+				       <label for="input_version">版本号</label>
+				     </div>
+				      <div class="input-field"> 
+				       <input type="text" name="requestUrl" id="requestUrl"  ng-model="formData.requestUrl" required />
+				       <label for="input_requestUrl">请求地址</label>
+				     </div>
+					 <div class="input-field"> 
+				       <input type="text" name="remark1" id="input_remark1"  ng-model="formData.remark1" required />
+				       <label for="input_remark1">内容</label>
+				     </div>
+					
+			          <div class="input-field"> 
+			           
+			              <input name="radios1" type="radio" id="radios1-1" value="1"  ng-model="formData.isShow" ng-checked="true"/>
+			              <label for="radios1-1">显示</label>
+			              <input name="radios1" type="radio" id="radios1-2" value="0" ng-model="formData.isShow"   />
+			              <label for="radios1-2">不显示</label>
+			          </div>
+           
+       
+         
+		             <div class="input-field">
+		                <input type="text" id="sort" ng-model="formData.sort"   />
+		               <label for="sort">排序值</label>
+		            </div>
+      
+				     
+				     
+					           
+					 <button class="waves-effect btn" type="submit">保存</button><span ></span>
+				</form>
+			</div>
+		
+		
+		</div>
+	</div>

@@ -1,0 +1,77 @@
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+				<div class="col m2 s3">
+					<div class="input-field">
+				        <input id="fristData" ng-model="serchData.modified"  class="pikaday" type="text"  readonly dataTableSerch> <label for="fristData">查询日期</label>
+				      </div>
+				</div>
+				<div class="col m2 s3">
+					<div class="input-field">
+				        <input id="userName" ng-model="serchData.userName_like"   type="text"  dataTableSerch> <label for="userName">用户账号</label>
+				      </div>
+				</div>
+				<div class="col m2 s3">
+					<div class="input-field">
+				        <input id="trueName" ng-model="serchData.trueName_like"   type="text"  dataTableSerch> <label for="trueName">用户真名</label>
+				      </div>
+				</div>
+				<!-- <div class="col m2 s3">
+					<div class="input-field">
+				        	<select name="customerType_in"  dataTableSerch>
+				        		<option value="">用户角色</option>
+				        		<option value="1">甲类用户</option>
+				        		<option value="2">乙类用户</option>
+				        		<option value="3">丙类用户</option>
+				        	</select>
+				      </div>
+				</div> -->
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+        	<!-- 修改按钮 -->
+		<!-- 	<a class="btn pr-10 pl-10" ng-click="fnModify()"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>重新结算</a> -->
+				<!-- 刷新按钮 -->
+			<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+			
+				<!-- 导出按钮 -->
+			<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+			
+        </div>
+      </div>
+    </div>
+    <!-- /Handle -->
+
+<div >
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2"
+				class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label
+							for="checkboxAll"></label></th>
+						<th>用户账号</th>
+						<th>姓名</th>
+						<!-- <th>用户角色</th> -->
+						<th>期初资产</th>
+						<th>期末资产</th>
+						<th>盈亏合计</th>
+						<!-- <th>所属站点</th> -->
+						<th>结算日</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+
+

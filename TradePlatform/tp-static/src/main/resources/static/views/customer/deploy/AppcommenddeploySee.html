@@ -1,0 +1,51 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommenddeployList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-28 16:07:54      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppCommendDeploy</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/deploy/appcommenddeploy/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					推荐奖励比例<input type="text" name="RankRatio" value="{{formData.RankRatio}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					奖励最小值<input type="text" name="StandardValue" value="{{formData.StandardValue}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					transactionNumber<input type="text" name="transactionNumber" value="{{formData.transactionNumber}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					costName<input type="text" name="costName" value="{{formData.costName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					states<input type="text" name="states" value="{{formData.states}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

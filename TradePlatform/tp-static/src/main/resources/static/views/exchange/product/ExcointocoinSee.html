@@ -1,0 +1,51 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ExcointocoinList.html     -->
+ <!-- @author:      gaomimi  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-06 19:40:34      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看ExCointoCoin</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/exchange/product/excointocoin/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					toProductId<input type="text" name="toProductId" value="{{formData.toProductId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					fromProductId<input type="text" name="fromProductId" value="{{formData.fromProductId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品名称<input type="text" name="toProductcoinCode" value="{{formData.toProductcoinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品名称<input type="text" name="fromProductcoinCode" value="{{formData.fromProductcoinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币的保留几位小数<input type="text" name="keepDecimalFromProduct" value="{{formData.keepDecimalFromProduct}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

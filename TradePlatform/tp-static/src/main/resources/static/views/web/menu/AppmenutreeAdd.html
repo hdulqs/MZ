@@ -1,0 +1,35 @@
+<!-- 添加分公司-->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">添加应用</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/menu/appmenutree/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form id="seeForm" ng-submit="processForm()">
+		<div class="row">
+			<div class="col m3 s12">
+				<div class="input-field">
+					<input type="text" ng-model="formData.appName" required> <label for="input_text">应用名称</label>
+				</div>
+			</div>
+			<div class="col m3 s12">
+				<div class="input-field">
+					<input type="text" ng-model="formData.appKey" required> <label for="input_text">应用key</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" id="addAppUserSubmit">保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+
+</div>
+<!-- /添加分公司  -->
+
+

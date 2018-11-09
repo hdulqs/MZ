@@ -1,0 +1,46 @@
+
+<!-- With Search -->
+<div class="card-panel">
+
+	<!-- Handle -->
+	<div class="page-title pt-22 pb-22 ">
+		<div class="row">
+			<h4>
+				<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改信息</span>
+				<!-- 返回按钮 -->
+				<a class="btn fs-16 right" href="#/customer/person/apppersoninfo/manageModify/anon">返回</a>
+			</h4>
+		</div>
+	</div>
+	<!-- /Handle -->
+	<form ng-submit="fnManageModify()">
+		<div class="row">
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="name" ng-model="setPwData.mobilePhone" required /> <label for="input_userName">手机号码</label>
+				</div>
+			</div>
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="remark" ng-model="setPwData.email" required/> <label for="input_trueName">邮箱地址</label>
+				</div>
+			</div>
+			
+			<div class="col s3 ">
+				<div class="input-field">
+					<select class="select2" id="banklist">
+						<option id="temp">--</option>
+					</select>
+				</div>
+			</div>
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="remark" ng-model="setPwData.appBankCard.cardNumber" required/> <label for="input_cardNumber">银行账户</label>
+				</div>
+			</div>
+		</div>
+				<button class="btn" type="submit" >保存</button>
+			
+	</form>
+</div>
+

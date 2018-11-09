@@ -1,0 +1,54 @@
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改部门</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/oauth/company/org/user/appuser/list/0/anon">返回</a>
+	</h4>
+	<hr>
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s4 ">
+			<form ng-submit="processForm()">
+				<div class="input-field">
+					部门名称<input type="text" name="name" value="{{formData.name}}" ng-model="formData.name" required />
+				</div>
+				组织类型 <select id="type">
+					<option value="department">部门</option>
+					<!-- <option value="shop">门店</option> -->
+				</select>
+
+				<div class="input-field">
+					<input type="hidden" name="pid" id="pid" /> 上级部门<input type="text" name="pidValue" id="pidValue" readonly="readonly" required />
+				</div>
+
+				排序号
+				<div class="input-field">
+					<input type="text" name="orderNp" ng-model="formData.orderNo" value="1" required />
+				</div>
+
+				<button class="btn" type="submit" id="addAppOrganizationSubmit">保存</button>
+			</form>
+		</div>
+		<div class="col s4">
+			<!-- class="hide" 为细节处理，避免url回车时看到JS的hide()过程 -->
+			<div id="treediv" class="hide">
+				双击选择上级部门
+				<div id="tree" class="ztree" style="width:260px; overflow:auto;"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

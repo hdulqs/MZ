@@ -1,0 +1,121 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ExsubscriptionplanList.html     -->
+ <!-- @author:      zenghao  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-21 15:48:50      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改认购计划表</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/exchange/subscription/exsubscriptionplan/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinCode" ng-model="formData.coinCode" readonly required/> <label for="coinCode">币种名称</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="number" id="period" min="0" ng-model="formData.period" ng-blur="fnFormNumber('period')"  required/> <label for="period">认购期数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field datetimepicker">
+					<input class="add-on" type="text" id="startTime" ng-model="formData.startTime" required/> <label for="startTime">开始认购时间</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="number" id="openNumber" min="0" ng-model="formData.openNumber" ng-blur="fnFormNumber('openNumber')" required/> <label for="openNumber">开放认购数量(个)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="number" id="minimumNumber" min="0" ng-model="formData.minimumNumber" ng-blur="fnFormNumber('minimumNumber')" required/> <label for="minimumNumber">最低认购人民币(￥)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="number" id="maximumNumber" min="0" ng-model="formData.maximumNumber" ng-blur="fnFormNumber('maximumNumber')" required/> <label for="maximumNumber">最高认购人民币(￥)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="initialPrice" ng-model="formData.initialPrice" required/> <label for="initialPrice">认购初始价(￥)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="highestPrice" ng-model="formData.highestPrice" required/> <label for="highestPrice">认购最高价(￥)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="repurchaseFee" ng-model="formData.repurchaseFee" /> <label for="repurchaseFee">回购手续费(%)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="startInitialPrice" ng-model="formData.startInitialPrice" required/> <label for="startInitialPrice">交易初始价(￥)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="transactionPrice" ng-model="formData.transactionPrice" required/> <label for="transactionPrice">交易最高价(￥)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="number" id="repurchasePeriod" min="0" ng-model="formData.repurchasePeriod" ng-blur="fnFormNumber('repurchasePeriod')" required/> <label for="repurchasePeriod">回购有效期(天)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="priceBase" ng-model="formData.priceBase" required/> <label for="priceBase">涨价基数(个)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="rose" ng-model="formData.rose" required/> <label for="rose">涨幅(￥)</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sratioOne" ng-model="formData.sratioOne" /> <label for="sratioOne">认购返佣比例一级(%)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sratioTwo" ng-model="formData.sratioTwo"  /> <label for="sratioTwo">认购返佣比例二级(%)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sratioTheree" ng-model="formData.sratioTheree" /> <label for="sratioTheree">认购返佣比例三级(%)</label>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

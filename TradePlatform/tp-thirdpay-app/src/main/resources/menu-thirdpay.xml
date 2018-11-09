@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+	<menu key="thirdpay" name="第三方支付"  url="/pay/appthirdpayconfig/modify/anon" shiroUrl="/pay/appthirdpayconfig/list" isOpen="0" isOutLink="0" orderNo="" >
+	  
+    </menu>	
+   
+	<menu key="coinConfig" name="币的配置"  url="/coin/coin/list/anon" shiroUrl="/coin/coin/list" isOpen="0" isOutLink="0" orderNo="" >
+	  
+    </menu>	
+    
+    <menu key="thirdpaylog" name="第三方支付日志"  url="/pay/applogthirdpay/list/anon" shiroUrl="/pay/applogthirdpay/list" isOpen="0" isOutLink="0" orderNo="" >
+	  
+    </menu>	
+</root>

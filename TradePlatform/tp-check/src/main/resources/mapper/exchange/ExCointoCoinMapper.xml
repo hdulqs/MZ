@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.exchange.product.dao.ExCointoCoinDao">
+      
+	<resultMap id="exCointoCoinAutoUsername" type="com.mz.exchange.product.model.ExCointoCoin">
+		<result column="autoUsername" property="autoUsername" javaType="java.lang.String" />
+		
+	</resultMap>  
+ 
+	<select id="getExCointoCoinAutoUsername"   resultMap="exCointoCoinAutoUsername" >  
+      select autoUsername from (select autoUsername from ex_cointo_coin  a GROUP BY a.autoUsername)as e where e.autoUsername is not null;
+
+	
+	</select>
+    
+</mapper>

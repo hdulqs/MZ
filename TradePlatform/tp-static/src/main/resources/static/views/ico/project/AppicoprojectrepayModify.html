@@ -1,0 +1,100 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicoprojectrepayList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-21 17:52:30      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppIcoProjectRepay</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/project/appicoprojectrepay/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="website" ng-model="formData.website" /> <label for="website">website</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="projectId" ng-model="formData.projectId" /> <label for="projectId">项目id</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="investCoinCode" ng-model="formData.investCoinCode" /> <label for="investCoinCode">投资币种</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="isLimitedMoney" ng-model="formData.isLimitedMoney" /> <label for="isLimitedMoney">是否限制投资币量 0.不限 1.限制</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="money" ng-model="formData.money" /> <label for="money">投资币量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="repayExplain" ng-model="formData.repayExplain" /> <label for="repayExplain">回报说明</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="isLimitedSize" ng-model="formData.isLimitedSize" /> <label for="isLimitedSize">是否限制人数 0.不限 1.限制</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="size" ng-model="formData.size" /> <label for="size">名额数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="isLimitedSupport" ng-model="formData.isLimitedSupport" /> <label for="isLimitedSupport">是否支持限制   0.否  1.是</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="support" ng-model="formData.support" /> <label for="support">每个用户购买此回报次数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="isFreeShipping" ng-model="formData.isFreeShipping" /> <label for="isFreeShipping">是否包邮： 0.包邮  1.大陆包邮</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="paybackTime" ng-model="formData.paybackTime" /> <label for="paybackTime">回报时间：预计项目ico成功之后多少天</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

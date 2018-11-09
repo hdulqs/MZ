@@ -1,0 +1,36 @@
+<!-- 创建管理员-->
+	<div class="card-panel" >
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">管理员信息</span>
+       		<!-- 返回按钮 -->
+			<!-- <a class="btn fs-16 right" href="#/oauth/company/subcompany/see/anon" >返回</a> -->
+		 </h4>
+		 <hr>
+		<div class="row">
+			<!-- 提示信息 -->
+			<div class="col s12">
+				<div class="alert alert-dismissible orange lighten-4 black-text text-darken-2">
+					<i class="mdi-av-volume-up fs-20"></i>
+					  温馨提示：此账号为分公司内管理员，用于管理分公司内所授权菜单。			  
+				</div>
+			</div>
+			<!-- /提示信息 -->
+			<div class="col s12">
+				<form id="seeForm" ng-submit="processForm()">
+					 <div class="input-field">
+				        *管理员账号<input id="input_fname" type="text" ng-model="formData.username" readonly  />
+				     </div>
+				     <div class="input-field">
+				        *员工姓名<input id="input_fname" type="text" ng-model="formData.name" readonly />
+				      </div>
+				      <div class="input-field">
+				                           电子邮箱<input id="input_fname" type="text" ng-model="formData.email" readonly />
+				      </div>
+					
+				</form>
+			</div>
+	</div>
+</div>
+	
+<!-- /创建管理员--> 

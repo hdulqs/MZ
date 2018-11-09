@@ -1,0 +1,43 @@
+.exuser {
+  float: left;
+  width: 100%;
+  padding-top: 63px; }
+  .exuser .exuser-left {
+    width: 17%;
+    background: #f1eff0; }
+    .exuser .exuser-left h3 {
+      font-size: 18px;
+      height: 60px;
+      line-height: 60px;
+      overflow: hidden;
+      padding-left: 12%;
+      padding-right:15px;
+      color: #666;
+      margin: 0; }
+      .exuser .exuser-left h3 a {
+        color: #666; 
+        cursor:pointer;
+        }
+    .exuser .exuser-left h3.active {
+      background: #cacaca;
+      /* border-right: 4px solid #1792fa; */ 
+      }
+      .exuser .exuser-left h3.active a{
+      color:#474747;
+      }
+    .exuser .exuser-left ul li {
+      font-size: 15px;
+      height: 33px;
+      line-height: 33px;
+      overflow: hidden;
+      padding-left: 20%; }
+      .exuser .exuser-left ul li a {
+        color: #666; }
+    .exuser .exuser-left ul li.active {
+      background: #e5e5e5;
+      border-right: 4px solid #1792fa; }
+ .content{
+   background:#fff;
+   width:83%;
+   padding:0 1% 0 4%;
+ }

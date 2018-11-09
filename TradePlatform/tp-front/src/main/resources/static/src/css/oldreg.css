@@ -1,0 +1,48 @@
+ .reg-container .nav-tabs{
+      padding:0;
+      /* background:rgba(148,169,200,0.8); */
+      width:100%;
+      float:left;
+      border-bottom:1px solid #ddd;
+    }
+	.dropdown-menu {
+		padding: 0;
+		margin: 0;
+	}
+	.navbar-brand .open .dropdown-menu {
+		display: inline-flex;
+	}
+	.nav-tabs>li{
+	  width:50%;
+	  font-size:18px;
+	  height:60px;
+	  line-height:60px;
+	  overflow:hidden;
+	  cursor:pointer;
+	}
+	.nav-tabs>li.active{
+	  border-bottom:1px solid red;
+	}
+	.nav-tabs+.tab-content{
+	padding-top:0;
+	}
+	.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	 color:#fff;
+	}
+	.nav>li>a:focus, .nav>li>a:hover{
+	 background:none;
+	 color:#fff;
+	}
+	.nav-tabs>li>a:hover {
+	    border-color: transparent;
+	}
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	  border-bottom:1px solid red;
+	}
+	.form-group .iconfont{
+	 top: 11px;
+    font-size: 22px;
+    position: absolute;
+    left: 24px;
+    color: #999;
+	 }

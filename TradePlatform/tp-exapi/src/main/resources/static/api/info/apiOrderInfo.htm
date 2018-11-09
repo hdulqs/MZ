@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset=utf-8 "utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="telephone=no" name="format-detection">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link rel=stylesheet href="../lib/css/main.css">
+  <link rel=stylesheet href="../lib/css/animate.css">
+  <link rel=stylesheet href="../lib/css/bootstrap.min.css">
+  <link rel=stylesheet href="../lib/css/color9.css">
+  <link rel=stylesheet href="../lib/js/codemirror/codemirror.css">
+  <script src="../lib/js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+  <div class="ch-body">
+    <div class="envor-content">
+      <section class="envor-page-title-1" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-8">
+              <h1>开发者</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="envor-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 page-right">
+              <article class="table-responsive page-content clearfix">
+                <h2>Rest API <b style="color: #E00;">(已开启)</b> </h2>
+
+                <p>hurong为用户提供了一个简单的而又强大的API，旨在帮助用户快速高效的将hurong交易功能整合到自己应用当中。</p>
+                <p>如果在使用过程中有任何问题，请电话咨询，我们将为您做出最权威的解答。</p>
+                <h3 id="">配置API</h3>
+                <p>获取hurong最新市场配置数据</p>
+                <table class="table api-table">
+                  <tbody>
+                    <tr>
+                      <td colspan="2">
+                        <div class="api-detail">
+                          <h4>示例</h4>
+                          <textarea class="code" id="">
+                           //# Request
+							entrustPrice: 1
+							type: 1
+							coinCode: BTC_LTC
+							entrustCount: 1
+							tokenId: 2a7dcecd-d0ea-49cc-952b-b147c252105d
+							//# Response
+							{"success":true,"msg":"委托成功","obj":null,"code":""}
+                        	</textarea>
+                          <h4>返回值说明</h4>
+                          <textarea class="code" id="">
+                            Success：状态
+							Message：提示信息
+							code:错误代码
+                        	</textarea>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h3 id="">常见问题</h3>
+                <div style="color: #E00; border: 1px solid #ddd; padding: 10px; background: #f9f9f9;">
+                  <p>
+                    <b style="font-weight: bold;">访问限制</b>
+                  </p>
+                  <p>1.单个IP限制每分钟1000次访问，超过1000次将被锁定1小时，一小时后自动解锁。</p>
+                  <p>2.单个用户限制每秒钟10次访问，一秒钟内10次以上的请求，将会视作无效。</p>
+                  <p>3.K线接口每秒只能请求一次数据。</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+<script src="../lib/js/codemirror/codemirror.js"></script>
+<script src="../lib/js/codemirror/mode/javascript.js"></script>
+<script>
+  $(function() {
+    //codemirror
+    $('.code').each(function(index){
+      var editor = CodeMirror.fromTextArea($(".code")[index], {
+        mode: "text/javascript",
+        lineNumbers: true,
+        smartIndent: true,
+        flattenSpans: false,
+        lineWiseCopyCut: true //复制或剪切时没有选择文本，那么就会自动操作光标所在的整行
+      });
+    })
+
+    //codemirror
+  })
+</script>
+
+</html>

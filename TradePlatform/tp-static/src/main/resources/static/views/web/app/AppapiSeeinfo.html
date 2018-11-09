@@ -1,0 +1,64 @@
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+           <div class="row">
+			
+			
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+        <span style="color:red">
+							<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+<div >
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2"
+				class="display table table-bordered table-striped table-hover">
+				  <tr>
+						<th>标题</th>
+						<th>描述</th>
+						<th>版本号</th>
+						<th>地址</th>
+						<th>内容</th>
+					</tr>
+				<tr>
+				   <td>{{formData.title}}</td>
+				   <td>{{formData.description}}</td>
+				   <td>{{formData.version}}</td>
+				   <td>{{formData.requestUrl}}</td>
+				   <td>{{formData.remark1}}</td>
+				</tr>
+				  <tr>
+						<th>参数</th>
+						<th>参数名称</th>
+						<th>参数格式</th>
+						<th>是否为空</th>
+						<th>样例</th>
+					</tr>
+				<tr ng-repeat="item in formData.list">
+				   <td>{{item.param}}</td>
+				   <td>{{item.paramName}}</td>
+				   <td>{{item.paramType}}</td>
+				   <td ng-if="item.isRequired==1">不能为空</td>
+				   <td ng-if="item.isRequired==0">可空</td>
+				   <td>{{item.exmaple}}</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+

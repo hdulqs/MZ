@@ -1,0 +1,55 @@
+
+	<form  name="myform">
+	
+			 <!-- 文章基础信息  卡片-->
+	    <div class="card">
+	     <!-- 标题-->
+	      <div class="title">
+	        <h5><i class="mdi mdi-social-person"></i>添加友情链接</h5>
+	        <a class="minimize" href="#">
+	          <i class="mdi-navigation-expand-less"></i>
+	        </a>
+	      </div>
+	      <!-- /标题-->
+	      
+	      <!--内容-->
+	      <div class="content"> 
+		
+		<div class="row">
+			<div class="col s12 m6">
+                      <div class="input-field"> 
+				       <input type="text" id="input_name" name="name" ng-model="formData.name"  validator="required"  required-error-message="友情链接名称必填"   />
+				       <label for="input_name">友情链接名称</label>
+				    </div>
+			</div>	
+			
+			<div class="col s12 m6">
+				<div class="input-field"> 
+					       <input type="text" id="input_address" name="type" ng-model="formData.linkUrl"  validator="required,url" url-error-message="地址格式:http://www.info.com" required-error-message="友情链接地址必填"   />
+					       <label for="input_address">友情链接地址</label>
+				</div>
+			</div>
+			    
+		</div>	
+		
+		<div class="row">
+		 	 <div class="col s12 m6 ">
+        			 <hry-uploadone name="上传标题图片" value="{{picturePath}}"  path="picturePath"></hry-uploadone>
+        		</div>
+			
+			<div class="col s12 m6">
+				      <select id="flinkState" name="pamState" class="select2"  data-allow-clear="true"    data-placeholder="请选择状态">
+                            	 <option value="">不限</option>
+                            	 <option  value = "0">有效</option>
+                            	 <option  value = "1">无效</option>
+                       	</select>
+			</div>
+		</div>
+		
+		</div>
+			<input type="hidden" name="appResourceSet" id="appResourceSet"  />
+		    <button class="btn" type="submit" id="addAppRolesSubmit" ng-disabled="!form.checkValid(myform)" ng-click="form.submit(myform,processForm)" >保存</button>
+</form>
+			
+	
+   

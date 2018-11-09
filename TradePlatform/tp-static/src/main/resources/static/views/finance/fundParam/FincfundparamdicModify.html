@@ -1,0 +1,34 @@
+ <link rel="stylesheet" type="text/css" href="static/style/hry.css" />
+	<div class="card-panel">
+		<h4>修改</h4>
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s4 ">
+				<form ng-submit="modify()">
+				<input type="hidden" name="configid"  ng-model="formData.paramDicId"/>
+						
+							                      <div class="input-field"> 
+				       <input type="text" name="value"  ng-model="formData.paramDicKey" readOnly />
+				       <label for="input_text"></label>
+				     </div>
+							                      <div class="input-field"> 
+				       <input type="text" name="name"   ng-model="formData.text" />
+				       <label for="input_text"></label>
+				        <div class="input-field"> 
+				       <input type="number" name="name"   ng-model="formData.orderNo" />
+				       <label for="input_text"></label>
+				        <div class="input-field"> 
+				       <input type="text" name="name"   ng-model="formData.paramDicDescrption" />
+				       <label for="input_text"></label>
+				     </div>
+
+				     </div>
+				      <button class="btn" type="submit">保存修改</button><span >{{ message }}</span>
+				      <a class="btn" ng-click="back()" >返回</a>
+				</form>
+			</div>
+		
+		
+		</div>
+	</div>
+	<!-- /With Search --> 

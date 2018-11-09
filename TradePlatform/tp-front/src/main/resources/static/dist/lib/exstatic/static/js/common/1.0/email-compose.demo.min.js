@@ -1,0 +1,1 @@
+var handleEmailToInput=function(){$("#email-to").tagit({availableTags:["c++","java","php","javascript","ruby","python","c"]})},handleEmailContent=function(){$("#wysihtml5").wysihtml5()},EmailCompose=function(){"use strict";return{init:function(){handleEmailToInput(),handleEmailContent()}}}();

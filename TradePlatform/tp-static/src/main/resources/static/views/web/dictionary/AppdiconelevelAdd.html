@@ -1,0 +1,50 @@
+<!-- With Search -->
+	<div class="card-panel">
+		<h4>添加</h4>
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s4 ">
+				<form ng-submit="processForm()">
+				     <div class="input-field"> 
+				       <input type="text"name="itemValue" ng-model="formData.itemValue"  />
+				       <label for="input_text" >值</label>
+				     </div>
+					 <div class="input-field"> 
+				       <input type="text" name="itemName" ng-model="formData.itemName"  required/>
+				       <label for="input_text">名字</label>
+				     </div>
+				     	 <div class="input-field"> 
+				       <input type="text" name="dicKey" ng-model="formData.dicKey"  />
+				       <label for="input_text">key</label>
+				     </div>
+					 <div class="input-field"> 
+				       <input type="text" name="dicDescrption" ng-model="formData.dicDescrption" />
+				       <label for="input_text">描述</label>
+				     </div>
+				<!--	 <div class="input-field"> 
+				       <input type="number"  name="orderNo"  ng-model="formData.orderNo" required  ng-pattern="/^\+?[1-9][0-9]*$/"/>
+				       <label for="input_text">排序</label>
+				     </div>
+				     -->
+				      <div class="input-field"> 
+					父级字典<input type="text" name="pidValue" id="pidValue" readonly="readonly"  required/>
+						  
+				     </div>                  
+					 <button class="waves-effect btn" type="submit">保存</button><span >{{ message }}</span>
+						
+				</form>
+				</div>
+				<div class="col s3">
+					<div id="treediv">
+						双击选择父节点
+						<div id="tree" class="ztree" style="width:260px; overflow:auto;">
+						</div>
+					</div>
+					
+				</div>
+			
+			</div>
+		
+		</div>
+	</div>
+	<!-- /With Search --> 

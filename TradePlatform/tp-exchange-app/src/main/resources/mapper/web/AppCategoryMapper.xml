@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.web.article.dao.AppCategoryDao"   >
+
+<resultMap type="com.mz.web.app.model.AppCategoryVo" id="AppFooterCategory">
+		<!-- 订单信息 -->
+		<id column="id" property="id" />
+		<result column="preateName" property="preateName" />
+		<collection property="list" ofType="com.mz.web.app.model.AppCategory">
+			<id column="name" property="name" />
+			<result column="footerUrl" property="footerUrl" />
+		</collection>
+</resultMap>
+
+<select id="findFooterCategory" parameterType="java.lang.Long"  resultMap="AppFooterCategory" >
+		<![CDATA[   SELECT c.id cid,c.preateName,a.name,a.footerUrl FROM app_artic_category AS c,app_artic_category AS a WHERE c.id=a.id AND a.isShow=0 AND a.TYPE='footer' AND a.state=0 ;
+
+		 ]]>
+	</select>
+
+</mapper>

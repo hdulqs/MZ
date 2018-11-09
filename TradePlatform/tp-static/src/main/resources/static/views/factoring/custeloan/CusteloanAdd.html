@@ -1,0 +1,106 @@
+	<div class="row">
+	<div class="col s12 m4 l2" ng-include="'static/views/factoring/custeloan/CusteloanColumn.html'"></div>
+        <div class="col s12 m8 l10">
+            <div class="card-panel">
+           	 <form ng-submit="add()">
+                 <div class="col s12">
+                    <i class="mdi-action-view-list fs-26"></i>
+                    <span class="fs-16 p-5">基本信息</span>
+                    <button class="waves-effect btn" type="submit">保存</button>
+                    <a href back-button class="btn" >返回</a>
+                 </div>
+                 <div class="row">
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.name">
+                          <label for="">企业名称</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m2"></div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.shorName">
+                          <label for="input_email">企业简称</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.cciaa">
+                          <label for="input_email">营业执照号码</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m2"></div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.organizeCode">
+                          <label for="input_email">组织机构代码</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.taxRegistration">
+                          <label for="input_email">税务登记证</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m2"></div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.linkmanTelphone">
+                          <label for="input_email">联系电话</label>
+                        </div>  	
+                    </div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.registerMoney">
+                          <label for="input_email">工商注册资金</label>
+                        </div>  	
+                    </div>
+                    <div class="col s12 m2"></div>
+                     <div class="col s12 m5">
+                        <div class="input-field">
+<!--                  <input  type="text" class="validate" ng-model="formData.establishDate"> -->
+                                <input class="pikaday" type="text" ng-model="formData.establishDate">
+                                <label for="input_email">企业成立日期</label> 
+                        </div>  	
+                    </div>
+                    
+                   
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.linkmanName">
+                          <label for="input_email">联系人</label>
+                        </div>  	
+                    </div>
+                     <div class="col s12 m2"></div>
+                    <div class="col s12 m5">
+                        <div class="input-field">
+                          <input  type="text" class="validate" ng-model="formData.shopName">
+                          <label for="input_email">所属门店</label>
+                        </div>  	
+                    </div> 
+                    
+                      <div class="col s12 m5">
+                       <select>
+  <option value="" disabled selected>Choose option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+                    </div>
+                    
+                    <!--  <div class="col s12 m5">
+                       <select class="select2"  data-allow-clear="true"    ng-model="name" ng-options="m.name for m in capitalKindList">
+						    <option value="">-- 请选择 --</option>
+						</select>
+                    </div> -->
+                    
+               </div>
+                </form>
+            </div>
+        </div>
+	</div>
+</div>
+
+<!-- <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/pikaday/pikaday.css" /> -->
+<!-- <script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.js"></script> -->
+<!-- <script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.jquery.js"></script> -->

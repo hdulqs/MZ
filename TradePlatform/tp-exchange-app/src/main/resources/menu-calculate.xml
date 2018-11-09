@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<menu key="caiwubiaobiao" name="财务报表"  url="/report/financialstatements/list/anon" shiroUrl="/report/financialstatements/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	<menu key="pingtaizijinshouyibaobiao" name="平台资金结算报表"  url="/report/platformearnings/list/anon" shiroUrl="/report/platformearnings/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	<menu key="pingtaibizhongjisuanbaobiao" name="平台币种结算报表"  url="/report/platformcurrency/list/anon" shiroUrl="/report/platformcurrency/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	<menu key="pingtaihuiyuanbaobiao" name="平台会员管理报表"  url="/report/platformuser/list/anon" shiroUrl="/report/platformuser/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	<menu key="pingtaizijingguanlibaobiao" name="用户盈亏结算报表"  url="/report/platforcustomerforprofit/list/anon" shiroUrl="/report/platforcustomerforprofit/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	<menu key="pingtaishouyibaobiao" name="平台资金盈亏报表"  url="/report/platformoneytoday/list/anon" shiroUrl="/report/platformoneytoday/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	<menu key="huiyuanzijinjiesuandan" name="会员资金结算单"  url="/report/platforsettlement/list/anon" shiroUrl="/report/platforsettlement/list" isOpen="0" isOutLink="0" orderNo="" >
+	
+	   		<function key="huiyuanzijinjiesuandan_resettle" name="重新结算"  shiroUrl="/report/platforsettlement/settlementByCustomerId"></function>
+	
+	</menu> 
+	<menu key="huiyuanbizhongjiesuandan" name="会员币种结算单"  url="/report/platforsettlementcode/list/anon" shiroUrl="/report/platforsettlementcode/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	
+	<!-- platforsettlement -->
+	
+	<menu key="caiwujiesuanshenhe" name="财务结算审核"  url="/report/platforfinancialaudit/list/anon" shiroUrl="/report/platforfinancialaudit/list" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	
+	<menu key="gangganzijijiesuan" name="杠杆资金结算"  url="/report/platforsettlement/levegelist/anon" shiroUrl="/report/platforsettlement/levegelist" isOpen="0" isOutLink="0" orderNo="" >
+	</menu> 
+	
+	<menu key="baobiaochongxinhesuan" name="闭盘重新核算结算单"  url="/report/platforrestated/list/anon" shiroUrl="/report/platforrestated/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="baobiaochongxinhesuan_chongxinjiesuan" name="重新结算"  shiroUrl="/appReportSettlement/settlementByCustomerId"></function>
+		<function key="baobiaochongxinhesuan_pingtaiquerenjiesuan" name="平台确认结算单"  shiroUrl="/appReportSettlement/postAuditByCustomer"></function>
+	</menu>
+	                     
+	<menu key="huiyuanzijihesuan" name="会员资产核算"  url="/report/appaccountcheck/list/anon" shiroUrl="/report/appaccountcheck/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="baobiaochongxinhesuan_quanyuehesuan" name="全部余额核算错误信息"  shiroUrl="/report/appaccountcheck/allerrorinfo"></function>
+		<function key="baobiaochongxinhesuan_ruehesuan" name="余额核算错误信息 "  shiroUrl="/report/appaccountcheck/allerrorinfo"></function>
+		<function key="baobiaochongxinhesuan_quanyuehesunshujuku" name="全部余额核算到数据库"  shiroUrl="/appReportSettlement/culAccountAllCustomer"></function>
+		<function key="baobiaochongxinhesuan_yuehesuanshujuku" name="余额核算到数据库"  shiroUrl="/appReportSettlement/culAccountByCustomer"></function>
+	</menu> 
+	<menu key="huiyuanhuancunhesuan" name="会员缓存核算"  url="/report/appaccountredischeck/list/anon" shiroUrl="/report/appaccountredischeck/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="huncunbaobiaochongxinhesuan_quanyuehesuan" name="全部余额核算错误信息"  shiroUrl="/report/appaccountcheck/allerrorinfo"></function>
+		<function key="huncunbaobiaochongxinhesuan_ruehesuan" name="余额核算错误信息 "  shiroUrl="/report/appaccountcheck/allerrorinfo"></function>
+		<function key="huncunbaobiaochongxinhesuan_quanyuehesunshujuku" name="全部余额核算到数据库"  shiroUrl="/appReportSettlement/culAccountAllCustomer"></function>
+		<function key="huncunbaobiaochongxinhesuan_yuehesuanshujuku" name="余额核算到数据库"  shiroUrl="/appReportSettlement/culAccountByCustomer"></function>
+	</menu> 
+		<menu key="zichanhesuandaoshujukurizhi" name="资产核算到数据库日志"  url="/report/appaccountchecklog/list/anon" shiroUrl="/report/appReportSettlement/operationAccountFundInfoLogList" isOpen="0" isOutLink="0" orderNo="" >
+		
+	</menu> 
+</root>

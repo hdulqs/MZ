@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.trade.entrust.dao.ExOrderInfoDao"   >
+    
+	<delete id="batchDeleteExenrustAcar"  parameterType="java.util.Map">
+        delete from app_cold_account_record   
+        
+		<where>
+       	  <![CDATA[ id<=#{id} ]]>  
+       	 and  userName in 
+       	          <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+				</foreach> 
+		</where> 
+      
+	</delete>
+	<delete id="batchDeleteExenrustAhar"  parameterType="java.util.Map">
+        delete from app_hot_account_record  
+        
+		<where>
+       	  <![CDATA[ id<=#{id} ]]> 
+       	  and  userName in 
+       	          <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+				</foreach> 
+		</where> 
+      
+	</delete>
+	<delete id="batchDeleteExenrustEdcar"  parameterType="java.util.Map">
+        delete from ex_dm_cold_account_record  
+        
+		<where>
+       	  <![CDATA[ id<=#{id} ]]> 
+       	and   userName in 
+       	          <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+				</foreach> 
+		</where> 
+	</delete>
+    
+	<delete id="batchDeleteExenrustEdhar"  parameterType="java.util.Map">
+        delete from ex_dm_hot_account_record    
+		<where>
+       	  <![CDATA[ id<=#{id} ]]> 
+       	and   userName in 
+       	          <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+				</foreach> 
+		</where> 
+	</delete>
+      
+
+	<select id="getMaxExEntrust"  resultType="java.lang.Integer" >  
+          select max(id) from ex_entrust
+	</select>
+	<select id="getMaxExOrderInfo"  resultType="java.lang.Integer" >  
+         select max(id) from ex_order_info;
+	</select>
+	<select id="getMaxEDCAR"  resultType="java.lang.Integer" >  
+          select max(id) from ex_dm_cold_account_record;
+	</select>
+	<select id="getMaxEDHACR"  resultType="java.lang.Integer" >  
+         select max(id) from ex_dm_hot_account_record;
+	</select>
+	<select id="getMaxACAR"  resultType="java.lang.Integer" >  
+        select max(id) from app_cold_account_record;
+	</select>
+	<select id="getMaxAHAR"  resultType="java.lang.Integer" >  
+          select max(id) from app_hot_account_record;
+	</select>
+     
+	<insert id="insertExEntrustHistory"   parameterType="java.util.Map" >  
+        insert into ex_entrust_history select * from ex_entrust  a
+        where a.userName in   <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+				</foreach> 
+	<![CDATA[  and a.`status`>=2 and a.id<=#{id}
+	]]>
+	</insert>
+	<insert id="insertExOrderInfoHistory"   parameterType="java.util.Map" >  
+       insert into ex_order_info_history select * from ex_order_info a
+       where a.buyUserName in 
+         <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+		</foreach> 
+		 and a.sellUserName in   
+		<foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+		</foreach> 
+	<![CDATA[  and a.id<=#{id}
+	]]>
+	</insert>
+	<delete id="deleteExEntrust"  parameterType="java.util.Map">
+ 	 	
+	  delete from ex_entrust where userName in
+	  <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+		</foreach> 
+	    <![CDATA[ and `status`>=2 and id<=#{id}
+	]]>
+	</delete>
+	<delete id="deleteExorderInfo"  parameterType="java.util.Map">
+ 	 	
+	 delete from ex_order_info  where
+	  buyUserName in
+	  <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+		</foreach> 
+	   and sellUserName in 
+	   <foreach item="item" index="index" collection="list" 
+					open="(" separator="," close=")">
+		                  #{item}
+		</foreach> 
+	  <![CDATA[ and id<=#{id}
+
+	]]>
+	</delete>
+</mapper>

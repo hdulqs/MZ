@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="App_customerMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into app_customer(
+			USERNAME,	
+			GOOGLEKEY,	
+			ID
+		) values (
+			#{USERNAME},	
+			#{GOOGLEKEY},	
+			#{ID}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from app_customer
+		where 
+			ID = #{ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  app_customer
+			set 
+				USERNAME = #{USERNAME},
+				GOOGLEKEY = #{GOOGLEKEY},
+			ID = ID
+			where 
+				ID = #{ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			USERNAME,	
+			GOOGLEKEY,	
+			ID
+		from 
+			app_customer
+		where 
+			ID = #{ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		<!-- select
+				a.USERNAME,	
+				a.GOOGLEKEY,	
+				a.ID
+		from 
+				app_customer a -->
+	<!-- 	select *,ap.trueName as ptrueName,ap.id as personId,ac.states as states,ap.personCard as personCard 
+		,ap.frontpersonCard as frontpersonCard,ap.personBank as personBank,ap.surname
+		from
+		app_customer as ac INNER JOIN app_person_info as ap
+		on ac.id = ap.customerId
+		
+		order by ac.created desc -->
+		SELECT ac.id,ac.username,ap.trueName,ap.id AS personId,ap.cardType,ap.cardId,ac.phone,ac.created,
+		ac.googleState,ac.phoneState,ac.states,ap.customerType,ac.isDelete,ac.isChange,ac.hasEmail,ap.personCard 
+		,ap.frontpersonCard ,ap.personBank ,ap.surname,ap.idCardFrontUrl,ap.idCardBackUrl,ap.handIdCardUrl
+		FROM
+		app_customer AS ac INNER JOIN app_person_info AS ap
+		ON ac.id = ap.customerId
+		<where>
+			<if test="pd.BZ!=null and pd.BZ!='' " >
+				ac.platform = #{pd.BZ}
+			</if>
+			<if test="pd.userName!=null and pd.userName!='' " >
+				and ac.userName like '%${pd.userName}%'
+			</if>
+			<if test="pd.trueName!=null and pd.trueName!='' " >
+				and ap.trueName like '%${pd.trueName}%'
+			</if>
+			<if test="pd.cardId!=null and pd.cardId!='' " >
+				and ap.cardId like '%${pd.cardId}%'
+			</if>
+			
+			<if test="pd.created_GT!=null and pd.created_GT!='' " >
+				<![CDATA[   and DATE_FORMAT(ap.created, '%Y-%m-%d')>=  DATE_FORMAT(#{pd.created_GT}, '%Y-%m-%d')   ]]>
+			</if>
+			<if test="pd.created_LT!=null and pd.created_LT!='' " >
+				<![CDATA[  and DATE_FORMAT(ap.created, '%Y-%m-%d') <= DATE_FORMAT(#{pd.created_LT}, '%Y-%m-%d')    ]]>
+			</if>
+			<if test="pd.field2!=null and pd.field2!='' " >
+			 	and ac.states =  #{pd.field2}
+   			</if>
+		</where>
+		ORDER BY ac.created DESC
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		SELECT ac.id,ac.username,ap.trueName,ap.id AS personId,ap.cardType,ap.cardId,ac.phone,ac.created,
+		ac.googleState,ac.phoneState,ac.states,ap.customerType,ac.isDelete,ac.isChange,ac.hasEmail,ap.personCard 
+		,ap.frontpersonCard ,ap.personBank ,ap.surname,ap.idCardFrontUrl,ap.idCardBackUrl,ap.handIdCardUrl
+		FROM
+		app_customer AS ac INNER JOIN app_person_info AS ap
+		ON ac.id = ap.customerId
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from app_customer
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,106 @@
+ <link rel="stylesheet" type="text/css" href="static/style/hry.css" />
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">预览资金方案 </span>
+		 </h4>
+		 <hr>		  
+		  <form ng-submit="processForm()"> 
+		  <div class="row">		  		 
+		   		<div class="col s12">
+		   			
+		   			<p class="mb-20" >
+		   				
+		   				<span id="repaymentMethodspan">
+		   				还款方式：
+						</span>
+						
+					</p> 
+					<p class="mb-20" >
+		   				
+						<span id="repaymentCyclespan">
+						还款周期：
+						</span>						
+					</p> 
+					<p class="mb-20" >
+						
+						<span id="preposePayAccrualspan">
+						前置情况：
+						</span>	
+				    </p>
+				    <p class="mb-20" >
+				       <span id="interestByOneTimespan">
+						一次性情况：
+						
+						</span>	
+				    </p>
+				    <p class="mb-20"  >
+				    <span id="repaymentDatespan">
+						偿还日：
+						
+						</span>	
+				    </p>
+				    <p class="mb-20"  >
+						日期模型：
+						<span id="dateModelspan">
+						</span>	
+				    </p>
+				    <p class="mb-20"  >
+				    <span id="ccalculateFirstAndEndspan">
+						算头算尾情况：
+						
+						</span>	
+				    </p>
+				    <p class="mb-20" >
+				    <span id="intentDateTypespan">
+						还款日的方式：
+						
+						</span>	
+				    </p>
+				    <p class="mb-20"  >
+				       <span id="consultationMoneyWayspan">
+						{{fundMoneyType[0].text}}：
+						
+						</span>	
+				    </p>
+				    <p class="mb-20" >
+				    <span id="serviceMoneyWayspan">
+						{{fundMoneyType[1].text}}：
+						
+						</span>	
+				    </p>
+				    
+				    <p class="mb-20" >
+				    <span id="otherOneFundMoneyWayspan">
+						{{fundMoneyType[2].text}}：
+						
+						</span>	
+				    </p>
+				    <p class="mb-20" >
+				    <span id="otherTwoFundMoneyWayspan">
+						{{fundMoneyType[3].text}}：
+						
+						</span>	
+				    </p>	
+				    <p class="mb-20"  >
+				    <span id="otherTreeFundMoneyWayspan">
+						{{fundMoneyType[4].text}}：
+						
+						</span>	
+				    </p>		
+		   		</div>	
+					<p class="center">
+					    <!-- 完成按钮 -->
+							<button class="btn mr-20 fs-16">保存</button>
+					
+				    </p>   
+				    <p class="center">
+					    <!-- 完成按钮 -->
+							<button class="btn mr-20 fs-16">试算</button>
+					
+				    </p>     
+				</div>
+				</form>
+			</div>
+		</div>

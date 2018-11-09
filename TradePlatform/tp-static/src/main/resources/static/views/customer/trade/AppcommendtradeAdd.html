@@ -1,0 +1,100 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommendtradeList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-28 17:40:59      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppCommendTrade</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/trade/appcommendtrade/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="custromerId" ng-model="formData.custromerId" /> <label for="custromerId">代理商id</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="custromerName" ng-model="formData.custromerName" /> <label for="custromerName">代理商名称</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="ordertNum" ng-model="formData.ordertNum" /> <label for="ordertNum">订单号</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="fixPriceType" ng-model="formData.fixPriceType" /> <label for="fixPriceType">0真实货币1虚拟币</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="fixPriceCoinCode" ng-model="formData.fixPriceCoinCode" /> <label for="fixPriceCoinCode">定价币种</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="pid" ng-model="formData.pid" /> <label for="pid">pid</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="feeamout" ng-model="formData.feeamout" /> <label for="feeamout">手续费金额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="basemoney" ng-model="formData.basemoney" /> <label for="basemoney">返佣基数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="rewardmoney" ng-model="formData.rewardmoney" /> <label for="rewardmoney">奖励金额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sid" ng-model="formData.sid" /> <label for="sid">sid</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="deliveryName" ng-model="formData.deliveryName" /> <label for="deliveryName">交款人</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="deliveryId" ng-model="formData.deliveryId" /> <label for="deliveryId">交款人id</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

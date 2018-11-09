@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mall_storeMapper">
+
+
+    <!-- 新增-->
+    <insert id="save" parameterType="pd">
+		insert into mall_store(
+			ADDTIME,	
+			STORE_ADDRESS,	
+			STORE_INFO,	
+			STORE_NAME,	
+			STORE_OWER,	
+			STORE_USERNAME,
+			STORE_RECOMMEND,	
+			STORE_STATUS,
+			STORE_TELEPHONE,	
+			STORE_ZIP,	
+			AREA0ID,
+			AREA1ID,	
+			AREA2ID,
+			STORE_LEVEL,
+			STORE_TYPE,	
+			STORE_LOGO,	
+			DELIVERY_BEGIN_TIME,
+			DELIVERY_END_TIME,	
+			UID,
+			STORE_ACCOUNT,
+			STORE_PASSWORD,
+			STORE_SFZ,
+			STORE_KHM,
+			STORE_YHZH,
+			STORE_KHYH,
+			STORE_ZHMC,
+			STORE_RZQK
+		) values (
+			#{ADDTIME},	
+			#{STORE_ADDRESS},	
+			#{STORE_INFO},	
+			#{STORE_NAME},	
+			#{STORE_OWER},	
+			#{STORE_USERNAME},
+			#{STORE_RECOMMEND},	
+			#{STORE_STATUS},
+			#{STORE_TELEPHONE},	
+			#{STORE_ZIP},	
+			#{AREA0ID},
+			#{AREA1ID},	
+			#{AREA2ID},	
+			#{STORE_LEVEL},
+			#{STORE_TYPE},
+			#{STORE_LOGO},	
+			#{DELIVERY_BEGIN_TIME},
+			#{DELIVERY_END_TIME},	
+			#{UID},	
+			#{STORE_ACCOUNT},	
+			#{STORE_PASSWORD},	
+			#{STORE_SFZ},	
+			#{STORE_KHM},	
+			#{STORE_YHZH},	
+			#{STORE_KHYH},	
+			#{STORE_ZHMC},	
+			#{STORE_RZQK}
+		)
+	</insert>
+
+
+    <!-- 删除-->
+    <delete id="delete" parameterType="pd">
+		delete from mall_store
+		where 
+			ID = #{ID}
+	</delete>
+
+
+    <!-- 修改 -->
+    <update id="edit" parameterType="pd">
+		update  mall_store
+			set 
+				ADDTIME = #{ADDTIME},
+				STORE_ADDRESS = #{STORE_ADDRESS},
+				STORE_INFO = #{STORE_INFO},
+				STORE_NAME = #{STORE_NAME},
+				STORE_OWER = #{STORE_OWER},
+				STORE_USERNAME = #{STORE_USERNAME},
+				STORE_RECOMMEND = #{STORE_RECOMMEND},
+				STORE_STATUS = #{STORE_STATUS},
+				STORE_TELEPHONE = #{STORE_TELEPHONE},
+				STORE_ZIP = #{STORE_ZIP},
+				AREA0ID = #{AREA0ID},
+				AREA1ID = #{AREA1ID},
+				AREA2ID = #{AREA2ID},
+				STORE_LEVEL = #{STORE_LEVEL},
+				STORE_TYPE = #{STORE_TYPE},
+				STORE_LOGO = #{STORE_LOGO},
+				DELIVERY_BEGIN_TIME = #{DELIVERY_BEGIN_TIME},
+				DELIVERY_END_TIME = #{DELIVERY_END_TIME},
+				UID = #{UID},
+				STORE_ACCOUNT = #{STORE_ACCOUNT},	
+				STORE_PASSWORD = #{STORE_PASSWORD},	
+				STORE_SFZ = #{STORE_SFZ},	
+				STORE_KHM = #{STORE_KHM},	
+				STORE_YHZH = #{STORE_YHZH},	
+				STORE_KHYH = #{STORE_KHYH},	
+				STORE_ZHMC = #{STORE_ZHMC},	
+				STORE_RZQK = #{STORE_RZQK}
+			where 
+				ID = #{ID}
+	</update>
+
+    <!-- 修改店铺推荐状态 -->
+    <update id="editRecommend" parameterType="pd">
+		update  mall_store
+			set 
+				STORE_RECOMMEND = #{STORE_RECOMMEND}
+			where 
+				ID = #{ID}
+	</update>
+
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="pd" resultType="pd">
+		select 
+			ADDTIME,	
+			STORE_ADDRESS,	
+			STORE_INFO,	
+			STORE_NAME,	
+			STORE_OWER,	
+			STORE_USERNAME,
+			STORE_RECOMMEND,	
+			STORE_STATUS,
+			STORE_TELEPHONE,	
+			STORE_ZIP,	
+			AREA0ID,
+			AREA1ID,	
+			AREA2ID,	
+			STORE_LEVEL,
+			STORE_TYPE,
+			STORE_LOGO,	
+			DELIVERY_BEGIN_TIME,
+			DELIVERY_END_TIME,	
+			UID,	
+			ID,
+			STORE_ACCOUNT,
+			STORE_PASSWORD,
+			STORE_SFZ,
+			STORE_KHM,
+			STORE_YHZH,
+			STORE_KHYH,
+			STORE_ZHMC,
+			STORE_RZQK
+		from 
+			mall_store
+		where 
+			ID = #{ID}
+	</select>
+
+
+    <!-- 列表 -->
+    <select id="datalistPage" parameterType="page" resultType="pd">
+        select
+        a.ADDTIME,
+        a.STORE_ADDRESS,
+        a.STORE_INFO,
+        a.STORE_NAME,
+        a.STORE_OWER,
+        a.STORE_USERNAME,
+        a.STORE_RECOMMEND,
+        a.STORE_STATUS,
+        a.STORE_TELEPHONE,
+        a.STORE_ZIP,
+        a.AREA0ID,
+        a.AREA1ID,
+        a.AREA2ID,
+        a.STORE_LEVEL,
+        a.STORE_TYPE,
+        a.STORE_LOGO,
+        a.DELIVERY_BEGIN_TIME,
+        a.DELIVERY_END_TIME,
+        a.UID,
+        a.ID,
+        a.STORE_ACCOUNT,
+        a.STORE_PASSWORD,
+        a.STORE_SFZ,
+        a.STORE_KHM,
+        a.STORE_YHZH,
+        a.STORE_KHYH,
+        a.STORE_ZHMC,
+        a.STORE_RZQK
+        from
+        mall_store a where 1=1
+        <if test="pd.field1!='' and pd.field1!=null">
+            and a.STORE_NAME=#{pd.field1}
+        </if>
+        <if test="pd.field2!='' and pd.field2!=null">
+            and a.STORE_LEVEL=#{pd.field2}
+        </if>
+        <if test="pd.field3!='' and pd.field3!=null">
+            and a.STORE_STATUS=#{pd.field3}
+        </if>
+    </select>
+
+    <!-- 列表(全部) -->
+    <select id="listAll" parameterType="pd" resultType="pd">
+		select
+		a.ADDTIME,
+        a.STORE_ADDRESS,
+        a.STORE_INFO,
+        a.STORE_NAME,
+        a.STORE_OWER,
+        a.STORE_USERNAME,
+        a.STORE_RECOMMEND,
+        a.STORE_STATUS,
+        a.STORE_TELEPHONE,
+        a.STORE_ZIP,
+        a.AREA0ID,
+        a.AREA1ID,
+        a.AREA2ID,
+        a.STORE_LEVEL,
+        a.STORE_TYPE,
+        a.STORE_LOGO,
+        a.DELIVERY_BEGIN_TIME,
+        a.DELIVERY_END_TIME,
+        a.UID,
+        a.ID,
+        a.STORE_ACCOUNT,
+        a.STORE_PASSWORD,
+        a.STORE_SFZ,
+        a.STORE_KHM,
+        a.STORE_YHZH,
+        a.STORE_KHYH,
+        a.STORE_ZHMC,
+        a.STORE_RZQK
+		from 
+				mall_store a
+	</select>
+
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        delete from mall_store
+        where
+        ID in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

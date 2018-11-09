@@ -1,0 +1,156 @@
+<html lang="en" style="font-size: 108.533px;">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。">
+	<meta name="keywords" content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+	<link rel="stylesheet" href="../../style/css/mobile/css/css.css">
+	<script type="text/javascript" src="../../style/js/jquery/1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../style/js/mobile/js/zepto.js"></script>
+	<script src="../../style/js/mobile/js/public.js"></script>
+	<title>
+		互融网｜综合数字资产交易平台
+	</title>
+	<meta property="wb:webmaster" content="8af72a3a7309f0ee">
+</head>
+
+<body>
+	<div id="main">
+		<div class="main_box" style="background:#fff; padding:0; border:0;">
+			<div class="raise right clearfix">
+				<div id="content1">
+					<div class="Wf-div1" style="border-bottom: none;">
+						<a onclick="history.back(-1)">返回</a>
+						<span>互融币提币</span>
+					</div>
+					<div class="cb-box1 tb-box1">
+						<form action=" " method="post" id="coinout_con">
+							<input type="hidden" id="coins_what" name="coin_what" value="ybc">
+							<input type="hidden" name="min_out_fee" id="min_out_fee" value="0.0000">
+							<input type="hidden" name="wallet_id" class="wallet_id" id="" value="">
+							<p class="p4">
+								<label style="width:1.2rem;text-align: right;">可用余额</label><span>0</span> YBC <span style="float: right; margin-right: 20px;"><strong id="coinout2_showtips"></strong></span>
+							</p>
+							<p class="p5"><label>提币地址</label><label class="p5_yh" style="text-align: left;"><span id="bankk">姓名</span><span>尾号<span id="weihao">xxxx</span></span></label><a class="p5_yha addbanks" href="javascript:;">选择地址</a></p>
+							<!--		新加判断-->
+							<p class="p5"><label>提币数量</label><input type="text" id="coin_rmb" name="num" onkeyup="coinOut.daozhang()" autocomplete="new-password"></p>
+							<p class="p5"><label>实际到账</label><input style="background:#ebebe4" type="text" id="true_coin" disabled=""><span class="pos_span">（手续费<i>0.5</i>%）<input type="hidden" value="0.5" id="fee_coin"></span></p>
+							<p class="p5"><label>交易密码</label><input type="password" name="pwdtrade" id="pwdtrade" autocomplete="new-password"></p>
+							<p class="p5"><input type="submit" class="confirm" value="确认提币" style="background:#ff6600;width:100%;height:44px;color:white;font-size:13px"></p>
+						</form>
+						<h5>转出互融币说明</h5>
+						<p class="p6">1. 提币手续费为0.5%，请仔细确认后再操作。</p>
+						<p class="p6">2. 每笔转出最大限额1000个币,最小限额2个币。</p>
+						<p class="p6">3.根据国家反洗钱政策及保障客户资产安全，会对系统检测出的异常账户进行安全认证。</p>
+						<input type="hidden" id="max_coin" value="1000">
+						<input type="hidden" id="min_coin" value="2.0000">
+					</div>
+					<div class="strip" style="margin-top: 0.6rem;"></div>
+					<div class="cb-box3">
+						<h5>转出记录</h5>
+						<ul class="ul2">
+						</ul>
+						<ul class="xiabu">
+							<li>
+								<p class="much">无更多内容</p>
+							</li>
+						</ul>
+						<input type="hidden" class="coinnames" value="ybc">
+						<input type="hidden" class="pnumber" value="1">
+					</div>
+				</div>
+
+				<div id="content2" style="display:none">
+					<div class="Wf-div1" style="border-bottom: none;">
+						<a onclick="history.back(-1)">返回</a>
+						<span>选择地址</span>
+					</div>
+					<ul class="xz_bank_ul_dizhi">
+						<!-- 当有地址的时候是这样 -->
+						<li>
+							<p>
+								<i>⑨的地址</i><span>yja889022222222222222222222222222</span>
+								<input type="hidden" value="555366">
+							</p>
+							<a style=" float:right;text-align:center;margin-right:0.25rem;position: relative;top:-0.5rem" href="javascript:coinOut.delAddr(555366);">删除</a>
+						</li>
+						<!-- 没有地址的时候是这样 -->
+						<li>
+
+							<p style="text-align:center;margin-top:0.2rem">
+								暂无提币地址!
+							</p>
+						</li>
+					</ul>
+					<a class="ft_bank_add" href="./newadd.html">增加新地址</a>
+				</div>
+
+				<div style="clear: both;"></div>
+
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="footer_kefu_news">
+			<a href="tel:4008367667"><i></i>4008-367-667</a>
+			<a><i></i>hry@hry.com</a>
+		</div>
+		<p>
+			<span>
+        <a href="javascript:void(0);" class="a1" id="phone">手机版</a>
+                <i>|</i>
+                <a href="javascript:void(0);" class="a2" id="window">电脑版</a>
+        </span>
+		</p>
+
+		<div>
+			Copyright2013-2016 互融网
+		</div>
+	</footer>
+
+</body>
+<script src="../../style/js/mobile/js/fastclick.js"></script>
+
+<script>
+	$('.more').click(function() {
+		$('.hidden').show();
+		$('.selecmore').hide();
+	})
+</script>
+<script>
+	$('.addbanks').click(function() {
+			console.log('jiayan')
+				//隐藏提币
+			$('#content1').hide();
+			//显示提币地址列表
+			$('#content2').show();
+		})
+		//返回按钮
+	$('.returns').click(function() {
+			//隐藏提币
+			$('#content1').css('display', 'block');
+			//显示提币地址列表
+			$('#content2').css('display', 'none');
+		})
+		//选中地址
+	$(function() {
+		$(".xz_bank_ul_dizhi li p").click(function() {
+			var bankk = $(this).children("i").text();
+			var weihao = $(this).children("span").text().substr(-4);
+			var wallet_id = $(this).children("input").val();
+			$("#bankk").text(bankk);
+			$("#weihao").text(weihao);
+			$(".wallet_id").val(wallet_id);
+			$(".wallet_id").attr('id', wallet_id + 'cl');
+			//隐藏提币
+			$('#content1').css('display', 'block');
+			//显示提币地址列表
+			$('#content2').css('display', 'none');
+		})
+	})
+</script>
+
+</html>

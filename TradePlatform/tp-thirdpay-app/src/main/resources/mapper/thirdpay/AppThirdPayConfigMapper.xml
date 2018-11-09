@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.thirdpay.biz.dao.AppThirdPayConfigDao">
+
+<resultMap type="com.mz.thirdpay.AppThirdPayConfig" id="keyList">
+<result column="thirdPayName" property="thirdPayName" javaType="java.lang.String" />
+<result column="thirdPayType" property="thirdPayType" javaType="java.lang.String" />
+<result column="currentThird" property="currentThird" javaType="java.lang.String" />
+<result column="thirdPayConfig" property="thirdPayConfig" javaType="java.lang.String" />
+</resultMap>
+<select  id="findType"  resultMap="keyList">
+SELECT
+	thirdPayName,thirdPayType,currentThird,thirdPayConfig
+FROM
+	app_thirdpay_config 
+
+
+</select>
+
+</mapper>

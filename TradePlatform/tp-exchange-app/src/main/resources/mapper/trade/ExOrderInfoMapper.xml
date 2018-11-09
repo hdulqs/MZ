@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.trade.entrust.dao.ExOrderInfoDao"   >
+	<!-- 查询一个人的买币总额 -->
+	<select id="getTotalBuyMoney"  parameterType="java.lang.Long" resultType="java.math.BigDecimal">  
+        	select sum(transactionSum) 
+        		from ex_order_info 
+        		where buyCustomId=#{arg0} and type = 1
+    </select>
+	<!-- 获取今天的最后一笔成交价 -->
+	<select id="exAveragePrice"  parameterType="java.lang.String" resultType="com.mz.trade.entrust.model.ExOrderInfo">
+        	select * 
+        		from ex_order_info 
+        		where type = 1 and coinCode=#{arg0} and fixPriceCoinCode=#{arg1}
+        		and to_days(created) = to_days(now()) 
+        		order by id desc LIMIT 1 
+    </select>
+	<!-- 获取昨天的最后一笔成交价 -->
+	<select id="getAveragePriceYesterday"  parameterType="java.lang.String" resultType="com.mz.trade.entrust.model.ExOrderInfo">
+        	select * 
+        		from ex_order_info 
+        		where type = 1 and coinCode=#{arg0}
+        		and to_days(created) = to_days(now()) -1
+        		order by id desc LIMIT 1 
+    </select>
+    
+    
+    <!-- 前台分页查询 -->
+    <resultMap id="FrontMap" type="com.mz.manage.remote.model.Order">
+	</resultMap>
+	<select id="findFrontPageBySql" parameterType="java.util.Map" resultMap="FrontMap">
+		select 
+		orderNum,
+		productName,
+		coinCode,
+		transactionPrice,
+		transactionCount,
+		transactionSum,
+		transactionTime,
+		transactionFee,
+		type
+		from ex_order_info
+		<where>
+			<if test="type!=null and type!='' ">
+				and type = #{type}
+			</if>
+			<if test="userName!=null and userName!='' ">
+				and userName = #{userName}
+			</if>
+		</where>
+		order by transactionTime desc
+	</select>
+    
+    <!-- 查询后台交易手续费问题 -->
+    <select id="selectFee" parameterType="java.util.Map" resultType="com.mz.trade.entrust.model.ExOrderInfo">
+    	SELECT
+			*
+		FROM
+			(
+				(
+					SELECT
+						a.buyCustomId AS customerId,
+						a.buyUserName AS userName,
+						a.transactionBuyFeeRate AS transactionFeeRate,
+						a.transactionBuyFee AS transactionFee,
+						a.transactionCount AS transactionCount,
+						a.transactionPrice AS transactionPrice,
+						a.transactionSum AS transactionSum,
+						a.transactionTime AS transactionTime,
+						a.fixPriceCoinCode AS fixPriceCoinCode,
+						a.coinCode AS coinCode,
+						IFNULL(a.type, 1) as type
+					FROM
+						ex_order_info a
+				)
+				UNION ALL
+					(
+						SELECT
+							b.sellCustomId AS customerId,
+							b.sellUserName AS userName,
+							b.transactionSellFeeRate AS transactionFeeRate,
+							b.transactionSellFee AS transactionFee,
+							b.transactionCount AS transactionCount,
+							b.transactionPrice AS transactionPrice,
+							b.transactionSum AS transactionSum,
+							b.transactionTime AS transactionTime,
+							b.fixPriceCoinCode AS fixPriceCoinCode,
+							b.coinCode AS coinCode,
+							IFNULL(b.type, 2) as type
+						FROM
+							ex_order_info b
+					)
+			)AS c 
+			<where>
+				<if test="type!=null and type!='' ">
+					c.type=#{type}
+				</if>
+			</where> 
+			ORDER BY transactionTime desc
+    </select>
+	
+	<!-- 查询前台交易记录问题  之所以是要分两个，是因为前台调用app的时候，实体类找不到,会报classNotFound的错，虽然不影响，但是看着很不舒服 -->
+    <select id="frontselectFee" parameterType="java.util.Map" resultType="com.mz.manage.remote.model.Order">
+    	SELECT
+			*
+		FROM
+			(
+				(
+					SELECT
+						a.buyCustomId AS customerId,
+						a.buyUserName AS userName,
+						a.transactionBuyFeeRate AS transactionFeeRate,
+						a.transactionBuyFee AS transactionFee,
+						a.transactionCount AS transactionCount,
+						a.transactionPrice AS transactionPrice,
+						a.transactionSum AS transactionSum,
+						a.transactionTime AS transactionTime,
+						a.fixPriceCoinCode AS fixPriceCoinCode,
+						a.coinCode AS coinCode,
+						IFNULL(a.type, 1) as type
+					FROM
+						ex_order_info a
+				)
+				UNION ALL
+					(
+						SELECT
+							b.sellCustomId AS customerId,
+							b.sellUserName AS userName,
+							b.transactionSellFeeRate AS transactionFeeRate,
+							b.transactionSellFee AS transactionFee,
+							b.transactionCount AS transactionCount,
+							b.transactionPrice AS transactionPrice,
+							b.transactionSum AS transactionSum,
+							b.transactionTime AS transactionTime,
+							b.fixPriceCoinCode AS fixPriceCoinCode,
+							b.coinCode AS coinCode,
+							case  b.type when   '1'   then   '2'   else   b.type    end as type
+						FROM
+							ex_order_info b
+					)
+			)AS c 
+			<where>
+				<if test="type!=null and type!='' ">
+					c.type=#{type}
+				</if>
+				<if test="customerId!=null and customerId!='' ">
+					and customerId = #{customerId}
+				</if>
+			</where> 
+			ORDER BY transactionTime desc
+    </select>
+	
+	<!-- 取昨日最后一笔成交价 -->
+	<select id="yesterdayPrice" resultType="java.math.BigDecimal">
+		select transactionPrice from ex_order_info where DATE_FORMAT(transactionTime,'%Y-%m-%d') = date_sub(curdate(),interval 1 day) ORDER BY transactionTime desc
+	</select>
+	
+	
+	
+	 <select id="selectTransactionCount" resultType="java.lang.Integer">
+			select count(*) from ex_order_info where buyUserName=#{arg0}
+	 </select>
+	
+	
+	<select id="selectTransaction" resultType="com.mz.trade.entrust.model.ExOrderInfo">
+			select coinCode,fixPriceCoinCode,sum(transactionCount) transactionSum from ex_order_info where  buyUserName=#{arg0} GROUP BY coinCode
+	</select>
+	
+	
+</mapper>

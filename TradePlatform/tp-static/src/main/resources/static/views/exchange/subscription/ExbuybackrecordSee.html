@@ -1,0 +1,104 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ExbuybackrecordList.html     -->
+ <!-- @author:      zenghao  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-24 16:36:09      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看回购记录</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/exchange/subscription/exbuybackrecord/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					账户名<input type="text" name="userName" value="{{formData.userName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					真实姓名<input type="text" name="trueName" value="{{formData.trueName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币种代码<input type="text" name="coinCode" value="{{formData.coinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币种名称<input type="text" name="coinName" value="{{formData.coinName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购期数<input type="text" name="period" value="{{formData.period}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购价格(￥)<input type="text" name="backPrice" value="{{formData.backPrice}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购数量(个)<input type="text" name="amount" value="{{formData.amount}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购单号<input type="text" name="subTransactionNum" value="{{formData.subTransactionNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					回购总金额(￥)<input type="text" name="buyTotalAmount" value="{{formData.buyTotalAmount}}" readonly />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					回购手续费(%)<input type="text" name="repurchaseFee" value="{{formData.repurchaseFee}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					回购数量(个)<input type="text" name="backAmount" value="{{formData.backAmount}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					回购单号<input type="text" name="transactionNum" value="{{formData.transactionNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					状态<input type="text" name="state" value="{{formData.state}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					驳回备注<input type="text" name="remarks" value="{{formData.remarks}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

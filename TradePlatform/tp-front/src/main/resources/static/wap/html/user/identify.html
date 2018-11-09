@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>互融网｜第一数字资产交易平台</title>
+
+</head>
+<style>
+	.none {
+		display: none;
+	}
+</style>
+
+<body>
+	<header class="header">
+		<a href="../coins.htm">
+			<div class="logo"></div>
+		</a>
+		<div class="nav">
+			<a href="../coins.htm">交易中心</a>
+			<a href="login.htm">登录</a>
+			<a class="a-on" href="./reg.htm">注册</a>
+		</div>
+	</header>
+	<!--top end-->
+
+	<div class="ybc_section">
+		<!-- <ul class="ybc_user_nav clearfix Font18">
+			<li class="current"><span>1</span>邮箱注册</li>
+			<li class="current" id="currentpwd"><span>2</span>设置交易密码</li>
+			<li class="current"><span>3</span>实名认证</li>
+			<li><span>4</span>注册成功</li>
+		</ul> -->
+		<div class="ybc_warn Font18" style="margin-bottom:30px;">为了确保您的资金安全，请实名认证</div>
+		<div style="font-size:0.14px;line-height:24px; color:#666; margin-bottom:30px;">
+			<p>1.真实姓名经实名认证后将不能够更改，请如实填写。</p>
+			<p>2.互融网只接受实名充值，提现时银行等姓名信息必须与您的认证姓名一致。</p>
+			<p>3.互融网有合理的理由怀疑用户提供虚假身份信息时，有权拒绝注册或者冻结、注销已经注册的账户及资产。</p>
+		</div>
+		<h2 class="data perfect"></h2>
+		<!-- <form id="form" method="post" action="./success.html"> -->
+		<form id="form" method="post" ">
+			<input type="hidden" name="iscaptcha">
+			<div class="ybc_userarea ybc_userarea2" style="margin-bottom:50px;">
+				<div class="ybc_user clearfix">
+					<input type="hidden" value="0" id="selectModify" name="selecttype">
+				</div>
+
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label for="name">真实姓名</label></div>
+					<div class="user_control ">
+						<input name="name" type="text" id="name" value=""   maxlength="8" onblur="">
+						<div class="ybc_hint left"><strong class="msg_i">i</strong><span id="namemsg">真实姓名设置后不能修改，并且与提现账户名相同</span></div>
+					</div>
+
+				</div>
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label for="cardtype">证件类型</label></div>
+					<div class="user_control ">
+						<select id="cardtype" name="cardtype" style="height:0.66rem;width:3.9rem;">
+					   <option value="1" selected="">身份证</option>
+					<!--<option value='2' >护照</option>-->
+				    </select>
+					</div>
+				</div>
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label for="idcard">证件号码</label></div>
+					<div class="user_control">
+						<input type="text" name="idcard" id="idcard" onkeyup="this.value=this.value.toLowerCase()" value="" onblur="">
+						<div class="ybc_hint left"><strong class="msg_i">i</strong><span id="idcardmsg">证件号码注册后不能修改</span></div>
+					</div>
+				</div>
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label for="mo">手机号码</label></div>
+					<div class="user_control">
+						<input type="text" name="mo" id="mo" value="" onblur="">
+						<input type="hidden" id="isset_mo" value="0">
+						<input type="hidden" id="isset_mo" value="1">
+						<div class="ybc_hint left">
+							<strong class="msg_i">i</strong>
+							<span id="momsg">
+					请输入您的手机号码
+					</span>
+						</div>
+					</div>
+
+				</div>
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label for="code">图形验证码</label></div>
+					<div class="user_control flex">
+						<span class="captcha">
+					    <input type="text" name="captcha" style="width:97px;" class="verify_text" placeholder="请输入验证码" id="registCode">
+				   </span>
+						<div class="ybc_hint left"><strong id="capturemsg"><img id="img_captcha" title="换一张"  alt="换一张" width="80" ></strong></div>
+					</div>                                                                                                            
+
+				</div>
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label for="code">验证码</label></div>
+					<div class="user_control flex">
+						<input type="text" name="code" id="code" onblur="" style="width:2rem" value="">
+						<div class="ybc_hint left" style="padding-right:5px;" id="msgpcode"><a class="button one" style="background:#ccc;padding: 6px;
+    border-radius: 4px;margin-left: 4px;">获取短信验证码</a><a class="button two none" id="msgt">获取短信验证码</a></div>
+					</div>
+					<!--<div class="ybc_hint left"><strong class="msg_i"> i</strong><span id="codemsg">请输入短信验证码</span></div>-->
+				</div>
+				<input type="hidden" id="avatar" name="avatar" value="/images/ulogodefault.jpg">
+				<div class="ybc_user clearfix">
+					<div class="ybc_label left"><label>&nbsp;</label></div>
+					<div class="ybc_text left"><input type="button" id="regBtn" value="提交" class="ybc_next"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!--footer start-->
+	<div class="footer" style="padding:0.5rem 0;">
+		<div>Copyright 2013-2017 互融网 All Rights Reserved. Powered by 互融金汇（北京）科技有限公司 </div>
+	</div>
+	<!--footer end-->
+
+</body>
+<script src="../../style/js/mobile/js/public.js"></script>
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/reg.js'],function(l){
+	l.init();
+});
+</script>
+</html>

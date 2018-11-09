@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 42.6667px;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="互融网">
+    <meta name="keywords" content="数字货币交易,虚拟货币交易,数字资产,交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+    <title>
+        互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee">
+</head>
+
+<body>
+    <header class="header">
+        <a href=" ">
+            <div class="logo"></div>
+        </a>
+        <div class="nav">
+            <a href="javascript:void(0);" id="bbjy">交易中心</a>
+            <a href="javascript:void(0);" id="wdzh">我的账户</a>
+            <a href="javascript:void(0);" id="sz">
+                <img src="../../style/images/mobile/image/icon_home_03.png" alt="" style="width:0.35rem;height:0.35rem; position: relative;top:0.08rem">
+            </a>
+        </div>
+    </header>
+    <div id="main">
+        <div class="main_box" style="padding:0;">
+            <div class="raise right clearfix">
+                <name id="realname" data="叶子"></name>
+                <input type="hidden" id="recharge_account_yes" value="  ">
+                <input type="hidden" id="bankOut" value=" ">
+                <div id="showw">
+                    <div class="strip"></div>
+                    <div class="Wf-div1" style="border-bottom: none;">
+                        <a onclick="history.back(-1)">返回</a>
+                        <span>人工充值</span>
+                    </div>
+                    <div class="cb-box1 tb-box1">
+                    	<p class="p5"><label>选择银行</label>
+                    		 <input type="hidden" id="bankName" /> 
+                    		<select id="selbank">
+                    			
+                    		</select>
+                    	</p>
+                    	<p class="p5"><label>银行卡号</label><input type="text" id="bankcode"></p>
+                        <p class="p5"><label>汇款人姓</label>
+                        <input class="input_coins" type="text" style="color:#333;" id="huikuanrenxing" disabled=""></p>
+                        <p class="p5"><label>汇款人名</label>
+                        <input class="input_coins" type="text" style="color:#333;" id="huikuanrenming" disabled=""></p>
+                        <p class="p_news_tidhi">互融网仅接受实名充值</p>
+                        <p class="p5"><label>充值金额</label><input class="input_coins" id="over_num" type="text"  autocomplete="off" maxlength="10" placeholder="请输入金额"></p><!-- onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;); Ebank.decimal();" -->
+                        <p class="p_news_tidhi" style="padding-top:0; margin-top: 0.2rem;" id="over_num_p">请严格按照当前金额汇款。</p>
+
+                        <p class="p5" style="margin-right: 0.1rem;">
+                            <button type="button" id="rmbsubmit" class="confirm" style="background:#ff6600;width:97%;height:44px;color:white;font-size:13px;">生成银行汇款单</button>
+                        </p>
+
+                        <p class="p808"><a class="a1" onclick="showExplain(1)">充值说明</a></p>
+                    </div>
+
+                    <div class="cb-box3">
+                        <h5>充值记录</h5>
+                        <ul class="ul2" id="list">
+                        </ul>
+                    </div>
+                </div>
+                <div id="recharge_alert_bank" style="display:none">
+                    <div class="strip"></div>
+                    <div class="Wf-div1" style="border-bottom: none;">
+                       <a onclick="history.back(-1)">返回</a>
+                        <span>银行卡汇款信息</span>
+                    </div>
+                    <div class="remitt_div">
+                        <div class="remitt_box">
+                            <p class="remitt_box_coloe">请按以下信息转账</p>
+                            <p>银行账户<span>1105 0160 5900 0000 0147</span></p>
+                            <p>开户银行<span>中国建设银行东方广场支行</span></p>
+                            <p>开户姓名<span>互融金汇（北京）科技有限公司</span></p>
+                            <p>汇款金额<span class="recharge_html_num"></span>元</p>
+                        </div>
+                    </div>
+                    <p class="remitt_div_p"><span>到账时间</span>系统在收到汇款后20分钟内到账</p>
+                    <p class="remitt_div_p"><span>订单有效期</span>3小时（请在有效时间内充值）</p>
+                    <p class="remitt_div_p1">本系统非自动扣款，请通过您的“手机银行”或“网上银行”汇款！</p>
+                    <div style="clear: both;"></div>
+                </div>
+                <div id="showExplain" style="display:none">
+                    <div class="strip"></div>
+                    <div class="Wf-div1" style="border-bottom: none;">
+                       <a onclick="history.back(-1)">返回</a>
+                        <span>充值说明</span>
+                    </div>
+                    <p class="instruct_p">1. 汇款人姓名必须与账户实名认证姓名一致，姓名不一致的请联系客服并提供汇款证明，我们会在3-5个工作日内退款。</p>
+                    <p class="instruct_p">2. 充值免收手续费，系统收到您的汇款后<strong>20分钟内入账</strong>，请耐心等待。</p>
+                    <p class="instruct_p">3. <strong>超过3个小时</strong>的汇款订单将<strong>失效</strong>，请重新生成汇款订单并汇款。</p>
+                    <p class="instruct_p">4. 由于周末部分银行不提供汇款到账业务，导致用户充值不能及时到账。建议周末（周五17:00至周一09:00）请尽量避免使用：工商银行、农业银行、建设银行、交通银行、中国银行、民生银行等银行卡进行汇款，否则可能会延迟至周一到账。</p>
+                    <p class="instruct_p"><a href="">5. 充值不到账如何处理？</a></p>
+                    <p class="instruct_p instruct_pb">6.严禁电信诈骗分子利用平台进行洗钱，互融网已与有关部门建立联动机制，将采取各种措施，坚决打击相关犯罪活动，请勿以身试法。</p>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <footer class="footer">
+
+
+        <div>
+            Copyright2013-2016 互融网
+        </div>
+    </footer>
+
+<!-- 生成汇款单 -->    
+<div class="row" id="Popup">
+	<div class="col-md-10  .col-md-offset-1">
+  <div class="mention" style="padding:10px;">
+    <div class="privilege">
+      <h3 style="font-weight:bold;margin:0 5px 10px 0;">申请汇款单</h3>
+      <div class="ctips" style="background:rgb(254,231,225);border: 1px solid lightpink;font-size:10px;margin-bottom:5px;padding:10px;">
+				<i class="fa fa-flag-o"></i>
+		  		<span><b style="font-size:1em;">温馨提示:</b>
+					当前转账<span id="nowMoney"><span>，转账时，请务必在转账信息备注栏填写
+      			<b style="color:red;"><wbr>64551852，</wbr>平台收到资金后2小时之内会自动为您的账户进行充值。</b>
+      				如果备注中没有单号将直接影响您的充值到账速度，如果忘记填写，请联系在线客服。 
+      			</span>
+	  </div>
+      
+      <table width="100%" class="tb-list2 table table-bordered">
+		  <colgroup>
+		   <col style="width: 120px"></col>
+		   <col></col>
+		  </colgroup>
+		<tbody>
+		<tr>
+          <th scope="row">汇入银行账户</th>
+          <td><span id="bankAccount"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">汇入银行</th>
+          <td><span id="bankName_"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">汇入银行支行</th>
+          <td><span id="bankAddress"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">收款人</th>
+          <td><span id="accountName"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">金额</th>
+          <td><span id="remittanceMoney"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">订单号</th>
+          <td><span id="transactionNum"></span></td>
+        </tr>
+           <tr>
+             <th scope="row">备注</th>
+             <td><span id="remark"></span></td>
+           </tr>
+           <tr>
+             <th scope="row">状态</th>
+             <td><b>待处理</b>
+                 	请点击<a href="javascript:void(0);" target="_blank" ><img style="vertical-align: middle;height:36px;" ng-src="{{HRY.host}}/{{bankLOGO}}" ></a>登录网上银行进行汇款。
+             </td>
+           </tr>
+        </tbody>
+	  </table>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+
+</html>
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"jq" : "style/js/jquery/jquery.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','jq','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/user_ebank.js'],function(u){
+	u.init();
+});
+</script>

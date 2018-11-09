@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.shiro.dao.AppUserRoleDao">
+
+	<resultMap id="BaseResultMap" type="com.mz.oauth.user.model.AppUserRole">
+		<id column="id" property="id" javaType="java.lang.Long"></id>
+		<result column="created" property="created" javaType="java.util.Date" />
+		<result column="modified" property="modified" javaType="java.util.Date" />
+		<result column="saasId" property="saasId" javaType="java.lang.String" />
+		<result column="userId" property="userId" javaType="java.lang.Long" />
+		<result column="roleId" property="roleId" javaType="java.lang.Long" />
+	</resultMap>
+	
+	<select id="findByAppRole" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select * from app_user_role where roleId = #{roleId,jdbcType=BIGINT}
+	</select>
+	
+	<select id="findByAppUser" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select * from app_user_role where userId = #{userId,jdbcType=BIGINT}
+	</select>
+	
+<delete id="deleteUserId" parameterType="java.lang.Long">
+	delete from app_user_role where userId =#{userId}
+	</delete>
+</mapper>

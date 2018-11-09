@@ -1,0 +1,76 @@
+
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+          	<div class="row">
+			<div class="col m3 s12">
+		      <div class="input-field">
+		        <input id="input_fname" type="text"  ng-model="serchData.Q_requestNum_like_String"  dataTableSerch>
+		        <label for="input_fname">流水号</label>
+		      </div>
+		    </div>
+			<div class="col m3 s12">
+		      <div class="input-field">
+		        <input id="input_lname" type="text"  ng-model="serchData.Q_userId_like_String"  dataTableSerch>
+		        <label for="input_lname">用户名</label>
+		      </div>
+		    </div>
+		</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+					
+						<!-- 增加按钮 -->
+						<a class="btn pr-10 pl-10" ng-click="fnAdd('article/apparticle/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>添加</a>
+						
+						<!-- 查看按钮 -->
+						<a class="btn pr-10 pl-10" ng-click="fnSee('article/apparticle/see')" ><i class="fa fa-search-plus " aria-hidden="true"></i>查看</a>
+ 						
+						<!-- 修改按钮 -->
+						<a class="btn pr-10 pl-10" ng-click="fnModify('article/apparticle/modify')"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>修改</a>
+						<!-- 删除按钮 -->
+						
+						<a class="btn pr-10 pl-10"  ng-click="fnRemove('article/apparticle/remove')"> <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+
+						<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+
+<!-- 部门人员 -->
+	<div >
+		
+		<form id="seeForm" ng-submit="seeProcessForm()">
+	
+		</form>
+		<div class="row">	
+		<div class="col s12 "  >
+			<table id="dataTable" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+				      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+		              <th>用户名</th>
+		              <th>第三方名称</th>
+		              <th>流水号</th>
+		              <th>金额</th>
+		              <th>状态</th>
+		              <th>响应信息</th>
+		              <th>时间</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+			</table>
+		
+			</div>
+		</div>
+		
+	</div>
+<!-- /部门人员  --> 
+
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 42.6667px;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。">
+    <meta name="keywords" content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+    <title>
+        互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee">
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="../coins.htm">
+            <div class="logo"></div>
+        </a>
+        <div class="nav">
+            <a href="javascript:void(0);" id="bbjy">交易中心</a>
+            <a href="javascript:void(0);" id="wdzh">我的账户</a>
+            <a href="javascript:void(0);" id="sz">
+                <img src="../../style/images/mobile/image/icon_accont_03.png" alt="" style="width:0.35rem;height:0.35rem; position: relative;top:0.08rem">
+            </a>
+        </div>
+    </header>
+    <div id="main">
+        <div class="main_box" style="padding:0; background:#fff;">
+            <div class="raise right clearfix">
+                <div class="strip"></div>
+                <div class="acc_top">
+                    <p class="acc_top_eml"><span id="username"></span></p>
+                    <p class="acc_top_uid">
+                        <span class="acc_t_u_spano"></span>
+                        <span class="acc_t_u_icon acc_chuji"></span>
+                    </p>
+                    <a class="footer_tuichu" href="javascript:void(0);" id="logout"></a>
+                </div>
+                <p class="acc_title">
+                    账户管理
+                </p>
+                <ul class="account_ul">
+                    <a href="javascript:void(0);" id="smrz">
+                        <li>
+                            <span class="account_ul_icon" style="text-decoration: none;color:#333">实名认证</span><span class="account_ui_right"></span>
+                        </li>
+                    </a>
+                    <a href="javascript:void(0);" id="updlogin">
+                        <li>
+                            <span class="account_ul_icon1" style="text-decoration: none;color:#333">修改登录密码</span><span class="account_ui_right"></span>
+                        </li>
+                    </a>
+                    <a href="javascript:void(0);" id="updtran">
+                        <li>
+                            <span href="/user_index/pwd" class="account_ul_icon2" style="text-decoration: none;color:#333">修改交易密码</span><span class="account_ui_right"></span>
+                        </li>
+                    </a>
+                </ul>
+                <p class="acc_title">
+                    联系客服
+                </p>
+                <ul class="account_ul">
+                    <li>
+                        <span class="account_ul_icon4">客服邮箱</span><span class="account_ui_right_news">hry@hry.com</span>
+                    </li>
+                    <a href="tel:4008367667">
+                        <li style="border-top:0;">
+                            <span class="account_ul_icon5">客服电话</span><span class="account_ui_right_news">4008-367-667</span>
+                        </li>
+                    </a>
+
+                </ul>
+                <div style="clear: both;"></div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"jq" : "style/js/jquery/jquery.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','jq','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/account.js'],function(a){
+	a.init();
+});
+</script>

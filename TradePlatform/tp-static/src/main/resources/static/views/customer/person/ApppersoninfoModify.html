@@ -1,0 +1,172 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ApppersoninfoList.html     -->
+ <!-- @author:      zhangcb  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-22 18:25:52      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppPersonInfo</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/person/apppersoninfo/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="customerId" ng-model="formData.customerId" /> <label for="customerId">用户ID</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="customerType" ng-model="formData.customerType" /> <label for="customerType">客户类型customerType甲类账户1(普通的，默认)，乙类账号2，丙类账户3</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="mobilePhone" ng-model="formData.mobilePhone" /> <label for="mobilePhone">手机号</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="email" ng-model="formData.email" /> <label for="email">邮箱</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="trueName" ng-model="formData.trueName" /> <label for="trueName">真实姓名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sex" ng-model="formData.sex" /> <label for="sex">性别  0男  1女</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="birthday" ng-model="formData.birthday" /> <label for="birthday">生日</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="country" ng-model="formData.country" /> <label for="country">国家</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="cardType" ng-model="formData.cardType" /> <label for="cardType">证件类型</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="cardId" ng-model="formData.cardId" /> <label for="cardId">身份证号</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="customerSource" ng-model="formData.customerSource" /> <label for="customerSource">客户来源   0线上注册   1业务员注册</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="realTime" ng-model="formData.realTime" /> <label for="realTime">realTime</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="emailCode" ng-model="formData.emailCode" /> <label for="emailCode">email回调的时候的验证码</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="cardIdUsd" ng-model="formData.cardIdUsd" /> <label for="cardIdUsd">cardIdUsd</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="cardIdValidPeriod" ng-model="formData.cardIdValidPeriod" /> <label for="cardIdValidPeriod">身份证有效期</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="postalAddress" ng-model="formData.postalAddress" /> <label for="postalAddress">通讯地址</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="contacts" ng-model="formData.contacts" /> <label for="contacts">紧急联系人</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="postCode" ng-model="formData.postCode" /> <label for="postCode">邮编</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="stage" ng-model="formData.stage" /> <label for="stage">基础信息完善状态</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="contactsTel" ng-model="formData.contactsTel" /> <label for="contactsTel">紧急联系人电话</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="handIdCardUrl" ng-model="formData.handIdCardUrl" /> <label for="handIdCardUrl">手持身份证照片</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="idCardFrontUrl" ng-model="formData.idCardFrontUrl" /> <label for="idCardFrontUrl">身份证正面照片</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="idCardBackUrl" ng-model="formData.idCardBackUrl" /> <label for="idCardBackUrl">身份证背面照片</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="handDealUrl" ng-model="formData.handDealUrl" /> <label for="handDealUrl">手持协议照片</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,75 @@
+version: '3.3'
+services:
+  static:
+    image: 192.168.1.102:5000/admin/static:0.0.1-SNAPSHOT
+    volumes:
+    - /home/logs/static:/logs
+    networks:
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        #constraints: [node.labels.func == app]
+        preferences:
+        - spread: node.labels.work
+  oauth:
+    image: 192.168.1.102:5000/admin/oauth:0.0.1-SNAPSHOT
+    volumes:
+    - /home/logs/oauth:/logs
+    networks:
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        #constraints: [node.labels.func == app]
+        preferences:
+        - spread: node.labels.work
+  manage:
+    image: 192.168.1.102:5000/front/manage:0.0.1-SNAPSHOT
+    volumes:
+    - /home/logs/admin_manage:/logs
+    networks:
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        #constraints: [node.labels.func == app]
+        preferences:
+        - spread: node.labels.work
+  check:
+    image: 192.168.1.102:5000/admin/check:0.0.1-SNAPSHOT
+    volumes:
+    - /home/logs/check:/logs
+    networks:
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        #constraints: [node.labels.func == app]
+        preferences:
+        - spread: node.labels.work
+  exapi:
+    image: 192.168.1.102:5000/admin/exapi:0.0.1-SNAPSHOT
+    volumes:
+    - /home/logs/exapi:/logs
+    networks:
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        #constraints: [node.labels.func == app]
+        preferences:
+        - spread: node.labels.work
+networks:
+  admin:
+    external: true

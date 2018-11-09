@@ -1,0 +1,81 @@
+<!-- 添加分公司-->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">添加</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/account/fund/appouraccount/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form id="seeForm" ng-submit="processForm()">
+		<div class="row">
+			<div class="col m8 s12 left">
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select  class="select2"  data-allow-clear="true"    data-placeholder="请选择开户类型" id="openAccountType" disabled="disabled">
+							<option value="">不限</option>
+							<option value="0">企业</option>
+							<option value="1">个人</option>
+						</select>
+					</div>
+				</div>
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="请选择是否主账户" id="isShow" disabled="disabled">
+							<option value="">不限</option>
+							<option   value="0">普通账户</option>
+							<option   value="1">主账户</option>
+						</select>
+						
+					</div>
+				</div>
+				<div class="col m6 s12">
+					<div class="input-field">
+						支付宝账号<input type="text" ng-model="model.accountNumber" readonly="readonly">
+					</div>
+				</div>
+				<div class="col m6 s12">
+					<div class="input-field">
+						支付宝账户名称<input type="text" ng-model="model.accountNumber" readonly="readonly">
+					</div>
+				</div>
+
+				<div class="col s12">
+					<div class="input-field">
+						备注<textarea id="textarea1" class="materialize-textarea" length="120" ng-model="model.remark" readonly="readonly"></textarea>
+					</div>
+				</div>
+				
+
+			</div>
+			<div class="col m4 s12 right">
+				<div class="row">
+					<h4 class="fs-20 lh-20">银行LOGO</h4>
+					<div class="row photoswipe-gallery isotope mr-20">
+						<a class="col s12 item" data-size="2880x1800" data-med="" data-med-size="1440x900" data-author="John Doe"> <img id="imgShow" src="" onerror="nofind();" alt="logo" />
+						</a>
+					</div>
+					<p>
+						<!-- 上传按钮 -->
+						<!-- 删除按钮 -->
+						<input type="hidden" id="imgSrc" /> <input class="btn" type="button" id="btnUploadImg" value="上传" /> <input class="btn" type="button" id="btnDeleteImg" value="删除" />
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</form>
+
+</div>
+<!-- /添加分公司  -->
+
+<link rel="stylesheet" href="static/lib/ztree/css/demo.css" type="text/css">
+<link rel="stylesheet" href="static/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<script type="text/javascript">
+	function nofind() {
+		var img = event.srcElement;
+		//	img.src = HRY.host + "/static/static/images/logo_person.png";
+	}
+</script>
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.coin.transaction.dao.AppCoinTransactionTvDao">
+	<select id="getcountBytrxid" resultType="java.lang.Integer">
+		<![CDATA[ 
+			select count(*) from app_coin_transaction_tv where trxId=#{arg0}
+		  ]]>
+	</select>
+	
+	
+	<select id="listYesterdayRechargeRecord" resultType="java.lang.String">
+		<![CDATA[ 
+			select toAccount from app_coin_transaction_tv where type=#{arg0} and  TO_DAYS(NOW())-TO_DAYS(created)=1;
+		  ]]>
+	</select>
+	
+	
+	<select id="listTxIdByIsUse" resultType="java.lang.String">
+		<![CDATA[ 
+			select trxId from app_coin_transaction_tv where isUse=#{arg0}
+		  ]]>
+	</select>
+	
+	<select id="listTxByIsUse" resultType="com.mz.coin.transaction.model.AppCoinTransactionTv">
+		<![CDATA[ 
+			select * from app_coin_transaction_tv where isUse=#{arg0}
+		  ]]>
+	</select>
+</mapper>

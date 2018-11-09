@@ -1,0 +1,199 @@
+<html>
+<head>
+	<!-- dwr -->
+	<script type='text/javascript' src='${ctx}/dwr/engine.js'> </script>
+	<script type='text/javascript' src='${ctx}/dwr/interface/JavascriptChat.js'> </script>
+	<script type='text/javascript' src='${ctx}/dwr/util.js'> </script>
+	<!-- dwr发送和接收 -->
+	<script type="text/javascript" src='{{app.staticURL}}/static/common/js/javascript-chat.js'> </script>
+	<!-- jquery -->
+	<script type="text/javascript" src="{{app.staticURL}}/static/component/baseUI/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+	
+	 $(document).ready(function(){
+	 		
+	 		var loadOnlineSession = function(){
+		 		$.getJSON(ctx+"/sessionController/list.do", function(data) {  
+		                $("#chat").empty(); //先清空标记中的内容  
+		                var strHTML = "<span class=\"label\">Online</span>"; //初始化保存内容变量  
+		                $.each(data, function(InfoIndex, Info) { //遍历获取的数据  
+		                    strHTML += "<div class=\"user\"  >" ;
+		                    strHTML += "<input type=\"hidden\"  value=\""+Info["id"]+"\" />" ;
+		                    strHTML += "<input type=\"hidden\"  value=\""+Info["username"]+"\" />" ;
+		                    strHTML += "<img src=\"{{app.staticURL}}/static/component/baseUI/_con/images/user2.jpg\" alt=\"Felecia Castro\" class=\"circle photo\">";
+		                    strHTML += "<div class=\"name\" >"+Info["username"]+"</div>";
+		                    strHTML += "<div class=\"status\">在线</div>";
+		                    strHTML += "<div class=\"online\"><i class=\"green-text fa fa-circle\"></i></div>";
+		                    strHTML += "</div>";
+		                   // strHTML += "<span class=\"label\">Offline</span>";
+		                })  
+		                $("#chat").html(strHTML); //显示处理后的数据  
+		           });  
+	         }
+	        //单击进入聊天室
+	        $("#chatOnline").on("click",function(){
+	        	//加载在线人
+	        	loadOnlineSession();
+	        	//初始化反推配置
+	        });
+	        
+	        //单击加载聊天记录
+	        $("#chat").on("click",".user",function(){
+	        	//取接收人ID
+	        	var receiveUserId = $($(this).children("input")[0]).val();
+	        	var receiveUserName = $($(this).children("input")[1]).val();
+	        	var sendUserId = $("#sendUserId").val();
+	        	if(sendUserId==receiveUserId){
+	        		 Materialize.toast('不能和自己聊天', 4000);
+	        		 return false;
+	        	}
+	        	//设置页面临时接收人ID
+	        	$("#receiveUserId").val(receiveUserId);
+	        	//设置跳转后的显示
+	        	$("#receiveUserName").html(receiveUserName);
+	        	
+	        	
+        		$.getJSON(ctx+"/chat/loadChatLog.do?receiveUserId="+receiveUserId, function(data) {  
+	                $("#chatlog").empty(); //先清空标记中的内容  
+	                var strHTML = "<div class=\"date\"><a href=\"##\">查看更多消息</a></div>"
+	                	strHTML += "<div class=\"date\">2015-10-02 23:11</div>"; //初始化保存内容变量  
+	                $.each(data, function(InfoIndex, Info) { //遍历获取的数据  
+	                	if(Info.sendUserId==$("#sendUserId").val()){
+		                    strHTML += "<div class=\"from-me\">" ;
+		                    strHTML += Info.text ;
+		                    strHTML += "</div>";
+		                    strHTML += " <div class=\"clear\"></div>";
+	                    }else{
+              				strHTML +="<div class=\"from-them\">";
+              				strHTML +="<img src=\"{{app.staticURL}}/static/component/baseUI/_con/images/user2.jpg\" alt=\"John Doe\" class=\"circle photo\">";
+              				strHTML +=Info.text;
+              				strHTML +="</div>";
+              				strHTML +="<div class=\"date\"></div>";
+	                    }
+	                    
+	                });
+                	$("#chatlog").html(strHTML); //显示处理后的数据  
+	                
+	           });  
+	        	
+	        });
+	 });
+ 
+
+ 
+</script>
+</head>
+<!-- 初始化反推配置 onload="init();" -->
+<body  >
+<input type="hidden" id="sendUserId" value="{{app.user.id }}"/>
+<input type="hidden" id="receiveUserId" value=""/>
+<!--
+  Chat
+    .chat-light - light color scheme
+-->
+  <div class="chat">
+    <div class="layer-overlay"></div>
+
+    <div class="layer-content">
+
+      <!-- Contacts -->
+      <div class="contacts">
+        <!-- Top Bar -->
+        <div class="topbar">
+          <a href="#!" class="text">聊天室</a>
+          <a href="#!" class="chat-toggle"><i class="mdi-navigation-close"></i></a>
+        </div>
+        <!-- /Top Bar -->
+
+        <div class="nano">
+          <div class="nano-content" id="chat">
+			
+			<!-- 在线人列表样例start -->
+            <span class="label">Online</span>
+
+            <div class="user">
+              <img src="{{app.staticURL}}/static/component/baseUI/_con/images/user2.jpg" alt="Felecia Castro" class="circle photo">
+              <div class="name">Felecia Castro</div>
+              <div class="status">Lorem status</div>
+              <div class="online"><i class="green-text fa fa-circle"></i>
+              </div>
+            </div>
+
+            <span class="label">Offline</span>
+            
+            <div class="user">
+              <img src="{{app.staticURL}}/static/component/baseUI/_con/images/user11.jpg" alt="Darren Cunningham" class="circle photo">
+              <div class="name">Darren Cunningham</div>
+              <div class="status">Lorem status</div>
+            </div>
+            <!-- 在线人列表样例end -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /Contacts -->
+
+      <!-- 聊天记录页面 -->
+      <div class="messages">
+
+        <!-- 聊天记录Top Bar -->
+        <div class="topbar">
+          <a href="#!" class="chat-toggle"><i class="mdi-navigation-close"></i></a>
+          <a href="#!" class="chat-back">
+          	<i class="mdi-hardware-keyboard-arrow-left"></i>Back
+          	<u id="receiveUserName"></u>
+          </a>
+        </div>
+        <!-- /Top Bar with back link -->
+		
+        <!-- 聊天记录list -->
+        <div class="list">
+          <div class="nano scroll-bottom">
+            <div class="nano-content" id="chatlog">
+			  
+			  <!-- 聊天记录样例start-->
+              <div class="date">2015-10-02 23:11</div>
+			  
+			  <!-- 发送者 -->
+              <div class="from-me">
+                Hi, 你好
+              </div>
+              <div class="clear"></div>
+              
+			  <!-- 接收者 -->
+              <div class="from-them">
+                <img src="{{app.staticURL}}/static/component/baseUI/_con/images/user2.jpg" alt="John Doe" class="circle photo">
+              	  我很好
+              </div>
+              <div class="clear"></div>
+              <!-- 聊天记录样例end-->
+
+            </div>
+          </div>
+        </div>
+        <!-- /聊天记录list -->
+
+
+
+        <!-- 发送聊天记录 -->
+        <div class="send">
+          <form action="#!">
+            <div class="input-field">
+              <input id="chatmessage" type="text" name="chat-message" />
+            </div>
+            <button class="btn waves-effect z-depth-0"  onclick="sendMessage()" ><i class="mdi-content-send"></i>
+            </button>
+          </form>
+        </div>
+       <!-- /发送聊天记录 -->
+       
+
+      </div>
+      <!-- /Messages -->
+    </div>
+
+  </div>
+  <!-- /Chat -->
+</body>
+</html>

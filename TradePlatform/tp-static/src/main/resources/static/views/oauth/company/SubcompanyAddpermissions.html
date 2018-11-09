@@ -1,0 +1,29 @@
+<!-- 管理员权限-->
+	<div class="card-panel" >
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">管理员权限</span>
+       		<!-- 返回按钮 -->
+			<a class="btn fs-16 right" ng-click="" >返回</a>
+			<a class="btn fs-16 right" ng-click="fnSave();"  >保存</a>
+		 </h4>
+		 <hr>
+		 
+		 <div class="row w-750">
+			<div class="col s12 ">
+				<ul class="tabs">
+					<li class="tab col s3" ng-repeat="item in applicactions"><a href="#{{item.mkey}}">{{item.name}}</a></li>
+				</ul>
+			</div>
+			<div ng-repeat="item in applicactions"  id="{{item.mkey}}" class="col s12"  >
+				<ul id="{{item.mkey}}Tree" class="ztree"></ul>
+			</div>
+		</div>
+		
+		
+	</div>
+<!-- /管理员权限--> 
+
+<link rel="stylesheet" href="static/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+

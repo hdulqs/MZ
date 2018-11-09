@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<!-- 分公司管理 -->
+	<div class="">
+
+		<!-- Handle -->
+		<div class="page-title pt-0 pb-3 ">
+			<div class="row">
+				<div class="col s10">
+
+					<div class="row">
+
+
+						<div class="col s6">
+							<div class="row">
+								<div class="col s4">
+									<div class="input-field">
+										<input type="text" ng-model="serchData.customerName_like" id="input_lname" dataTableSerch> <label for="input_lname">用户账号</label>
+									</div>
+								</div>
+
+								<div class="col s4">
+									<div class="input-field">
+										<input type="text" ng-model="serchData.trueName_like" id="input_trueName" dataTableSerch> <label for="input_trueName">用户真名</label>
+									</div>
+								</div>
+
+								<div class="col s4">
+									<div class="input-field">
+										<input type="text" ng-model="serchData.transactionNum_like" id="input_num" dataTableSerch> <label for="input_num">交易订单号</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col s6">
+							<div class="row">
+
+								<div class="col s4">
+									<div class="input-field">
+										<input class="pikaday" type="text" readonly ng-model="serchData.modified_GT" dataTableSerch> <label for="input_text">开始时间-起</label>
+									</div>
+								</div>
+								<div class="col s4">
+									<div class="input-field">
+										<input class="pikaday" type="text" readonly ng-model="serchData.modified_LT" dataTableSerch> <label for="input_text">结束时间-止</label>
+									</div>
+								</div>
+
+								<div class="col s4">
+									<div class="input-field">
+										<hry-select url="{{HRY.host}}{{HRY.modules.exchange}}/product/exproduct/selectlist" placeholder="币种类型" name="coinCode" value="coinCode" selectId="coinCode_EQ" dataTableSerch></hry-select>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+
+					</div>
+				</div>
+				<div class="col s2 right-align pt-20">
+					<!-- 查看按钮 -->
+					<a class="btn" ng-if="{{$stateParams.id}} !=3" ng-click="fnPost()">订单通过</a>
+					<!-- 修改按钮 -->
+					<a class="btn" ng-if="{{$stateParams.id}} !=3" ng-click="fnStop()">订单驳回</a>
+					<!-- 刷新按钮 -->
+					<a class="btn" ng-click="fnList()">刷新</a>
+
+					<!-- 导出按钮 -->
+					<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+
+				</div>
+			</div>
+
+		</div>
+		<!-- /Handle -->
+
+
+		<div class="row">
+
+			<div class="col s12 ">
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+							<th>用户账号</th>
+							<th>姓氏</th>
+	                 		<th>名字</th>
+							<th>币种名称</th>
+							<th>转入钱包地址</th>
+							<th>操作时间</th>
+							<th>转入个数</th>
+							<th>交易订单号</th>
+<!-- 							<th>驳回理由</th>
+ -->						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,270 @@
+
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+           <div class="row">
+	   <div class="col s4" >
+		   <div class="input-field">
+			   <input class="pikaday" type="text" readonly ng-model="serchData.created_GT" dataTableSerch> <label for="input_text">开始时间-起</label>
+		   </div>
+	   </div>
+	   <div class="col s4" >
+		   <div class="input-field">
+			   <input class="pikaday"  type="text" readonly ng-model="serchData.created_LT" dataTableSerch> <label for="input_text">结束时间-止</label>
+		   </div>
+	   </div>
+		<div class="col s3">
+			<div class="input-field">
+				<input type="text" id="input_lname" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">会员账号</label>
+			</div>
+		</div>
+		<div class="col s3">
+			<div class="input-field">
+				<input type="text" id="input_namea" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_lname">姓名</label>
+			</div>
+		</div>
+			   <div class="col s3">
+				   <div class="input-field">
+					   <input type="text" id="input_phone" ng-model="serchData.phone_like" dataTableSerch> <label for="input_lname">手机</label>
+				   </div>
+			   </div>
+			<div class="col s3">
+			<div class="input-field">
+				<input type="text" id="input_name" ng-model="serchData.cardId_like" dataTableSerch> <label for="input_lname">身份证号</label>
+			</div>
+		</div>
+		<div class="col s3">
+			<div class="input-field">
+				<select class="select2" data-allow-clear="true" data-placeholder="请选择状态" class="select2" data-allow-clear="true" name="isReal" dataTableSerch>
+					 		<option value="">
+                              	  不限
+                            </option>
+                            <option value="2">
+                              	  实名
+                            </option>
+                            <option value="0">
+                				未实名
+                            </option>
+                            <option value="1">
+                              	待审核
+                            </option>
+                            <option value="3">
+                  				已拒绝
+                            </option>
+				</select>
+			</div>
+		</div>
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+			<ul class="menuDRD">
+				<!--重置密码 -->
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/add')"  ng-click="fnAdd()"><i class="fa fa-lock " aria-hidden="true"></i>增加会员</a>
+
+				<!--激活账户  -->
+				<a class="btn pr-10 pl-10"   ng-click="isHasemail()"><i class="fa fa-lock " aria-hidden="true"></i>激活账户</a>
+
+				<!-- 查看按钮 -->
+				<a class="btn pr-10 pl-10" ng-click="fnSee('user/appcustomer/see')" ><i class="fa fa-search-plus " aria-hidden="true"></i>查看</a>
+				<!--<li>
+					<a class="btn pr-10 pl-10 " style="color: #fff" ng-click="menuDialog()"><i class="fa fa-refresh "></i>设置操盘账户</a>
+					<div id="panel">-->
+						<a class="btn pr-10 pl-10" ng-click="fnSetCutomerType(1)">设为普通账户</a>
+						<a class="btn pr-10 pl-10" ng-click="fnSetCutomerType(2)">设为操盘账户</a>
+						<!--<a style="display: block;" ng-click="fnSetCutomerType(3)">设为丙类账户</a>-->
+				<!--	</div>
+				</li>-->
+					<!--甲 -->
+				<!--<a class="btn pr-10 pl-10 "  ng-click="fnSetCutomerType(1)">设为普通账户</a>-->
+				<!--乙 -->
+				<!--<a class="btn pr-10 pl-10 "  ng-click="fnSetCutomerType(2)">设为操盘账户</a>-->
+				<!-- 丙 -->
+				<!--<div class="btn pr-10 pl-10 "  ng-click="fnSetCutomerType(3)">设为丙类账户</div>-->
+
+				<a class="btn pr-10 pl-10"  ng-click="offgoogle()"><i class="fa fa-refresh "></i>关闭谷歌认证</a>
+				<a class="btn pr-10 pl-10"  ng-click="offphone()"><i class="fa fa-refresh "></i>关闭手机认证</a>
+				<a class="btn pr-10 pl-10"  ng-click="clearmail()"><i class="fa fa-refresh "></i>清除邮箱绑定</a>
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/audit')"  ng-click="audit()" ><i class="fa fa-refresh " aria-hidden="true"></i>审核通过</a>
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/auditback')"  ng-click="auditback()" ><i class="fa fa-refresh " aria-hidden="true"></i>审核拒绝</a>
+
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/auditall')"  ng-click="auditall()" ><i class="fa fa-refresh " aria-hidden="true"></i>清除实名信息</a>
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/setpw')" ng-click="fnSetPw()"><i class="fa fa-lock " aria-hidden="true"></i>重置密码</a>
+				 <!--锁定按钮 -->
+	<!-- 			<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/lock')" ng-click="fnLock()"><i class="fa fa-lock " aria-hidden="true"></i>锁定</a>
+	 -->			<!--解锁按钮 -->
+	<!-- 			<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/unlock')" ng-click="fnUnlock()"><i class="fa fa-unlock " aria-hidden="true"></i>解锁</a>
+	 -->			<!-- 禁用按钮 -->
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/forbidden')" ng-click="fnForbidden()"> <i class="fa fa-trash-o " aria-hidden="true"></i>禁用</a>
+				<!--解禁按钮 -->
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/permissible')" ng-click="fnPermissible()"><i class="fa fa-unlock " aria-hidden="true"></i>解禁</a>
+				<!--修改按钮 -->
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer','/user/appcustomer/modify')" ng-click="fnModify()"><i class="fa fa-unlock " aria-hidden="true"></i>修改</a>
+				<!-- 开启交易 -->
+				<a class="btn pr-10 pl-10" ng-click="fnOpenChange()"><i class="fa fa-refresh "></i>开启交易</a>
+				<!-- 禁止交易 -->
+				<a class="btn pr-10 pl-10" ng-click="fnCloseChange()"><i class="fa fa-refresh "></i>禁止交易</a>
+				<!-- OTC冻结 -->
+				<a class="btn pr-10 pl-10" ng-click="offotcFrozen()"><i class="fa fa-refresh "></i>OTC解冻</a>
+				<!-- 开通OTC委托 -->
+				<a class="btn pr-10 pl-10" ng-click="openotc()"><i class="fa fa-refresh "></i>开通OTC委托</a>
+				<!-- 开通OTC委托 -->
+				<a class="btn pr-10 pl-10" ng-click="closeotc()"><i class="fa fa-refresh "></i>关闭OTC委托</a>
+				<!-- 刷新按钮 -->
+				<a class="btn pr-10 pl-10" ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+				<!-- 导出按钮 -->
+				<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+			</ul>
+        </div>
+      </div>
+    </div>
+    <!-- /Handle -->
+<div id="lockCustomer" class="hide">
+	<div class="row pl-20 pr-30">
+		<select id="lockTimeId">
+			<option value="1">1天</option>
+			<option value="2">2天</option>
+			<option value="3">3天</option>
+			<option value="7">1周</option>
+			<option value="14">2周</option>
+			<option value="21">3周</option>
+			<option value="30">1个月</option>
+			<option value="">2个月</option>
+		</select>
+	</div>
+	<div class="row pl-20 pr-30">
+		<input type="button" class="btn" ng-click="fnLockHandle()" value="确认锁定"></a>
+	</div>
+</div>
+
+<!-- 分公司管理 -->
+<div>
+
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2" class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>会员账号</th>
+						<th>姓氏</th> 
+						<th>名字</th>
+						<th>证件类型</th>
+						<th>证件号</th>
+						<th>绑定手机号</th>
+						<th>绑定邮箱</th>
+						<th>注册时间</th>
+						<th>是否开启谷歌认证</th>
+						<th>是否开启手机认证</th>
+						<th>是否实名</th>
+						 <th>账户角色</th>
+						<!--<th>是否锁定</th>  -->
+						<th>是否禁用</th>
+						<th>是否开启交易</th>
+						<th>是否激活</th>
+						<!-- <th>申代授权码</th> -->
+						<th>操作</th>
+						<th>申请key</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+<!-- 修改名称窗体 -->
+<div class="hide" id="setPwDiv">
+	<form ng-submit="fnSetPwSubmit()">
+		<div class="col s6 ">
+			登录账号<input type="text" ng-model="setPwData.userName" readonly required>
+		</div>
+		<div class="col s6">
+			新密码<input type="password" ng-model="setPwData.password"><br /> 密码格式：(含英文字母+数字,不小于6位)
+		</div>
+		<p class="center mb-20">
+			<button class="btn" type="submit">修改</button>
+		</p>
+	</form>
+</div>
+
+<!-- 修改提现审核额度窗体 -->
+<div class="hide" id="setWithdrawCheckMoneyDiv">
+	<form ng-submit="fnSetWithdrawCheckMoneySubmit()">
+		<div class="col s6 ">
+			提现审核额度为该用户提现时是否进入后台审核的一个判断，默认值为-1不进行审核，如果值>0，则按该值进行判断
+		</div>
+		<div class="col s6 ">
+			提现审核额度<input type="text" id="withdrawCheckMoney" ng-model="setWithdrawCheckMoneyData.money" validator="required">
+		</div>
+		<p class="center mb-20">
+			<button class="btn" type="submit">修改</button>
+		</p>
+	</form>
+</div>
+
+<div id="showPic" class="hide" >
+<hr>
+	身份证正面照片 <img style="height:80%;width:80%" src="{{appPersonInfo.personBank}}" alt="" class="media-object"><br>
+	<hr>
+	身份证反面照片<img style="height:80%;width:80%" src="{{appPersonInfo.personCard}}" alt="" class="media-object"><br>
+	<hr>
+	手持身份证照片<img style="height:80%;width:80%" src="{{appPersonInfo.frontpersonCard}}" alt="" class="media-object"><br>
+ </div>
+
+<div id="apiKeyDiv" class="hide" >
+	<input type="text" id="apiKeyId" style="width:250px">re
+	请输入有效IP：<input type="text" id="apiKeyIp" style="width:250px">
+	<button type="button" id="apikeySumb">提交</button>
+</div>
+
+<!-- 修改Panel -->
+<div class="hide" id="modifyInfo">
+	<div class="card-panel">
+		<form ng-submit="modifySubmit()">
+			<div class="row">
+				<div class="col s12 ">
+					<div class="input-field">
+						<input type="text" name="cardId" ng-model="person.cardId" ng-blur="cardIdCheck()" required /> <label for="carId">身份证</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 ">
+					<div class="input-field">
+						<input type="text" name="surname" ng-model="person.surname" ng-blur="NameCheck()" required /> <label for="surname">姓氏</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 ">
+					<div class="input-field">
+						<input type="text" name="trueName" ng-model="person.trueName" ng-blur="NameCheck()" required /> <label for="trueName">名字</label>
+					</div>
+				</div>
+			</div>
+			<button class="btn"  type="submit">提交</button>
+		</form>
+	</div>
+</div>
+
+
+
+<!-- 生成申代的授权码 -->
+<div class="hide" id="setAuthorizationCodeDataDiv">
+	<form ng-submit="setAuthorizationCodeDataDivSubmit()">
+		<div class="col s6 ">
+			登录账号<input type="text" ng-model="setAuthorizationCodeData.userName" readonly required>
+		</div>
+		<div class="col s6">
+			授权码<input type="text" ng-model="setAuthorizationCodeData.code" required><br />
+		</div>
+		<p class="center mb-20">
+			<button class="btn" type="submit">修改</button>
+		</p>
+	</form>
+</div>

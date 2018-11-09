@@ -1,0 +1,317 @@
+.Validform_checktip {
+    margin-left: 68px;
+    color: #999;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+}
+.safetitle {
+    font-size: 20px;
+    line-height: 20px;
+    color: #454545;
+    padding: 26px 0;
+    border-bottom: 1px solid #efefef;
+}
+
+.safecontent {
+    color: #666;
+    font-size: 14px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    /*width: 620px;*/
+    margin: 40px auto;
+}
+
+.googleTip {
+    text-align: center;
+    margin-top: 90px;
+}
+
+.googleTip .info {
+    margin: 20px 0 25px 0;
+    font-size: 12px;
+    color: #818180;
+    line-height: 30px;
+}
+
+.googleTip .info h4 {
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.googleTip .btn {
+    border-radius: 4px;
+    padding: 10px 56px;
+}
+
+.icon-googleAuthen {
+    display: inline-block;
+    width: 154px;
+    height: 54px;
+    background: url("../img/googleAuthen_downloads.png")no-repeat;
+}
+
+.icon-googleAuthen-ios {
+    background-position: 3px 2px;
+}
+
+.icon-googleAuthen-play {
+    background-position: -159px 2px;
+}
+
+.icon-googleAuthen-adr {
+    background-position: -321px 2px;
+}
+
+.googleAuthen-title {
+    height: 46px;
+    line-height: 46px;
+    font-size: 14px;
+    color: #999;
+    background: #f8f8f8;
+    border-bottom: 1px solid #edecec;
+    padding: 0 14px;
+    margin-bottom: 12px;
+}
+
+.googleAuthen-title img {
+    vertical-align: middle;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.googleAuthen-items li {
+    margin-bottom: 25px;
+}
+
+.googleAuthen-items .item-title {
+    font-size: 15px;
+    color: #666;
+    height: auto;
+    line-height: 100%;
+    margin-bottom: 12px;
+}
+
+.googleAuthen-items .downloads a {
+    margin-right: 12px;
+}
+
+.googleAuthen-items .downloads a:last-of-type {
+    margin-right: 0;
+}
+
+.icon-download {
+    display: inline-block;
+    width: 45px;
+    height: 30px;
+    background: url("/resources/img/icon-download.png") no-repeat;
+}
+
+.googleAuthen-items .code {
+    overflow: hidden;
+}
+
+.googleAuthen-items .ewm {
+    width: 200px;
+    height: 200px;
+    margin-left: 58px;
+}
+
+.googleAuthen-items .code .text {
+    display: flex;
+}
+
+.googleAuthen-items .text label {
+    font-size: 14px;
+    color: #666;
+}
+
+.googleAuthen-items .text .text-con {
+    border-radius: 0px;
+    border: 1px solid #d4d4d4;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #6a6a6a;
+    margin: 15px 0;
+}
+
+.faCode input {
+    vertical-align: middle;
+    border-rdius: 4px;
+    border: 1px solid #aab2bd;
+    height: 32px;
+    width: 314px!important;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+
+.faCode img {
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.safecontent .btns .btn {
+    padding: 10px;
+    width: auto;
+    text-align: center;
+}
+
+.layui-layer.google-layer .layui-layer-content {
+    padding: 0;
+}
+
+.layui-layer.google-layer .layui-layer-setwin {
+    top: 9px;
+}
+
+.safecontent form {
+    padding: 0 35px;
+}
+
+.safecontent form .filed {
+    margin-bottom: 10px;
+}
+
+
+.safecontent form input {
+    display: inline-block;
+    width: 100%;
+    height: 34px;
+    border: 1px solid #d4d4d4;
+    border-radius: 0px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    color: #333;
+}
+
+.safecontent form input[readonly] {
+    background: #f7f9fb;
+}
+
+.safecontent form .ipt-code {
+    width: 195px;
+}
+
+.safecontent form .btn {
+    border-radius: 0!important;
+    padding: 10px 8px!important;
+    width: auto!important;
+    text-align: center;
+}
+
+.errorMsg {
+    font-size: 12px;
+    color: #ef4b5a;
+    line-height: 26px;
+}
+
+.Validform_checktip{
+	margin-left:68px;
+	color:#999;
+	font-size:12px;
+	height:20px;
+	line-height:20px;
+}
+.Validform_right{
+	color:#71b83d;
+	padding-left:20px;
+	/* background:url(../images/right.png) no-repeat left center; */
+	text-indent:-9999px;
+}
+.Validform_wrong{
+	color:#ff5252;
+	white-space:nowrap;
+/* 	background:url(../images/error.png) no-repeat left center; */
+}
+.Validform_loading{
+	padding-left:20px;
+	background:url(../images/onLoad.gif) no-repeat left center;
+}
+.Validform_error,input.Validform_error:focus{
+	border:1px solid #ff5252!important;
+}
+
+    .safetitle {
+        font-size: 20px;
+        line-height: 20px;
+        color: #454545;
+        padding: 26px 0;
+        border-bottom: 1px solid #efefef;
+    }
+
+    .safecontent {
+        color: #666;
+        font-size: 14px;
+        position:relative;
+    }
+    .safecontent .jy_infobox{
+     position:absolute;
+     padding:10px 20px;
+    }
+    .safecontent .jy_infobox img{
+      width:20px;
+    }
+    .safecontent span.jy_tag{
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100%;
+    margin-right: 11px;
+    color: red;
+    }
+
+    .safecontent form {
+        padding: 0 35px;
+        margin: 60px auto;
+        /*width: 433px;*/
+    }
+
+    .safecontent form label {
+        font-size: 14px;
+        color: #666;
+        display: block;
+        /*margin-bottom: 12px;*/
+        display: inline-block;
+        width: 158px;
+        text-align: right;
+
+    }
+
+    .safecontent form input {
+        display: inline-block;
+        height: 32px;
+        border: 1px solid #d4d4d4;
+        width: 270px;
+        box-sizing: border-box;
+        padding: 0 10px;
+        color: #b8b8b8;
+    }
+
+    .safecontent form .ipt-code {
+        width: 195px;
+    }
+
+
+
+    .safecontent form .btn:hover {
+        color: #1392dd;
+    }
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#000;}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#cc0;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #000; border-top:none; text-align:left;}
+.secret-tag{
+  background: #dcdcdc;
+color: #666;
+text-align: center;
+line-height: 32px;
+height: 32px;
+overflow: hidden;
+display: inline-flex;
+margin: 15px 0;
+padding: 0 8px;
+}

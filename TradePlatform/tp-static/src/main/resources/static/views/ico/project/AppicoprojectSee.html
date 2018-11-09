@@ -1,0 +1,153 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicoprojectList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-19 13:40:56      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppIcoProject</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/project/appicoproject/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					website<input type="text" name="website" value="{{formData.website}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目资料填写到第几步 0.完善个人信息，1.项目基本信息 2.项目详细介绍 3.设置投资回报 4.提交审核 5.已完善<input type="text" name="step" value="{{formData.step}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目名<input type="text" name="productName" value="{{formData.productName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品所属阶段  0.尚未开启 1.产品开发中 2.产品已上市 3.已经盈利<input type="text" name="projectStage" value="{{formData.projectStage}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					真实姓名<input type="text" name="trueName" value="{{formData.trueName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					办公地址<input type="text" name="workAddress" value="{{formData.workAddress}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					团队人数<input type="text" name="teamSize" value="{{formData.teamSize}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					融资阶段 0.未融资 1.D轮 2.C轮 3.B轮 4.A轮 5.天使轮<input type="text" name="financingStage" value="{{formData.financingStage}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目简介<input type="text" name="info" value="{{formData.info}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					ico天数<input type="text" name="icoDays" value="{{formData.icoDays}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币种<input type="text" name="coinType" value="{{formData.coinType}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否限制目标金额  0.否、1.是<input type="text" name="isLimitMoney" value="{{formData.isLimitMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					目标金额<input type="text" name="sumMoney" value="{{formData.sumMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					联系人<input type="text" name="linkman" value="{{formData.linkman}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					职位<input type="text" name="position" value="{{formData.position}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					联系人电话<input type="text" name="phone" value="{{formData.phone}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					申请多少天内开始<input type="text" name="startDays" value="{{formData.startDays}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目状态 0.即将开始 1.进行中 2.已完成<input type="text" name="status" value="{{formData.status}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					支持人数<input type="text" name="support" value="{{formData.support}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					已获取支持金额<input type="text" name="getMoney" value="{{formData.getMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目开始时间<input type="text" name="startTime" value="{{formData.startTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目结束时间<input type="text" name="endTime" value="{{formData.endTime}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

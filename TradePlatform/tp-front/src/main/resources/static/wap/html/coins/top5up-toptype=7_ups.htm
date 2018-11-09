@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。" />
+    <meta name="keywords" content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+" />
+    <link rel="stylesheet" href="../../style/css/mobile/css/css.css" />
+    <script type="text/javascript" src="../../style/js/jquery/1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../style/mobile/js/zepto.js"></script>
+    <script src="../../style/js/mobile/js/public.js"></script>
+    <script src="../../style/js/index.js"></script>
+    <script src="../mobile/js/topup.js-v=2017410.js"></script>
+    <title>
+        互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee" />
+
+</head>
+
+<body>
+    <span id="coins_timer" style="display:none"></span>
+    <div class="Wf-div1">
+        <a onclick="history.back(-1)">返回</a>
+        <span>TOP5排行榜</span>
+    </div>
+    <div class="strip"></div>
+    <p class="bullet_p_top" id="bullet_p">
+        <a class="bull_click" href="top5up-toptype=24_ups.htm">日涨跌</a>
+        <i class="bull_span_shu">|</i><a class="bull_click actives " href="top5up-toptype=7_ups.htm">7D涨跌</a>
+        <i class="bull_span_shu">|</i><a class="bull_click  " href="top5up-toptype=sum.htm">日成交额</a>
+        <i class="bull_span_shu">|</i><a class="bull_click  " href="top5up-toptype=count.htm">日成交量</a>
+    </p>
+    <!--1-->
+    <div class="hezi_top5">
+        <a href="../trade/abc2cny.htm">
+            <p>
+                <span style="color:#666">1</span>
+                <span class="hezi_top5_spans" style="background:url('../../style/images/coin/coin_xas.png ') no-repeat left; background-size: 0.4rem;"/>阿希币XAS</span>
+                <span class="sell">+1.33% ↑</span>
+            </p>
+        </a>
+        <a href="../trade/abc2cny.htm">
+           
+            
+            <p>
+                <span style="color:#666">2</span>
+                <span class="hezi_top5_spans" style="background:url('../../style/images/coin/coin_cic.png') no-repeat left; background-size: 0.4rem;"/>众创币CIC</span>
+                <span class="sell">+1.97% ↑</span>
+            </p>
+        </a>
+        <a href="../trade/abc2cny.htm">
+              <p>
+                <span style="color:#666">5</span>
+                <span class="hezi_top5_spans" style="background:url(' ../../style/images/coin/coin_fct.png ') no-repeat left; background-size: 0.4rem;"/>公证币FCT</span>
+                <span class="buys">-2.51% ↓</span>
+            </p>
+        </a>
+        <a href="../trade/abc2cny.htm">
+             <p>
+                <span style="color:#666">4</span>
+                <span class="hezi_top5_spans" style="background:url(' ../../style/images/coin/coin_btc.png ') no-repeat left; background-size: 0.4rem;"/>比特币BTC</span>
+                <span class="buys">-2.18% ↓</span>
+            </p>
+        </a>
+    </div>
+    <input type="hidden" id="top_type" value="24_ups">
+    <div style="clear: both;"></div>
+</body>
+<script src="../mobile/js/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+        $(".bullet_p_top .bull_click").click(function() {
+            $(this).addClass('actives').siblings().removeClass('actives');
+            var index = $(".bullet_p_top .bull_click").index(this);
+            $(".hezi_top5").eq(index).show().siblings(".hezi_top5").hide();
+        });
+    })
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+
+<!-- With Search -->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看角色</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/oauth/user/approle/list/anon">返回</a>
+	</h4>
+	<hr>
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s3 ">
+			<form ng-submit="processForm()">
+				<div class="input-field">
+					角色名称<input type="text" name="name" value="{{model.name}}" readonly />
+				</div>
+				<div class="input-field">
+					角色描述<input type="text" name="remark" value="{{model.remark}}" readonly />
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+	<h4>
+		<hr>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">权限树</span>
+	</h4>
+	<div class="row w-750 " id="treeDiv">
+		<div class="col s12 ">
+			<ul class="tabs">
+				<li class="tab col s3" ng-repeat="item in applicactions"><a href="#{{item.mkey}}">{{item.name}}</a></li>
+			</ul>
+		</div>
+		<div ng-repeat="item in applicactions" id="{{item.mkey}}" class="col s12">
+			<ul id="{{item.mkey}}Tree" class="ztree"></ul>
+		</div>
+	</div>
+</div>
+<!-- /With Search -->
+<link rel="stylesheet" href="static/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+

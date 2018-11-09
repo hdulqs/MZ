@@ -1,0 +1,152 @@
+   
+	<form ng-submit="processForm()">
+			
+		
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>修改产品参数信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content"> 
+      
+		
+		<div class="row ">
+	          
+	          <div class="col s12 l3"> 
+		          <div class="input-field"> 
+					    名称   <input id="name" type="text" name="remark" ng-model="formData.name" readonly />
+				  </div> 
+	          </div>
+	          
+	     		<div class="col s12 l3">
+			<div class="input-field"> 
+				       币的保留几位小数(个)<input type="text" name="remark" ng-model="formData.keepDecimalForCoin"   />
+				    </div>
+		      </div> 
+        </div>  
+				   
+	<div class="row ">
+	
+
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				     单次最小提币数量 (个)<input type="number"  name="remark" step="0.001" ng-model="formData.leastPaceNum"  />
+				     <!--  <input type="text" name="remark" ng-model="formData.leastPaceNum"   /> -->
+				    </div>
+		</div> 
+		
+		
+			<div class="col s12 l3">
+				<div class="input-field"> 
+						
+						<hry-select id="ddlRegType1" 
+						url="{{HRY.host}}{{HRY.modules.exchange}}dictionary/appdiconelevel/findbykey?Q_pDickey_eq_String=currecyType"
+						 placeholder="提币手续费 " name="itemName" value="itemValue" 
+						selectId="paceType" dataTableSerch >
+						</hry-select>  
+						
+ 		 		 	<div class="col s12 l12" id="two" style="display:none" >
+						<hry-select multiple id="paceCurrecy1" 
+						url="{{HRY.host}}{{HRY.modules.exchange}}dictionary/appdiconelevel/findbykey?Q_pDickey_eq_String=currency"
+						 placeholder="提币手续费 " name="itemName" value="itemValue" 
+						selectId="paceCurrecy" dataTableSerch  >
+						</hry-select>    
+						
+ 				 	<!-- <div class="col s12 l12" id="two">			    
+				 		   提币手续费 <input type="text" id="paceCurrecy" name="remark" ng-model="formData.paceCurrecy"   />
+				 		   </div>  -->
+						  
+					<!-- 	<hry-select
+						url="{{HRY.host}}{{HRY.modules.exchange}}dictionary/appdiconelevel/findbykey?Q_pDickey_eq_String=currency"
+						placeholder="交易币种" name="itemName" value="itemValue"
+						selectId="fixPriceType" dataTableSerch>
+						</hry-select>  --> 
+						</div>
+				 
+				 	<div class="col s12 l12" id="one">
+				 	<div class="input-field"> 			    
+				 		   提币手续费 (%)<input type="text" id="paceFeeRate" name="remark" ng-model="formData.paceCurrecy"   />
+				 		   </div>
+				 		   </div>
+<!-- 					</p>
+ -->
+				</div>
+			</div>
+		</div> 
+	<div class= "row">
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				     单日提币的最大数量  (个) <input type="text" name="remark" ng-model="formData.oneDayPaceNum"   />
+				    </div>
+		</div> 
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				     注册送币数量 <input type="text" name="remark" ng-model="formData.giveCoin"   />
+				    </div>
+		</div> 
+	</div>
+	<div class= "row">
+		
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				  邀请送币数量 <input type="text" name="remark" ng-model="formData.commendCoin"   />
+			</div>
+		</div> 
+		
+	</div>
+	
+	
+<!-- 	<div class= "row">
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				     c2c买入价格<input type="text" name="c2cBuyPrice" ng-model="formData.c2cBuyPrice"   />
+				    </div>
+		</div> 
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				     c2c卖出价格 <input type="text" name="c2cSellPrice" ng-model="formData.c2cSellPrice"   />
+				    </div>
+		</div> 
+	</div> --> 
+		
+	<div class= "row">
+	<div class="col s12 l3">
+		 <label for="{{item.configkey}}open">可提币</label>
+		<td ng-if="formData.openTibi==1">
+                   <input type="radio" name="{{item.configkey}}" value="1" id ="{{item.configkey}}open" ng-model="formData.openTibi"   />
+				    <label for="{{item.configkey}}open">开启</label>
+				    <input type="radio" name="{{item.configkey}}"  value="0" id ="{{item.configkey}}close" ng-model="formData.openTibi"   />
+				    <label for="{{item.configkey}}close">关闭</label>
+				 
+               </td>
+	</div> 
+	</div> 
+	
+	<!-- <div class= "row">
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				       币的保留几位小数(个)<input type="text" name="remark" ng-model="formData.keepDecimalForCoin"   />
+				    </div>
+		</div> 
+		<div class="col s12 l3">
+			<div class="input-field"> 
+				      钱的保留几位小数(个) <input type="text" name="remark" ng-model="formData.keepDecimalForCurrency"   />
+				    </div>
+		</div> 
+	</div> -->
+	
+	<input type="hidden" name="appResourceSet" id="appResourceSet"  />
+	
+	<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+	
+</form>
+			
+
+

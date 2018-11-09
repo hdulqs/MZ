@@ -1,0 +1,106 @@
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+	<div class="row">
+		<div class="col s12 m9 l8">
+			<div class="row">
+
+				<div class="col  s12 m12 l2">
+					<div class="input-field">
+						<input type="text" id="input_name" ng-model="serchData.userName_like" dataTableSerch> <label for="input_name">用户账号</label>
+					</div>
+				</div>
+				<div class="col  s12 m12 l2">
+					<div class="input-field">
+						<input type="text" id="input_name" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_name">真实姓名</label>
+					</div>
+				</div>
+				<div class="col  s12 m12 l2">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="申请类型" id="lendCoinType" dataTableSerch>
+							<option value="">不限</option>
+							<option value="1">融资</option>
+							<option value="2">借币</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col  s12 m12 l2">
+					<div class="input-field">
+						<input type="text" id="input_timeG" class="pikaday" name="lendTime_GT" ng-model="serchData.lendTime_GT" dataTableSerch> <label for="input_timeG">申请时间</label>
+					</div>
+				</div>
+				<div class="col  s12 m12 l2">
+					<div class="input-field">
+
+						<input type="text" id="input_timeL" class="pikaday" name="lendTime_LT" ng-model="serchData.lendTime_LT" dataTableSerch> <label for="input_timeL">申请时间</label>
+					</div>
+				</div>
+
+				<div class="col  s12 m12 l2">
+					<div class="input-field">
+						<select class="select2" data-allow-clear="true" data-placeholder="请选择状态" id="status" dataTableSerch>
+							<option value="">不限</option>
+							<option value="0">借款开始</option>
+							<option value="1">借款中</option>
+							<option value="2">部分还款</option>
+							<option value="3">已还清</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="col s12 m6 l4 right-align pt-20">
+			<!-- 导出按钮 -->
+			<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+		</div>
+	</div>
+
+</div>
+<!-- <div>在借总金额：{{lending}}</div> -->
+<!-- /Handle -->
+<div class="col s12" style="padding:0">
+	<div class="right-align">{{unitTips}}</div>
+</div>
+</div>
+
+
+<!-- 分公司管理 -->
+<div>
+
+	<div class="row">
+
+		<div class="col s12 ">
+
+
+			<table id="table2" class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>申请时间</th>
+						<th>用户账号</th>
+						<th>真实姓名</th>
+						<th>申请类型</th>
+						<th>申请金额</th>
+						<th>申请数量</th>
+						<th>费率</th>
+						<th>计算天数</th>
+						<th>利息总额</th>
+						<th>已还利息</th>
+						<th>未还利息</th>
+						<th>已还本金</th>
+						<th>还款状态</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+

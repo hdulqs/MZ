@@ -1,0 +1,94 @@
+.levels li {
+    float: left;
+    width: 200px;
+    text-align: center;
+    position: relative;
+}
+.levels li a.orange {
+    color: #e8b342;
+}
+.levels li a {
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.levels li h4 {
+    color: #666;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.levels li.curlevel p, .levels li.curlevel p .iconfont {
+    color: #1a85e3;
+}
+.levels li p .iconfont {
+    font-size: 22px;
+    color: #929292;
+    vertical-align: middle;
+}
+.basicInfo {
+    padding: 30px 0 40px;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    line-height: 100%;
+    margin: 22px 0;
+}
+.levels li:after {
+    content: '';
+    display: inline-block;
+    width: 130px;
+    height: 3px;
+    background: #eaeaea;
+    position: absolute;
+    left: -66px;
+    top: 45px;
+}
+.levels li:first-of-type:after{display:none;}
+.levels li p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+.totalAsset h3{
+	border-bottom:1px solid #ddd;
+	line-height:60px;
+	margin:0;
+	font-size:20px;
+}
+.totalZhe{
+	float:left;
+	width:310px;
+}
+.total-ebox{
+	float:left;
+	width:100%;
+}
+.totalZhe dl  dt{
+	font-size:20px;
+	color:#f95554;
+	line-height:60px;
+}
+.totalZhe dl dd{
+	font-size:15px;
+	color:#999;
+}
+.assetTab{
+	float:left;
+	width:100%;
+}
+.assetTab ul{
+	display:flex;
+}
+.assetTab ul li{
+	flex-basis:50%;
+	line-height:45px;
+	text-align:center;
+	cursor:pointer;
+}
+.assetTab ul li.active{
+	background:#f95554;
+	color:#fff;
+}
+.assetTab ul li.active a{
+	color:#fff;
+}

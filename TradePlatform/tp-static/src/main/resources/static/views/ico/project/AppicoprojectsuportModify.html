@@ -1,0 +1,58 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicoprojectsuportList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-26 18:09:22      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppIcoProjectSuport</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/project/appicoprojectsuport/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="website" ng-model="formData.website" /> <label for="website">website</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="customerId" ng-model="formData.customerId" /> <label for="customerId">用户id</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="userName" ng-model="formData.userName" /> <label for="userName">用户名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinType" ng-model="formData.coinType" /> <label for="coinType">支持币种  cny人民币</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="money" ng-model="formData.money" /> <label for="money">支持币个数</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.customer.money.dao.AppCommendMoneyDao">
+
+<select id="selectMoneyCommendAll" parameterType="java.lang.String" resultType="com.mz.customer.money.model.AppCommendMoney">
+		select 
+		id,
+		custromerId,
+		custromerName,
+		refecode,
+		moneyNum,
+		paidMoney,
+		sid,
+		fixPriceType,
+		fixPriceCoinCode,
+		created,
+		modified,
+		saasId,
+		RankRatio,
+		coinCode,
+		transactionNum,
+		currentMoney,
+		dealType
+		from app_commend_money    
+		<where>
+			custromerName =  #{username}
+			
+	    </where>
+		order by custromerId desc
+	</select>
+	
+	<select id="getAll" resultType="com.mz.customer.money.model.AppCommendMoney">
+		select 
+		id,
+		custromerId,
+		custromerName,
+		refecode,
+		moneyNum,
+		paidMoney,
+		sid,
+		fixPriceType,
+		fixPriceCoinCode,
+		created,
+		modified,
+		saasId,
+		RankRatio,
+		coinCode,
+		transactionNum,
+		currentMoney,
+		dealType
+		from app_commend_money    
+		where moneyNum !=0 AND  paidMoney =0
+			
+	    
+	</select>
+</mapper>

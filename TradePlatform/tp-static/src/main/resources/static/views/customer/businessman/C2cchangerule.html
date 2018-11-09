@@ -1,0 +1,73 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- C2ctransactionList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-12-07 14:06:38      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看C2cTransaction</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/businessman/c2ctransaction/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+	<div class="row">
+	<div class="col s12 m4">
+		<div class="row">
+			<div class="input-field">
+				<input type="radio" name="c2crule" value="0" id ="rule1"   />
+			    <label for="rule1">指定匹配</label>
+		    </div>
+		   	<div class="input-field">
+					<select   data-allow-clear="true"    data-placeholder="商家类型 " id="businessmanType">
+						<option value="A">A类</option>
+						<option value="B">B类</option>
+					</select>
+			</div>
+			<br/>
+		    <br/>
+		    <span><font color="red">匹配说明：选择商家类别，按照交易笔数从小到大匹配。</font></span>
+		    
+		    
+		    <hr>
+		    <div class="input-field">
+			    <input type="radio" name="c2crule"  value="1" id ="rule2"   />
+			    <label for="rule2">随机匹配</label>
+		    </div>
+		    <br/>
+		    <br/>
+		    <span><font color="red">匹配说明：商家类型系统随机选择。</font></span>
+		    
+		    
+		    <hr>
+		    	<div class="input-field">
+				<input type="radio" name="c2crule" value="2" id ="rule3"   />
+			    <label for="rule3">价格匹配</label>
+		    </div>
+		   	<div class="input-field">
+					<select   data-allow-clear="true"    data-placeholder="商家类型 " id="businessmanType2">
+						<option value="AB">A、B随机</option>
+						<option value="A">A类</option>
+						<option value="B">B类</option>
+					</select>
+			</div>
+			<span><font color="red">匹配说明：选择商家类型，按照价格由低到高匹配。</font></span>
+			  <br/>
+		    <br/>
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+		</div>
+	</div>
+	</div>
+	</form>
+</div>
+
+

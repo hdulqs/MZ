@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mall_brandcategoryMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into mall_brandcategory(
+			ADDTIME,	
+			NAME,	
+			SEQUENCE,	
+			ICON_PATH,	
+			APPLICATIONNOTE,	
+			STATE,	
+			INITIALS,
+			GOODSCLASS_ID,
+			IS_RECOMMEND	
+		) values (
+			#{ADDTIME},	
+			#{NAME},	
+			#{SEQUENCE},	
+			#{ICON_PATH},	
+			#{APPLICATIONNOTE},	
+			#{STATE},	
+			#{INITIALS},	
+			#{GOODSCLASS_ID},	
+			#{IS_RECOMMEND}	
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from mall_brandcategory
+		where 
+			ID = #{ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  mall_brandcategory
+			set 
+				ADDTIME = #{ADDTIME},
+				NAME = #{NAME},
+				SEQUENCE = #{SEQUENCE},
+				ICON_PATH = #{ICON_PATH},
+				APPLICATIONNOTE = #{APPLICATIONNOTE},
+				STATE = #{STATE},
+				INITIALS = #{INITIALS},
+				GOODSCLASS_ID = #{GOODSCLASS_ID},
+				IS_RECOMMEND = #{IS_RECOMMEND}
+			where 
+				ID = #{ID}
+	</update>
+	
+	
+		<!-- 修改 -->
+	<update id="editrecommend" parameterType="pd">
+		update  mall_brandcategory
+			set 
+				IS_RECOMMEND = #{IS_RECOMMEND}
+			where 
+				ID = #{ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			ADDTIME,	
+			NAME,	
+			SEQUENCE,	
+			ICON_PATH,	
+			APPLICATIONNOTE,	
+			STATE,	
+			INITIALS,	
+			ID,
+			GOODSCLASS_ID,
+			IS_RECOMMEND
+		from 
+			mall_brandcategory
+		where 
+			ID = #{ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.ADDTIME,	
+				a.NAME,	
+				a.SEQUENCE,	
+				a.ICON_PATH,	
+				a.APPLICATIONNOTE,	
+				a.STATE,	
+				a.INITIALS,	
+				a.ID,
+				a.GOODSCLASS_ID,
+				b.`CLASSNAME`,
+				a.IS_RECOMMEND
+		from 
+				mall_brandcategory a LEFT JOIN mall_goodsclass b ON a.`goodsclass_id`=b.`id`
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.ADDTIME,	
+				a.NAME,	
+				a.SEQUENCE,	
+				a.ICON_PATH,	
+				a.APPLICATIONNOTE,	
+				a.STATE,	
+				a.INITIALS,	
+				a.ID,
+				a.GOODSCLASS_ID,
+				a.IS_RECOMMEND
+		from 
+				mall_brandcategory a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from mall_brandcategory
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,325 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicocoinList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-08-17 18:22:22      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppIcoCoin</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/coin/appicocoin/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品名称<input type="text" name="name" value="{{formData.name}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					发行总额（人民币）<input type="text" name="issueTotalMoney" value="{{formData.issueTotalMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					发行总量
+            <input type="text" name="totalNum" value="{{formData.totalNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					发行价格（单价）<input type="text" name="issuePrice" value="{{formData.issuePrice}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					发行时间<input type="text" name="issueTime" value="{{formData.issueTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					0 ：  准备状态
+            1 ：  正在发行
+            2 ：  停牌
+            3 ：  退市<input type="text" name="issueState" value="{{formData.issueState}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币的代码 (股票代码)<input type="text" name="coinCode" value="{{formData.coinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					拆分最小份数<input type="text" name="splitMinCoin" value="{{formData.splitMinCoin}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					发行方id(未来参考发行方表)<input type="text" name="issueId" value="{{formData.issueId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					发行方名称<input type="text" name="issueName" value="{{formData.issueName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品存量<input type="text" name="stock" value="{{formData.stock}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					排序字段<input type="text" name="sort" value="{{formData.sort}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					算法说明<input type="text" name="arithmetic" value="{{formData.arithmetic}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					证明方式<input type="text" name="proveMode" value="{{formData.proveMode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品介绍<input type="text" name="productReferral" value="{{formData.productReferral}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品的状态（0 表示没有  1 表示有用）<input type="text" name="pamState" value="{{formData.pamState}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					多少秒产生一个区块<input type="text" name="blockspeed" value="{{formData.blockspeed}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					买方费率<input type="text" name="buyFeeRate" value="{{formData.buyFeeRate}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					买方费率<input type="text" name="sellFeeRate" value="{{formData.sellFeeRate}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					最小成交金额<input type="text" name="buyMinMoney" value="{{formData.buyMinMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					最小成交数量<input type="text" name="sellMinCoin" value="{{formData.sellMinCoin}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					区块大小最小值<input type="text" name="minBlockSize" value="{{formData.minBlockSize}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					区块大小最大值<input type="text" name="maxBlockSize" value="{{formData.maxBlockSize}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					钱包下载地址<input type="text" name="walletDownload" value="{{formData.walletDownload}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					源码下载地址<input type="text" name="soundDownload" value="{{formData.soundDownload}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					区块浏览器<input type="text" name="blockBrowser" value="{{formData.blockBrowser}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					官方网站<input type="text" name="officialWebsite" value="{{formData.officialWebsite}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					官方论坛<input type="text" name="officialForum" value="{{formData.officialForum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					挖矿地址<input type="text" name="miningAddress" value="{{formData.miningAddress}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否置顶（ 0 表示不置顶 ， 1 表示置顶）<input type="text" name="isRecommend" value="{{formData.isRecommend}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					开市时间<input type="text" name="openingTime" value="{{formData.openingTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					闭市时间<input type="text" name="closeTime" value="{{formData.closeTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					产品图片路径<input type="text" name="picturePath" value="{{formData.picturePath}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					closePlateTime<input type="text" name="closePlateTime" value="{{formData.closePlateTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					openAndclosePlateTime<input type="text" name="openAndclosePlateTime" value="{{formData.openAndclosePlateTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					1竞价 --也就是正常的  2坐市<input type="text" name="transactionType" value="{{formData.transactionType}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					充值手续费率<input type="text" name="prepaidFeeRate" value="{{formData.prepaidFeeRate}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					提现手续费率<input type="text" name="paceFeeRate" value="{{formData.paceFeeRate}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					每次提现的最大数量<input type="text" name="oneTimePaceNum" value="{{formData.oneTimePaceNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					每天提现的最大数量<input type="text" name="oneDayPaceNum" value="{{formData.oneDayPaceNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					最小提现 数量<input type="text" name="leastPaceNum" value="{{formData.leastPaceNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					融币的手续费率<input type="text" name="circulation" value="{{formData.circulation}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					文章正文<input type="text" name="priceLimits" value="{{formData.priceLimits}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币的保留几位小数<input type="text" name="keepDecimalForCoin" value="{{formData.keepDecimalForCoin}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					钱的保留几位小数<input type="text" name="keepDecimalForCurrency" value="{{formData.keepDecimalForCurrency}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					1表示开市   2表示闭市<input type="text" name="openBell" value="{{formData.openBell}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					跌幅<input type="text" name="decline" value="{{formData.decline}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					涨幅<input type="text" name="rose" value="{{formData.rose}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					均价(收盘价)<input type="text" name="averagePrice" value="{{formData.averagePrice}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					每次下单的最大数量（个）<input type="text" name="oneTimeOrderNum" value="{{formData.oneTimeOrderNum}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

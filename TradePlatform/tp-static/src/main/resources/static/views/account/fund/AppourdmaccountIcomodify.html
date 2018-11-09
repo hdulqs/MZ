@@ -1,0 +1,97 @@
+<!-- 添加分公司-->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改银行账户</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/account/fund/appouraccount/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form id="seeForm" name="myform" >
+		<div class="row">
+			<div class="col  s12 left">
+				<div class="col m6 s12">
+					<div class="input-field">
+					<label for="txt_coin">币种类别</label>
+						 <input type="text" id="txt_coin" ng-model="formData.currencyType" required disabled >
+					</div>
+				</div>
+						<div class="col m6 s12">
+					<div class="input-field">
+						<select id="openAccountType" class="select2"  data-allow-clear="true"    data-placeholder="请选择开户类型 ">
+							<option value="">不限</option>
+							<option value="2">充币</option>
+							<option value="3">提币</option>
+						</select>
+					</div>
+				</div>
+					
+					
+	</div>
+		<div class="col  s12 left">			
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="请选择是否主账户 " id="isShow">
+							<option value="">不限</option>
+							<option value="0">普通账户</option>
+							<option value="1">主账户</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="col m6 s12">
+					<div class="input-field">
+						<input type="text" ng-model="formData.accountNumber" id="input_address" validator="required" required-error-message="钱包地址必填"> <label for="input_address">钱包地址</label>
+					</div>
+				</div>
+		</div>		
+		
+		<div class="col  s12 left">	
+				<div class="col m6 s12">
+					<div class="input-field">
+						<input type="text" id="input_account" ng-model="formData.accountName" validator="required" required-error-message="钱包地址账户必填"> <label for="input_account">钱包地址账户</label>
+					</div>
+				</div>
+
+				<div class="col m6 s12">
+					<div class="input-field">
+					
+					<select class="select2"  data-allow-clear="true" data-placeholder="请选择 站点" id="website">
+							<option value="">不限</option>
+							<option value="cn">国内站</option>
+							<option value="en">国际站</option>
+						</select>
+						
+					</div>
+				</div>
+			</div>
+			
+				
+				<div class="col  s12 left  hide" >
+					<div class="col m6 s12">
+					<div class="input-field">
+						<textarea id="retainsMoney"    class="materialize-textarea" ng-model="formData.retainsMoney"></textarea>
+						<label for="retainsMoney">账户保留金额</label>
+						</div>
+						</div>
+					
+			</div>
+			
+			
+			<div class="col  s12 left">
+			<div class="input-field">
+					<textarea id="textarea1"  class="materialize-textarea" length="120" ng-model="formData.remark"></textarea>
+						<label for="textarea1">备注</label>
+						</div>
+			</div>
+			
+		</div>
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" id="addAppUserSubmit" ng-disabled="!form.checkValid(myform)" ng-click="form.submit(myform,processForm)">保存</button>
+			</p>
+		</div>
+	</form>
+
+</div>
+<!-- /添加分公司  -->

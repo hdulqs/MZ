@@ -1,0 +1,78 @@
+
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+
+	<div class="row">
+		<div class="col s12 m9 l7">
+			<div class="row">
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">用户账号</label>
+					</div>
+				</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_lname">用户姓名</label>
+					</div>
+				</div>
+			<!-- 	<div class="col m3 s12">
+					<div class="input-field">
+						<select   name="currencyType_EQ"  dataTableSerch>
+							<option value="">账户类型</option>
+							<option value="cny">CNY</option>
+							<option value="usd">USD</option>
+						</select>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<div class="col s12 m3 l5 right-align pt-20">
+			<!-- 查看按钮 -->
+			<!-- <a class="btn" ng-if="requiresPermissions('customer',true)" ng-click="fnSee('user/appcustomer/see')" >查看</a> -->
+			<!-- 刷新按钮 -->
+
+			<!-- 刷新按钮 -->
+			<a class="btn pr-10 pl-10" ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+			
+			<!-- 导出按钮 -->
+			<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+		</div>
+	</div>
+
+</div>
+<!-- /Handle -->
+
+<!-- 分公司管理 -->
+<div class="">
+
+
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2" class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>用户账号</th>
+						<th>姓氏</th>
+						<th>名字</th>
+						<!-- <th>账户类型</th> -->
+						<th>资金账户号</th>
+						<th>总资金</th>
+						<th>可用金额</th>
+						<th>冻结金额</th>
+						<!-- <th>杠杆金额</th> -->
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+

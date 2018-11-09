@@ -1,0 +1,83 @@
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+				<div class="col  s3">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.title_like" dataTableSerch>
+						<label for="input_lname">文章标题</label>
+					</div>
+				</div>
+				<div class="col  s3">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.categoryName_like"
+							dataTableSerch> <label for="input_city">文章类别</label>
+					</div>
+				</div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+									
+						<!-- 增加按钮 -->
+						<a class="btn pr-10 pl-10" ng-click="fnAdd('article/apparticle/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>添加</a>
+						
+						<!-- 查看按钮 -->
+						<a class="btn pr-10 pl-10" ng-click="fnSee('article/apparticle/see')" ><i class="fa fa-search-plus " aria-hidden="true"></i>查看</a>
+ 						
+						<!-- 修改按钮 -->
+						<a class="btn pr-10 pl-10" ng-click="fnModify('article/apparticle/modify')"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>修改</a>
+						<!-- 删除按钮 -->
+						
+						<a class="btn pr-10 pl-10"  ng-click="fnRemove('article/apparticle/remove')"> <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+
+						<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+<div >
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2"
+				class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label
+							for="checkboxAll"></label></th>
+						<th>文章标题</th>
+						<th>文章类别</th>
+						<th>排序</th>
+						<th>是否置顶</th>
+						<th>是否外链</th>
+						<th>作者</th>
+						<th>点击量</th>
+						
+						<th>时间</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+			<!-- <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.3.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"> -->

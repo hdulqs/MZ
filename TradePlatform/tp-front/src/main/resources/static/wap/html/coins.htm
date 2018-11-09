@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。" />
+    <meta name="keywords" content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+" />
+    
+    <title>
+        互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee" />
+
+</head>
+
+<body>
+    <header class="header">
+        <a id="logo" href="coins.htm">
+            <div class="logo"></div>
+        </a>
+        <div class="nav" id="isToken">
+        </div>
+    </header>
+      <header class="headers addWrap">
+        <div class="swipe" id="mySwipe">
+            <div class="swipe-wrap" id="bannerDiv">
+            </div>
+        </div>
+
+        <ul id="position">
+        
+        </ul>
+    </header>
+    <!-- <p class="index_gg">
+        <span id="gonggao"></span><span><a href="news/-corpid=0.htm"  >查看全部</a></span>
+    </p> -->
+    <div class="strip"></div>
+    <div class="s-nav" id="tags_coin">
+        <!--<a href="#" class="s-aClick  tags_coin_click">CNY</a>
+        <a href="#" class="tags_coin_click">YBC</a>-->
+        <span id="coins_timer" style="display:none"></span>
+        <span><!-- <a href="coins/top5up-toptype=24_ups.htm"  class="top_5_icon" style="float: right">TOP5</a> --></span>
+    </div>
+    <div id="page">
+        <!-- 对CNY交易区 结束-->
+        <div class="s-tab" style="display: block;">
+            <table class="coin_list coinarea num_color" id="click-sort1">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th style="text-align:left;width:1.2rem">币种</th>
+                        <th class="bg-th">最新价格</th>
+                        <th class="bg-th">日交易量</th>
+                        <th class="bg-th" style="text-align: right;padding-right:14px;">日涨跌</th>
+                    </tr>
+                </thead>
+                <tbody id="click_sort1_tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="footer">
+        
+        <div>
+            Copyright2013-2016 互融网
+        </div>
+    </footer>
+</body>
+</html>
+<!--币种信息模板 -->
+<script id="productInfo_tmp" type="text/x-jquery-tmpl">
+    <tr>
+	    <a href="../html/trade/abc2cny.htm">
+	        <td class="s-tRight">
+	            <a href="../html/trade/abc2cny.htm?tokenId={{= tokenId}}&symbol={{= coinCode}}"><img src="/{{= picturePath}}" alt=""></a>
+	        </td>
+	        <td><a href="../html/trade/abc2cny.htm?tokenId={{= tokenId}}&symbol={{= coinCode}}">{{= name}}</a></td>
+	        <td class="align_right">
+	            <a href="../html/trade/abc2cny.htm?tokenId={{= tokenId}}&symbol={{= coinCode}}" id="coins_btc_cny_current">
+				{{= currentExchangPrice}}							</a>
+	        </td>
+	        <!--					注意总成交额达到了万则以万为单位显示，若过亿则亿为单位显示-->
+	        <td class="align_right aLR">
+	            <a href="../html/trade/abc2cny.htm?tokenId={{= tokenId}}&symbol={{= coinCode}}" id="coins_btc_cny_sum">
+													{{= transactionSum}}
+											</a>
+	        </td>
+	        <td class="align_right  right1">
+	            <a href="../html/trade/abc2cny.htm?tokenId={{= tokenId}}&symbol={{= coinCode}}" id="coins_btc_cny_24_ups" class="buy">
+				{{= RiseAndFall}}%
+			</a>
+	        </td>
+	    </a>
+	</tr>
+</script>
+
+
+<script type="text/javascript" src="../style/js/base.js"></script>
+<script type="text/javascript"  src="../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"coin" : "style/js/extract/common/coins.js"
+	},
+	preload : ['jquery','coin'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/coins.js','../../src/lib/jquery/jquery.tmpl.min.js'],function(c){
+	c.init();
+	c.banner();
+});
+</script>

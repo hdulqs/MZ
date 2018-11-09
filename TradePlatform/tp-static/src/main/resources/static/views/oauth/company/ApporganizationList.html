@@ -1,0 +1,20 @@
+<div class="row" >
+	<div class="col s3" style="margin-right:0px;padding-right:0px">
+<!-- 		<a ui-sref-active="active" ui-sref=".appuser({spath:'oauth/user/appuser',spage:'list',sid:'anon',ppage:'97'})">用户</a>
+		<a ui-sref-active="active" ui-sref=".apporganization({spath:'oauth/company/apporganization',spage:'add',sid:'anon',ppage:'97'})">组织</a>
+ -->		
+		
+		<hry-collection url="{{HRY.host}}{{HRY.modules.oauth}}company/apporganization/loadTree" mid="id" pid="pid" name="name" 
+					    clickshow="{name:'appuser',spath:'oauth/user/appuser',spage:'list',sid:'anon'}"
+					    toolshow="{name:'apporganization',spath:'oauth/company/apporganization',spage:'list',sid:'anon'}"
+		>
+		</hry-collection>
+	</div>
+	<div class="col s9" style="margin-left:0px;padding-left:0px">
+		<div ui-view></div>
+	</div>
+</div>
+
+
+
+

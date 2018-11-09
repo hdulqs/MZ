@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/data/mongo
+			http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util.xsd
+            ">
+        
+<!-- 20160905之前版 -->	
+	<!-- mongoDB模板 -->
+<!-- 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="com.mz" />
+		<constructor-arg name="userCredentials" ref="userCredentials" />
+	</bean> -->
+
+	<!-- 工厂bean创建Mongo实例 -->
+<!-- 	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+		<property name="host" value="${mongo.url}" />
+		<property name="port" value="${mongo.port}" />
+	</bean> -->
+	
+<!-- 	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
+		<constructor-arg name="username" value="admin" />
+		<constructor-arg name="password" value="admin" />
+	</bean> -->
+
+
+
+<!-- 20160905修定版   liushilei-->	
+<!--这里使用mongo:mongo-client-->
+<mongo:mongo-client id="mongo" host="${mongo.url}" port="${mongo.port}" credentials="${mongo.password}">
+<!-- 	<mongo:client-options 
+			min-connections-per-host="2"
+			connections-per-host="100"
+			connect-timeout="5000"
+			max-wait-time="120000"
+			heartbeat-frequency="2000"
+			heartbeat-connect-timeout="10000"
+			max-connection-life-time="3000"
+			socket-keep-alive="true"
+			socket-timeout="3000"
+			threads-allowed-to-block-for-connection-multiplier="5"
+			write-concern="SAFE"/> 
+		-->	
+			
+<!--			<mongo:client-options 
+
+			connections-per-host="200"
+			max-wait-time="120000"
+
+			max-connection-life-time="30000"
+			socket-keep-alive="true"
+			socket-timeout="3000"
+			write-concern="SAFE"
+
+			threads-allowed-to-block-for-connection-multiplier="100" 
+			
+			/>
+-->
+
+<mongo:client-options 
+    connections-per-host="100"
+   threads-allowed-to-block-for-connection-multiplier="10"
+   connect-timeout="10000"
+   max-wait-time="120000"
+   socket-keep-alive="false"
+   socket-timeout="0"
+ />  
+ 
+</mongo:mongo-client>
+ 
+<mongo:db-factory id="mongoDbFactory" mongo-ref="mongo" dbname="${mongo.dbname}"/>
+ 
+<bean id="mappingContext" class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"/>
+ 
+<bean id="mappingConverter" class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">
+  	<constructor-arg ref="mongoDbFactory" />
+    	<constructor-arg ref="mappingContext" />
+</bean>
+ 
+<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+	<constructor-arg name="mongoConverter" ref="mappingConverter" />
+</bean>
+	
+
+</beans>

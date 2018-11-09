@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="App_bank_cardMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into app_bank_card(
+			USERNAME,	
+			SURNAME,	
+			TRUENAME,	
+			BANKPROVINCE,	
+			BANKADDRESS,	
+			CARDBANK,	
+			SUBBANK,	
+			CARDNUMBER,	
+			ALIPAY,	
+			ALIPAYPICTURE,	
+			WECHAT,	
+			WECHATPICTURE,	
+			ID
+		) values (
+			#{USERNAME},	
+			#{SURNAME},	
+			#{TRUENAME},	
+			#{BANKPROVINCE},	
+			#{BANKADDRESS},	
+			#{CARDBANK},	
+			#{SUBBANK},	
+			#{CARDNUMBER},	
+			#{ALIPAY},	
+			#{ALIPAYPICTURE},	
+			#{WECHAT},	
+			#{WECHATPICTURE},	
+			#{ID}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from app_bank_card
+		where 
+			ID = #{ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  app_bank_card
+			set 
+				USERNAME = #{USERNAME},
+				SURNAME = #{SURNAME},
+				TRUENAME = #{TRUENAME},
+				BANKPROVINCE = #{BANKPROVINCE},
+				BANKADDRESS = #{BANKADDRESS},
+				CARDBANK = #{CARDBANK},
+				SUBBANK = #{SUBBANK},
+				CARDNUMBER = #{CARDNUMBER},
+				ALIPAY = #{ALIPAY},
+				ALIPAYPICTURE = #{ALIPAYPICTURE},
+				WECHAT = #{WECHAT},
+				WECHATPICTURE = #{WECHATPICTURE},
+			ID = ID
+			where 
+				ID = #{ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			USERNAME,	
+			SURNAME,	
+			TRUENAME,	
+			BANKPROVINCE,	
+			BANKADDRESS,	
+			CARDBANK,	
+			SUBBANK,	
+			CARDNUMBER,	
+			ALIPAY,	
+			ALIPAYPICTURE,	
+			WECHAT,	
+			WECHATPICTURE,	
+			ID
+		from 
+			app_bank_card
+		where 
+			ID = #{ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.USERNAME,	
+				a.SURNAME,	
+				a.TRUENAME,	
+				a.BANKPROVINCE,	
+				a.BANKADDRESS,	
+				a.CARDBANK,	
+				a.SUBBANK,	
+				a.CARDNUMBER,	
+				ac.phone,	
+				a.ALIPAY,	
+				a.ALIPAYPICTURE,	
+				a.WECHAT,	
+				a.WECHATPICTURE,	
+				a.ID 
+		from 
+				app_bank_card a,app_customer ac where a.customerId=ac.id
+				<if test="pd.phone!=null and pd.phone!=''">
+					<!-- and (ac.phone=#{pd.field1} or  a.SURNAME=#{pd.field1} or a.TRUENAME=#{pd.field1}  ) -->
+					and ac.phone like  '%${pd.phone}%'
+				</if>
+				<if test="pd.userName!=null and pd.userName!=''">
+					and a.USERNAME like '%${pd.userName}%'
+				</if>
+				<if test="pd.BZ!=null and pd.BZ!='' " >
+					and ac.platform = #{pd.BZ}
+				</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.USERNAME,	
+				a.SURNAME,	
+				a.TRUENAME,	
+				a.BANKPROVINCE,	
+				a.BANKADDRESS,	
+				a.CARDBANK,	
+				a.SUBBANK,	
+				a.CARDNUMBER,	
+				a.ALIPAY,	
+				a.ALIPAYPICTURE,	
+				a.WECHAT,	
+				a.WECHATPICTURE,	
+				a.ID
+		from 
+				app_bank_card a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from app_bank_card
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>

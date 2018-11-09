@@ -1,0 +1,81 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+         <div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.customerName_like"  dataTableSerch >
+			        <label for="input_lname">会员账号</label>
+			      </div>
+			    </div>
+			    <div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.agentName_like"  dataTableSerch >
+			        <label for="input_lname">真实姓名</label>
+			      </div>
+			    </div>
+			    <div class="col m3 s12">
+				<div class="input-field">
+					<select class="select2" data-allow-clear="true" data-placeholder="请选择状态" class="select2" data-allow-clear="true" name="states" dataTableSerch>
+						<option value="">不限</option>
+						<option value="0">未认证</option>
+						<option value="2">已认证</option>
+					</select>
+				</div>
+		</div>
+			</div>
+        </div>
+        
+        <div class="col s12 m3 l5 right-align pt-20">
+        		<!-- 
+				<a class="btn pr-10 pl-10"  ng-click="fnStorp()"> <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+				 -->
+				<!-- 刷新按钮 -->
+				<!-- <a class="btn pr-10 pl-10"  ng-click="audit()"><i class="fa fa-refresh "></i>审核认证</a> -->
+<!-- 				<a class="btn pr-10 pl-10" ng-click="fnSee('agents/appagentscustromer/look')" ><i class="fa fa-search-plus " aria-hidden="true"></i>查看</a>
+ -->				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+
+
+<!-- 分公司管理 -->
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+					<table id="table2" class="display table table-bordered table-striped table-hover">
+				  	 <thead>
+				   	 	<tr>
+					      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+		                 <!--  <th>代理地址</th> -->
+		                  <th>用户账户</th>
+		                  <th>代理人姓氏</th>
+		                  <th>代理人名字</th>
+		                  <!--  <th>紧急联系人</th>  -->
+		                  <th>代理码</th>
+		                  <!-- <th>状态</th> -->
+		                  <th>时间</th>
+		                  <!--  <th>操作</th>-->
+				  	 	 </tr>
+				 	 </thead>
+				 	 <tbody>
+				  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+<div id="lockCustomer" class="hide" >
+
+身份证正面照片 <img src="{{HRY.host}}/{{appAgentsCustromer.frontIDCard}}" alt="" class="media-object"><br>
+身份证反面照片 <img src="{{HRY.host}}/{{appAgentsCustromer.versoIDCard}}" alt="" class="media-object"><br>
+手持身份证照片 <img src="{{HRY.host}}/{{appAgentsCustromer.handIDCard}}" alt="" class="media-object"><br>
+
+ <input type="button" ng-click="submitTmie()" value="关闭查看" ></input>
+ </div>
+
+

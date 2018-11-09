@@ -1,0 +1,160 @@
+<style>
+	.textarea {
+		resize:none;
+		width:100%;
+		height:40px;
+	}
+</style>
+
+<!-- 创建账户   -->
+<div class="row">
+<h4 style="font-family:verdana"><a ng-click="showView('type','createPublick') ">创建账户</a></h4>  
+	<div id="createPublick" ng-show="false" >
+	<div class="col s3">
+		<div class="row" style="margin-top:0px;">
+			<div class="col s3 pt-10">
+				用户名：
+			</div>
+			<div class="col s9">
+				<input type="text" id="userName"/>
+			</div>
+		</div>
+	</div>
+	<div class="col s1">
+		<select id="type" >
+		</select> &nbsp;
+	</div>
+	<div class="col s2 pt-5">
+		<a class="btn" ng-click="create()">创建账户</a>
+	</div>
+	<div class="col s6">
+	  <textarea id="create" class="textarea" ></textarea>
+	</div>
+	</div>
+</div>
+
+
+<!-- 查询余额 -->
+<br/> <br/> <br/><br/> <br/> <br/>
+<div class="row">
+	<h4 style="font-family:verdana"><a  ng-click="showView('balanceType','balance')" >查询某个用户的余额</a></h4>  
+	<div id="balance" ng-show="false" >
+	<div class="col s3">
+		<div class="row" style="margin-top:0px;">
+			<div class="col s3 pt-10">
+				用户名：
+			</div>
+			<div class="col s9">
+				<input type="text" id="balanceUserName"/>
+			</div>
+		</div>
+	</div>
+	<div class="col s1">
+		<select id="balanceType" >
+		</select> &nbsp;
+	</div>
+	<div class="col s2 pt-5">
+		<a class="btn" ng-click="selectBalance()">查询余额</a>
+	</div>
+	<div class="col s6">
+	  <textarea id="selectBalance" class="textarea" ></textarea>
+	</div>
+	</div>
+</div>
+
+<br/> <br/> <br/><br/> <br/> <br/>
+<!-- 转账 -->
+<div class="row">
+	<h4 style="font-family:verdana"><a  ng-click="showView('sendFromSelect','sendFrom')">转币</a></h4> 
+	<div id="sendFrom" ng-show="false" >
+	<div class="col s12">
+		<div class="col s1">
+			转出账户：
+		</div>
+		<div class="col s1">
+				<input type="text" id="account"/>
+		</div>
+		<div class="col s1">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收币账户：
+		</div>
+		<div class="col s1">
+				<input type="text" id="address"/>
+		</div>
+		
+		<div class="col s1">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量：
+		</div>
+		<div class="col s1">
+			<input type="text" id="amount"/>
+		</div>
+			
+		<div class="col s2">
+			<select id="sendFromSelect" >
+			</select> &nbsp;
+		</div>
+		<div class="col s1 pt-5">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn" ng-click="sendFrom()">转账</a>
+		</div>
+		<div class="col s12">
+	 		<textarea id="sendFromArea" class="textarea"  ></textarea>
+		</div>
+	</div>
+	</div>
+</div>
+
+
+
+
+<br/> <br/> <br/><br/> <br/> <br/>
+<!-- 查询所有账户 -->
+<div class="row">
+	<h4 style="font-family:verdana"><a  ng-click="showView('allUsersType','getAllUsers')" >查询所有用户</a></h4>  
+	<div id="getAllUsers" ng-show="false" >
+	<div class="col s1">
+		<select id="allUsersType" >
+		</select> &nbsp;
+	</div>
+	<div class="col s2 pt-5">
+		<a class="btn" ng-click="getAllUsers()">查询所有用户</a>
+	</div>
+	<div class="col s6">
+	  <textarea id="getAllUsersText" class="textarea" style="height:400px;"></textarea>
+	</div>
+	</div>
+</div>
+
+
+
+<!-- 查询某个币的流水 -->
+<br/> <br/> <br/><br/> <br/> <br/>
+<div class="row">
+	<h4 style="font-family:verdana"><a  ng-click="showView('recordType','record')">查询币所有的流水</a></h4> 
+	<div id="record" ng-show="false" >
+	<div class="col s12">
+		<div class="col s1">
+			用户名 :
+		</div>
+		<div class="col s1">
+				<input type="text" id="userNameText"/>
+		</div>
+	&nbsp;&nbsp;
+		<div class="col s3">
+			<select id="recordType" >
+			</select> &nbsp;
+		</div>
+		<div class="col s3 pt-5">
+			<a class="btn" ng-click="selectRecord()">查询币流水</a>
+		</div>
+		<div class="col s12">
+	 		<textarea id="selectRecord" class="textarea" style="height:400px;"></textarea>
+		</div>
+	</div>
+	</div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicoprojectrepayList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-21 17:52:30      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppIcoProjectRepay</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/project/appicoprojectrepay/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					website<input type="text" name="website" value="{{formData.website}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					项目id<input type="text" name="projectId" value="{{formData.projectId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					投资币种<input type="text" name="investCoinCode" value="{{formData.investCoinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否限制投资币量 0.不限 1.限制<input type="text" name="isLimitedMoney" value="{{formData.isLimitedMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					投资币量<input type="text" name="money" value="{{formData.money}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					回报说明<input type="text" name="repayExplain" value="{{formData.repayExplain}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否限制人数 0.不限 1.限制<input type="text" name="isLimitedSize" value="{{formData.isLimitedSize}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					名额数<input type="text" name="size" value="{{formData.size}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否支持限制   0.否  1.是<input type="text" name="isLimitedSupport" value="{{formData.isLimitedSupport}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					每个用户购买此回报次数<input type="text" name="support" value="{{formData.support}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否包邮： 0.包邮  1.大陆包邮<input type="text" name="isFreeShipping" value="{{formData.isFreeShipping}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					回报时间：预计项目ico成功之后多少天<input type="text" name="paybackTime" value="{{formData.paybackTime}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

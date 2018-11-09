@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+    <menu key="kehuguanlilist" name="会员信息管理" url="/user/appcustomer/list/anon" shiroUrl="/user/appcustomer/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="kehuguanlilist_auditall" name="清除实名信息" shiroUrl="/user/appcustomer/auditall"/>  
+        <function key="kehuguanlilist_see" name="查看" shiroUrl="/user/appcustomer/see"/>  
+        <function key="kehuguanlilist_add" name="增加会员" shiroUrl="/user/appcustomer/add"/>  
+        <function key="kehuguanlilist_setCustomerType_zhsz" name="账户类型设置" shiroUrl="/user/appcustomer/setCustomerType_zhsz"/>  
+        <function key="kehuguanlilist_setpw" name="重置密码" shiroUrl="/user/appcustomer/setpw"/>  
+        <function key="kehuguanlilist_lock" name="锁定" shiroUrl="/user/appcustomer/lock"/>  
+        <function key="kehuguanlilist_unlock" name="解锁" shiroUrl="/user/appcustomer/unlock"/>  
+        <function key="kehuguanlilist_forbidden" name="禁用" shiroUrl="/user/appcustomer/forbidden"/>  
+        <function key="kehuguanlilist_permissible" name="解禁" shiroUrl="/user/appcustomer/permissible"/>  
+        <function key="kehuguanlilist_modify" name="修改" shiroUrl="/user/appcustomer/modify"/>  
+        <function key="kehuguanlilist_withdrawCheckMoney" name="提现审核额度" shiroUrl="/user/appcustomer/setWithdrawCheckMoney"/>  
+        <function key="kehuguanlilist_setAuthorizationCode" name="设置申代授权码" shiroUrl="/user/appcustomer/setAuthorizationCode"/>  
+        <function key="kehuguanlilist_audit" name="审核通过" shiroUrl="/user/appcustomer/audit"/>  
+        <function key="kehuguanlilist_auditback" name="审核拒绝" shiroUrl="/user/appcustomer/auditback"/>  
+        <function key="kehuguanlilist_isHasemail" name="激活账户" shiroUrl="/user/appcustomer/isHasemail"/>
+        <function key="kehuguanlilist_setCustomerType" name="设为普通账户" shiroUrl="/user/appcustomer/setCustomerType"/>
+        <function key="kehuguanlilist_offgoogle" name="关闭谷歌认证" shiroUrl="/user/appcustomer/offgoogle"/>
+        <function key="kehuguanlilist_offphone" name="关闭手机认证" shiroUrl="/user/appcustomer/offphone"/>
+        <function key="kehuguanlilist_openBatch" name="开启交易" shiroUrl="/user/appcustomer/openBatch"/>
+        <function key="kehuguanlilist_closeBatch" name="禁止交易" shiroUrl="/user/appcustomer/closeBatch"/>
+        <!-- <function key="kehuguanlilist_seePic" name="查看实名照片" shiroUrl="/user/appcustomer/seePic"/>  -->
+    </menu>  
+    <menu key="dailikehuguanli" name="代理客户管理" url="/agents/appagentscustromer/list/anon" shiroUrl="/agents/appagentscustromer/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="chakanshengqingdaili" name="查看申请代理" url="/agents/appagentscustromer/see/anon" shiroUrl="/agents/appagentscustromer/see" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="yijidailichaxun" name="一级代理查询" url="/agents/appagentscustromer/lookall/1" shiroUrl="/agents/appagentscustromer/lookall1" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="erjidailichaxun" name="二级代理查询" url="/agents/appagentscustromer/lookall/2" shiroUrl="/agents/appagentscustromer/lookall2" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="sanjidailchaxun" name="三级代理查询" url="/agents/appagentscustromer/lookall/3" shiroUrl="/agents/appagentscustromer/lookall3" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="yongjingcanshupeizhi" name="佣金参数配置" url="/agents/commissiondeploy/list/anon" shiroUrl="/agents/commissiondeploy/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="yongjingmingxichaxun" name="佣金明细查询" url="/agents/commissiondetail/list/anon" shiroUrl="/agents/commissiondetail/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="dailishangyongjimingxi" name="代理商佣金查询" url="/agents/appagentformoney/list/anon" shiroUrl="/agents/appagentformoney/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="customer_Manage" name="用户信息管理" url="/person/apppersoninfo/managelist/anon" shiroUrl="/person/apppersoninfo/personinfoManagelist" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_Manage_see" name="查看" shiroUrl="/person/apppersoninfoManage/see"/>  
+        <function key="customer_Manage_modify" name="修改" shiroUrl="/person/apppersoninfoManage/modify"/>  
+        <function key="customer_Manage_setPwd" name="密码重置" shiroUrl="/person/apppersoninfoManage/setPwd"/>  
+        <function key="customer_Manage_cancel" name="注销" shiroUrl="/person/apppersoninfoManage/cancel"/> 
+    </menu>  
+    <menu key="customer_AppPersonInfo" name="注册用户审核" url="/person/apppersoninfo/list/anon" shiroUrl="/person/apppersoninfo/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_AppPersonInfo_see" name="查看详情" shiroUrl="/person/apppersoninfo/see"/>  
+        <function key="customer_AppPersonInfo_review" name="审核" shiroUrl="/person/apppersoninfo/review"/> 
+    </menu>  
+    <menu key="customer_accountFunds_Manage" name="资金账户管理" url="/person/apppersoninfo/accountFundsManagelist/anon" shiroUrl="/person/apppersoninfo/accountFundsManagelist" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_accountFunds_Manage_see" name="查看" shiroUrl="/person/apppersoninfofundsManage/see"/> 
+    </menu>  
+    <menu key="customer_examine_refuse" name="用户审核拒绝" url="/person/apppersoninfo/refuselist/anon" shiroUrl="/person/apppersoninfo/refuselist" isOpen="0" isOutLink="0" orderNo="0"/>  
+    <menu key="customer_cancel_check" name="注销用户查看" url="/person/apppersoninfo/canclelist/anon" shiroUrl="/person/apppersoninfo/canclelist" isOpen="0" isOutLink="0" orderNo="0"/>  
+    <menu key="customer_modification" name="资料修改申请" url="/person/apppersoninfo/modificationlist/anon" shiroUrl="/person/apppersoninfo/modificationlist" isOpen="0" isOutLink="0" orderNo="0"/>  
+    <!-- 金科新加菜单 -->  
+    <menu key="agentapplylist" name="代理商申请审核列表" url="/person/agentApplyList" shiroUrl="/person/apppersoninfo/agentApplyList" isOpen="0" isOutLink="0" orderNo="0"/>  
+    <menu key="yonghuzijinbiandongshouyibaobiao" name="用户资金变动收益报表" url="/person/platforCustomerForProfit1" shiroUrl="/person/apppersoninfo/listPersonReport" isOpen="0" isOutLink="0" orderNo="0"/>  
+    <menu key="customer_AppBusinessman" name="交易商账户管理" url="/businessman/appbusinessman/list/anon" shiroUrl="/businessman/appbusinessman/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_AppBusinessman_see" name="查看" shiroUrl="/businessman/appbusinessman/see"/>  
+        <function key="customer_AppBusinessman_add" name="添加" shiroUrl="/businessman/appbusinessman/add"/>  
+        <function key="customer_AppBusinessman_modify" name="修改" shiroUrl="/businessman/appbusinessman/modify"/>  
+        <function key="customer_AppBusinessman_remove" name="删除" shiroUrl="/businessman/appbusinessman/remove"/> 
+    </menu>  
+   	<menu key="customer_C2cCoin" name="c2c交易参数设置" url="/businessman/c2ccoin/list/anon" shiroUrl="/businessman/c2ccoin/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_C2ccoin_see" name="查看" shiroUrl="/businessman/c2ccoin/see"/>  
+        <function key="customer_C2ccoin_add" name="添加" shiroUrl="/businessman/c2ccoin/add"/>  
+        <function key="customer_C2ccoin_modify" name="修改" shiroUrl="/businessman/c2ccoin/modify"/>  
+        <function key="customer_C2ccoin_remove" name="删除" shiroUrl="/businessman/c2ccoin/remove"/> 
+    </menu>
+    <!-- ADD BY ZONGWEI 20180502 otc交易参数设置 BEGIN -->
+    <menu key="customer_OtcCoin" name="otc交易参数设置" url="/businessman/otccoin/list/anon" shiroUrl="/businessman/otccoin/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_Otccoin_see" name="查看" shiroUrl="/businessman/otccoin/see"/>  
+        <function key="customer_Otccoin_add" name="添加" shiroUrl="/businessman/otccoin/add"/>  
+        <function key="customer_Otccoin_modify" name="修改" shiroUrl="/businessman/otccoin/modify"/>  
+        <function key="customer_Otccoin_remove" name="删除" shiroUrl="/businessman/otccoin/remove"/> 
+    </menu>
+    <menu key="customer_Otc" name="OTC委托订单" url="/businessman/otc/list/anon" shiroUrl="/businessman/otc/list" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    <menu key="customer_OtcOrder" name="OTC交易订单" url="/businessman/otcOrder/list/anon" shiroUrl="/businessman/otcOrder/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_OtcOrder_payInfor" name="付款信息" shiroUrl="/businessman/otcOrder/payInfor"/>
+        <function key="customer_OtcOrder_applyArbitration" name="申诉处理" shiroUrl="/businessman/otcOrder/applyArbitration"/>
+    </menu>
+    <!-- ADD BY ZONGWEI 20180502 otc交易参数设置 END -->  
+    <menu key="customer_C2cTransaction" name="交易商交易订单" url="/businessman/c2ctransaction/list/anon" shiroUrl="/businessman/c2ctransaction/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_C2cTransaction_see" name="查看" shiroUrl="/businessman/c2ctransaction/see"/>  
+        <function key="customer_C2cTransaction_add" name="添加" shiroUrl="/businessman/c2ctransaction/add"/>  
+        <function key="customer_C2cTransaction_modify" name="修改" shiroUrl="/businessman/c2ctransaction/modify"/>  
+        <function key="customer_C2cTransaction_remove" name="删除" shiroUrl="/businessman/c2ctransaction/remove"/> 
+    </menu>  
+    <menu key="customer_C2cTransaction_all" name="全部交易订单" url="/businessman/c2ctransaction/all/anon" shiroUrl="/businessman/c2ctransaction/list" isOpen="0" isOutLink="0" orderNo="0"> 
+    </menu>  
+    <menu key="customer_C2cTransaction_close" name="已取消交易订单" url="/businessman/c2ctransaction/close/anon" shiroUrl="/businessman/c2ctransaction/list" isOpen="0" isOutLink="0" orderNo="0"> 
+    </menu>  
+    <menu key="customer_C2cTransaction_confirm" name="已完成交易订单" url="/businessman/c2ctransaction/confirm/anon" shiroUrl="/businessman/c2ctransaction/list" isOpen="0" isOutLink="0" orderNo="0"> 
+    </menu>  
+    <menu key="customer_C2cChangeRule" name="交易匹配规则管理" url="/businessman/c2cchangerule" shiroUrl="/businessman/c2cchangerule" isOpen="0" isOutLink="0" orderNo="0"></menu>  
+    <menu key="customer_C2cTimeOut" name="交易超时设置" url="/businessman/c2ctimeout" shiroUrl="/businessman/c2ctimeout" isOpen="0" isOutLink="0" orderNo="0"></menu>  
+   
+    <menu key="customer_AppBusinessmanBank" name="交易商银行卡管理" url="/businessman/appbusinessmanbank/list/anon" shiroUrl="/businessman/appbusinessmanbank/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppBusinessmanBank_see" name="查看" shiroUrl="/businessman/appbusinessmanbank/see"/>
+        <function key="customer_AppBusinessmanBank_add" name="添加" shiroUrl="/businessman/appbusinessmanbank/add"/>
+        <function key="customer_AppBusinessmanBank_modify" name="修改" shiroUrl="/businessman/appbusinessmanbank/modify"/>
+        <function key="customer_AppBusinessmanBank_remove" name="删除" shiroUrl="/businessman/appbusinessmanbank/remove"/>
+    </menu>
+
+    <menu key="customer_AppCommendRebat" name="返佣派发记录" url="/rebat/appcommendrebat/list/anon" shiroUrl="/rebat/appcommendrebat/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppCommendRebat_see" name="查看" shiroUrl="/rebat/appcommendrebat/see"/>
+    </menu>
+    
+    <menu key="customer_AppCommendUser" name="推荐人管理" url="/commend/appcommenduser/list/anon" shiroUrl="/commend/appcommenduser/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="customer_AppCommendUser_see" name="查看" shiroUrl="/commend/appcommenduser/see"/>  
+        <function key="customer_AppCommendUser_add" name="添加" shiroUrl="/commend/appcommenduser/add"/>  
+        <function key="customer_AppCommendUser_modify" name="修改" shiroUrl="/commend/appcommenduser/modify"/>  
+        <function key="customer_AppCommendUser_remove" name="删除" shiroUrl="/commend/appcommenduser/remove"/> 
+        <function key="customer_AppCommendUser_editadd" name="设置单独奖励比例" shiroUrl="/commend/appcommenduser/editadd"/>
+    </menu>
+    
+     <menu key="customer_AppCommendDeploy" name="推荐佣金配置" url="/deploy/appcommenddeploy/list/anon" shiroUrl="/deploy/appcommenddeploy/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppCommendDeploy_see" name="查看" shiroUrl="/deploy/appcommenddeploy/see"/>
+        <function key="customer_AppCommendDeploy_add" name="添加" shiroUrl="/deploy/appcommenddeploy/add"/>
+        <function key="customer_AppCommendDeploy_modify" name="修改" shiroUrl="/deploy/appcommenddeploy/modify"/>
+        <function key="customer_AppCommendDeploy_remove" name="删除" shiroUrl="/deploy/appcommenddeploy/remove"/>
+        <function key="customer_AppCommendDeploy_editbuy" name="买方" shiroUrl="/deploy/appcommenddeploy/editbuy"/>
+        <function key="customer_AppCommendDeploy_editsell" name="卖方" shiroUrl="/deploy/appcommenddeploy/editsell"/>
+    </menu>
+    
+     <menu key="customer_AppCommendTrade" name="推荐返佣明细" url="/trade/appcommendtrade/list/anon" shiroUrl="/trade/appcommendtrade/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppCommendTrade_see" name="查看" shiroUrl="/trade/appcommendtrade/see"/>
+        <function key="customer_AppCommendTrade_add" name="添加" shiroUrl="/trade/appcommendtrade/add"/>
+        <function key="customer_AppCommendTrade_modify" name="修改" shiroUrl="/trade/appcommendtrade/modify"/>
+        <function key="customer_AppCommendTrade_remove" name="删除" shiroUrl="/trade/appcommendtrade/remove"/>
+    </menu>
+    
+      <menu key="customer_AppCommendMoney" name="推荐派发管理" url="/money/appcommendmoney/list/anon" shiroUrl="/money/appcommendmoney/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppCommendMoney_see" name="查看" shiroUrl="/money/appcommendmoney/see"/>
+        <function key="customer_AppCommendMoney_add" name="添加" shiroUrl="/money/appcommendmoney/add"/>
+        <function key="customer_AppCommendMoney_modify" name="修改" shiroUrl="/money/appcommendmoney/modify"/>
+        <function key="customer_AppCommendMoney_remove" name="删除" shiroUrl="/money/appcommendmoney/remove"/>
+    </menu>
+    
+    <menu key="customer_AppCommendRank" name="推荐邀请排行榜" url="/rank/appcommendrank/list/anon" shiroUrl="/rank/appcommendrank/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppCommendRank_see" name="查看" shiroUrl="/rank/appcommendrank/see"/>
+        <function key="customer_AppCommendRank_add" name="添加" shiroUrl="/rank/appcommendrank/add"/>
+        <function key="customer_AppCommendRank_modify" name="修改" shiroUrl="/rank/appcommendrank/modify"/>
+        <function key="customer_AppCommendRank_remove" name="删除" shiroUrl="/rank/appcommendrank/remove"/>
+    </menu>
+    
+    <menu key="customer_AppCustomerCollection" name="AppCustomerCollection" url="/user/appcustomercollection/list/anon" shiroUrl="/user/appcustomercollection/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_AppCustomerCollection_see" name="查看" shiroUrl="/user/appcustomercollection/see"/>
+        <function key="customer_AppCustomerCollection_add" name="添加" shiroUrl="/user/appcustomercollection/add"/>
+        <function key="customer_AppCustomerCollection_modify" name="修改" shiroUrl="/user/appcustomercollection/modify"/>
+        <function key="customer_AppCustomerCollection_remove" name="删除" shiroUrl="/user/appcustomercollection/remove"/>
+    </menu>
+    
+     <menu key="customer_BckkIntegralDeploy" name="积分设置" url="/deploy/bckkintegraldeploy/list/anon" shiroUrl="/deploy/bckkintegraldeploy/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_BckkIntegralDeploy_see" name="查看" shiroUrl="/deploy/bckkintegraldeploy/see"/>
+        <function key="customer_BckkIntegralDeploy_add" name="添加" shiroUrl="/deploy/bckkintegraldeploy/add"/>
+        <function key="customer_BckkIntegralDeploy_modify" name="修改" shiroUrl="/deploy/bckkintegraldeploy/modify"/>
+        <function key="customer_BckkIntegralDeploy_remove" name="删除" shiroUrl="/deploy/bckkintegraldeploy/remove"/>
+    </menu>
+    <menu key="customer_BckkMiningDeploy" name="挖矿设置" url="/deploy/bckkminingdeploy/list/anon" shiroUrl="/deploy/bckkminingdeploy/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="customer_BckkMiningDeploy_see" name="查看" shiroUrl="/deploy/bckkminingdeploy/see"/>
+        <function key="customer_BckkMiningDeploy_add" name="添加" shiroUrl="/deploy/bckkminingdeploy/add"/>
+        <function key="customer_BckkMiningDeploy_modify" name="修改" shiroUrl="/deploy/bckkminingdeploy/modify"/>
+        <function key="customer_BckkMiningDeploy_remove" name="删除" shiroUrl="/deploy/bckkminingdeploy/remove"/>
+    </menu>
+</root>

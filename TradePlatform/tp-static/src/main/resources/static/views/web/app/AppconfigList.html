@@ -1,0 +1,70 @@
+
+
+<!-- Breadcrumb -->
+    <div class="ecommerce-title">
+
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <!--h1>@@title</h1-->
+          <nav>
+            <ul class="left">
+              <li  ng-repeat="item in keyList" ng-if="item.typename=='基础配置'" class="active" ><a href="javascript:;" ng-click="tabSwith(item.typekey,$event)">{{item.typename}}</a>
+              </li>
+              <li  ng-repeat="item in keyList" ng-if="item.typename!='基础配置'"  ><a href="javascript:;" ng-click="tabSwith(item.typekey,$event)">{{item.typename}}</a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+        <div class="col s12 m3 l2 right-align mt-15">
+         <!-- <a class="btn pr-10 pl-10 " ng-click="fnAdd('app/appconfig/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>添加配置参数</a>  -->
+        </div>
+      </div>
+
+    </div>
+    <!-- /Breadcrumb -->
+
+
+
+
+
+<!-- With Search -->
+	<div  >
+		<div class="row">
+		<div class="col s12 "  >
+				<form ng-submit="processForm()" id="appconfigForm">
+				<br>
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+			     <tr ng-repeat="item in list"  ng-if="item.typekey==conType">
+                <td class="myid">{{item.configname}}</td>
+                <td ng-if="item.datatype==1"><input  type="text" name="{{item.configkey}}" value="{{item.value}}" ng-model="item.value" required></td>
+                <td ng-if="item.datatype==2">
+                   <input type="radio" name="{{item.configkey}}" value="0" id ="{{item.configkey}}open" ng-model="item.value"   />
+				    <label for="{{item.configkey}}open">开启</label>
+				    <input type="radio" name="{{item.configkey}}"  value="1" id ="{{item.configkey}}close" ng-model="item.value"   />
+				    <label for="{{item.configkey}}close">关闭</label>
+				 
+               </td>
+                  <td ng-if="item.datatype==3">
+                   	 <hry-uploadone name="上传{{item.configname}}"    path="{{item.configkey}}" ng-model="item.value" value="{{item.value}}"></hry-uploadone>
+               </td>
+            	<td ng-if="item.datatype==4">
+            		<div class="input-field">           
+		           		 <div  class="ueditor"  config="_simpleConfig" ng-model="item.value"> 
+		           		 </div>
+		           </div>
+
+               </td>
+            </tr>
+				<tr>
+				<input type="hidden"  value="pictureConfig" name="typeConfig">
+				<td colspan=2> <button class="waves-effect btn" type="submit">保存</button><span >{{ message }}</span><span>&nbsp;&nbsp;刷新缓存后生效<a href="#/web/app/appcache/list/anon">进入缓存设置</a></span></td>
+				</tr>
+				</table>
+            </form>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="/manage/static/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/manage/static/ueditor/ueditor.all.js"></script>
+	<!-- /With Search -->

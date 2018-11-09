@@ -1,0 +1,54 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- SysopenuserList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-31 10:05:12      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看信息</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/system/syscodevalue/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="code" readonly ng-model="formData.code" /> <label for="code">系统代码</label>
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="code_name" readonly ng-model="formData.code_name" /> <label for="code_name">代码名称</label>
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="code_description" readonly ng-model="formData.code_description" /> <label for="code_description">代码描述</label>
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="value" readonly ng-model="formData.value" /> <label for="value">代码值</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="parent_code" readonly ng-model="formData.parent_code" /> <label for="parent_code">父级代码</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="enable_flag" readonly ng-model="formData.enable_flag" /> <label for="enable_flag">启用</label>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+

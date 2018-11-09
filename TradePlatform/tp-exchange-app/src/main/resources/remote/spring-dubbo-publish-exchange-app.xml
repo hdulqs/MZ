@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">  
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~接口实现和发布~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   <bean id="remoteExDigitalmoneyAccountServiceImpl" class="com.mz.exchange.remote.account.RemoteExDigitalmoneyAccountServiceImpl" />
+   <dubbo:service ref="remoteExDigitalmoneyAccountServiceImpl"  interface="com.mz.change.remote.account.RemoteExDigitalmoneyAccountService"   />
+  
+   <bean id="remoteExProductServiceImpl" class="com.mz.exchange.remote.account.RemoteExProductServiceImpl" />
+   <dubbo:service ref="remoteExProductServiceImpl"  interface="com.mz.exchange.remote.account.RemoteExProductService"   />
+  
+  
+   <bean id="remoteExApiApplyServiceImpl" class="com.mz.exchange.remote.account.RemoteExApiApplyServiceImpl" />
+   <dubbo:service ref="remoteExApiApplyServiceImpl"  interface="com.mz.change.remote.account.RemoteExApiApplyService"   />
+
+   <bean id="remoteExAmineOrderServiceImpl" class="com.mz.exchange.remote.account.RemoteExAmineOrderServiceImpl" />
+   <dubbo:service ref="remoteExAmineOrderServiceImpl"  interface="com.mz.change.remote.account.RemoteExAmineOrderService"   />
+
+    
+   <bean id="remoteProductReviewServiceImpl" class="com.mz.exchange.remote.account.RemoteProductReviewServiceImpl" />
+   <dubbo:service ref="remoteProductReviewServiceImpl"  interface="com.mz.change.remote.account.RemoteProductReviewService"   />
+   
+  <bean id="remoteExDmTransactionServiceImpl" class=" com.mz.exchange.remote.dmtransaction.RemoteExDmTransactionServiceImpl" />
+   <dubbo:service ref="remoteExDmTransactionServiceImpl"  interface=" com.mz.change.remote.dmtransaction.RemoteExDmTransactionService"   />
+   
+
+   <bean id="remoteExExEntrustServiceImpl" class="com.mz.exchange.remote.exEntrust.RemoteExExEntrustServiceImpl" />
+   <dubbo:service ref="remoteExExEntrustServiceImpl"  interface="com.mz.change.remote.exEntrust.RemoteExExEntrustService"   />
+   
+   <bean id="remoteExExOrderServiceImpl" class="com.mz.exchange.remote.exEntrust.RemoteExExOrderServiceImpl" />
+   <dubbo:service ref="remoteExExOrderServiceImpl"  interface="com.mz.change.remote.exEntrust.RemoteExExOrderService"   executes="100" actives="100"/>
+
+     <bean id="remoteProductCommonServiceImpl" class="com.mz.exchange.remote.account.RemoteProductCommonServiceImpl" />
+   <dubbo:service ref="remoteProductCommonServiceImpl"  interface="com.mz.change.remote.account.RemoteProductCommonService"   />
+   
+     <bean id="remoteExSubscriptionServiceImpl" class="com.mz.exchange.remote.subscription.RemoteExSubscriptionServiceImpl" />
+   <dubbo:service ref="remoteExSubscriptionServiceImpl"  interface="com.mz.exchange.remote.subscription.RemoteExSubscriptionService"   />
+  
+     <bean id="remoteExDmLendServiceImpl" class="com.mz.exchange.remote.lend.RemoteExDmLendServiceImpl" />
+   <dubbo:service ref="remoteExDmLendServiceImpl"  interface="com.mz.change.remote.lend.RemoteExDmLendService"   />
+ 
+     
+</beans>  

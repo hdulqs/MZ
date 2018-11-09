@@ -1,0 +1,211 @@
+
+ <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/hry.css" />
+
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">新增资金方案</span>
+		 </h4>
+		 <hr>		 
+		 <form ng-submit="nextForm()" data-parsley-validate> 
+		  <div class="row">		  		 
+		   		<div class="col s12">
+		   		   <div class="col s6">
+		   			<div class="input-field">
+						<input id="paramsettingName"  type="text" ng-model="formData.paramsettingName" required>
+						 <label for="paramsettingName">*方案名称</label>
+				    </div>
+				     </div>
+				     <div class="col s6">
+		   			<div class="input-field">
+						<input  id="paramsettingKey" type="text" ng-model="formData.paramsettingKey" required>
+						 <label for="paramsettingKey">*方案KEY</label>
+				    </div>
+				     </div>
+				     <div class="col s12">
+					<div class="input-field">
+						<textarea id="paramsettingRemark" class="materialize-textarea" ng-model="formData.paramsettingRemark" required></textarea>
+					 	<label for="paramsettingRemark">*方案适用说明</label>						       
+					</div>
+					</div>
+				    <div class="row">
+				         <div class="col s9">
+			   			 	<label for="repaymentMethod">*还款方式</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="repaymentMethod"  ng-model="formData.repaymentMethod" required >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenRepaymentMethod"  ng-model="formData.isHiddenRepaymentMethod"/>
+								 <label for="isHiddenRepaymentMethod">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			          <div class="row">
+				         <div class="col s9">
+			   			 	<label for="repaymentCycle">*还款周期</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="repaymentCycle" ng-model="formData.repaymentCycle" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenRepaymentCycle" ng-model="formData.isHiddenRepaymentCycle" />
+								 <label for="isHiddenRepaymentCycle">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			         <div class="row">
+				         <div class="col s9">
+			   			 	<label for="preposePayAccrual">*前置情况</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="preposePayAccrual" ng-model="formData.preposePayAccrual" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenPreposePayAccrual" ng-model="formData.isHiddenPreposePayAccrual" />
+								 <label for="isHiddenPreposePayAccrual" >隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="interestByOneTime">*一次性情况</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="interestByOneTime"  ng-model="formData.interestByOneTime" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenInterestByOneTime" ng-model="formData.isHiddenInterestByOneTime" />
+								 <label for="isHiddenInterestByOneTime" >隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="repaymentDate">*偿还日</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="repaymentDate" ng-model="formData.repaymentDate" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenRepaymentDate" ng-model="formData.isHiddenRepaymentDate" />
+								 <label for="isHiddenRepaymentDate">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="dateModel">*日期模型</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="dateModel" ng-model="formData.dateModel" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenDateModel" ng-model="formData.isHiddenDateModel" />
+								 <label for="isHiddenDateModel">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="ccalculateFirstAndEnd">*算头算尾情况</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="ccalculateFirstAndEnd"  ng-model="formData.ccalculateFirstAndEnd" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenCcalculateFirstAndEnd" ng-model="formData.isHiddenCcalculateFirstAndEnd" />
+								 <label for="isHiddenCcalculateFirstAndEnd">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			          <div class="row">
+				         <div class="col s9">
+			   			 	<label for="intentDateType">*还款日的方式</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="intentDateType" ng-model="formData.intentDateType" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenIntentDateType" ng-model="formData.isHiddenIntentDateType" />
+								 <label for="isHiddenIntentDateType">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="consultationMoneyWay">{{fundMoneyType[0].text}}</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="consultationMoneyWay"  ng-model="formData.consultationMoneyWay" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenConsultationMoneyWay" ng-model="formData.isHiddenConsultationMoneyWay" />
+								 <label for="isHiddenConsultationMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="serviceMoneyWay">{{fundMoneyType[1].text}}</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="serviceMoneyWay" ng-model="formData.serviceMoneyWay" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenServiceMoneyWay"  ng-model="formData.isHiddenServiceMoneyWay" />
+								 <label for="isHiddenServiceMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="otherOneFundMoneyWay">{{fundMoneyType[2].text}}</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="otherOneFundMoneyWay"  ng-model="formData.otherOneFundMoneyWay" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenOtherOneFundMoneyWay" ng-model="formData.isHiddenOtherOneFundMoneyWay" />
+								 <label for="isHiddenOtherOneFundMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="otherTwoFundMoneyWay">{{fundMoneyType[3].text}}</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="otherTwoFundMoneyWay" ng-model="formData.otherTwoFundMoneyWay" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenOtherTwoFundMoneyWay" ng-model="formData.isHiddenOtherTwoFundMoneyWay" />
+								 <label for="isHiddenOtherTwoFundMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="otherTreeFundMoneyWay">{{fundMoneyType[4].text}}</label>
+				   			<select class="select2"  data-allow-clear="true"    multiple="" id="otherTreeFundMoneyWay"  ng-model="formData.otherTreeFundMoneyWay" >
+							</select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenOtherTreeFundMoneyWay" ng-model="formData.isHiddenOtherTreeFundMoneyWay"/>
+								 <label for="isHiddenOtherTreeFundMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+	
+					<p class="center">
+							<button class="btn mr-20 fs-16"  type="submit">下一步</button>
+				    </p>      
+				
+			</div>
+		</div>
+		</form>
+	</div> 
+</div>
+	

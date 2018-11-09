@@ -1,0 +1,58 @@
+   
+   <form ng-submit="processForm()">
+   <!-- card 卡片   row ：行  col： 列-->
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>添加消息类别</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content">
+     
+     
+       <div class="row">
+          <div class="col s12 ">
+            <div class="input-field">
+            	 消息类别名称<input type="text" id="name"  ng-model="formData.name"  required  />
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row ">
+          <div class="col s12">
+            <div class="input-field">
+         	  类别描述   <input type="text" id="describes"  ng-model="formData.describes"   />
+            </div>
+          </div>
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+            	 消息排序字段  <input type="text" id="sort"  ng-model="formData.sort"   />
+            </div>
+          </div>
+        
+          
+        </div>
+
+    
+      </div>
+      
+       <!--/内容-->
+    </div>
+
+   
+  
+       <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+        <p class="center">
+       
+       <button type="submit"  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存</button>
+      
+      <button  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">重置</button>
+       </p>
+   </form>

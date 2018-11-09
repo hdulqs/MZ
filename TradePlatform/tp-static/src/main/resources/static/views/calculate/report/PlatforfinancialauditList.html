@@ -1,0 +1,157 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+        
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+			<!-- 刷新按钮 -->
+			<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        
+        </div>
+
+    <!-- /Handle -->
+
+
+
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+				<table  border="1">
+					<tr>
+					    <th>充值总金额</th>
+					    <th>充值手续费</th>
+					    <th>提现总金额</th>
+					    <th>提现手续费</th>
+					    <th>成交总金额</th>
+					    <th>交易手续费</th>
+					   <!--  <th>借杠杆总金额</th> -->
+					    <th>杠杆收费</th>
+					  </tr>
+					  <tr>
+					  	<td>{{totalAccountForReport.postTotalMoney}}</td>
+					  	<td>{{totalAccountForReport.postFee}}</td>
+					  	<td>{{totalAccountForReport.getTotalMoney}}</td>
+					  	<td>{{totalAccountForReport.getFee}}</td>
+					  	<td>{{totalAccountForReport.orderSumMoney}}</td>
+					  	<td>{{totalAccountForReport.orderSumFee}}</td>
+					  	<!-- <td>{{totalAccountForReport.leverageMoney}}</td> -->
+					  	<td>{{totalAccountForReport.leverageFee}}</td>
+					  </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+<hr/>	
+		<div class="row">	
+			<div class="col s12 "  >
+				<table  border="1">
+					<tr>
+					    <th>充值总金额</th>
+					    <th>充值手续费</th>
+					    <th>提现总金额</th>
+					    <th>提现手续费</th>
+					    <th>成交总金额</th>
+					    <th>交易手续费</th>
+					   <!--  <th>借杠杆总金额</th>   -->
+					    <th>杠杆收费</th>
+					  </tr>
+					  <tr>
+					  	<td><input value="0" name="settlement" id="RMBpostTotalMoney" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','postTotalMoney')" ng-focus="removeClass2('RMB','postTotalMoney')"></input><input type="hidden" value="{{totalAccountForReport.postTotalMoney}}"/></td>
+					  	<td><input value="0" name="settlement" id="RMBpostFee" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','postFee')" ng-focus="removeClass2('RMB','postFee')"></input><input type="hidden" value="{{totalAccountForReport.postFee}}"/></td>
+					  	<td><input value="0" name="settlement" id="RMBgetTotalMoney" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','getTotalMoney')" ng-focus="removeClass2('RMB','getTotalMoney')"></input><input type="hidden" value="{{totalAccountForReport.getTotalMoney}}"/></td>
+					  	<td><input value="0" name="settlement" id="RMBgetFee" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','getFee')" ng-focus="removeClass2('RMB','getFee')"></input><input type="hidden" value="{{totalAccountForReport.getFee}}"/></td>
+					  	<td><input value="0" name="settlement" id="RMBorderSumMoney" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','orderSumMoney')" ng-focus="removeClass2('RMB','orderSumMoney')"></input><input type="hidden" value="{{totalAccountForReport.orderSumMoney}}"/></td>
+					  	<td><input value="0" name="settlement" id="RMBorderSumFee" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','orderSumFee')" ng-focus="removeClass2('RMB','orderSumFee')"></input><input type="hidden" value="{{totalAccountForReport.orderSumFee}}"/></td>
+					 	<!-- 	<td><input value="0" name="settlement" id="RMBleverageMoney" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','leverageMoney')" ng-focus="removeClass2('RMB','leverageMoney')"></input><input type="hidden" value="{{totalAccountForReport.leverageMoney}}"/></td>  -->
+					  	<td><input value="0" name="settlement" id="RMBleverageFee" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit('RMB','leverageFee')" ng-focus="removeClass2('RMB','leverageFee')"></input><input type="hidden" value="{{totalAccountForReport.leverageFee}}"/></td>
+					  </tr>
+				</table>
+			</div>
+		</div>
+	
+	<br/>	<br/>	<br/>	<br/>	<br/>	<br/><br/>	<br/><br/>	<br/>	<br/>	<br/><br/>	
+<br/>		
+	
+	
+	
+	 <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+       <!-- <input class="btn pr-10 pl-10" style="background-color:gray;"  type = "button" ng-click="querySpecific()" value="查询"></input>
+			-->
+				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+
+    <!-- /Handle -->
+
+
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+				<table  border="1">
+					 <tr>
+					    <th>币种</th>
+					   <!--  <th>持有个数</th> -->
+					    <th>充币个数</th>
+					    <th>提币个数</th>
+					    <th>提币收费个数</th>
+					    <th>杠杆收费个数</th>
+					  </tr>
+					  <tr ng-repeat="list in totalCurrencyForReport">
+					  
+					  	<td>{{list.coinCode}}</td>
+					  <!-- 	<td>{{list.totalCount}}</td> -->
+					  	<td>{{list.postCount}}</td>
+					  	<td>{{list.getCount}}</td>
+					  	<td>{{list.dmFee}}</td>
+					  	<td>{{list.leverageCount}}</td>
+					 
+					  </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+				<table  border="1">
+					 <tr>
+					    <th>币种</th>
+					 <!--    <th>持有个数</th> -->
+					    <th>充币个数</th>
+					    <th>提币个数</th>
+					    <th>提币收费个数</th>
+					    <th>杠杆收费个数</th>
+					  </tr>
+					  <tr ng-repeat="list in totalCurrencyForReport">
+					  	<td>{{list.coinCode}}</td>
+					 <!--  	<td><input name="settlement" id="{{list.coinCode}}totalCount" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit(list.coinCode,'totalCount')" ng-focus="removeClass2(list.coinCode,'totalCount')"></input><input type="hidden" value="{{list.totalCount}}"/></td> -->
+					  	<td><input value="0" name="settlement" id="{{list.coinCode}}postCount" type="test" style="width:80px; height:25px;" ng-blur="currencyAudit(list.coinCode,'postCount')" ng-focus="removeClass2(list.coinCode,'postCount')"></input><input type="hidden" value="{{list.postCount}}"/></td>
+					  	<td><input value="0" name="settlement" id="{{list.coinCode}}getCount" type="test" style="width:80px; height:25px;"  ng-blur="currencyAudit(list.coinCode,'getCount')" ng-focus="removeClass2(list.coinCode,'getCount')"></input><input type="hidden" value="{{list.getCount}}"/></td>
+					  	<td><input value="0" name="settlement" id="{{list.coinCode}}dmFee" type="test" style="width:80px; height:25px;"  ng-blur="currencyAudit(list.coinCode,'dmFee')" ng-focus="removeClass2(list.coinCode,'dmFee')"></input><input type="hidden" value="{{list.dmFee}}"/></td>
+					  	<td><input value="0" name="settlement" id="{{list.coinCode}}leverageCount" type="test" style="width:80px; height:25px;"  ng-blur="currencyAudit(list.coinCode,'leverageCount')" ng-focus="removeClass2(list.coinCode,'leverageCount')"></input><input type="hidden" value="{{list.leverageCount}}"/></td>
+					  </tr>
+					  <tr>
+					  	<td></td>
+					  	<td></td>
+					  	<td></td>
+					  	<td><input type="button" ng-click="submitValue()" value="结算完成"></input></td>
+					  	<td></td>
+					  	<td></td>
+					  </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+

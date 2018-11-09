@@ -1,0 +1,38 @@
+<!-- 管理员权限-->
+	<div class="card-panel" >
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">管理员权限</span>
+       		<!-- 返回按钮 -->
+			<!-- <a class="btn fs-16 right" ng-click="" >返回</a> -->
+		 </h4>
+		 <hr>
+		<div class="row">
+			<!-- 提示信息 -->
+			<div class="col s12">
+				<div class="alert alert-dismissible orange lighten-4 black-text text-darken-2">
+					<i class="mdi-av-volume-up fs-20"></i>
+					 温馨提示：以下为分公司级别所有授权菜单，勾选视为分派给分公司管理员，管理员可以自由授权给该公司的其他人员。			  
+				</div>
+			</div>
+			<!-- /提示信息 -->
+			<div class="col s12">
+				权限树
+				<div id="tree" class="ztree" >
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<form id="seeForm" ng-submit="processForm()">
+				<!-- 权限id -->
+				<input id="permissions" type="hidden" >
+				<!-- <button class="btn" type="submit" id="addPermissions" >保存</button> -->
+			</form>
+		</div>
+		
+		
+	</div>
+<!-- /管理员权限--> 
+
+

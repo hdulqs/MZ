@@ -1,0 +1,56 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+			     <div class="col m3 s12">
+			      <div class="input-field">
+			        <input id="fristData"   class="pikaday" type="text" readonly dataTableSerch> <label for="fristData">开始时间-起</label>
+			      </div>
+			    </div>
+			 	<div class="col m3 s12">
+					<div class="input-field">
+						<input id="endTime" class="pikaday" type="text" readonly  dataTableSerch> <label for="endTime">结束时间-止</label>
+				   </div>
+			    </div> 
+			      </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+        <input class="btn pr-10 pl-10" style="background-color:gray;"  type = "button" ng-click="querySpecific()" value="查询"></input>
+				<!-- 刷新按钮 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+
+    <!-- /Handle -->
+
+
+<!-- 分公司管理 -->
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+				<table  border="1">
+					 <tr>
+					    <th>充值手续费</th>
+					    <th>提现手续费</th>
+					    <th>交易手续费</th>
+					    <!-- <th>杠杆收费</th> -->
+					    <th>支付佣金</th>
+					    <th>盈利合计</th>
+					  </tr>                                                 
+					  <tr>        
+					  	<td>{{totalEarningsForReport.getFee==null?0:totalEarningsForReport.getFee  | number:2}}</td>           
+					  	<td>{{totalEarningsForReport.postFee==null?0:totalEarningsForReport.postFee  | number:2}}</td>          
+					  	<td>{{totalEarningsForReport.transactionFee==null?0:totalEarningsForReport.transactionFee  | number:2}}</td>           
+					  	<!-- <td>{{totalEarningsForReport.interestCount==null?0:totalEarningsForReport.interestCount}}</td>  -->
+					  	<td>{{totalEarningsForReport.drawalMoney==null?0:totalEarningsForReport.drawalMoney  | number:2}}</td>
+					  	<td>{{totalEarningsForReport.totalMoney  | number:2}}</td>
+					  </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+

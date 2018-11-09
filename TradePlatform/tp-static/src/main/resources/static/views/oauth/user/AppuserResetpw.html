@@ -1,0 +1,41 @@
+
+<!-- 添加分公司-->
+<div class="card-panel">
+	<div class="page-title pt-22 pb-22 ">
+		<div class="row">
+			<h4>
+				<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">基本信息</span>
+				<!-- 返回按钮 -->
+				<a class="btn fs-16 right" ng-click="returnList();">返回</a>
+			</h4>
+		</div>
+	</div>
+	<form id="seeForm" ng-submit="processForm()">
+		<div class="row">
+			<div class="alert">
+				<strong>提示：</strong>你正在重置账号{{formData.username}}的密码...!!!
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s3 m3 l3"></div>
+			<div class="col s4 m4 l4">
+				<div class="input-field">
+					<input type="password" id="newPassword" required> <label for="input_text">新密码</label>
+				</div>
+				<button class="btn" type="submit">重置</button>
+			</div>
+			<div class="col s5 m5 l5"></div>
+		</div>
+	</form>
+
+</div>
+<!-- /添加分公司  -->
+
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<script type="text/javascript">
+	function nofind() {
+		var img = event.srcElement;
+		img.src = HRY.host + "/static/static/images/logo_person.png";
+	}
+</script>
+

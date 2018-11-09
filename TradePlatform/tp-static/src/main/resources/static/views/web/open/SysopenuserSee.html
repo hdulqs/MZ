@@ -1,0 +1,40 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- SysopenuserList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-31 10:05:12      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看信息</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/open/sysopenuser/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					用户名<input type="text" name="userName" value="{{formData.userName}}" readonly />
+				</div>
+			</div>
+			
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					公钥<input type="text" name="appKey" value="{{formData.appKey}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					秘钥<input type="text" name="secret" value="{{formData.secret}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.customer.businessman.dao.C2cTransactionDao">
+	
+	<resultMap id="groupByBusinessmanIdResultMap" type="com.mz.customer.businessman.model.C2cTransaction">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="userName" property="userName" javaType="java.lang.String" />
+		<result column="trueName" property="trueName" javaType="java.lang.String" />
+	</resultMap>
+	
+	
+	<!-- 通过sql分页查询 -->
+	<select id="groupByBusinessmanId" parameterType="java.util.Map"   resultMap="groupByBusinessmanIdResultMap" >
+		SELECT
+			count(*) AS transactionCount,
+			businessmanId,
+			coinCode
+		FROM
+			c2c_transaction
+		<where>
+			status = 2
+			<if test="coinCode!=null and coinCode!='' " >
+				and coinCode = #{coinCode}
+			</if>
+		</where>
+		GROUP BY businessmanId
+		order by transactionCount
+	</select>
+	
+	<select id="c2clist" parameterType="java.util.Map" resultType="com.mz.customer.businessman.model.C2cTransaction">
+		select 
+		coinCode,
+		transactionPrice,
+		transactionCount,
+		transactionMoney,
+		transactionType,
+		status,
+		created
+		from c2c_transaction    
+		<where>
+			customerId =  #{customerId}
+			<if test="transactionType!=null and transactionType!='' ">
+				and  transactionType = #{transactionType}
+			</if>
+	    </where>
+		order by created desc
+	</select>
+	
+</mapper>

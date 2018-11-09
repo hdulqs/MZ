@@ -1,0 +1,1 @@
+ALTER TABLE ex_cointo_coin ADD (isOperate INT(20) DEFAULT 0);

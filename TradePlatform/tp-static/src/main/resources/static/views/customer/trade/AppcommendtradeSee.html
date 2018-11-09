@@ -1,0 +1,93 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommendtradeList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-28 17:40:59      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppCommendTrade</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/trade/appcommendtrade/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					代理商id<input type="text" name="custromerId" value="{{formData.custromerId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					代理商名称<input type="text" name="custromerName" value="{{formData.custromerName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					订单号<input type="text" name="ordertNum" value="{{formData.ordertNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					0真实货币1虚拟币<input type="text" name="fixPriceType" value="{{formData.fixPriceType}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					定价币种<input type="text" name="fixPriceCoinCode" value="{{formData.fixPriceCoinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					pid<input type="text" name="pid" value="{{formData.pid}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					手续费金额<input type="text" name="feeamout" value="{{formData.feeamout}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					返佣基数<input type="text" name="basemoney" value="{{formData.basemoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					奖励金额<input type="text" name="rewardmoney" value="{{formData.rewardmoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					sid<input type="text" name="sid" value="{{formData.sid}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					交款人<input type="text" name="deliveryName" value="{{formData.deliveryName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					交款人id<input type="text" name="deliveryId" value="{{formData.deliveryId}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

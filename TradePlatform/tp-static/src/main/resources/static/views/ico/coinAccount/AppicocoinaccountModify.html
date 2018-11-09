@@ -1,0 +1,142 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicocoinaccountList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-08-17 18:26:08      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppIcoCoinAccount</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/coinAccount/appicocoinaccount/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="version" ng-model="formData.version" /> <label for="version">版本号</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="customerId" ng-model="formData.customerId" /> <label for="customerId">用户id</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="hotMoney" ng-model="formData.hotMoney" /> <label for="hotMoney">可用总额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coldMoney" ng-model="formData.coldMoney" /> <label for="coldMoney">冻结总额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="userName" ng-model="formData.userName" /> <label for="userName">用户登录名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="accountNum" ng-model="formData.accountNum" /> <label for="accountNum">虚拟账号（证件号+账户类型 0 线上注册用户 1线下注册用户）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="currencyType" ng-model="formData.currencyType" /> <label for="currencyType">虚拟币种（ BTC  LTC ...）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="status" ng-model="formData.status" /> <label for="status">账户状态（0 不可用1可用）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="publicKey" ng-model="formData.publicKey" /> <label for="publicKey">公钥</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="privateKey" ng-model="formData.privateKey" /> <label for="privateKey">公钥</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="lendMoney" ng-model="formData.lendMoney" /> <label for="lendMoney">已借金额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinName" ng-model="formData.coinName" /> <label for="coinName">虚拟币种汉语名称（ 比特币 莱特币...）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinCode" ng-model="formData.coinCode" /> <label for="coinCode">币种（CNY）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="website" ng-model="formData.website" /> <label for="website">中国站标识默认中国站</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="psitioNaveragePrice" ng-model="formData.psitioNaveragePrice" /> <label for="psitioNaveragePrice">psitioNaveragePrice</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="psitioProtectPrice" ng-model="formData.psitioProtectPrice" /> <label for="psitioProtectPrice">psitioProtectPrice</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sumCost" ng-model="formData.sumCost" /> <label for="sumCost">sumCost</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="trueName" ng-model="formData.trueName" /> <label for="trueName">trueName</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="disableMoney" ng-model="formData.disableMoney" /> <label for="disableMoney">禁用</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

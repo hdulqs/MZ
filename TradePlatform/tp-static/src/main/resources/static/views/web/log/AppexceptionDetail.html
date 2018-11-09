@@ -1,0 +1,51 @@
+	<div class="row">
+	<div class="col s12">
+        <div class="card-panel">
+	         <div class="col s12">
+	         	<i class="mdi-action-view-list fs-26"></i>
+	         	<span class="fs-16 p-5">异常日志详细信息</span>
+			     <a class="btn" ng-click="ngback()">返回</a>
+			 </div>
+	        <div class="col s12 m5">
+	        	<div class="input-field">
+				  <input  type="text" class="validate" title="{{appexception.name}}"    ng-model="appexception.name" disabled="disabled">
+				  <label for="" class="active">异常名称</label>
+				</div>
+	        </div>
+	        <div class="col s12 m2"></div>
+	        <div class="col s12 m5">
+	        	<div class="input-field">
+				  <input  type="text" class="validate" title="{{appexception.type}}"   ng-model="appexception.type" disabled="disabled">
+				  <label for="input_email" class="active">异常类型</label>
+				</div>
+	        </div>
+	        <div class="col s12 m5">
+	        	<div class="input-field">
+				  <input  type="text" class="validate"  title="{{appexception.ip}}"  ng-model="appexception.ip" disabled="disabled">
+				  <label for="input_email" class="active">请求id地址</label>
+				</div>
+	        </div>
+	        <div class="col s12 m2"></div>
+	        <div class="col s12 m5">
+	        	<div class="input-field">
+				  <input  type="text" class="validate" title="{{appexception.parameter}}"  ng-model="appexception.parameter" disabled="disabled">
+				  <label for="input_email" class="active">请求参数</label>
+				</div>
+	        </div>
+	        <div class="col s12 m5">
+	        	<div class="input-field">
+				  <input  type="text" class="validate" title="{{appexception.requestaddress}}"  ng-model="appexception.requestaddress" disabled="disabled">
+				  <label for="input_email" class="active">请求url地址</label>
+				</div>
+	        </div>
+	        <div class="col s12 m2"></div>
+	        <div class="col s12 m5">
+	        	<div class="input-field">
+				  <input  type="text" class="validate" title="{{appexception.notes}}"  ng-model="appexception.notes" disabled="disabled">
+				  <label for="input_email" class="active">异常详细信息描述</label>
+				</div>
+	        </div>
+        </div>
+    </div>
+</div>
+</div>

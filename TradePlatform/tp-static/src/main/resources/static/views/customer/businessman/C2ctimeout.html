@@ -1,0 +1,35 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- C2ctransactionList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-12-07 14:06:38      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">交易超时设置</span>
+		<!-- 返回按钮 -->
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+	<div class="row">
+	<div class="col s12 m4">
+		<div class="row">
+			
+		   	<div class="input-field">
+		   	交易超时时间（分钟）,默认为30分钟
+				<input type="text" id="c2cTimeOut" ng-model="formData.c2cTimeOut" /> 
+			</div>
+		</div>
+		
+		<div class="row">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+		</div>
+		</div>
+	</div>
+	</div>
+	</form>
+</div>
+
+

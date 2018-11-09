@@ -1,0 +1,23 @@
+    <!-- With Search -->
+    <div class="card-panel">
+      <h4>查看</h4>
+      <div class="row">
+      	<div class="col s1 "></div>
+		<div class="col s3 ">
+		    <form ng-submit="processForm()">
+                    <div class="input-field"> 
+				      名称<input type="text" name="propertiesName" value="{{model.propertiesName}}"  readonly  />
+				    </div>
+				  <div class="input-field"> 
+				      <input type="radio" name="isOpen" value="0" id ="open" ng-model="model.isOpen"  readonly />
+				    <label for="open">开启</label>
+				    <input type="radio" name="isOpen"  value="1" id ="close" ng-model="model.isOpen"  readonly />
+				    <label for="close">关闭</label>
+				   </div>
+			</form>
+			
+		</div>
+      </div>
+    </div>
+
+

@@ -1,0 +1,288 @@
+
+
+/*about*/
+.compete-com {
+    color: #fff;
+    height: 320px;
+}
+.con-conter {
+    width: 1180px !important;
+    margin: 0 auto;
+}
+.competess {
+    background: #a8d8ca url(../img/aboutus-01.png) no-repeat center top;
+    height: 285px;
+    width: 100%;
+}
+.pro-competes .buy-pro {
+    border: none;
+}
+.pro-competes .pro-compete {
+    width: 100%;
+    height: 95px;
+    line-height: 95px;
+}
+.pro-competes .pro-compete h2 span {
+    background: #aab2bd;
+    cursor: pointer;
+    padding: 10px 23px;
+    border-radius: 6px;
+    margin: 0 20px 0 0;
+    color: #fff;
+    font-weight: normal;
+    font-size: 15px;
+}
+.contend .pro-usline {
+    border-top: 2px solid #aab2bd;
+}
+.con-product .pro-line {
+    border-top: 1px solid #2aaae3;
+}
+.con-product .line {
+    border-top: 1px solid #d2d2d2;
+    margin: 30px 0 40px 0;
+    position: relative;
+}
+.pro-competes .pro-compete h2 {
+    text-align: center;
+}
+.buy-pros h2 {
+    position: absolute;
+    top: 22px;
+}
+.con-product h2 {
+    color: #363636;
+    font-size: 26px;
+    font-weight: normal;
+    padding-bottom: 40px;
+    width:100%;
+}
+.buy-pros {
+    position: relative;
+    padding-top: 10px;
+}
+.con-product {
+    margin: 25px auto;
+}
+.con-conter {
+    width: 1180px !important;
+    margin: 0 auto;
+}
+.pro-abouts li h3 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    clear: both;
+}
+.buy-product li h3 {
+    font-weight: normal;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+.company_logo {
+    margin-right: 25px;
+}
+.fl {
+    float: left;
+}
+.pro-abouts li .company_con .cont {
+    line-height: 26px;
+}
+.pro-abouts li .cont {
+    line-height: 35px;
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 20px;
+}
+.company_con .company_con_tit {
+    font-size: 18px;
+    color: #333;
+    padding: 0px 0 10px;
+}
+.pro-abouts li .company_lay .com_advantage {
+    font-size: 18px;
+}
+.fl {
+    float: left;
+}
+.company_con {
+    width: 678px;
+}
+.com_ad_info .infobg1 {
+    background: #f0af00;
+}
+.com_ad_info .infobg {
+    color: #fff;
+    font-size: 12px;
+}
+.com_ad_info dd {
+    width: 292px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    float: left;
+    height: 218px;
+}
+.com_ad_info .infobg h4 {
+    font-size: 16px;
+    overflow: hidden;
+    text-align: center;
+}
+.com_ad_info .infobg h4, .com_ad_info .infobg p {
+    padding: 10px 20px 0;
+    line-height: 22px;
+}
+.com_ad_info .infobg3 {
+    background: #d30830;
+}
+.com_ad_info .infobg2 {
+    background: #2233d4;
+}
+.com_ad_info .infobg4 {
+    background: #94d422;
+}
+.com_ad_info dd.lilast {
+    margin-right: 0;
+}
+.pro-abouts li h3 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    clear: both;
+}
+.team_leader .ld_photo {
+    padding: 15px 0 0;
+    /*height: 156px;*/
+}
+.team_leader .ld_photo img{
+	width:100%;
+}
+.team_leader .namebg1 {
+    background: #a0c528;
+}
+.team_leader .ld_name {
+    margin: 15px 0;
+    width: 154px;
+    color: #fff;
+    line-height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.team_leader dl {
+    width: 154px;
+    float: left;
+    text-align: center;
+    margin-left: 110px;
+}
+.team_leader .namebg2 {
+    background: #56a6ec;
+}
+.team_leader .namebg3 {
+    background: #fac090;
+}
+.team_leader {
+    overflow: hidden;
+}
+.team_leader .ld_job {
+    font-size: 18px;
+    color: #666;
+}
+.team_lay {
+    padding: 40px 0 40px;
+}
+.about-contact .cont-item dt .f30 {
+    font-size: 30px;
+    color: #ee7720;
+    margin-top: 55px;
+}
+.about-contact .cont-item dd {
+    display: block;
+    float: left;
+    padding: 30px 0 0 45px;
+}
+.about-contact .cont-item dt {
+    text-align: center;
+    width: 140px;
+    height: 185px;
+    float: left;
+    background: url(../images/about-bgline.png) no-repeat center right;
+}
+.about-contact .cont-item .ft-box {
+    float: left;
+    width: 60%;
+}
+.about-contact .cont-item dd .f14 {
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;
+}
+.about-contact p {
+    color: #000;
+    font-size: 18px;
+    line-height: 32px;
+}
+.about-contact .cont-item dd .warntips {
+    overflow: hidden;
+    color: #ff0000;
+}
+.about-contact .cont-item .fr-box {
+    float: left;
+    width: 40%;
+}
+.Helpline {
+    height: 67px;
+    border: 1px solid #fbf5e9;
+    border-radius: 50px;
+    clear: both;
+    margin: 25px 0;
+}
+.about-contact {
+    padding-bottom: 50px;
+    overflow: hidden;
+    padding-top: 50px;
+}
+.about-contact .item-tit {
+    padding-bottom: 30px;
+    font-size: 30px;
+}
+.about-contact .cont-item dd .warntips div {
+    width: 336px;
+}
+.zizhi {
+    width: 275px;
+    margin-right: 20px;
+    float: left;
+    padding: 20px 0;
+    background: #fff;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.bglist .listrow1 p {
+    margin-right: 24px;
+}
+.bglist .listrow p {
+    display: inline-block;
+    margin: 30px 18px 0 0;
+}
+.pro-competes .detal-compete li.rent {
+    display: block;
+}
+.pro-competes .detal-compete li {
+    display: none;
+}
+.pro-competes .pro-us h2 span.current {
+    background: #64c4a8;
+}
+.Helpline .ft-box p img {
+    margin: 15px 112px 0 35px;
+}
+.Helpline .ft-box p {
+    float: left;
+    font-size: 18px;
+    line-height: 67px;
+}
+.friend_a_box p{
+	font-size: 14px;
+    margin-top: 10px;
+    line-height: 22px;
+}

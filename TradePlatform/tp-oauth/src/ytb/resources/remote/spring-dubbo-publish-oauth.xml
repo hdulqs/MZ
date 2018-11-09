@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">  
+      
+    <!-- 提供方应用信息，用于计算依赖关系 -->  
+    <dubbo:application name="${dubbo.name}"  />  
+    
+    <!-- 使用zookeeper注册中心暴露服务地址   
+    	  多地址与单地址区别：多地址任何一个注册中心宕机会抛异常  java.net.ConnectException: Connection refused: no further information
+    	                                          单地址不会，只会打印日志
+    	  建议把所有ZK都配置上          add by liushilei
+    <dubbo:registry address="zookeeper://192.168.1.100:2181?backup=192.168.1.102:2181" />
+     -->  
+     
+    <!-- <dubbo:registry address="zookeeper://172.16.1.20:2181?backup=172.16.1.30:2181" /> -->
+    
+    <dubbo:registry address="${zookeeper.url}" file="${dubbo.cachepath}/dubbo/${dubbo.name}.cache" />
+    
+    <!-- 用dubbo协议在20880端口暴露服务 -->  
+    <dubbo:protocol threads="2000" name="dubbo" host="${dubbo.host}" port="${dubbo.port}" />  
+    <!-- 提供者-->
+    <dubbo:provider timeout="600000" retries="0" />
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~接口实现和发布~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   
+	<!-- 具体的实现bean -->
+    <bean id="remoteOauthServiceImpl" class="com.mz.oauth.oauth.core.RemoteOauthServiceImpl" />
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service ref="remoteOauthServiceImpl"  interface="com.mz.oauth.oauth.core.RemoteOauthService"   />
+
+    <!-- 具体的实现bean -->
+    <bean id="remoteAppUserServiceImpl" class="com.mz.oauth.remote.user.RemoteAppUserServiceImpl" />
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service ref="remoteAppUserServiceImpl" interface="com.mz.oauth.remote.user.RemoteAppUserService"   />
+
+    <bean id="remoteAppResourceServiceImpl" class="com.mz.oauth.remote.user.RemoteAppResourceServiceImpl" />
+    <dubbo:service ref="remoteAppResourceServiceImpl" interface="com.mz.oauth.remote.user.RemoteAppResourceService" />
+
+    <bean id="remoteAppOrganizationServiceImpl" class="com.mz.oauth.remote.company.RemoteAppOrganizationServiceImpl" />
+    <dubbo:service ref="remoteAppOrganizationServiceImpl" interface="com.mz.oauth.remote.company.RemoteAppOrganizationService" />
+
+
+    <bean id="remoteAppRoleMenuTreeImpl" class="com.mz.oauth.remote.user.RemoteAppRoleMenuTreeServiceImpl" />
+    <dubbo:service ref="remoteAppRoleMenuTreeImpl" interface="com.mz.oauth.remote.user.RemoteAppRoleMenuTreeService" />
+
+     
+</beans>  

@@ -1,0 +1,96 @@
+<!-- 集团配置-->
+	<div class="card-panel" >
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">集团配置</span>
+		 </h4>
+		 <hr>
+		<form id="seeForm" ng-submit="processForm()">
+		<div class="row">
+			<div class="col m8 s12 left">
+					<div class="col m6 s12">
+				      <div class="input-field">
+				      	 <input  type="hidden" value="{{model.id}}" ng-model="formData.id">
+				      	  集团名称<input  type="text" value="{{model.name}}" ng-model="formData.name">
+				      </div>
+				      
+				    </div>
+					<div class="col m6 s12">
+				      <div class="input-field">
+				       	 集团短称<input  type="text" value="{{model.shortName}}" ng-model="formData.shortName">
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				                         联系人<input  type="text" value="{{model.person}}" ng-model="formData.person">
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				                      联系人电话<input  type="text" value="{{model.mobile}}" ng-model="formData.mobile">
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				    	    传真<input  type="text" value="{{model.fax}}" ng-model="formData.fax">
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				                         成立日期<input class="pikaday" type="text" value="{{model.setDate}}" ng-model="formData.setDate" >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        	地址<input type="text" value="{{model.address}}" ng-model="formData.address">
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        	邮政编码<input id="input_lname" type="text" value="{{model.postalcode}}" ng-model="formData.postalcode">
+				      </div>
+				    </div>
+					<div class="col s12">
+				      	<div class="input-field">
+						            备注<textarea  class="materialize-textarea"  length="120" value="{{model.remark}}" ng-model="formData.remark" ></textarea>
+						</div>
+				    </div>
+				    <p>
+					    <!-- 保存按钮 -->
+						<button class="btn" type="submit"  >保存</button>
+				    </p>
+			
+		</div>
+	<!--  	<div class="col m4 s12 right">
+			<div class="row">
+				<h4 class="fs-20 lh-20">公司logo</h4>
+				<div class="row photoswipe-gallery isotope mr-20">
+				    <a class="col s12 item"  data-size="2880x1800" data-med="" data-med-size="1440x900" data-author="John Doe">
+				    	<img id="imgShow" src="{{HRY.host}}/{{model.logoPath}}" alt="" onerror="nofind();"/>
+				    	
+				    	<figure>logo</figure>
+				    </a>
+			    </div>
+			    <p>
+			    	 上传按钮
+					删除按钮 
+			  		<input type="hidden" id="imgSrc"  />  
+				    <input class="btn" type="button" id="btnUploadImg" value="上传" />  
+				    <input class="btn" type="button" id="btnDeleteImg" value="删除" /> 
+			    </p>
+	   		</div>
+		</div>
+	-->	
+		
+		</form>
+		
+	</div>
+<!-- /集团配置  --> 
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<!--  <script type="text/javascript">
+function nofind(){
+var img=event.srcElement;
+//img.src=HRY.host+"{{model.logoPath}}";
+}
+</script>
+-->

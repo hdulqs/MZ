@@ -1,0 +1,136 @@
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+	<div class="row">
+	<hry-search/>
+		<div class="col s12 m9 l10 " >
+			<div class="row">
+			
+					<div class="col  s2">
+						<div class="input-field">
+							<input type="text" ng-model="serchData.entrustNum_like"
+								dataTableSerch> <label for="input_city">委托单号</label>
+						</div>
+					</div>
+					<div class="col  s2">
+						<div class="input-field">
+							<input type="text" ng-model="serchData.userName_like"
+								dataTableSerch> <label for="input_city">委托人</label>
+						</div>
+					</div>
+					
+					<div class="col  s2">
+						<div class="input-field">
+							<label for="input_city"></label>
+							<hry-select
+								url="{{HRY.host}}{{HRY.modules.exchange}}product/exproduct/selectlist"
+								placeholder="币种" name="name" value="coinCode"
+								selectId="coinCode" dataTableSerch></hry-select>
+						</div>
+					</div>
+					<div class="col  s2">
+						<div class="input-field">
+							<label for="input_city"></label>
+							<hry-select
+								url="{{HRY.host}}{{HRY.modules.web}}app/appdictionary/selectlistCurrenyType"
+								placeholder="账户类型" name="currenyTypekey"
+								value="currenyTypevalue" selectId="currencyType" dataTableSerch></hry-select>
+						</div>
+					</div>
+					
+              
+              <div class="col  s4" style="position:relative">
+				
+			<!-- 筛选 -->
+			<div class="valign-wrapper   w-70 h-70 br-5 left ">
+			<a href="javascript:;" style="color:#B8B8B8" ng-click="searchClick();"><i class="fa fa-sort-desc right"></i>更多筛选</a>
+			</div>
+			<div class="search-pannel z-depth-2">
+			<div><h5 class="right-align"><a href="javascript:;" title="关闭" ng-click="close()"><i class="fa fa-times"></i></a></h5></div>
+			
+
+				<div class="row">
+					<div class="col  s6">
+						<div class="input-field">
+							<input class="pikaday" type="text"
+								ng-model="serchData.lentrustTime" dataTableSerch> <label
+								for="input_city">开始委托时间</label>
+						</div>
+					</div>
+
+					<div class="col  s6">
+						<div class="input-field">
+							<input class="pikaday" type="text"
+								ng-model="serchData.gentrustTime" dataTableSerch> <label
+								for="input_city">截至委托时间</label>
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col  s6">
+						<div class="input-field">
+							<select class="select2" data-allow-clear="true"
+								data-placeholder="出价类型" name="entrustWay_EQ" dataTableSerch>
+								<option value="">不限</option>
+								<option value="1">限价</option>
+								<option value="2">市价</option>
+							</select>
+						</div>
+					</div>
+					<div class="col  s6">
+						<div class="input-field">
+							<select class="select2" data-allow-clear="true"
+								data-placeholder="委托类型" name="type_EQ" dataTableSerch>
+								<option value="">不限</option>
+								<option value="1">买入</option>
+								<option value="2">卖出</option>
+							</select>
+						</div>
+					</div>
+					</div>
+				<div class="row">
+					<div class="col  s6">
+						<div class="input-field">
+							<select class="select2" data-allow-clear="true"
+								data-placeholder="状态" name="status_EQ" dataTableSerch>
+								<option value="">不限</option>
+								<option value="0">全部待成交</option>
+								<option value="1">部分待成交</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="col  s6">
+						<div class="input-field">
+							<select class="select2" data-allow-clear="true"
+								data-placeholder="来源" name="source_EQ" dataTableSerch>
+								<option value="">不限</option>
+								<option value="1">人工</option>
+								<option value="2">机器人</option>
+
+							</select>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<!-- 筛选 end -->
+            </div>
+            </div>
+		</div>
+		<div class="col s12 m3 l2 right-align pt-10">
+
+
+			<!-- 刷新按钮 -->
+			<a class="btn mt-10  pr-10 pl-10 " ng-click="fnList()"><i
+				class="fa fa-refresh "></i>刷新</a> <a class="btn mt-10 pr-10 pl-10"
+				ng-click="reset()"><i class="fa fa-refresh "></i>重置</a>
+
+		</div>
+	</div>
+	<div class="col s12" style="padding:0">
+		<div class="right-align">{{unitTips}}</div>
+	</div>
+</div>
+<!-- /Handle -->

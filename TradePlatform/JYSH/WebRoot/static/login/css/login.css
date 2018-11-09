@@ -1,0 +1,150 @@
+
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr {margin:0;padding:0}  
+body,button,input,select,textarea{ font:12px/1.5 "微软雅黑",arial, verdana, sans-serif}  
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal} 
+li{list-style:none} 
+fieldset,img{border:0}  
+table{border-collapse:collapse;border-spacing:0}
+a{text-decoration:none}  
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr {margin:0;padding:0}  
+body,button,input,select,textarea {
+	margin: 0;
+	padding: 0;
+}
+html, body{
+	min-width: 1200px;
+	width: 100%;
+	height: 100%;
+}
+.login {
+	width: 100%;
+	height: 100%;
+	background: url(../images/banner.png) no-repeat center;
+	background-size: 100% 100%;
+}
+#login_form {
+	width: 300px;
+	height: 378px;
+	background: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -150px;
+	margin-top: -200px;
+}
+#login_form .login_head {
+	width: 100%;
+	height: 75px;
+	line-height: 75px;
+	overflow: hidden;
+}
+#login_form .login_head h3 {
+	height: 75px;
+	line-height: 75px;
+	float: left;
+	font-size: 20px;
+	color: #000;
+	margin-left: 30px;
+}
+#login_form .login_head a {
+	height: 75px;
+	line-height: 75px;
+	float: right;
+	font-size: 12px;
+	color: #3894ea;
+	margin-right: 30px;
+}
+#login_form .loginList {
+	width: 233px;
+	height: 38px;
+	border: 1px solid #c9c9c9;
+	margin-left: 33px;
+	margin-bottom: 16px;
+	overflow: hidden;
+}
+#login_form .loginList label {
+	width: 33px;
+	height: 38px;
+	display: block;
+	float: left;
+}
+#login_form .loginListUser label {
+	background: url(../images/userName.png) no-repeat center;
+}
+#login_form .loginListPwd label {
+	background: url(../images/password.png) no-repeat center;
+}
+#login_form .loginList input {
+	display: block;
+	width: 198px;
+	height: 38px;
+	padding-left: 2px;
+	float: left;
+	border: none;
+	outline: none;	
+}
+#login_form .loginList2 {
+	width: 233px;
+	height: 38px;
+	border: 1px solid #c9c9c9;
+	margin-left: 33px;
+	margin-bottom: 16px;
+	overflow: hidden;
+}
+#login_form .loginList2 label {
+	width: 33px;
+	height: 38px;
+	display: block;
+	float: left;
+	background: url(../images/code.png) no-repeat center;
+}
+#login_form .loginList2 input {
+	width: 106px;
+	height: 38px;
+	padding-left: 4px;
+	float: left;
+	display: block;
+	border: none;
+	outline: none;	
+}
+#login_form .loginList2 i {
+	width: 90px;
+	height: 38px;
+	font-style: normal;
+	display: block;
+	float: right;
+	background: #eee;
+}
+#login_form .loginList2 i img {
+	display: block;
+	width: 100%;
+	height: 38px !important;
+}
+#login_form .login_btn {
+	width: 266px;
+	height: 38px;
+	overflow: hidden;
+}
+#login_form .login_btn .forget_password {
+	display: block;
+	width: 90px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 12px;
+	color: #000;
+	float: left;
+	text-align: right;
+}
+#login_form .login_btn .loginBtn {
+	display: block;
+	width: 126px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-size: 18px;
+	background: #ec5151;
+	border: none;
+	outline: none;
+	margin-left: 87px;
+	text-align: center;
+}

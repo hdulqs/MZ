@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.web.file.dao.AppFileRelationDao"   >
+	
+	<resultMap id="BaseResultMap" type="com.mz.web.file.model.AppFileRelation">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="mkey" property="mkey" javaType="java.lang.String" />
+		<result column="pkey" property="pkey" javaType="java.lang.String" />
+		<result column="name" property="name" javaType="java.lang.String" />
+		<result column="orgId" property="orgId" javaType="java.lang.Long" />
+		<result column="userId" property="userId" javaType="java.lang.Long" />
+	</resultMap>
+	
+	
+	<resultMap id="findByOrgIdMap" type="com.mz.web.file.model.AppFile">
+		<result column="filename" property="filename" javaType="java.lang.String" />
+		<result column="extendname" property="extendname" javaType="java.lang.String" />
+		<result column="fileWebPath" property="fileWebPath" javaType="java.lang.String" />
+		<result column="username" property="username" javaType="java.lang.String" />
+	</resultMap>
+	
+	
+	<!-- 根据文件关系表查询组织结构 -->
+	<select id="findGroup"  resultMap="BaseResultMap">
+		select a.*,
+		(
+		case 
+			when (LOCATE('org',a.mkey))
+		  then (select name from app_organization where id = a.orgId)
+			else (select name from app_user where id = a.userId)
+		end
+		) as name,
+		(select pid from app_organization where id = a.orgId) as orgpId
+		from (SELECT id,mkey,pkey,orgId,userId,type  FROM app_file_relation GROUP BY mkey ) as a
+		
+	</select>
+	
+	<!-- 按组织ID查询该组织下的所有文件 -->
+	<select id="findByOrgId" parameterType="java.util.Map"   resultMap="findByOrgIdMap" >
+		<![CDATA[]]> 
+			select b.filename,b.extendname,b.fileWebPath,c.username
+			from app_file_relation  as a 
+			left JOIN app_file as b  on  a.fileId = b.fileid
+			left join app_user as c on a.userId = c.id
+			<where>
+				orgId = #{orgId}  
+				<if test="fileName!=null and fileName!='' " >
+					and b.filename like CONCAT('%',#{fileName},'%')  
+				</if>
+				<if test="fileType!=null and fileType=='image' " >
+					and b.extendname like '%image%'
+				</if>
+				<if test="fileType!=null and fileType=='NOLIKE_image' " >
+					and b.extendname not like '%image%'
+				</if>
+				
+				<!-- Map中传数组，遍历数组做in 查询<if test="fileType!=null and fileType!='' " >
+					and b.extendname in 
+					<foreach item="item" index="index" collection="fileType" open="(" separator="," close=")">  
+					 #{item}  
+					</foreach>
+				</if> -->
+		    </where>
+	</select>
+	
+
+</mapper>

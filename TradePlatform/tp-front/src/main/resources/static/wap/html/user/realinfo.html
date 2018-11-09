@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 42.6667px;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="互融网">
+    <meta name="keywords" content="数字货币交易,虚拟货币交易,数字资产,交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+    <title>
+        互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee">
+</head>
+
+<body>
+    <header class="header">
+        <a href=" ">
+            <div class="logo"></div>
+        </a>
+        <div class="nav">
+            <a href="javascript:void(0);" id="bbjy">交易中心</a>
+            <a href="javascript:void(0);" id="wdzh">我的账户</a>
+            <a href="javascript:void(0);" id="sz">
+                <img src="../../style/images/mobile/image/icon_home_03.png" alt="" style="width:0.35rem;height:0.35rem; position: relative;top:0">
+            </a>
+        </div>
+    </header>
+    <div id="main">
+        <div class="main_box" style="padding:0;">
+            <div class="raise right clearfix">
+                <div id="showw">
+                    <div class="strip"></div>
+                    <div class="Wf-div1" style="border-bottom: none;">
+                        <a onclick="history.back(-1)">返回</a>
+                        <span>实名认证</span>
+                    </div>
+                    <div class="person-con">
+                        <div class="cb-box1 tb-box1">
+                            <div class="media two-rz-title" style="padding-bottom:20px;">
+                                <div class="media-body">
+									<h4 class="media-heading text-success p-t-10 f-s-16">
+										您已通过交易所实名认证
+									</h4>
+									实名认证一旦成功，不予修改和解除认证，不予变更认证方式。<br/>
+									身份信息是否正确将决定您的银行卡是否能绑定成功,影响到您的提现,请如实填写。
+								</div>
+                            </div>
+                        </div>
+                        <form class="form-horizontal p-t-30 bank-manage-add form-all" style="margin-top:30px;">
+
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">姓名：</label>
+                                <div class="col-xs-6">
+                                    <label class="control-label"><span id="name"></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">国家：</label>
+                                <div class="col-xs-6">
+                                    <label class="control-label">中国</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">证件类型：</label>
+                                <div class="col-xs-6">
+                                    <label class="control-label">身份证</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">证件号：</label>
+                                <div class="col-xs-6">
+                                    <label class="control-label"><span id="card"></span></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <div id="recharge_alert_bank" style="display:none">
+                    <div class="strip"></div>
+                    <div class="Wf-div1" style="border-bottom: none;">
+                       <a onclick="history.back(-1)">返回</a>
+                        <span>银行卡汇款信息</span>
+                    </div>
+                    <div class="remitt_div">
+                        <div class="remitt_box">
+                            <p class="remitt_box_coloe">请按以下信息转账</p>
+                            <p>银行账户<span>1105 0160 5900 0000 0147</span></p>
+                            <p>开户银行<span>中国建设银行东方广场支行</span></p>
+                            <p>开户姓名<span>互融金汇（北京）科技有限公司</span></p>
+                            <p>汇款金额<span class="recharge_html_num"></span>元</p>
+                        </div>
+                    </div>
+                    <p class="remitt_div_p"><span>到账时间</span>系统在收到汇款后20分钟内到账</p>
+                    <p class="remitt_div_p"><span>订单有效期</span>3小时（请在有效时间内充值）</p>
+                    <p class="remitt_div_p1">本系统非自动扣款，请通过您的“手机银行”或“网上银行”汇款！</p>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer_kefu_news">
+            <a href="tel:4008367667"><i></i>4008-367-667</a>
+            <a><i></i>hry@hry.com</a>
+        </div>
+        <div>
+            Copyright2013-2016 互融网
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"jq" : "style/js/jquery/jquery.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','jq','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/realinfo.js'],function(r){
+	r.init();
+});
+</script>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.customer.agents.dao.AppCommendRebatDao">
+
+	<resultMap id="culApoCmmendRebatMap" type="com.mz.customer.rebat.model.AppCommendRebat">
+	    <result column="rebatMoney" property="rebatMoney" javaType="java.math.BigDecimal" />
+	</resultMap> 
+	   	<select id="culApoCmmendRebat"  parameterType="java.util.Map" resultMap="culApoCmmendRebatMap"  >  
+	
+	   select sum(a.rebatMoney) as rebatMoney  from app_commend_rebat a where 
+	   
+	    a.customerId=#{customerId} 
+	   and a.coinCode=#{coinCode} 
+	   and a.`status`=1
+     
+	      <if test="modified!=null and modified!='' ">
+			 <![CDATA[ and modified > =#{modified}   ]]>
+		</if>
+    
+	</select>
+</mapper>

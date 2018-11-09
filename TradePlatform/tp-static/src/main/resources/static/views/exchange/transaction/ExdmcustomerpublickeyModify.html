@@ -1,0 +1,54 @@
+    <!-- With Search -->
+    <div class="card-panel">
+      <h4>修改角色</h4>
+      <div class="row">
+      	<div class="col s1 "></div>
+		<div class="col s3 ">
+		    <form ng-submit="processForm()">
+                    <div class="input-field"> 
+                    	<input type="hidden" id="id" value="{{model.id}}"/>
+				       角色名称<input type="text" name="name" value="{{model.name}}"  ng-model="formData.name"   />
+				    </div>
+				    <div class="input-field"> 
+				        角色描述<input type="text" name="remark" value="{{model.remark}}" ng-model="formData.remark"    />
+				    </div>
+				    <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+					<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+			</form>
+			
+		</div>
+		<div class="col s2 "></div>
+		<div class="col s4 ">
+			权限树
+			<ul id="tree" class="ztree"></ul>
+		</div>
+		
+		
+      </div>
+    </div>
+    <!-- /With Search -->
+<link rel="stylesheet" href="static/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<SCRIPT type="text/javascript" >
+	$(document).ready(function(){
+		//表单提交
+		$("#addAppRolesSubmit").on("click", function() {
+				var ztree = $.fn.zTree.getZTreeObj("tree");
+				var chekcNodes = ztree.getCheckedNodes();
+				if(chekcNodes.length<1){
+					Materialize.toast("请选择权限", 4000)
+					return false;
+				}
+				var str ="";
+				for (var i=0; i<chekcNodes.length; i++) {
+					str += chekcNodes[i].id;
+					if(i!=chekcNodes.length-1){
+						str += ","
+					}
+				}
+				$("#appResourceSet").val(str);
+		});
+			
+	});
+
+  </SCRIPT>
+

@@ -1,0 +1,376 @@
+
+
+
+<!-- 分公司管理 -->
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<div ng-if="stateParams=='all'">
+				<a class="btn pr-10 pl-10"
+					ng-if="requiresPermissions('calculate','/appReportSettlement/culAccountAllCustomer')"
+					ng-click="allfnaccounting()"><i class="fa fa-pencil-square-o "
+					aria-hidden="true"></i>全部余额核算到数据库</a>
+
+			</div>
+
+			<div class="row mt-20 pl-50">
+				<div class="col s6 ">
+
+					<div class="row ">
+
+						<div class="col s12 center-align">
+							<h4>现在资金情况1</h4>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="col s6">
+					<div class="row ">
+						<div class="col s12 center-align">
+							<h4>重新核算资金情况</h4>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="row mt-20 pl-50" style="border-bottom: 1px solid;">
+				<div class="col s6 ">
+
+					<div class="row ">
+
+						<div class="col s3">用户</div>
+						<div class="col s1">类型</div>
+						<div class="col s3">可用</div>
+						<div class="col s2">冻结</div>
+						<!--   <div class="col s2">已借</div> -->
+					</div>
+
+				</div>
+				<div class="col s6">
+					<div class="row ml-30">
+
+						<div class="col s3">类型</div>
+						<div class="col s2">可用</div>
+						<div class="col s2">冻结</div>
+						<!--    <div class="col s2">已借</div> -->
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+			<div ng-repeat="itemlist in data">
+
+				<div class="row mt-20 pl-50" style="border-bottom: 1px dotted;">
+					<div class="col s6 ">
+
+						<div class="row "
+							ng-repeat="item in itemlist.oldAccountFundInfolist">
+
+							<div class="col s3">{{item.userName}}</div>
+							<div class="col s1">{{item.coinCode}}</div>
+							<div class="col s3">{{item.hotMoney}}</div>
+							<div class="col s2">{{item.coldMoney}}</div>
+							<!--   <div class="col s2">{{item.lendMoney}}</div> -->
+						</div>
+
+					</div>
+					<div class="col s6">
+						<div class="row ml-30"
+							ng-repeat="item in itemlist.newAccountFundInfolist">
+							<div class="col s3">{{item.coinCode}}</div>
+							<div class="col s3">{{item.hotMoney}}</div>
+							<div class="col s3">{{item.coldMoney}}</div>
+							<!--    <div class="col s3">{{item.lendMoney}}</div> -->
+						</div>
+					</div>
+					<a class="btn pr-10 pl-10"
+						ng-if="requiresPermissions('calculate','/appReportSettlement/culAccountAllCustomer')"
+						ng-click="funddetial1(itemlist.customerId)"><i
+						class="fa fa-pencil-square-o " aria-hidden="true"></i>资金详情
+						{{itemlist.customerId}}</a>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="col s4 hide" id="funddetial">
+
+		<!-- begin row -->
+	<div class="row">
+		<div class="col s12 ">
+			<div class="row mt-20 pl-10" style="border-bottom: 1px solid #333;">
+				<div class="col s12 " style="border-right: 1px dooted #333;">
+					<div class="row col12">
+						<div class="col s3">时间</div>
+						<div class="col s3">类型</div>
+						<div class="col s3">可用</div>
+						<div class="col s3">冻结</div>
+						<!--   <div class="col s2">已借</div>  	-->
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+
+
+
+			<div class="row mt-10 pl-10" style="border-bottom: 1px dotted;">
+
+				<div class="col s12" style="border-right: 1px dotted #333">
+					<div class="row " ng-repeat="item2 in sureoldlist">
+						<div class="col s3">{{item2.sureTime}}</div>
+						<div class="col s3">{{item2.coinCode}}</div>
+						<div class="col s3">{{item2.hotMoney}}</div>
+						<div class="col s3">{{item2.coldMoney}}</div>
+						<!--    <div class="col s2">{{item2.lendMoney}}</div> -->
+					</div>
+				</div>
+
+			</div>
+
+
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 ">
+			<div class="row mt-20 pl-10" style="border-bottom: 1px solid #333;">
+
+				<div class="col s12 pl-20">
+					<div class="row ml-60">
+
+						<div class="col s2">+充值</div>
+						<div class="col s2">-充值手续费</div>
+						<div class="col s2">-提现</div>
+
+						<div class="col s2">-卖成交额(交易币)</div>
+						<div class="col s2">+买成交额(交易币)</div>
+						<div class="col s2">-成交手续费</div>
+					
+						<!--       <div class="col s1">在借额</div>
+	c				   	    <div class="col s1">借款还利息</div> -->
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="row mt-10 pl-10" style="border-bottom: 1px dotted;">
+				<div class="col s12 pl-10" style="border-right: 1px dotted;">
+					<div class="row " ng-repeat="item1 in hisorylist">
+
+						<div class="col s2">{{item1.rechargeMoney}}</div>
+						<div class="col s2">{{item1.rechargeMoneyFee}}</div>
+						<div class="col s2">{{item1.withdrawMoney}}</div>
+						<div class="col s2">{{item1.sellTransactionMoney}}</div>
+						<div class="col s2">{{item1.buyTransactionMoney}}</div>
+						<div class="col s2">{{item1.transactionFee}}</div>
+						
+					
+						<!--    <div class="col s1">{{item1.LendMoney}}</div>
+					         <div class="col s1">{{item1.repaylendMoney}}</div> -->
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 ">
+			<div class="row mt-20 pl-10" style="border-bottom: 1px solid #333;">
+
+				<div class="col s12 pl-20">
+					<div class="row ml-60">
+						<div class="col s2">+卖成交额(定价币)</div>
+						<div class="col s2">-买成交额(定价币)</div>
+						<div class="col s2">-成交手续费</div>
+						<div class="col s2">-委托冻结(交易币)</div>
+						<div class="col s2">-委托冻结(定价币)</div>
+						<div class="col s2">-提现冻结</div>
+						
+						<!--       <div class="col s1">在借额</div>
+					   	    <div class="col s1">借款还利息</div> -->
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="row mt-10 pl-10" style="border-bottom: 1px dotted;">
+				<div class="col s12 pl-10" style="border-right: 1px dotted;">
+					<div class="row " ng-repeat="item1 in hisorylist">
+						<div class="col s2">{{item1.sellTransactionFixPrice}}</div>
+						<div class="col s2">{{item1.buyTransactionFixPrice}}</div>
+						<div class="col s2">{{item1.transactionFeeFixPrice}}</div>
+						<div class="col s2">{{item1.coldEntrustMoney}}</div>
+						<div class="col s2">{{item1.coldEntrustFixPrice}}</div>
+						<div class="col s2">{{item1.withdrawcoldMoney}}</div>
+					
+						<!--    <div class="col s1">{{item1.LendMoney}}</div>
+					         <div class="col s1">{{item1.repaylendMoney}}</div> -->
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12 ">
+			<div class="row mt-20 pl-10" style="border-bottom: 1px solid #333;">
+
+				<div class="col s12 pl-20">
+					<div class="row ml-60">
+						<div class="col s2">+佣金收入</div>
+					
+						
+						<!--       <div class="col s1">在借额</div>
+					   	    <div class="col s1">借款还利息</div> -->
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="row mt-10 pl-10" style="border-bottom: 1px dotted;">
+				<div class="col s12 pl-10" style="border-right: 1px dotted;">
+					<div class="row " ng-repeat="item1 in hisorylist">
+						<div class="col s2">{{item1.drawalMoney}}</div>
+					
+						<!--    <div class="col s1">{{item1.LendMoney}}</div>
+					         <div class="col s1">{{item1.repaylendMoney}}</div> -->
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+	</div>
+	<div class="row mt-20 pl-50">
+		<div class="col s6 ">
+
+			<div class="row ">
+
+				<div class="col s12 center-align">
+					<h6>
+						现在资金情况
+						</h4>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="col s6">
+			<div class="row ">
+				<div class="col s12 center-align">
+					<h6>
+						重新核算资金情况
+						</h4>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="row mt-20 pl-50" style="border-bottom: 1px solid;">
+		<div class="col s6 ">
+
+			<div class="row ">
+
+				<div class="col s3">用户</div>
+				<div class="col s2">类型</div>
+				<div class="col s2">可用</div>
+				<div class="col s2">冻结</div>
+				<!--    <div class="col s2">已借</div> -->
+			</div>
+
+		</div>
+		<div class="col s6">
+			<div class="row ml-30">
+
+				<div class="col s3">类型</div>
+				<div class="col s3">可用</div>
+				<div class="col s3">冻结</div>
+				<!--    <div class="col s3">已借</div> -->
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="row mt-20 pl-50" style="border-bottom: 1px dotted;">
+		<div class="col s6 " style="border-right: 1px dotted;">
+
+			<div class="row " ng-repeat="item in oldAccountFundInfolist">
+
+				<div class="col s3">{{item.userName}}</div>
+				<div class="col s2">{{item.coinCode}}</div>
+				<div class="col s2">{{item.hotMoney}}</div>
+				<div class="col s2">{{item.coldMoney}}</div>
+				<!--  <div class="col s2">{{item.lendMoney}}</div> -->
+			</div>
+
+		</div>
+		<div class="col s6">
+			<div class="row ml-30" ng-repeat="item in newAccountFundInfolist">
+				<div class="col s3">{{item.coinCode}}</div>
+				<div class="col s3">{{item.hotMoney}}</div>
+				<div class="col s3">{{item.coldMoney}}</div>
+				<!--  <div class="col s3">{{item.lendMoney}}</div> -->
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+	<!-- end row -->
+</div>
+
+
+
+

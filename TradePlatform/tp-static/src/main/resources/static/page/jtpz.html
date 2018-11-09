@@ -1,0 +1,209 @@
+<!doctype html>
+<html >
+<head>
+<meta charset="utf-8">
+<title>{{headTitle}}--{{user.username}}</title>
+<!--css-->
+<!-- hurong styles -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="http://localhost/static/static/lib/_con/images/icon.png">
+  <!-- nanoScroller -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/nanoScroller/nanoscroller.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/ui.css" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/material-design-icons/css/material-design-icons.min.css" />
+
+  <!-- IonIcons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/ionicons/css/ionicons.min.css" />
+
+  <!-- WeatherIcons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/weatherIcons/css/weather-icons.min.css" />
+
+  <!-- Rickshaw -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/rickshaw/rickshaw.min.css" />
+   <!-- select2 -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/select2/css/select2.min.css" />
+  <!-- jvectormap -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/jquery-jvectormap/jquery-jvectormap.css" />
+
+  <!-- Google Prettify -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/google-code-prettify/prettify.css" />
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/_con/css/_con.min.css" />
+  
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/pikaday/pikaday.css" />
+  <link rel="stylesheet"  type="text/css" href="http://localhost/static/static/lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/dropzone/dropzone.min.css" />
+</head>
+<body >
+<!-- Main Content -->
+<section class="content-wrap">
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+
+
+<!-- 集团配置-->
+	<div class="card-panel" >
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">集团配置</span>
+		 </h4>
+		 <hr>
+		<div class="row">
+			<div class="col m8 s12 left">
+				<form id="seeForm" ng-submit="seeProcessForm()">
+					<div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_fname" type="text" ng-model="formData.name">
+				        <label for="input_fname">集团名称</label>
+				      </div>
+				    </div>
+					<div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">集团短称</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">联系人</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">联系人电话</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">传真</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">成立日期</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">地址</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input id="input_lname" type="text"  ng-model="formData.organizeCode">
+				        <label for="input_lname">邮政编码</label>
+				      </div>
+				    </div>
+					<div class="col s12">
+				      	<div class="input-field">
+						  <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+						  <label for="textarea1">备注</label>
+						</div>
+				    </div>
+				    <p>
+					    <!-- 保存按钮 -->
+						<shiro:hasPermission name="">
+							<a class="btn-large mr-20 fs-16"  ng-click="">保存</a>
+						</shiro:hasPermission> 
+						<!-- 返回按钮 -->
+						<shiro:hasPermission name="">
+							<a class="btn-large grey fs-16" ng-click="" >返回</a>
+						</shiro:hasPermission>
+				    </p>
+			</form>
+		</div>
+		<div class="col m4 s12 right">
+			<div class="row">
+				<h4 class="fs-20 lh-20">公司logo</h4>
+				<div class="row photoswipe-gallery isotope mr-20">
+				    <a class="col s12 item" href="http://localhost/static/static/style/test-img/gallery-1.jpg" data-size="2880x1800" data-med="http://localhost/static/static/style/test-img/gallery-1-med.jpg" data-med-size="1440x900" data-author="John Doe">
+				    	<img src="http://localhost/static/static/style/test-img/gallery-1-small.jpg" alt="" />
+				    	<figure>Magna tollit mei te</figure>
+				    </a>
+			    </div>
+			    <p>
+			    	<!-- 上传按钮 -->
+					<shiro:hasPermission name="">
+						<a class="btn"  ng-click="">上传</a>
+					</shiro:hasPermission> 
+					<!-- 删除按钮 -->
+					<shiro:hasPermission name="/project/tsysuser/remove.do">
+						<a class="btn" ng-click="remove(selected,HRY.modules.factoring+'loanEenterprise/custeloan/removeAll.do')" >删除</a>
+					</shiro:hasPermission>
+			    </p>
+			    <h4 class="fs-20 lh-20 mt-40">公司logo</h4>
+				<div class="row photoswipe-gallery isotope mr-20">
+				    <a class="col s12 item" href="http://localhost/static/static/style/test-img/gallery-1.jpg" data-size="2880x1800" data-med="http://localhost/static/static/style/test-img/gallery-1-med.jpg" data-med-size="1440x900" data-author="John Doe">
+				    	<img src="http://localhost/static/static/style/test-img/gallery-1-small.jpg" alt="" />
+				    	<figure>Magna tollit mei te</figure>
+				    </a>
+			    </div>
+			    <p>
+			    	<!-- 上传按钮 -->
+					<shiro:hasPermission name="">
+						<a class="btn fs-16"  ng-click="">上传</a>
+					</shiro:hasPermission> 
+					<!-- 删除按钮 -->
+					<shiro:hasPermission name="/project/tsysuser/remove.do">
+						<a class="btn fs-16" ng-click="remove(selected,HRY.modules.factoring+'loanEenterprise/custeloan/removeAll.do')" >删除</a>
+					</shiro:hasPermission>
+			    </p>			        
+	   		</div>
+		</div>
+
+		
+	</div>
+	
+	
+<!-- /集团配置  --> 
+
+
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+
+<!-- PhotoSwipe -->
+<link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/PhotoSwipe/photoswipe.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/PhotoSwipe/default-skin/default-skin.css" />
+</section>
+
+
+
+
+<!-- /Main Content -->
+<script type="text/javascript" src="http://localhost/static/static/lib/_con/js/_hry.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="http://localhost/static/static/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/dataTables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/libs/ui.js"></script>
+<!-- jQuery RAF (improved animation performance) -->
+<script type="text/javascript" src="http://localhost/static/static/lib/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
+<!-- nanoScroller -->
+<script type="text/javascript" src="http://localhost/static/static/lib/nanoScroller/jquery.nanoscroller.min.js"></script>
+<!-- Materialize -->
+<script type="text/javascript" src="http://localhost/static/static/lib/materialize/js/materialize.min.js"></script>
+<!-- Sortable -->
+<script type="text/javascript" src="http://localhost/static/static/lib/sortable/Sortable.min.js"></script>
+<!-- Google Prettify -->
+<script type="text/javascript" src="http://localhost/static/static/lib/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/_con/js/_con.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.jquery.js"></script>
+<!-- require -->
+<!-- <script data-main="http://localhost/static/static/js/main" src="http://localhost/static/static/lib/require.js"></script> -->
+<script type="text/javascript" src="http://localhost/static/static/lib/dropzone/dropzone.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/js/common/hryDropzone.js"></script>
+<!-- <script type="text/javascript" src="http://localhost/static/static/lib/angularjs-dataTables/angular-datatables.js"></script> -->
+</body>
+</html>

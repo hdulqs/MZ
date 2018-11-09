@@ -1,0 +1,49 @@
+
+
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">会员积分配置添加信息</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/system/appmemberpointconfig/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="recomm_point" ng-model="formData.recomm_point" /> <label for="recomm_point">推荐人积分</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="regist_point" ng-model="formData.regist_point" /> <label for="regist_point">被推荐人积分</label>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="content" ng-model="formData.content" /> <label for="content">描述</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m6">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="是否开启" id="isopen">
+							<option value="0">关闭</option>
+							<option value="1">开启</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit">保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

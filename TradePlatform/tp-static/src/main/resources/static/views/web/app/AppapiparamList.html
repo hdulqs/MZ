@@ -1,0 +1,70 @@
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+           <div class="row">
+			
+			
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+        <span style="color:red">
+									
+						<!-- 增加按钮 -->
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/app/appapiparam/add')"     ng-click="fnAdd('app/appapiparam/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>添加</a>
+						
+ 						
+						<!-- 修改按钮 -->
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/app/appapiparam/modify')"   ng-click="fnModify('app/appapiparam/modify')"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>修改</a>
+						<!-- 删除按钮 -->
+						
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/app/appapiparam/remove/')"   ng-click="fnRemove('app/appapiparam/remove')"> <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+						
+						
+						<!-- 增加按钮 -->
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/app/appapi/list/')"    ng-click="fnAdd('app/appapi/list')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>查看API接口列表</a>
+						
+						
+						<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+<div >
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2"
+				class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label
+							for="checkboxAll"></label></th>
+						<!-- <th>标题</th>
+						<th>描述</th> -->
+						<th>参数</th>
+						<th>参数名称</th>
+						<th>参数类型</th>
+						<th>参数描述</th>
+						<th>是否为空</th>
+						<th>样例</th>
+						<th>排序</th>
+						
+					</tr>
+					
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+

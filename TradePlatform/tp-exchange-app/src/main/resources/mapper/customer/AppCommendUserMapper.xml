@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.customer.commend.dao.AppCommendUserDao">
+
+
+     <select id="findLen" resultType="java.lang.Integer">
+		select count(*) from app_commend_user where sid like CONCAT('%',#{id},'%')
+		
+	</select>
+	
+	
+	  <select id="findLenall" resultType="java.lang.Integer">
+	select * from app_commend_user a LEFT JOIN (select ISNULL(sum(rewardmoney)) summoneyr, custromerName from app_commend_trade group by custromerName) b on a.username=b.custromerName
+	</select>
+
+	<select id="findLikeBySid" parameterType="java.util.Map" resultType="com.mz.customer.commend.model.AppCommendUser">
+		select * from app_commend_user where sid like '%${pid1}%' and uid!=#{pid2};
+	</select>
+	<select id="findByAloneMoneyIsNotZero" parameterType="java.util.Map" resultType="com.mz.customer.commend.model.AppCommendUser">
+		SELECT
+			id,
+			ifnull(aloneMoney, 0) AS al
+		FROM
+			app_commend_user
+		WHERE
+			(
+				SUBSTRING_INDEX(
+					SUBSTRING_INDEX(sid, ',' ,- 1),
+					',' ,- 1
+				) = #{sid}
+				OR uid = #{sid}
+			) and uid!= #{uid}
+		HAVING
+			al != 0
+	</select>
+	
+	<!--新增方法-->
+	<select id="findLen2" resultType="java.lang.Integer">
+		
+        SELECT COUNT(*) FROM app_commend_user AS a,app_customer AS b WHERE  b.id=a.uid AND a.sid  LIKE  CONCAT('%',#{sid},'%') AND b.hasEmail=1
+	</select>
+	
+</mapper>

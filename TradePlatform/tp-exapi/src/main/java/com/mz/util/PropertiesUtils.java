@@ -1,0 +1,136 @@
+/**
+ * Copyright:   北京互融时代软件有限公司
+ *
+ * @author: Liu Shilei
+ * @version: V1.0
+ * @Date: 2015年11月4日 下午1:22:49
+ */
+package com.mz.util;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
+/**
+ * <p>
+ * TODO
+ * </p>
+ *
+ * @author: Liu Shilei
+ * @Date : 2015年11月4日 下午1:22:49
+ */
+public class PropertiesUtils {
+
+  public static Properties APP = null;
+  public static Properties RMI = null;
+  public static Properties MULTIPLTEMAIL = null;
+
+  public final static String SSOKEY = "app.sso";
+
+  public final static String LOADWEBKEY = "app.loadweb";
+
+  static {
+    APP = new Properties();
+    try {
+      InputStream ins = PropertiesUtils.class.getClassLoader()
+          .getResourceAsStream("app.properties");
+      APP.load(ins);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    MULTIPLTEMAIL = new Properties();
+    try {
+      InputStream ins = PropertiesUtils.class.getClassLoader()
+          .getResourceAsStream("multipleEmail.properties");
+      MULTIPLTEMAIL.load(ins);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * front_oauth 获得sso同步地址
+   * <p> TODO</p>
+   * @author: Liu Shilei
+   * @param:    @return
+   * @return: ArrayList<String>
+   * @Date :          2016年7月5日 上午11:15:57
+   * @throws:
+   */
+  public static ArrayList<String> getAppSSO() {
+
+    ArrayList<String> arrayList = new ArrayList<String>();
+    Set<Object> keySet = APP.keySet();
+    Iterator<Object> iterator = keySet.iterator();
+    while (iterator.hasNext()) {
+      String key = (String) iterator.next();
+      if (key.contains(SSOKEY)) {
+        arrayList.add(APP.getProperty(key));
+      }
+    }
+    return arrayList;
+  }
+
+  /**
+   * front_oauth 获得sso同步地址
+   * <p> TODO</p>
+   * @author: Liu Shilei
+   * @param:    @return
+   * @return: ArrayList<String>
+   * @Date :          2016年7月5日 上午11:15:57
+   * @throws:
+   */
+  public static String getOuathStr() {
+
+    ArrayList<String> arrayList = new ArrayList<String>();
+    Set<Object> keySet = APP.keySet();
+    Iterator<Object> iterator = keySet.iterator();
+    while (iterator.hasNext()) {
+      String key = (String) iterator.next();
+      if (key.contains("oauth.filter")) {
+        arrayList.add(APP.getProperty(key));
+      }
+    }
+
+    StringBuffer sb = new StringBuffer();
+
+    for (int i = 0; i < arrayList.size(); i++) {
+      sb.append(arrayList.get(i));
+      if (i != arrayList.size() - 1) {
+        sb.append(",");
+      }
+    }
+    return sb.toString();
+  }
+
+  /**
+   * 获得加载了多少个站点
+   * <p> TODO</p>
+   * @author: Liu Shilei
+   * @param:    @return
+   * @return: ArrayList<String>
+   * @Date :          2016年7月5日 上午11:15:57
+   * @throws:
+   */
+  public static Map<String, String> getLoadWeb() {
+
+    Map<String, String> map = new HashMap<String, String>();
+    Set<Object> keySet = APP.keySet();
+    Iterator<Object> iterator = keySet.iterator();
+    while (iterator.hasNext()) {
+      String key = (String) iterator.next();
+      if (key.contains(LOADWEBKEY)) {
+        String[] split = APP.getProperty(key).split("=");
+        map.put(split[0], split[1]);
+      }
+    }
+    return map;
+  }
+
+}

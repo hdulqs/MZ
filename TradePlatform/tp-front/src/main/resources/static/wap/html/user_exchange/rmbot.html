@@ -1,0 +1,161 @@
+<html lang="en" style="font-size: 108.533px;">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。">
+	<meta name="keywords" content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+	<title>
+		互融网｜综合数字资产交易平台
+	</title>
+	<meta property="wb:webmaster" content="8af72a3a7309f0ee">
+</head>
+<body>
+	<div id="main">
+		<div class="main_box" style="background:#fff; padding:0;">
+			<div class="raise right clearfix">
+				<div style="display: block;" id="rmbout">
+					<div class="Wf-div1" style="border-bottom: none;">
+						<a onclick="history.back(-1)">返回</a>
+						<span>人民币提现</span>
+					</div>
+					<div class="cb-box1 tb-box1">
+						<form method="post">
+							<input type="hidden" id="maxWithdrawMoney" />
+							<input type="hidden" id="maxWithdrawMoneyOneTime" />
+							<p class="p4">
+								<label style="width:1.2rem;text-align:right;">可用余额</label><span id="hotmoney"></span>
+								<span style="color:#333"><strong>CNY</strong></span>
+							</p>
+							<p class="p5"><label>提现银行</label>
+							<select id="bankselect">
+								<option value="">请选择</option>
+							</select>
+							<a class="p5_yha addbanks">添加银行</a>
+								<input type="hidden" id="bankId" name="bank_id" value="">
+							</p>
+							<p class="p5">
+								<label>提现金额</label>
+								<input class="sum" id="money_rmb" type="text" name="money" autocomplete="off"><span class="pos_span">CNY</span></p>
+							<p class="p5"><label>实际到账</label><input style="background:#ebebe4" type="text" class="sum" id="true_daozhang" disabled=""></p>
+							<p class="p5"><label>交易密码</label><input type="password" class="sum" name="pwdtrade" id="rmbout_pwdtrade" onfocus="this.type=&#39;password&#39;" autocomplete="off"></p>
+<!-- 							<p class="p5 p5_f">
+								<span>
+					            <label>验证码</label><input style="width: 3rem;" type="text" class="Txt22" name="phone_code" id="phone_code_login" placeholder="请输入短信验证码">
+					            </span>
+								<label class="verify phone_code verify_code" name="getPhoneCode" id="sendsmsBtn">获取短信验证码</label>
+							</p> -->
+							<p class="p5">
+								<input type="hidden" id="cnyout_over" value="0">
+								<input type="button" class="confirm" id="submit" value="确认提现" style="background:#ff6600;width:99%;height:44px;color:white;font-size:13px">
+							</p>
+						</form>
+						<h5>提现人民币说明</h5>
+						<p class="p6">1. 提现手续费为<i id="witfee"></i>%，请仔细确认后再操作。</p>
+						<p class="p6">2. 单日累计最大提现额500000元。</p>
+						<p class="p6">3. 提现时间：</p>
+						<p class="p6">工作日：9时到16时的提现申请，当日到账；16时至次日9时的提现申请，在次日12时前到账。</p>
+						<p class="p6">周末及法定节假日：在提现申请后24小时内到账。</p>
+						<p class="p6">4.根据国家反洗钱政策及保障客户资产安全，会对系统检测出的异常账户进行安全认证。</p>
+					</div>
+
+					<div class="cb-box3">
+						<h5>提现记录</h5>
+						<ul class="ul2" id="list">
+						</ul>
+						<ul class="xiabu">
+							<li>
+								<p class="much" id="more">暂无跟多内容</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- 选择银行 start-->
+				<div class="addbank" style="display: none;">
+					<div class="strip" style="display: block;"></div>
+					<div class="Wf-div1" style="border-bottom: none;">
+						<a onclick="history.back(-1)">返回</a>
+						<span>选择银行</span>
+					</div>
+					<ul class="xz_bank_ul">
+					</ul>
+					<a class="ft_bank_add">增加银行卡</a>
+				</div>
+				<!-- 选择银行 end-->
+				<!-- 添加银行 start-->
+				<div class="wf_addbank" style="display: none;">
+					<div class="strip" style="display: block;"></div>
+					<div class="Wf-div1">
+						<a onclick="history.back(-1)">返回</a>
+						<span>增加银行卡</span><strong style="color:red"></strong>
+					</div>
+					<div class="cb-box1 tb-box1">
+						<p class="p5"><label>开户银行</label>
+						<input type="hidden" id="bankname" />
+						<select name="bank" id="bank" class="loginValue" style="width:5.44rem;height:0.88rem;border-radius:5px;border: 1px solid #dddddd;">
+			                <option value="">请选择银行</option>
+			            </select>
+						</p>
+
+						<p class="p5">
+							<input type="hidden" id="provinceValue"/>
+							<label>银行地址:</label><select name="province" id="p1" style="width:2.62rem; border:1px solid #ddd;height: 0.88rem;border-radius: 5px;">
+								<option value="-1">省份</option>
+							</select>
+							<select name="city" id="c1" style="width:2.62rem; border:1px solid #DDD;height: 0.88rem;border-radius: 5px; margin-left:0.2rem ">
+								<option value="-1">城市</option>
+								</select>
+						</p>
+
+						<p class="p5"><label>银行卡号</label><input title="银行卡号" class="showerror" type="number" onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;)" name="account" id="account" placeholder="例如：6212214324322443554654"></p>
+
+						<p class="p5"><label>持卡人姓</label><input type="text" id="xing" disabled="disabled" placeholder=""></p>
+						<p class="p5"><label>持卡人名</label><input type="text" id="ming" disabled="disabled" placeholder=""></p>
+						<p class="p5"><label>银行机构代码</label><input type="text" name="subBankNum" id="subBankNum" placeholder=""></p>
+						<p class="p5"><label>开户支行</label><input type="text" name="subBank" id="subBank" placeholder=""></p>
+						<p class="p5" style="margin-bottom: 150px;"><a style="font-size: 0.28rem" class="addition sub" id="addBankcard">确认增加</a></p>
+					</div>
+					<input type="hidden" id="img_captcha" value="no">
+				</div>
+				<!-- 添加银行 end-->
+				<div style="clear: both;"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<footer class="footer" style="display: block;">
+		<div class="footer_kefu_news">
+			<a href="tel:4008367667"><i></i>4008-367-667</a>
+			<a><i></i>hry@hry.com</a>
+		</div>
+
+		<div>
+			Copyright2013-2016 互融网
+		</div>
+	</footer>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"jq" : "style/js/jquery/jquery.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','jq','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/rmbot.js'],function(r){
+	r.init();
+	r.bank();
+	r.sendsms();
+});
+</script>

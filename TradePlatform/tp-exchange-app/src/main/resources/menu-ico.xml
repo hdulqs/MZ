@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+    <menu key="ico_AppIcoProject" name="项目管理" url="/project/appicoproject/list/anon" shiroUrl="/project/appicoproject/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="ico_AppIcoProject_add" name="添加" shiroUrl="/project/appicoproject/add"/>  
+        <function key="ico_AppIcoProject_see" name="查看" shiroUrl="/project/appicoproject/see"/>  
+        <function key="ico_AppIcoProject_modify" name="修改" shiroUrl="/project/appicoproject/modify"/>  
+        <function key="ico_AppIcoProject_remove" name="删除" shiroUrl="/project/appicoproject/remove"/>  
+        <function key="ico_AppIcoProject_audit" name="审核" shiroUrl="/project/appicoproject/audit"/> 
+    </menu>  
+    <menu key="ico_AppIcoProjectSuport" name="AppIcoProjectSuport" url="/project/appicoprojectsuport/list/anon" shiroUrl="/project/appicoprojectsuport/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoProjectSuport_see" name="查看" shiroUrl="/project/appicoprojectsuport/see"/>  
+        <function key="ico_AppIcoProjectSuport_add" name="添加" shiroUrl="/project/appicoprojectsuport/add"/>  
+        <function key="ico_AppIcoProjectSuport_modify" name="修改" shiroUrl="/project/appicoprojectsuport/modify"/>  
+        <function key="ico_AppIcoProjectSuport_remove" name="删除" shiroUrl="/project/appicoprojectsuport/remove"/> 
+    </menu>  
+    <menu key="ico_AppIcoProjectShare" name="AppIcoProjectShare" url="/project/appicoprojectshare/list/anon" shiroUrl="/project/appicoprojectshare/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoProjectShare_see" name="查看" shiroUrl="/project/appicoprojectshare/see"/>  
+        <function key="ico_AppIcoProjectShare_add" name="添加" shiroUrl="/project/appicoprojectshare/add"/>  
+        <function key="ico_AppIcoProjectShare_modify" name="修改" shiroUrl="/project/appicoprojectshare/modify"/>  
+        <function key="ico_AppIcoProjectShare_remove" name="删除" shiroUrl="/project/appicoprojectshare/remove"/> 
+    </menu>  
+    <menu key="ico_AppIcoPay" name="AppIcoPay" url="/coin/appicopay/list/anon" shiroUrl="/coin/appicopay/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="ico_AppIcoPay_see" name="查看" shiroUrl="/coin/appicopay/see"/>
+        <function key="ico_AppIcoPay_add" name="添加" shiroUrl="/coin/appicopay/add"/>
+        <function key="ico_AppIcoPay_modify" name="修改" shiroUrl="/coin/appicopay/modify"/>
+        <function key="ico_AppIcoPay_remove" name="删除" shiroUrl="/coin/appicopay/remove"/>
+    </menu>
+    <menu key="ico_AppIcoEvaluate" name="AppIcoEvaluate" url="/project/appicoevaluate/list/anon" shiroUrl="/project/appicoevaluate/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoEvaluate_see" name="查看" shiroUrl="/project/appicoevaluate/see"/>  
+        <function key="ico_AppIcoEvaluate_add" name="添加" shiroUrl="/project/appicoevaluate/add"/>  
+        <function key="ico_AppIcoEvaluate_modify" name="修改" shiroUrl="/project/appicoevaluate/modify"/>  
+        <function key="ico_AppIcoEvaluate_remove" name="删除" shiroUrl="/project/appicoevaluate/remove"/> 
+    </menu>  
+    <menu key="ico_AppIcoCoin" name="ico货币" url="/coin/appicocoin/list/anon" shiroUrl="/coin/appicocoin/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoCoin_see" name="查看" shiroUrl="/coin/appicocoin/see"/>  
+        <function key="ico_AppIcoCoin_add" name="添加" shiroUrl="/coin/appicocoin/add"/>  
+        <function key="ico_AppIcoCoin_modify" name="修改" shiroUrl="/coin/appicocoin/modify"/>  
+        <function key="ico_AppIcoCoin_remove" name="删除" shiroUrl="/coin/appicocoin/remove"/> 
+    </menu>  
+    <menu key="ico_AppIcoCoinAccount" name="ico币账户" url="/coinAccount/appicocoinaccount/list/anon" shiroUrl="/coinAccount/appicocoinaccount/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoCoinAccount_see" name="查看" shiroUrl="/coinAccount/appicocoinaccount/see"/>  
+        <function key="ico_AppIcoCoinAccount_add" name="添加" shiroUrl="/coinAccount/appicocoinaccount/add"/>  
+        <function key="ico_AppIcoCoinAccount_modify" name="修改" shiroUrl="/coinAccount/appicocoinaccount/modify"/>  
+        <function key="ico_AppIcoCoinAccount_remove" name="删除" shiroUrl="/coinAccount/appicocoinaccount/remove"/> 
+    </menu>  
+    <menu key="ico_AppIcoCoinAccountHotRecord" name="ICO货币热钱包记录" url="/coinAccountHotRecord/appicocoinaccounthotrecord/list/anon" shiroUrl="/coinAccountHotRecord/appicocoinaccounthotrecord/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoCoinAccountHotRecord_see" name="查看" shiroUrl="/coinAccountHotRecord/appicocoinaccounthotrecord/see"/>  
+        <function key="ico_AppIcoCoinAccountHotRecord_add" name="添加" shiroUrl="/coinAccountHotRecord/appicocoinaccounthotrecord/add"/>  
+        <function key="ico_AppIcoCoinAccountHotRecord_modify" name="修改" shiroUrl="/coinAccountHotRecord/appicocoinaccounthotrecord/modify"/>  
+        <function key="ico_AppIcoCoinAccountHotRecord_remove" name="删除" shiroUrl="/coinAccountHotRecord/appicocoinaccounthotrecord/remove"/> 
+    </menu>  
+    <menu key="ico_AppIcoCoinAccountColdRecord" name="ICO货币冷钱包记录" url="/coinAccountColdRecord/appicocoinaccountcoldrecord/list/anon" shiroUrl="/coinAccountColdRecord/appicocoinaccountcoldrecord/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="ico_AppIcoCoinAccountColdRecord_see" name="查看" shiroUrl="/coinAccountColdRecord/appicocoinaccountcoldrecord/see"/>  
+        <function key="ico_AppIcoCoinAccountColdRecord_add" name="添加" shiroUrl="/coinAccountColdRecord/appicocoinaccountcoldrecord/add"/>  
+        <function key="ico_AppIcoCoinAccountColdRecord_modify" name="修改" shiroUrl="/coinAccountColdRecord/appicocoinaccountcoldrecord/modify"/>  
+        <function key="ico_AppIcoCoinAccountColdRecord_remove" name="删除" shiroUrl="/coinAccountColdRecord/appicocoinaccountcoldrecord/remove"/> 
+    </menu>  
+    <menu key="ico_resuccess" name="充币成功" url="/coinTransaction/appicocointransaction/resuccesslist/anon" shiroUrl="/coinTransaction/appicocointransaction/list" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    
+    <menu key="ico_refail" name="充币失败" url="/coinTransaction/appicocointransaction/refaillist/anon" shiroUrl="/coinTransaction/appicocointransaction/list" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    
+    <menu key="ico_withapply" name="提币申请" url="/coinTransaction/appicocointransaction/withapplylist/anon" shiroUrl="/coinTransaction/appicocointransaction/list" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    
+    <menu key="ico_withsuccess" name="提币成功" url="/coinTransaction/appicocointransaction/withsuccesslist/anon" shiroUrl="/coinTransaction/appicocointransaction/list" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    
+    <menu key="ico_withfail" name="提币失败" url="/coinTransaction/appicocointransaction/withfaillist/anon" shiroUrl="/coinTransaction/appicocointransaction/list" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    
+</root>

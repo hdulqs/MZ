@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.trade.entrust.dao.ExEntrustDao"   >
+   
+   
+	<resultMap id="exEntrustcheck" type="com.mz.trade.entrust.model.EradeCheck">
+		<result column="coldEntrustMoney" property="coldEntrustMoney" javaType="java.math.BigDecimal" />
+		<result column="buyTransactionMoney" property="buyTransactionMoney" javaType="java.math.BigDecimal" />
+		<result column="sellTransactionMoney" property="sellTransactionMoney" javaType="java.math.BigDecimal" />
+		<result column="transactionFee" property="transactionFee" javaType="java.math.BigDecimal" />
+	
+		<result column="edcoldEntrustCount" property="edcoldEntrustCount" javaType="java.math.BigDecimal" />
+		<result column="buyTransactioncount" property="buyTransactioncount" javaType="java.math.BigDecimal" />
+		<result column="transactionFeecoin" property="transactionFeecoin" javaType="java.math.BigDecimal" />
+		<result column="sellTransactioncount" property="sellTransactioncount" javaType="java.math.BigDecimal" />
+		
+		
+		<result column="coldEntrustFixPrice" property="coldEntrustFixPrice" javaType="java.math.BigDecimal" />
+		<result column="buyTransactionFixPrice" property="buyTransactionFixPrice" javaType="java.math.BigDecimal" />
+		<result column="sellTransactionFixPrice" property="sellTransactionFixPrice" javaType="java.math.BigDecimal" />
+		<result column="transactionFeeFixPrice" property="transactionFeeFixPrice" javaType="java.math.BigDecimal" />
+		
+	</resultMap>  
+ 
+	<select id="getcoldEntrustMoney"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+        select sum(a.entrustSum-a.transactionSum )as coldEntrustMoney from ex_entrust a where 
+	        a.customerId=#{customerId,jdbcType=VARCHAR}  and a.type=1 and a.fixPriceType=0
+	
+		<![CDATA[ and a.`status`<2]]>
+		  <if test="entrustTimeg!=null and entrustTimeg!='' ">
+			  <![CDATA[  and a.entrustTime >= #{entrustTimeg,jdbcType=VARCHAR}]]>
+		  </if> 
+		  <if test="entrustTimel!=null and entrustTimel!='' ">
+			  <![CDATA[   and a.entrustTime<#{entrustTimel,jdbcType=VARCHAR}  ]]>
+		  </if>   
+
+	
+	</select>
+	<select id="getbuyTransactionMoney"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+
+            select sum(a.transactionSum ) as buyTransactionMoney from ex_order_info a where 
+	        a.buyCustomId=#{customerId,jdbcType=VARCHAR} and a.fixPriceType=0
+	
+		  <if test="transactionTimeg!=null and transactionTimeg!='' ">
+			<![CDATA[  and a.transactionTime >= #{transactionTimeg,jdbcType=VARCHAR}]]>
+		  </if> 
+		   <if test="transactionTimel!=null and transactionTimel!='' ">
+			<![CDATA[   and a.transactionTime<#{transactionTimel,jdbcType=VARCHAR} ]]> 
+		  </if>   
+
+	
+	</select>
+	<select id="getsellTransactionMoney"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+    select sum(a.transactionSum )as sellTransactionMoney,sum(a.transactionSellFee) as transactionFee from ex_order_info a where 
+	        a.sellCustomId=#{customerId,jdbcType=VARCHAR} and a.fixPriceType=0
+	
+		  <if test="transactionTimeg!=null and transactionTimeg!='' ">
+		   <![CDATA[	  and a.transactionTime >= #{transactionTimeg,jdbcType=VARCHAR}	]]>
+		  </if> 
+		   <if test="transactionTimel!=null and transactionTimel!='' ">
+			 <![CDATA[  and a.transactionTime<#{transactionTimel,jdbcType=VARCHAR}  	]]>
+		  </if>   
+
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	<select id="getedcoldEntrustCount"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+      select sum(a.surplusEntrustCount)as edcoldEntrustCount from ex_entrust a  where 
+	        a.customerId=#{customerId,jdbcType=VARCHAR}   and a.type=2 and  a.coinCode=#{coinCode,jdbcType=VARCHAR} 
+	<![CDATA[
+		 and a.`status`<2 ]]>
+		  <if test="entrustTimeg!=null and entrustTimeg!='' ">
+			   <![CDATA[	 and a.entrustTime >= #{entrustTimeg,jdbcType=VARCHAR}]]>
+		  </if> 
+		   <if test="entrustTimel!=null and entrustTimel!='' ">
+			   <![CDATA[	  and a.entrustTime<#{entrustTimel,jdbcType=VARCHAR}  ]]>
+		  </if>   
+
+	
+	</select>
+	<select id="getbuyTransactioncount"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+
+         select sum(a.transactionCount) as buyTransactioncount,sum(a.transactionBuyFee) as transactionFeecoin from ex_order_info a where 
+	        a.buyCustomId=#{customerId,jdbcType=VARCHAR} and  a.coinCode=#{coinCode,jdbcType=VARCHAR} 
+	
+		  <if test="transactionTimeg!=null and transactionTimeg!='' ">
+			 <![CDATA[ and a.transactionTime >= #{transactionTimeg,jdbcType=VARCHAR} ]]>
+		  </if> 
+		   <if test="transactionTimel!=null and transactionTimel!='' ">
+			 <![CDATA[  and a.transactionTime<#{transactionTimel,jdbcType=VARCHAR}  ]]>
+		  </if>   
+
+	
+	</select>
+	<select id="getsellTransactioncount"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+ select sum(a.transactionCount )as sellTransactioncount from ex_order_info a  where 
+	        a.sellCustomId=#{customerId,jdbcType=VARCHAR} and  a.coinCode=#{coinCode,jdbcType=VARCHAR} 
+	
+		  <if test="transactionTimeg!=null and transactionTimeg!='' ">
+			<![CDATA[  and a.transactionTime >= #{transactionTimeg,jdbcType=VARCHAR}]]>
+		  </if> 
+		   <if test="transactionTimel!=null and transactionTimel!='' ">
+			<![CDATA[   and a.transactionTime<#{transactionTimel,jdbcType=VARCHAR}  ]]>
+		  </if>   
+
+	
+	</select>
+   
+   
+   
+   
+   
+   
+   <select id="getcoldEntrustFixPrice"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+        select sum(a.entrustSum-a.transactionSum )as coldEntrustFixPrice from ex_entrust a where 
+	        a.customerId=#{customerId,jdbcType=VARCHAR}  and a.type=1 and a.fixPriceType=1 and a.fixPriceCoinCode=#{fixPriceCoinCode,jdbcType=VARCHAR}
+	<![CDATA[
+		 and a.`status`<2 ]]>
+		  <if test="entrustTimeg!=null and entrustTimeg!='' ">
+			<![CDATA[  and a.entrustTime >= #{entrustTimeg,jdbcType=VARCHAR}]]>
+		  </if> 
+		   <if test="entrustTimel!=null and entrustTimel!='' ">
+			<![CDATA[   and a.entrustTime<#{entrustTimel,jdbcType=VARCHAR}   ]]>
+		  </if>   
+
+	
+	</select>
+	<select id="getbuyTransactionFixPrice"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+
+          
+          select sum(a.transactionSum ) as buyTransactionFixPrice from ex_order_info a  where 
+	        a.buyCustomId=#{customerId,jdbcType=VARCHAR}  and a.fixPriceType=1 and a.fixPriceCoinCode=#{fixPriceCoinCode,jdbcType=VARCHAR}
+	
+		  <if test="transactionTimeg!=null and transactionTimeg!='' ">
+			<![CDATA[  and a.transactionTime >= #{transactionTimeg,jdbcType=VARCHAR}]]>
+		  </if> 
+		   <if test="transactionTimel!=null and transactionTimel!='' ">
+			<![CDATA[   and a.transactionTime<#{transactionTimel,jdbcType=VARCHAR} ]]> 
+		  </if>   
+
+	
+	</select>
+	<select id="getsellTransactionFixPrice"  parameterType="java.util.Map" resultMap="exEntrustcheck" >  
+   select sum(a.transactionSum )as sellTransactionFixPrice,sum(a.transactionSellFee) as transactionFeeFixPrice from ex_order_info a  where 
+	        a.sellCustomId=#{customerId,jdbcType=VARCHAR}  and a.fixPriceType=1 and a.fixPriceCoinCode=#{fixPriceCoinCode,jdbcType=VARCHAR}
+	
+		  <if test="transactionTimeg!=null and transactionTimeg!='' ">
+			<![CDATA[  and a.transactionTime >= #{transactionTimeg,jdbcType=VARCHAR}]]> 
+		  </if> 
+		   <if test="transactionTimel!=null and transactionTimel!='' ">
+			<![CDATA[   and a.transactionTime<#{transactionTimel,jdbcType=VARCHAR}  ]]> 
+		  </if>   
+
+	</select>
+</mapper>

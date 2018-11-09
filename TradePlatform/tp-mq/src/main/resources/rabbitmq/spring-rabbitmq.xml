@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+						http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+						http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+						http://www.springframework.org/schema/context 
+       					http://www.springframework.org/schema/context/spring-context.xsd ">
+	
+
+<!-- host="${rabbitmq.ip}" port="${rabbitmq.port}" username="${rabbitmq.userName}" password="${rabbitmq.userPassword}"
+		virtual-host="${rabbitmq.virtual-host}" -->
+
+	<!-- 定义RabbitMQ的连接工厂 -->
+	<rabbit:connection-factory id="connectionFactory" 
+
+		host="${rabbitmq.url}" 
+		port="${rabbitmq.port}"
+		username="${rabbitmq.username}" 
+		password="${rabbitmq.password}"
+		virtual-host="${rabbitmq.virtual-host}" 
+
+     />
+
+<!-- 	host="${rabbitmq.ip}" 
+		port="${rabbitmq.port}"
+		username="${rabbitmq.userName}" 
+		password="${rabbitmq.userPassword}"
+		virtual-host="${rabbitmq.virtual-host}"  -->
+
+
+	<!-- 定义Rabbit模板，指定连接工厂以及定义exchange -->
+	<!-- <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="fanoutExchange" /> -->
+	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory" 
+	exchange="topicExchange" routing-key="hy.#"/>
+
+	<!-- MQ的管理，包括队列、交换器等 -->
+	<rabbit:admin connection-factory="connectionFactory" />
+
+    <!-- 定义队列，自动声明   -->
+    <!-- 日志队列 --> 
+	<rabbit:queue name="logQuery" auto-declare="true"/>
+	<!-- 其他队列 -->
+	<rabbit:queue name="testQuery" auto-declare="true"/>
+	<rabbit:queue name="myQueue" auto-declare="true"/>
+	<rabbit:queue name="testQueue" auto-declare="true"/>
+	<rabbit:queue name="entrustMatchToOrderQuery" auto-declare="true"/>
+	
+	<rabbit:queue name="saveCommissionToTrackQuery" auto-declare="true"/>
+	<rabbit:queue name="svaeCommissionToOrderQuery" auto-declare="true"/>
+	<rabbit:queue name="svaeExSubscriptionMq" auto-declare="true"/>
+ 	
+	<!-- 定义交换器，自动声明 -->
+	<!-- 普通的交换机  -->
+	<rabbit:fanout-exchange name="testExchange" auto-declare="true">
+			<rabbit:bindings>
+				<rabbit:binding queue="testQueue" />
+			</rabbit:bindings>
+		</rabbit:fanout-exchange>
+		
+		<!-- 日志交换机  使用广播模式 这个交换机注意不要乱用   -->
+	<rabbit:topic-exchange name="logExchange" auto-declare="true">
+			<rabbit:bindings>
+				<rabbit:binding queue="logQuery" pattern="hy.*.req"/>
+			</rabbit:bindings>
+		</rabbit:topic-exchange>
+	<!-- 自定义交换机  topic类型   在发送消息的时候需要制定key 通过这个key判断是哪个方法来执行这个消息(key需要一定的规则) -->
+    <rabbit:topic-exchange name="otherExchange">
+		<rabbit:bindings>
+			<rabbit:binding queue="testQuery" pattern="hy.web.*" />   <!-- *表示一个或多个 #表示多个 -->
+			<!-- <rabbit:binding queue="myQueue" pattern="hy.#" /> -->
+		</rabbit:bindings>
+	</rabbit:topic-exchange> 
+	<!-- 自定义交换机  -->
+	<rabbit:topic-exchange name="entrustMatchToOrderExchange" auto-declare="true">
+			<rabbit:bindings>
+				<rabbit:binding queue="entrustMatchToOrderQuery" pattern="com.mz.exchange.*"/>
+			</rabbit:bindings>
+		</rabbit:topic-exchange>
+		
+	<rabbit:topic-exchange name="entrustMatchToOrderExchange" auto-declare="true">
+			<rabbit:bindings>
+				<rabbit:binding queue="saveCommissionToTrackQuery" pattern="com.mz.commissionBytrack.*"/>
+			</rabbit:bindings>                                             
+	</rabbit:topic-exchange>
+		
+	<rabbit:topic-exchange name="entrustMatchToOrderExchange" auto-declare="true">
+			<rabbit:bindings>
+				<rabbit:binding queue="svaeCommissionToOrderQuery" pattern="com.mz.commissionByorder.*"/>
+			</rabbit:bindings>                                              
+	</rabbit:topic-exchange>
+		
+		<rabbit:topic-exchange name="entrustMatchToOrderExchange" auto-declare="true">
+			<rabbit:bindings>
+				<rabbit:binding queue="svaeExSubscriptionMq" pattern="com.mz.exSubscription.*"/>
+			</rabbit:bindings>                                              
+	</rabbit:topic-exchange>
+	
+</beans>
+
+
+

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.exchange.transaction.dao.ExDmTransactionDao"   >
+
+  <resultMap id="BaseResultMap" type="com.mz.exchange.transaction.model.ExDmTransaction">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="created" property="created" javaType="java.util.Date" />
+		<result column="modified" property="modified" javaType="java.util.Date" />
+		<result column="saasId" property="saasId" javaType="java.lang.String" />
+
+		<result column="trueName" property="trueName" javaType="java.lang.String" />
+		<result column="transactionNum" property="transactionNum" javaType="java.lang.String" />
+		<result column="customerId" property="customerId" javaType="java.lang.Long" />
+		<result column="customerName" property="customerName" javaType="java.lang.String" />
+		<result column="accountId" property="accountId" javaType="java.lang.Long" />
+		<result column="transactionType" property="transactionType" javaType="java.lang.Integer" />
+		<result column="transactionMoney" property="transactionMoney" javaType="java.math.BigDecimal" />
+		<result column="status" property="status" javaType="java.lang.Integer" />
+		<result column="userId" property="userId" javaType="java.lang.Long" />
+		<result column="currencyType" property="currencyType" javaType="java.lang.String" />
+	    <result column="coinCode" property="coinCode" javaType="java.lang.String" />
+		<result column="website" property="website" javaType="java.lang.String" />
+		<result column="fee" property="fee" javaType="java.math.BigDecimal" />
+		<result column="rejectionReason" property="rejectionReason" javaType="java.lang.String" />
+	    <result column="inAddress" property="inAddress" javaType="java.lang.String" />
+	    <result column="outAddress" property="outAddress" javaType="java.lang.String" />
+	    <result column="time" property="time" javaType="java.lang.String" />
+	    <result column="confirmations" property="confirmations" javaType="java.lang.String" />
+	    <result column="timereceived" property="timereceived" javaType="java.lang.String" />
+	    <result column="blocktime" property="blocktime" javaType="java.lang.String" />
+		<association property="appPersonInfo"
+			javaType="com.mz.customer.person.model.AppPersonInfo">
+
+			<result column="trueName" property="trueName" javaType="java.lang.String" />
+
+		</association>
+
+
+	</resultMap>
+
+	<!-- 通过sql分页查询 -->
+	<select id="findPageBySql" parameterType="java.util.Map"   resultMap="BaseResultMap" >
+			SELECT
+			*
+		FROM
+			ex_dm_transaction AS app
+		LEFT JOIN app_person_info AS info ON app.customerId = info.customerId
+
+		<where>
+			app.remark != 'C2C卖币'
+			<if test="coinCode!=null and coinCode!='' " >
+				app.coinCode = #{coinCode,jdbcType=VARCHAR}
+			</if>
+			<if test="transactionType!=null and transactionType!='' " >
+				and app.transactionType  =#{transactionType,jdbcType=TINYINT}
+			</if>
+
+			<!-- <if test="createdG!=null and createdG!='' and  createdL!=null and createdL!=''" >
+			    and app.created BETWEEN #{createdG,jdbcType=DATE}  and  #{createdL,jdbcType=DATE}
+			</if> -->
+
+			<if test="createdG!=null and createdG!='' " >
+			    and app.modified &gt;= #{modified,jdbcType=DATE}
+			</if>
+			<if test="createdL!=null and createdL!=''" >
+			    and app.modified &lt;  #{modified,jdbcType=DATE}
+			</if>
+
+			<if test="customerName!=null and customerName!='' " >
+			    and app.customerName  like #{customerName,jdbcType=VARCHAR}
+			</if>
+
+			<if test="inAddress!=null and inAddress!='' " >
+			    and app.inAddress  like #{inAddress,jdbcType=VARCHAR}
+			</if>
+
+			<if test="outAddress!=null and outAddress!='' " >
+			    and app.outAddress  like #{outAddress,jdbcType=VARCHAR}
+			</if>
+
+			<if test="transactionNum!=null and transactionNum!='' " >
+			    and app.transactionNum  like #{transactionNum,jdbcType=VARCHAR}
+			</if>
+
+			<if test="trueName!=null and trueName!='' " >
+			    and app.trueName like #{trueName,jdbcType=VARCHAR}
+			</if>
+
+			<if test="currencyType!=null and currencyType!='' " >
+			    and app.currencyType  like #{currencyType,jdbcType=VARCHAR}
+			</if>
+
+
+			<if test="status!=null and status!='' " >
+			    and app.`status`  = #{status,jdbcType=TINYINT}
+
+			</if>
+
+			<if test="orderby!=null and orderby!='' " >
+			    ORDER BY  #{orderby}
+			</if>
+		</where>
+	</select>
+
+	<select id="findLastTrasaction" resultType="com.mz.exchange.transaction.model.ExDmTransaction">
+		SELECT * FROM ex_dm_transaction WHERE STATUS IN(1,2) AND transactionType=1 ORDER BY id DESC LIMIT 0,1
+	</select>
+
+	<select id="findGetNumByCustomer" resultType="java.math.BigDecimal">
+	  <![CDATA[	SELECT
+		  SUM(transactionMoney)
+		FROM
+		  ex_dm_transaction
+		WHERE customerName = #{customerName}
+		  AND coinCode = #{coinCode}
+		  AND STATUS IN (1,2)
+		  and transactionType = 2
+		  AND modified >= DATE(NOW())
+		  AND modified < DATE_ADD(DATE(NOW()), INTERVAL 1 DAY) ]]>
+	</select>
+
+    <resultMap id="FrontMap" type="com.mz.manage.remote.model.ExDmTransactionManage">
+	</resultMap>
+	<select id="findExdmtransaction" parameterType="java.util.Map" resultMap="FrontMap">
+		select coinCode,transactionMoney,transactionNum,fee,status,created,rejectionReason from ex_dm_transaction where customerId = #{customerId} and transactionType = #{transactionType}
+		<if test="status!=null and status!=''">
+			and status = #{status}
+		</if>
+		<if test="coinCode!=null and coinCode!=''">
+			and coinCode = #{coinCode}
+		</if>
+		ORDER BY created desc
+	</select>
+
+</mapper>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="description"
+	content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。" />
+<meta name="keywords"
+	content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+" />
+<title>互融网｜综合数字资产交易平台</title>
+<meta property="wb:webmaster" content="8af72a3a7309f0ee" />
+
+</head>
+<body>
+	<header class="header">
+		 <a href="javascript:void(0);" id="bbjy"><div class="logo"></div></a>
+		<div class="nav">
+			  <a href="javascript:void(0);" id="bbjy">交易中心</a>
+			<!--<a href="/user/login" >登录</a>-->
+			<a href="login.htm" id="logins">登录</a> <a>注册</a>
+		</div>
+	</header>
+	<style>
+.bullet_p a:last-child, .bullet_p span:last-child {
+	width: 49%;
+}
+
+.tip-box {
+	color: red;
+	display: inline-block;
+	text-indent: 1.7rem;
+	margin-top: 0.2rem;
+}
+</style>
+	<div class="Wf-div1">
+		<a onclick="history.back(-1)">返回</a> <span>找回登录密码</span><strong style="color: red"></strong>
+	</div>
+	<div class="strip"></div>
+	<p class="bullet_p">
+		<span class="actives bull_click">通过注册邮箱找回</span>
+	<!-- 	<i class="bull_span_shu">|</i><span class="bull_click">通过绑定手机号找回</span> -->
+	</p>
+	<div class="cb-box1 tb-box1">
+		<!--    通过注册邮箱找回-->
+		<form method="post" onsubmit="return sendMessage.checkValid();">
+			<input type="hidden" name="isSendphone" value="0" />
+			<p class="p5" style="margin-top: 0.8rem">
+				<label>电子邮箱</label> <input type="email" style="width: 5.04rem;"
+					class="loginValue" value="" id="email" name="email"
+					placeholder="请输入您的邮箱">
+			</p>
+<!-- 			<p class="p5 p5_f ">
+				<label style="margin-right: 0.1rem">图形验证</label> <input type="text"
+					class="loginValue Txt11" name="captcha" id="captcha"
+					placeholder="图形验证码" style="wdith: 2rem;"> <a href="#"
+					class="p5_kanbuq"
+					onclick="$('#captchaimg').attr('src', '/index/captcha?t='+Math.random())">看不清？</a>
+				<img id="captchaimg" class="capture forget_img_11"
+					src="../index/captcha-t=636660.jpg">
+			</p> -->
+			<p class="p5 p5_f" id="phone_alert" style="display: none">
+				<span> <label style="margin-right: 4px;">短信验证</label> <input
+					type="text" class="Txt22" name='phone_code' id="phone_code_wallet"
+					placeholder="请输入短信验证码">
+				</span> <label class="verify phone_code verify_code" name="getPhoneCode"
+					onclick="sendMessage.getPhoneCode(this)">获取短信验证码</label>
+			</p>
+			<p class="p5" style="margin-top: 0.7rem;">
+				<input id="btn-ok" type="button" class="input_news_password" value="找回密码" />
+			</p>
+		</form>
+		<!--     通过绑定手机号找回-->
+		<form method="post" action="https://m.hurong.com/user/mfindpwd"
+			style="display: none">
+			<p class="p5">
+				<label>手机号</label> <input type="text" style="width: 5.04rem;"
+					class="loginValue" name="phone" placeholder="请输入手机号">
+			</p>
+			<label class="tip-box phone_note" style="display: none">手机号不正确</label>
+			<p class="p5 p5_f">
+				<span> <label style="margin-right: 4px;">短信验证</label> <input
+					type="text" class="Txt22" name="code" placeholder="请输入短信验证码"
+					autocomplete="new-password">
+				</span> <label class="verify phone_code verify_code" name="getPhoneCode"
+					onclick="sendPhoneCode()">获取短信验证码</label>
+			</p>
+			<label class="tip-box code_note" style="display: none">请输入验证码</label>
+			<p class="p5">
+				<label>新密码</label> <input type="password" style="width: 5.04rem;"
+					class="loginValue" name="pwd" placeholder="请输入新密码"
+					autocomplete="new-password">
+			</p>
+			<label class="tip-box pwd_note" style="display: none">密码长度在6-20个字符之间</label>
+			<p class="p5">
+				<label>确认新密码</label> <input type="password" style="width: 5.04rem;"
+					class="loginValue" name="repwd" placeholder="确认新密码">
+			</p>
+			<label class="tip-box repwd_note" style="display: none">密码不一致，请重新输入</label>
+			<p class="p5" style="margin-top: 0.7rem;">
+				<input type="button" class="input_news_password" id="msubmit"
+					value="找回密码" />
+			</p>
+		</form>
+		<p class="forget_dibu" style="margin-bottom: 150px;">
+			<span>已有账号去<a href="login.htm">登录</a></span> <span>没有账号去
+			<a
+				href="reg.htm">注册</a></span>
+		</p>
+	</div>
+	<div style="clear: both;"></div>
+	<footer class="footer">
+		<div class="footer_kefu_news">
+			<a href="tel:4008367667"><i></i>4008-367-667</a> <a><i></i>hry@hry.com</a>
+		</div>
+		<div>Copyright2013-2016 互融网</div>
+	</footer>
+	<script type="text/javascript" src="../../style/js/base.js"></script>
+	<script type="text/javascript" src="../../style/js/sea.js"></script>
+	<script type="text/javascript">
+		seajs.config({
+			base : basepath,
+			alias : {
+				"jquery" : "style/js/jquery/1.9.1.min.js",
+				"layer" : "style/js/layer/layer.js"
+			},
+			preload : [ 'jquery', 'layer' ],
+			map : [ [ '.js', '.js?v=' + new Date().getTime() ] ]
+		});
+		seajs.use([ 'style/js/extract/seajs/findpwd.js' ], function(l) {
+			l.init();
+		});
+	</script>
+</body>

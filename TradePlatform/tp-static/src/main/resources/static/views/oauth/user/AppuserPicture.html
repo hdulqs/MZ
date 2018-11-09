@@ -1,0 +1,28 @@
+<!-- 添加分公司-->
+<div class="card-panel">
+	<form id="seeForm" ng-submit="processForm()">
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">头像设置</span>
+			<button class="btn fs-16 right" type="submit">保存</button>
+		</h4>
+		<hr>
+		<div class="row">
+			<div class="col m4 s12">
+				<h4 class="fs-20 lh-20">员工风貌</h4>
+				<hry-uploadtwo path="imgSrc" delbtn="false"></hry-uploadtwo>
+				<br />
+			</div>
+		</div>
+
+	</form>
+
+</div>
+<!-- /添加分公司  -->
+
+<script type="text/javascript">
+	 function nofind() {
+	        		var img = event.srcElement;
+	        		img.src = HRY.host + "/static/static/images/logo_person.png";
+     }
+</script>
+

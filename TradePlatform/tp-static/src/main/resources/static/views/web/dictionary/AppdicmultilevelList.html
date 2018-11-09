@@ -1,0 +1,81 @@
+ <!-- Breadcrumb -->
+    <div class="page-title">
+
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <h4 ng-if="typeid=='bank'">银行字典树</h4>
+	      <h4 ng-if="typeid=='area'">地区字典树</h4>
+	      <h4 ng-if="typeid=='unit'">单位字典树</h4>
+	      <h4 ng-if="typeid=='exchange'">交易所字典树</h4>
+        </div>
+       
+      </div>
+
+    </div>
+    <!-- /Breadcrumb -->
+
+
+<!-- With Search -->
+<div >
+	<div class="row">
+		<div class="col s6">
+			<div id="tree" class="ztree"></div>
+		</div>
+		<span>&nbsp;&nbsp;刷新缓存后生效<a href="#/web/app/appcache/list/anon">进入缓存设置</a></span>
+	</div>
+	
+</div>
+</div>
+<!-- With Search -->
+<div class=" row pl-20 pr-30  mw-700 hide" id="modifyNodeDiv">
+	<form  name="v_form">
+		<div class="row ">
+			<div class="col s6 ">
+
+				<div class="input-field">
+					 <input type="text" id="txt_name"  name="itemName" ng-model="formData.itemName" validator="required"  required-error-message="名字必填" />
+				       <label for="txt_name" >名字</label>
+				</div>
+				<div class="input-field">
+					 <input type="text" id="txt_key" name="dicKey" ng-model="formData.dicKey" validator="required,eng"  required-error-message="key必填"  />
+				 <label for="txt_key" >KEY</label>
+				</div>
+				<div class="input-field">
+					<input type="text" id="txt_pkey" name="pDicKey"   readonly="readonly" ng-model="formData.pDicKey"  />
+				 <label for="txt_pkey" >父key</label>
+				</div>
+			</div>
+			<div class="col s6 ">
+
+
+				<div class="input-field">
+					 <input type="text" id="txt_mark" name="dicDescrption" ng-model="formData.dicDescrption" />
+				    <label for="txt_mark" >描述</label>
+				</div>
+				<div class="input-field">
+					 <input type="number" id="txt_order" name="orderNo" ng-model="formData.orderNo" ng-pattern="/^\+?[1-9][0-9]*$/" />
+				     <label for="txt_order" >排序</label>
+				</div>
+				<div class="input-field" ng-if="formData.pDicKey=='bank'">
+					 <input type="text" id="txt_remark1" name="remark1" ng-model="formData.remark1" />
+				<label for="txt_remark1" >银行代码 </label>
+				</div>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="row ">
+					<div class="col s12 m7 ">
+			          	 <hry-uploadone name="上传图片（规格:128px*38px）"  path="remark2" ng-model="formData.remark2" value="{{formData.remark2}}"></hry-uploadone>
+			          </div>
+				</div>
+		</div>
+
+		<button class="waves-effect btn" type="submit" ng-disabled="!form.checkValid(v_form)" ng-click="form.submit(v_form,processForm)">提交</button>
+		<span>{{ message }}</span>
+	</form>
+
+</div>
+
+</div>
+</div>
+<!-- /With Search -->

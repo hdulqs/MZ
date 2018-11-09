@@ -1,0 +1,139 @@
+	
+	 <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+         	<div class="row">
+         	
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input id="fristData"   class="pikaday" type="text" readonly dataTableSerch> <label for="input_text">申请时间-起</label>
+			      </div>
+			    </div>
+			 	<div class="col m3 s12">
+					<div class="input-field">
+						<input id="secondData" class="pikaday" type="text" readonly  dataTableSerch> <label for="input_text">申请时间-止</label>
+				   </div>
+			    </div> 
+			
+				<div class="col m3 s12">
+					<div class="input-field">
+				      	<select id="customerType" class="select2"  data-allow-clear="true"    data-placeholder="用户类型" >
+						  <option value="">不限</option>
+						  <option value="1">甲</option>
+						  <option value="2">乙</option>
+						  <option value="3">丙</option>
+						</select>
+			   		</div>
+			     </div>
+			 	<div class="col m3 s12">
+					<div class="input-field">
+						<hry-select  dataTableSerch url="{{HRY.host}}{{HRY.modules.exchange}}product/exproduct/selectProduct?states=1" name="coinCode" value="coinCode" selectId="coinCode"></hry-select>
+			   		</div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+        		<input class="btn pr-10 pl-10" style="background-color:gray;"  type = "button" ng-click="querySpecific()" value="具体查询"></input>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+	<div ng-if="appCalculate != '' " >
+		<table border="1">
+		  <tr>
+		    <th>新注册的用户</th>
+		    <th>活跃的用户</th>
+		    <th>交易用户</th>
+		    <th>会员总数</th>
+		    <th>总充值额</th>
+		    <th>期初总额</th>
+		    <th>转入总币数</th>
+		    <th>总持仓数</th>
+		    <th>买的总额</th>
+		    <th>卖的总额</th>
+		    <th>买的总数</th>
+		    <th>卖的总数</th>
+		  </tr>
+		  <tr>
+		    <td>{{appCalculate.newCustromers}}</td>
+		    <td>{{appCalculate.activeCustromersFortransfer}}</td>
+		    <td>{{appCalculate.activeCustromersForflatter}}</td>
+		    <td>{{appCalculate.custromerTotalNum}}</td>
+		    <td>{{appCalculate.postTotalMoneyForCustromer}}</td>
+		    <td>{{appCalculate.custromerTotalMoneyStart}}</td>
+		    <td>{{appCalculate.turnCodeCount}}</td>
+		    <td>{{appCalculate.custromerCodeCountStart}}</td>
+		    <td>{{appCalculate.custromerBuyForMoney}}</td>
+		    <td>{{appCalculate.custromerSellForMoney}}</td>
+		    <td>{{appCalculate.custromerBuyForNum}}</td>
+		    <td>{{appCalculate.custromerSellForNum}}</td>
+		  </tr>
+		</table>
+	
+	</div>
+	<hr/><br/><br/>
+	
+	<br/><br/><br/>
+	
+	
+	<hr/>
+	<font color="blue" ><h4>一下查询不区分用户类型和币种类型:</h4></font>
+	<br/>
+
+		 <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+         	<div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input id="fristDataForAll"   class="pikaday" type="text" readonly dataTableSerch> <label for="input_text">申请时间-起</label>
+			      </div>
+			    </div>
+			 	<div class="col m3 s12">
+					<div class="input-field">
+						<input id="secondDataForAll" class="pikaday" type="text" readonly  dataTableSerch> <label for="input_text">申请时间-止</label>
+				   </div>
+			    </div> 
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+        	<input class="btn pr-10 pl-10" style="background-color:gray;"  type = "button" ng-click="queryWhole()" value="整体查询"></input>
+        </div>
+      </div>
+
+    </div>
+	
+	
+	
+	
+<div ng-if="appCalculateAllCustomer != '' " >
+		<table border="1">
+		  <tr>
+		    <th>总充值钱数</th>
+		    <th>提现总额</th>
+		    <th>出金总额</th>
+		    <th>交易手续费</th>
+		    <th>提现手续费</th>
+		    <th>用户总资金</th>
+		    <th>转入总量</th>
+		    <th>用户总数量</th>
+		    <th>成交额</th>
+		    <th>成交量</th>
+		  </tr>
+		  <tr>
+		    <td>{{appCalculateAllCustomer.postTotalMoney}}</td>
+		    <td>{{appCalculateAllCustomer.getTotalMoney}}</td>
+		    <td>{{appCalculateAllCustomer.outTotalMoney}}</td>
+		    <td>{{appCalculateAllCustomer.poundageMoney}}</td>
+		    <td>{{appCalculateAllCustomer.withdrawalMoney}}</td>
+		    <td>{{appCalculateAllCustomer.totalMoneyStart}}</td>
+		    <td>{{appCalculateAllCustomer.intoTotalMoney}}</td>
+		    <td>{{appCalculateAllCustomer.totalNumForCodeStart}}</td>
+		    <td>{{appCalculateAllCustomer.totalMoneyForTrading}}</td>
+		    <td>{{appCalculateAllCustomer.totalNumForTrading}}</td>
+		  </tr>
+		</table>
+	</div>

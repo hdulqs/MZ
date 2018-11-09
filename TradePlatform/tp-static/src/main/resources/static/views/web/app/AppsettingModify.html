@@ -1,0 +1,29 @@
+    <!-- With Search -->
+    <div class="card-panel">
+      <h4>修改</h4>
+      <div class="row">
+      	<div class="col s1 "></div>
+		<div class="col s3 ">
+		    <form ng-submit="processForm()">
+                    <div class="input-field"> 
+                    	<input type="hidden" id="id" value="{{model.id}}"/>
+				       功能名称<input type="text" name="propertiesName" value="{{model.propertiesName}}"  ng-model="formData.propertiesName"   />
+				    </div>
+				    
+				     <div class="input-field"> 
+                                              功能Url<input type="text" name="propertiesUrl" value="{{model.propertiesUrl}}"  ng-model="formData.propertiesUrl"   />
+				    </div>
+				   <div class="input-field"> 
+				      <input type="radio" name="isOpen" value="0" id ="open" ng-model="formData.isOpen"   />
+				    <label for="open">开启</label>
+				    <input type="radio" name="isOpen"  value="1" id ="close" ng-model="formData.isOpen"   />
+				    <label for="close">关闭</label>
+				   </div>
+				    <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+					<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+			</form>
+			
+		</div>
+	 </div>
+    </div>
+

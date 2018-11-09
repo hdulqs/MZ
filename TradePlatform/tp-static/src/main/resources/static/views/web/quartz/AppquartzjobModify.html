@@ -1,0 +1,64 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppquartzjobList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-10 20:31:53      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppQuartzJob</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/quartz/appquartzjob/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="name" ng-model="formData.name" /> <label for="name">定时器名称</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="beanClass" ng-model="formData.beanClass" /> <label for="beanClass">类名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="methodName" ng-model="formData.methodName" /> <label for="methodName">方法名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="quarzTime" ng-model="formData.quarzTime" /> <label for="quarzTime">定时时间</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="remark" ng-model="formData.remark" /> <label for="remark">备注</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="start" ng-model="formData.start" /> <label for="start">是否启动</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,89 @@
+
+
+<!-- With Search -->
+	<div class="card-panel">
+		<div class="row">
+			<div class="col s2">
+				<!-- 增加按钮 -->
+				<!-- <div ng-if="requiresPermissions('a')">
+					<a class="btn" href="#/oauth/user/appuser/add/anon">添加</a>
+				</div> -->
+			</div>
+			<div class="col s6">
+				权限树
+				<div id="tree" class="ztree"  >
+				</div>
+			</div>
+			
+		</div>
+	</div>
+<!-- /With Search --> 	
+
+<SCRIPT type="text/javascript" >
+	var zTree;
+
+	var setting = {
+		view: {
+			dblClickExpand: false,
+			showLine: true,
+			selectedMulti: false
+		},
+		data: {
+			simpleData: {
+				enable:true,
+				id:"id",
+				idKey: "mkey",
+				pIdKey: "pkey",
+				rootPId: ""
+			}
+		},
+		callback: {
+				beforeClick:function(treeId, treeNode){
+					//alert(treeId);
+				}
+		}
+	};
+	
+	
+	var zNodes =[
+		
+	];
+	
+	function loadMenuList(){
+		$.post( HRY.modules.oauth+"user/appresource/findToJsonOnRolesAdd.do",
+			 null,
+	  		 function(data){
+	   			for(var i = 0 ; i < data.length ; i++) {
+	   				var item = {
+	   							id:data[i].id,
+	   							mkey:data[i].mkey,
+	   							pkey:data[i].pkey,
+	   							name:data[i].name,
+	   							open : true
+	   							//drop : false
+	   						   }
+	   				zNodes.push(item);
+	   			}
+	   			//初始化菜单树
+				$.fn.zTree.init($("#tree"), setting, zNodes);
+				//修改ztree样式
+				var treeSpan = $("#tree a");
+				for(var i = 0 ; i < treeSpan.length ; i++){
+					var ztid = $(treeSpan[i]).attr("ztid");
+					$(treeSpan[i]).after("<a class='btn ' title='删除' href= HRY.modules.oauth+'user/appresource/remove.do?id="+ztid+"' ><img src='"+HRY.staticUrl+"/static/lib/ztree/css/zTreeStyle/img/diy/1_close.png'/ ></a>")
+					$(treeSpan[i]).after("<a class='btn ' title='修改' href= HRY.modules.oauth+'user/appresource/modifyView.do?id="+ztid+"' ><img src='"+HRY.staticUrl+"/static/lib/ztree/css/zTreeStyle/img/diy/9.png'/ ></a>")
+				}
+				
+	   		 }, 
+	   		 "json"
+  			);
+	}
+	
+
+	$(document).ready(function(){
+		//加载菜单数据
+		loadMenuList();
+	});
+
+  </SCRIPT>
+

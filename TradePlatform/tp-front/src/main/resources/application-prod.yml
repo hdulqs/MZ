@@ -1,0 +1,11 @@
+spring:
+  redis:
+    host: 192.168.1.102
+    port: 6379
+    password: Credit2016Admin
+    pool:
+      max-active: 20
+      max-wait: 1
+      max-idle: 5
+      min-idle: 0
+    timeout: 10000

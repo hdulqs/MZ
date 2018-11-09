@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">  
+      <dubbo:reference id="remoteManageService" interface="com.mz.manage.remote.RemoteManageService"  check="false"></dubbo:reference>
+     
+      <dubbo:reference id="remoteOamessageService" interface="com.mz.manage.remote.RemoteOamessageService"  check="false"></dubbo:reference>
+      
+      <dubbo:reference id="remoteAppArticleService" interface="com.mz.manage.remote.RemoteAppArticleService"  check="false"></dubbo:reference>
+
+	  <dubbo:reference id="remoteAppTransactionManageService" interface="com.mz.manage.remote.RemoteAppTransactionManageService"  check="false"/>
+	  
+	  <dubbo:reference id="remoteBaseInfoService" interface="com.mz.manage.remote.RemoteBaseInfoService"  check="false"/>
+	  
+	  <dubbo:reference id="remoteSmsService" interface="com.mz.manage.remote.RemoteSmsService"  check="false"/>
+	   
+	  <dubbo:reference id="remoteLendService" interface="com.mz.manage.remote.RemoteLendService"  check="false"/>
+	 
+	  
+</beans> 

@@ -1,0 +1,127 @@
+
+<!-- Copyright:   北京互融时代软件有限公司 -->
+<!-- ExcointocoinList.html     -->
+<!-- @author:      gaomimi  -->
+<!-- @version:     V1.0             -->
+<!-- @Date:        2017-07-06 19:40:34      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5"></span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right"
+			href="#/exchange/product/excointocoin/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<!-- <div class="col s12 m6">
+				<div class="input-field">
+					<hry-select
+						url="{{HRY.host}}{{HRY.modules.exchange}}product/exproduct/selectlist"
+						placeholder="交易币种" name="coinCode" value="coinCode"
+						selectId="coinCode" dataTableSerch></hry-select>
+				</div>
+			</div>
+
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					<hry-select
+						url="{{HRY.host}}{{HRY.modules.exchange}}dictionary/appdiconelevel/findbykey?Q_pDickey_eq_String=pricingCurrency"
+						placeholder="定价币种类型" name="itemName" value="itemValue"
+						selectId="fixPriceType" dataTableSerch></hry-select>
+
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					<label for="input_city"></label>
+					<hry-select parentId="fixPriceType"
+						url="{{HRY.host}}{{HRY.modules.exchange}}product/excointocoin/getFixPriceCoinList"
+						placeholder="定价货币" name="coinCode" value="coinCode"
+						selectId="fixPriceCoinCode" dataTableSerch></hry-select>
+				</div>
+			</div> -->
+					<div class="col s12 m6">
+				<div class="input-field">
+					交易币种<input type="text" name="remark"
+						ng-model="formData.coinCode" readonly="readonly" />
+				</div>
+			</div>
+
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					定价币种<input type="text" name="remark"
+						ng-model="formData.fixPriceCoinCode" readonly="readonly" />
+				</div>
+			</div>
+			<!--  <div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="keepDecimalFixPrice" ng-model="formData.keepDecimalFixPrice"  /> <label for="keepDecimalFromProduct">定价币种保留位数</label>
+				</div>
+			</div> -->
+			<div class="col s12 m6">
+				<div class="input-field">
+					昨日收盘价<input type="text" name="remark"
+						ng-model="formData.yesterdayPrice"  />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					均价涨幅(%) <input type="text" name="remark" ng-model="formData.rose" />
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					均价跌幅(%) <input type="text" name="remark"
+						ng-model="formData.decline" />
+				</div>
+			</div>
+
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					买方手续费率(%)<input type="text" name="remark"
+						ng-model="formData.buyFeeRate" />
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					卖方手续费率(%) <input type="text" name="remark"
+						ng-model="formData.sellFeeRate" />
+				</div>
+			</div>
+			<!-- 		  <div class="col s12 m6">
+					<div class="input-field"> 
+						     市价下最小下单定价币 <input type="text" name="remark" ng-model="formData.buyMinMoney"   />
+						    </div>
+				</div> -->
+			<div class="col s12 m6">
+				<div class="input-field">
+					单笔最小下单数量(个) <input type="text" name="remark"
+						ng-model="formData.sellMinCoin" />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					单笔最大下单数量(个)<input type="text" name="remark"
+						ng-model="formData.oneTimeOrderNum" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit">保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

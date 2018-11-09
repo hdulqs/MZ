@@ -1,0 +1,57 @@
+
+<!-- With Search -->
+<div class="card-panel">
+
+	<!-- Handle -->
+	<div class="page-title pt-22 pb-22 ">
+		<div class="row">
+			<h4>
+				<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">添加会员</span>
+				<!-- 返回按钮 -->
+				<a class="btn fs-16 right" href="#/customer/user/appcustomer/list/anon">返回</a>
+			</h4>
+		</div>
+	</div>
+	<!-- /Handle -->
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="name" ng-model="formData.userName" required /> <label for="input_userName">会员账号(手机号)</label>
+				</div>
+			</div>
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="remark" ng-model="formData.passWord" required/> <label for="input_passWord">会员密码(含英文字母+数字,不小于6位)</label>
+				</div>
+			</div>
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="remark" ng-model="formData.trueName" required/> <label for="input_trueName">会员姓名</label>
+				</div>
+			</div>
+		</div>
+			<div class="row">
+			<div class="col s3 ">
+				<div class="input-field">
+					<select class="select2"  data-allow-clear="true"    data-placeholder="请选择性别" id="cardType">
+						<option value="0">身份证</option>
+					</select>
+				</div>
+			</div>
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="text" name="remark" ng-model="formData.cardId" required/> <label for="input_cardId">证件号码</label>
+				</div>
+			</div>
+			<div class="col s3 ">
+				<div class="input-field">
+					<input type="number" name="remark" ng-model="formData.integrals" required/> <label for="input_integrals">会员积分</label>
+				</div>
+			</div>
+		</div>
+				<button class="btn" type="submit" >保存</button>
+			
+	</form>
+</div>
+

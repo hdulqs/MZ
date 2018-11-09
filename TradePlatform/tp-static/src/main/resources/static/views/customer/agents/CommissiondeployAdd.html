@@ -1,0 +1,96 @@
+
+  <form ng-submit="processForm()">
+
+    <div class="card">
+    
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>代理拥金信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+
+<!-- 正文 -->
+  <div class="content"> 
+     <div class="row ">
+          <div class="col s12 l3">
+               <select id = "costName" class="select2"  data-allow-clear="true"    data-placeholder="请选择费用类型"  class="form-control" ng-model="formData.costName">
+              <!--  		<option value="1">提现佣金费率     </option> -->
+               		<option value="2">交易佣金费率     </option>
+               </select>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">                                      
+               <input type="text" id="issueTotalMoney"  ng-model="formData.oneStandardValue"   />
+               <label for="issueTotalMoney">一级标准金额(￥)</label>
+            </div>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">                                
+                <input type="text" id="oneRankRatio"  ng-model="formData.oneRankRatio"   />
+                <label for="totalNum">一级返佣比例(%)</label>
+            </div>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                <input type="text" id="issuePrice" ng-model="formData.twoStandardValue"   />
+               <label for="issuePrice">二级标准金额(￥)</label>
+            </div>
+          </div>
+    </div>
+    
+   <div class="row ">
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+              <input type="text" id="twoRankRatio"  ng-model="formData.twoRankRatio"   />
+               <label for="coinCode">二级返佣比例(%)</label>
+            </div>
+          </div>
+           
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                <input type="text" id="issueName"  ng-model="formData.threeStandardValue"   />
+                <label for="issueName">三级标准金额(￥)</label>
+            </div>
+          </div>
+          
+           <div class="col s12 m6 l3">
+           <div class="input-field"> 
+				       <input type="text" id="threeRankRatio" name="stock" ng-model="formData.threeRankRatio"   />
+				       <label for="stock">三级返佣比例(%)</label>
+			</div>
+         </div>
+    </div>
+
+    <div class="row ">
+     <!-- 	<div class="col s12 m6 l3">
+    	  <div class="input-field"> 
+				<input type="text" name="minBlocksize" ng-model="formData.settlementMoney"   />
+				<label for="minBlocksize">结算金额(￥)</label>
+		  </div>
+		 </div> -->
+		 
+		  <div class="col s12 m6 l3">
+				<select id="states" class="select2"  data-allow-clear="true"    data-placeholder="请选择状态" ng-model="formData.states">
+					<option value="">不限</option>
+					<option value="0">不可用</option>
+					<option value="1">可用</option>
+				</select>
+		  </div>
+	</div>
+   
+    <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+	<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+	
+	</div>	
+</div>
+
+</form>
+			
+
+
+

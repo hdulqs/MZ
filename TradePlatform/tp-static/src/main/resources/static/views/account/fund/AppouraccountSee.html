@@ -1,0 +1,96 @@
+<!-- 添加分公司-->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看银行账户</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/account/fund/appouraccount/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form id="seeForm" ng-submit="processForm()">
+		<div class="row">
+			<div class="col m8 s12 left">
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="请选择账户类别" id="currencyType" disabled="disabled">
+							<option value="">不限</option>
+							<option value="0">人民币</option>
+							<option value="1">美元</option>
+						</select>
+					</div>
+				</div>
+				<div class="col m6 s12">
+					<div class="input-field">
+						<hry-select disabled url="{{HRY.host}}{{HRY.modules.web}}dictionary/appdiconelevel/findbykey?Q_pDickey_eq_String=bank" name="itemName" value="dicKey" selectId="bankName"></hry-select>
+					</div>
+				</div>
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select  class="select2"  data-allow-clear="true"    data-placeholder="请选择开户类型" id="openAccountType" disabled="disabled">
+							<option value="">不限</option>
+							<option value="0">企业</option>
+							<option value="1">个人</option>
+						</select>
+					</div>
+				</div>
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="请选择是否主账户" id="isShow" disabled="disabled">
+							<option value="">不限</option>
+							<option   value="0">普通账户</option>
+							<option   value="1">主账户</option>
+						</select>
+						
+					</div>
+				</div>
+				
+				<div class="col m6 s12">
+					<div class="input-field">
+						<select class="select2"  data-allow-clear="true"    data-placeholder="请选择账户类型 " id="accountType" disabled="disabled">
+							<option value="">不限</option>
+							<option value="0">银行卡</option>
+							<option value="2">支付宝</option>
+						</select>
+					</div>
+				</div>
+				<div class="col m6 s12">
+					
+					<div class="input-field">
+						银行卡号<input type="text" ng-model="model.accountNumber" readonly="readonly"> 
+					</div>
+				</div>
+				<div class="col m6 s12">
+					
+					<div class="input-field">
+						持卡人姓名<input type="text" ng-model="model.accountName" readonly="readonly">
+					</div>
+				</div>
+
+				<div class="col m12 s12">
+					<div class="input-field">
+						开户行地址<input type="text" ng-model="model.bankAddress" readonly="readonly">
+					</div>
+				</div>
+				<div class="col s12">
+					<div class="input-field">
+						备注<textarea id="textarea1" class="materialize-textarea" length="120" ng-model="model.remark" readonly="readonly"></textarea>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</form>
+
+</div>
+<!-- /添加分公司  -->
+
+<link rel="stylesheet" href="static/lib/ztree/css/demo.css" type="text/css">
+<link rel="stylesheet" href="static/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<script type="text/javascript">
+	function nofind() {
+		var img = event.srcElement;
+		//	img.src = HRY.host + "/static/static/images/logo_person.png";
+	}
+</script>
+
+

@@ -1,0 +1,1 @@
+ALTER TABLE app_customer ADD (memberPoint DECIMAL(20,10) DEFAULT 0 COMMENT "会员积分" );

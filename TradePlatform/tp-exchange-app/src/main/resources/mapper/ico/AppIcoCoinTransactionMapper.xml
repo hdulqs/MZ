@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.ico.coinTransaction.dao.AppIcoCoinTransactionDao">
+
+
+
+<resultMap id="FrontMap" type="com.mz.manage.remote.ico.model.AppIcoCoinTransactionDTO"></resultMap>
+<select id="findIcotransaction" parameterType="java.util.Map" resultMap="FrontMap">
+	select transactionMoney,transactionNum,coinCode,fee,status,created from app_ico_coin_transaction where customerId = #{customerId} and transactionType = #{transactionType}
+	<if test="status!=null and status!=''">
+		and status = #{status}
+	</if>
+	ORDER BY created desc
+</select>
+</mapper>

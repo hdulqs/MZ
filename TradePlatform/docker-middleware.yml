@@ -1,0 +1,95 @@
+version: '3.3'
+services:
+  nginx:
+   image: 192.168.1.102:5000/middleware/nginx:1.14.0
+   volumes:
+   - /home/logs/nginx:/usr/local/nginx/logs
+   ports:
+   - 80:80
+   - 443:443
+   networks:
+     - front
+     - admin
+   deploy:
+     replicas: 1
+     restart_policy:
+       condition: on-failure
+  redis1:
+    image: 192.168.1.102:5000/middleware/redis:4.0.11
+    volumes:
+    - /home/logs/redis1:/logs
+    privileged: true
+    ports:
+    - 6379:6379
+    networks:
+    - front
+    - admin
+    command: ["/etc/redis.conf"]
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  redis2:
+    image: 192.168.1.102:5000/middleware/redis:4.0.11
+    volumes:
+    - /home/logs/redis2:/logs
+    privileged: true
+    ports:
+    - 6380:6379
+    networks:
+    - front
+    - admin
+    command: ["/etc/redis.conf"]
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  zookeeper:
+    image: 192.168.1.102:5000/middleware/zookeeper:3.4.13
+    volumes:
+    - /home/logs/zookeeper:/datalog
+    ports:
+    - 2181:2181
+    - 20901:20901
+    - 20902:20902
+    - 20903:20903
+    - 20904:20904
+    - 20905:20905
+    networks:
+      - front
+      - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  rabbitmq:
+    image: 192.168.1.102:5000/middleware/rabbitmq:3.7.8
+    ports:
+    - 5672:5672
+    - 15672:15672
+    networks:
+    - front
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  node_index:
+    image: 192.168.1.102:5000/middleware/node_index:1.0.0
+#    volumes:
+#    - /home/logs/node_index:/logs
+    ports:
+    - 3000:3000
+    networks:
+    - front
+    depends_on:
+    - redis1
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+networks:
+  front:
+    external: true
+  admin:
+    external: true

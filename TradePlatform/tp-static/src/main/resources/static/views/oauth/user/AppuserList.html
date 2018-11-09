@@ -1,0 +1,65 @@
+
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+	<div class="row">
+		<div class="col s12 m8 l5">
+			<div class="row">
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input id="input_lname" type="text" ng-model="serchData.username_like" dataTableSerch> <label for="input_lname">姓名</label>
+					</div>
+				</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input id="input_city" type="text" ng-model="serchData.mobilePhone_like" dataTableSerch> <label for="input_city">联系电话</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m4 l7 right-align pt-20">
+
+			<!-- 增加按钮 -->
+			<a class="btn pr-10 pl-10"  ng-if="requiresPermissions('oauth','/user/appuser/add')"  ng-click="fnAdd()"><i class="fa fa-plus-circle " aria-hidden="true"></i>添加</a>
+
+			<!-- 查看按钮 -->
+			<a class="btn pr-10 pl-10"  ng-if="requiresPermissions('oauth','/user/appuser/see')"  ng-click="fnSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>查看</a>
+
+			<!-- 修改按钮 -->
+			<a class="btn pr-10 pl-10"  ng-if="requiresPermissions('oauth','/user/appuser/modify')"  ng-click="fnModify()"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>修改</a>
+			
+			<!-- 删除按钮 -->
+			<a class="btn pr-10 pl-10"  ng-if="requiresPermissions('oauth','/user/appuser/remove')"  ng-click="fnRemove('user/appuser/remove')"> <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+
+			<!-- 刷新按钮 -->
+			<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+		</div>
+	</div>
+
+</div>
+<!-- /Handle -->
+
+<div class="row">
+	<div class="col s12 ">
+		<table id="dataTable" class="display table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+					<th>账号</th>
+					<th>姓名</th>
+					<th>手机号码</th>
+					<th>角色</th>
+					<th>所属部门</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
+</div>
+
+
+

@@ -1,0 +1,167 @@
+
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>用户基础信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content"> 
+      
+
+
+    <div class="row ">
+     <div class="col s12 m6 l3">
+    	<div class="input-field"> 
+    		用户名  <input  readonly="readonly" type="text" name="maxBlocksize" ng-model="model.userName"   />
+		</div>
+	</div>
+	
+	<div class="col s12 m6 l3">
+		 <div class="input-field">
+			 是否锁定 	<input ng-if=" model.isLock == 1 " disabled="disabled" type="text" name="maxBlocksize" value="是"   />
+			        <input ng-if=" model.isLock == 0 " disabled="disabled" type="text" name="maxBlocksize" value="否"   /> 
+		</div>
+	</div>
+	
+	<div class="col s12 m6 l3">
+		<div class="input-field"> 
+			  <span ng-if=" model.proveMode !=undefined " >锁定时间</span>  <input ng-if=" model.proveMode !=undefined " disabled="disabled" type="text" name="maxBlocksize" ng-model="model.proveMode"  > </input>
+		</div>
+	</div>
+	
+    </div>
+   
+    <div class="row ">
+     	<div class="col s12 m6 l3">
+    	  <div class="input-field"> 
+				是否禁用 <input ng-if=" model.isDelete  == 1 " disabled="disabled" type="text" name="minBlocksize" value="禁用"   />
+					   <input ng-if=" model.isDelete  == 0 " disabled="disabled" type="text" name="minBlocksize" value="不禁用"   />
+		  </div>
+		 </div>
+		 
+		  <div class="col s12 m6 l3">
+		  <div class="input-field"> 
+				是否实名 <input ng-if=" model.states  == 0 " disabled="disabled" type="text" name="maxBlocksize" value="没有实名"   />
+				      <input ng-if=" model.states  == 1 " disabled="disabled" type="text" name="maxBlocksize" value="待审核"   />
+				      <input ng-if=" model.states  == 2 " disabled="disabled" type="text" name="maxBlocksize" value="已经实名"   />
+				      
+		  </div>
+		  </div>
+		 
+		 <div class="col s12 m6 l3">
+			<div class="input-field"> 
+				  <span ng-if=" model.proveMode !=undefined " >真实姓名</span>  <input ng-if=" model.proveMode !=undefined " disabled="disabled" type="text" name="maxBlocksize" ng-model="model.proveMode"  > </input>
+			</div>
+		 </div> 
+
+		  <div class="input-field"> 
+		  		
+		  <span ng-if="model.customerType !=undefined">账户类型 </span>
+				<input ng-if="model.customerType ==1" disabled="disabled" type="text" name="walletDownload" value="普通用户"  />
+				<input ng-if="model.customerType ==2" disabled="disabled" type="text" name="walletDownload" value="会员用户"  />
+				<input ng-if="model.customerType ==3" disabled="disabled" type="text" name="walletDownload" value="超级会员"  />
+				<input ng-if="model.customerType ==4" disabled="disabled" type="text" name="walletDownload" value="其他用户"  />
+		   </div>
+		   </div>
+			
+		 <div class="row ">
+    	
+    	<div class="col s12 m6 l3"> 	
+			<div class="input-field"> 
+				创建时间  <input disabled="disabled" type="text" name="blockspeed" ng-model="model.created"   />
+			</div>
+		</div>
+    	
+    	<div class="col s12 m6 l3"> 	
+			<div class="input-field"> 
+				证件类型 <input ng-if=" model.appPersonInfo.cardType  == 0 " disabled="disabled" type="text" name="maxBlocksize" value="身份证"    />
+				      <input ng-if=" model.appPersonInfo.cardType  == 1 " disabled="disabled" type="text" name="maxBlocksize" value="其他"   />
+			</div>
+		</div>
+		
+		<div class="col s12 m6 l3"> 	
+			<div class="input-field"> 
+				证件号  <input disabled="disabled" type="text" name="blockspeed" ng-model="model.appPersonInfo.cardId"   />
+			</div>
+		</div>
+    
+    </div>
+			
+    </div>
+    </div>
+  
+	  <div class="row ">
+	  
+	  <div class="col s12 m6 l3">
+    	<div class="input-field"> 
+    		<a class="btn pr-10 pl-10" ng-click="fnPublicKeySee()"><i class="fa fa-search-plus " aria-hidden="true"></i>钱包地址</a>
+    		  
+		</div>
+	</div>
+	
+	  <div class="col s12 m6 l3">
+    	<div class="input-field"> 
+    		<a class="btn pr-10 pl-10" ng-click="fnBalanceSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>账户余额</a>
+    		  
+		</div>
+	</div>
+	  
+    <!--  <div class="col s12 m6 l3">
+    	<div class="input-field"> 
+    		<a class="btn pr-10 pl-10" ng-click="fnRechargeSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>充值记录</a>
+    		  
+		</div>
+	</div>
+	
+	<div class="col s12 m6 l3">
+		 <div class="input-field">
+			<a class="btn pr-10 pl-10" ng-click="fnWithdrawSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>取现记录</a>
+		</div>
+	</div> -->
+	
+	  <div class="col s12 m6 l3">
+    	<div class="input-field"> 
+    		<a class="btn pr-10 pl-10" ng-click="fnRechargeCoinSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>充币记录</a>
+    		  
+		</div>
+	</div>
+	
+	
+	  <div class="col s12 m6 l3">
+    	<div class="input-field"> 
+    		<a class="btn pr-10 pl-10" ng-click="fnWithdrawCoinSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>提币记录</a>
+    		  
+		</div>
+	</div>
+	
+	
+	
+	<!-- <div class="col s12 m6 l3">
+		<div class="input-field"> 
+		<a class="btn pr-10 pl-10" ng-click="fnFinanceApplySee()"><i class="fa fa-search-plus " aria-hidden="true"></i>杠杆记录</a>
+			 
+		</div>
+	</div>
+	
+	<div class="col s12 m6 l3">
+		<div class="input-field"> 
+		<a class="btn pr-10 pl-10" ng-click="fnCommissionDetailSee()"><i class="fa fa-search-plus " aria-hidden="true"></i>佣金记录</a>
+			 
+		</div>
+	</div> -->
+	
+    </div>
+	</div>	
+</div>
+
+
+			
+
+
+

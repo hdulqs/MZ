@@ -1,0 +1,187 @@
+   
+   <form  name="app_article_add">
+   <!-- card 卡片   row ：行  col： 列-->
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>文章基础信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content">
+     
+     
+  <div class="row no-margin-top">
+       <label >文章类型</label>
+          <div class="col s12 ">
+              <hry-select  url="{{HRY.host}}{{HRY.modules.web}}article/appcategory/selectlist?website={{website}}&type=2" name="name" value="id" selectId="companySet" ></hry-select>
+          </div>
+        </div> 
+
+
+
+       <div class="row">
+          <div class="col s12 ">
+            <div class="input-field">
+             <input type="text"  id="title" class="input-field" class="form-control"  ng-model="formData.title"  validator="required" required-error-message="文章标题必填"   />
+             <label for="title">文章标题</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row ">
+          <div class="col s12 l3">
+            <div class="input-field">
+              <input type="text" id="auth"  ng-model="formData.writer"   />
+               <label for="auth">文章作者</label>
+            </div>
+          </div>
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+               <input type="text" id="source"  ng-model="formData.source"   />
+               <label for="source">文章来源</label>
+            </div>
+          </div>
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                <input type="text" id="hits"  ng-model="formData.hits"   />
+               <label for="hits">文章点击量</label>
+            </div>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                <input type="text" id="sort" ng-model="formData.sort"   />
+               <label for="sort">文章排序值</label>
+            </div>
+          </div>
+        </div>
+
+        
+         <div class="row">
+          <div class="col s12 ">
+            <div class="input-field">
+              <textarea  type="text" id="shortContent" class="materialize-textarea" ng-model="formData.shortContent"></textarea>
+             <label for="shortContent">文章简介</label>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+         <div class="row">
+          <div class="col s12 ">
+          <label >文章内容</label>
+            <div class="input-field">
+           
+            <div  class="ueditor" config="_simpleConfig" ng-model="formData.content"></div>
+             
+             
+             </div>
+          </div>
+        </div>
+
+      </div>
+      
+       <!--/内容-->
+    </div>
+    <!-- /文章基础信息  卡片 -->
+   
+   
+   <!--文章扩展信息-->
+   
+   <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>文章扩展信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      
+      <!--内容-->
+      <div class="content">
+      
+      <div class="row ">
+          <div class="col s12 l6">
+              <label >是否置顶</label>
+              <input name="radios1" type="radio" id="radios1-1" value="1"  ng-model="formData.isStick" />
+              <label for="radios1-1">是</label>
+              <input name="radios1" type="radio" id="radios1-2" value="0" ng-model="formData.isStick"  ng-checked="true" />
+              <label for="radios1-2">否</label>
+          </div>
+          <div class="col s12  l6">
+           <label >是否外链</label>
+              <input name="radios2" type="radio" ng-model="formData.isOutLink"  id="radios2-1" value="1"  />
+              <label for="radios2-1">是</label>
+              <input name="radios2" type="radio" ng-model="formData.isOutLink"   value="0" id="radios2-2"  ng-checked="true" />
+              <label for="radios2-2">否</label>
+          </div>
+        </div>
+      
+      
+      <div class="row ">
+          <div class="col s12 m6 ">
+            <div class="input-field">
+                 <input type="text" id="outLink" ng-model="formData.outLink"   />
+               <label for="outLink">外链地址</label>
+            </div>
+          </div>
+          <div class="col s12 m6 ">
+          	 <hry-uploadone name="上传标题图片(规格:130px*130px)"  path="titleImage" value="{{titleImage}}"></hry-uploadone>
+          </div>
+        </div>
+        
+        
+        <div class="row ">
+          <div class="col s12 m6">
+            <div class="input-field">
+              <input type="text" id="seoTitle" ng-model="formData.seoTitle"   />
+               <label for="seoTitle">SEO标题</label>
+            </div>
+          </div>
+          <div class="col s12 m6 ">
+            <div class="input-field">
+               <input type="text" id="seoKeyword" ng-model="formData.seoKeyword"   />
+               <label for="seoKeyword">SEO关键字</label>
+            </div>
+          </div>
+        </div>
+        
+        
+       <div class="row">
+          <div class="col s12 ">
+            <div class="input-field">
+              <textarea  type="text" id="seoDescribe" class="materialize-textarea" ng-model="formData.seoDescribe"></textarea>
+             <label for="seoDescribe">SEO描述</label>
+            </div>
+          </div>
+        </div>
+        
+      
+      </div>
+       <!--/内容-->
+      
+       <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+        <p class="center">
+       
+       <button type="submit" ng-disabled="!form.checkValid(app_article_add)" ng-click="form.submit(app_article_add,processForm)"  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存</button>
+      
+      <button  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">重置</button>
+       </p>
+      
+      
+      </div>
+  
+   <!--/文章扩展信息-->
+   </form>
+<script type="text/javascript" src="/manage/static/ueditor/ueditor.config.js"></script>
+   <script type="text/javascript" src="/manage/static/ueditor/ueditor.all.js"></script>

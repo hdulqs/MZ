@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="login_html">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!--css-->
+  <!-- hurong styles -->
+  <link href='static/lib/_con/css/googleapis.min.css' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="">
+  <!-- nanoScroller -->
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="static/lib/font-awesome/css/font-awesome.min.css"/>
+
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" type="text/css"
+        href="static/lib/material-design-icons/css/material-design-icons.min.css"/>
+
+
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="static/lib/_con/css/_con.min.css"/>
+
+
+  <style>
+
+    #sign-in {
+      background: url(static/images/erplgbg.jpg) no-repeat center center;
+    }
+
+    #sign-in form {
+      max-width: 570px;
+    }
+
+    #sign-in form > .hr-lgpanel {
+      box-shadow: none;
+      padding: 20px 50px;
+    }
+
+    #sign-in .hrerp {
+      color: #fff;
+      margin: 0;
+    }
+
+    #sign-in .hrerp-tit {
+      padding: 0;
+      margin-top: 1rem;
+      font-family: "微软雅黑";
+    }
+
+    #sign-in .hrerp .hre-line {
+      height: 2px;
+      border-bottom: 1px solid #96aedf;
+    }
+
+    .hr-lgpanel {
+      background: url(static/images/erplg.png) no-repeat center center;
+      min-height: 368px;
+      margin-top: 3rem;
+    }
+
+    .hr-lgpanel .input-field .prefix.fa {
+      color: #fff;
+    }
+
+    .hr-lgpanel .input-field .prefix.active {
+      color: #42A5F5;
+    }
+
+    .input-field .prefix ~ .mbcode {
+      width: 40%;
+    }
+
+    .hr-lgpanel .input-field .mbimg {
+      position: relative;
+      top: 1rem;
+    }
+
+    .hr-lgpanel .input-field {
+      margin-top: 1.5rem;
+    }
+
+    .hr-lgpanel .input-field .mbtxt {
+      color: #fff;
+      position: relative;
+      top: 0;
+    }
+
+    #sign-in button {
+      font-size: 18px;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 1680px) {
+      #sign-in {
+        padding-top: 14rem !important;
+      }
+    }
+
+    .round {
+
+      border: 0px solid #dedede;
+      -moz-border-radius: 8px; /* Gecko browsers */
+      -webkit-border-radius: 8px; /* Webkit browsers */
+      border-radius: 8px; /* W3C syntax */
+    }
+
+
+  </style>
+
+  <script type="text/javascript">
+    function refreshCaptcha() {
+      document.getElementById("img_captcha").src = HRY.modules.oauth
+          + "kaptcha?t=" + Math.random();
+    }
+  </script>
+
+</head>
+<body onload="refreshCaptcha();">
+
+
+<section id="sign-in">
+
+  <!-- Background Bubbles -->
+  <!--<canvas id="bubble-canvas"></canvas>-->
+  <!-- /Background Bubbles -->
+
+  <!-- Sign In Form -->
+  <form action="" method="post" id="loginForm" name="loginForm">
+    <div class="row hrerp  center-align ">
+      <p class="hre-line col s3"></p>
+      <span class="fs-24 hrerp-tit  col s6" name="manage_name"></span>
+      <p class="hre-line col s3"></p>
+    </div>
+
+    <div class="card-panel hr-lgpanel clearfix">
+
+      <!-- Username -->
+      <div class="input-field">
+        <i class="fa fa-user prefix"></i>
+        <input name="username" id="username" type="text" class="validate">
+        <label for="username">用户名</label>
+      </div>
+      <!-- /Username -->
+
+      <!-- Password -->
+      <div class="input-field">
+        <i class="fa fa-unlock-alt prefix"></i>
+        <input name="password" id="password" type="password" class="validate">
+        <label for="password">密码</label>
+      </div>
+      <!-- /Password -->
+
+      <!-- Usercode -->
+      <div class="input-field">
+        <i class="fa fa-mobile prefix"></i>
+        <input id="captcha" name="captcha" type="text" class="validate mbcode">
+        <label for="captcha">验证码</label>
+        <span class="mbimg"><img id="img_captcha" class="round" style="width:100px; height:30px"
+                                 title="换一张" src="" alt="换一张"
+                                 onclick="javascript:refreshCaptcha();"> </span>
+        <span class="fs-15 mbtxt"> （<a href="javascript:void(0)" style="color:#fff"
+                                       onclick="javascript:refreshCaptcha()">看不清换一张</a>）</span>
+      </div>
+      <!-- /Usercode -->
+      <span><font style="color: red;" id="errorMsg"></font></span>
+      <button type="button" class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover"
+              id="login">登录
+      </button>
+    </div>
+
+    <div class="links center-align mt-20">
+      <a href="#" id="copyRight"></a>
+    </div>
+    <input class="validate" type="hidden" name="appuserprefix" id="appuserprefix" value="hy">
+  </form>
+  <!-- /Sign In Form -->
+
+</section>
+
+<!-- jQuery -->
+<script type="text/javascript" src="static/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="static/lib/angularjs-md5/module_md5.js"></script>
+<script type="text/javascript" src="static/js/hry.js"></script>
+
+<!-- Materialize -->
+<script type="text/javascript" src="static/lib/materialize/js/materialize.min.js"></script>
+
+<script type="text/javascript" src="static/lib/_con/js/_con.min.js"></script>
+
+
+</body>
+<script type="text/javascript">
+  $(document).ready(function () {
+    //刷新验证码
+    refreshCaptcha();
+
+    $("#loginForm").attr("action",
+        HRY.modules.oauth + "/loginService.do?" + (new Date()).getTime());
+    $("#img_captcha").attr("src", HRY.modules.oauth + "/kaptcha");
+
+    document.onkeydown = function (e) {
+      var ev = document.all ? window.event : e;
+      if (ev.keyCode == 13) {
+        login(); //处理事件
+      }
+    }
+
+    $("#login").on("click", function (btn) {
+      login();
+
+    });
+
+    function login() {
+
+      var pwd = $("#password").val();
+      pwd = hbmd5(pwd);
+      $("#password").val(pwd);
+
+      $.ajax({
+        type: 'POST',
+        url: HRY.modules.oauth + 'login.do',
+        data: {
+          username: $("#username").val(),
+          password:
+          pwd,
+          captcha:
+              $("#captcha").val()
+        }
+        ,
+        dataType: "json",
+        success:
+
+            function (data) {
+              if (data != undefined && data.success) {
+                //console.log($("#loginForm").attr("action"));
+                //$("#password").val(data.msg);
+                $("#loginForm").submit();
+              } else {
+                //刷新验证码
+                refreshCaptcha();
+                $("#errorMsg").html(data.msg);
+
+              }
+            }
+      })
+      ;
+
+    }
+
+    //添加登录名前缀
+//	addAppuserprefix();
+    function addAppuserprefix() {
+      var url = location.search;
+      var appuserprefix = "";
+      if (url.indexOf("&") != -1) {
+        var end = url.indexOf("&");
+        var appuserprefix = url.substring(1, end);
+      } else {
+        appuserprefix = url.substr(1);
+      }
+      $("#appuserprefix").val(appuserprefix);
+    }
+
+    function GetRequest() {
+      var url = location.search; //获取url中"?"符后的字串
+      var theRequest = new Object();
+      if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+          theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+      }
+      return theRequest;
+    }
+
+    var request = GetRequest();
+    if (request.error == "1") {
+      $("#message").html("用户名/密码错误");
+    } else if (request.error == "2") {
+      $("#").html("验证码错误");
+    } else if (request.error == "3") {
+      $("#message").html("登录次数过多,请1分钟后再试");
+    }
+
+    //获取数据参数
+    $.ajax({
+      type: 'get',
+      url: HRY.modules.web + 'app/appconfig/dataByConfigKey?type=baseConfig',
+
+      dataType: "json",
+      success: function (data) {
+        $($("span[name=manage_name]")[0]).html(data.managerName);
+        $($("head title")[0]).html(data.managerName);
+        $("#copyRight").html(data.siteCopyright);
+        $("link[rel=icon]").attr("href",  "/" + data.siteIcon);
+      }
+    });
+
+  });
+
+</script>
+
+</html>

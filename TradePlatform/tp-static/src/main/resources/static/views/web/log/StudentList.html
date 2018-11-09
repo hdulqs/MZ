@@ -1,0 +1,59 @@
+<!-- 分公司管理 -->
+	<div class="card-panel" >
+			<div class="row">
+				<div class="col s12 ">
+					<div class="row">
+						<!-- 增加按钮 -->
+<!-- 						<a class="btn" ng-if="requiresPermissions('oauth','user/approle/add')" ng-click="fnAdd('user/approle/add')">添加</a>
+ -->						<!-- 查看按钮 -->
+<!-- 						<a class="btn" ng-if="requiresPermissions('oauth','user/approle/see')" ng-click="fnSee('user/approle/see')" >查看</a>
+ -->						<!-- 修改按钮 -->
+<!-- 						<a class="btn" ng-if="requiresPermissions('oauth','user/approle/modify')" ng-click="fnModify('user/approle/modify')" >修改</a>
+ -->						<!-- 删除按钮 -->
+<!-- 						<a class="btn" ng-if="requiresPermissions('oauth','user/approle/remove')" ng-click="fnRemove('user/approle/remove')" >删除</a>
+ -->						<!-- 刷新按钮 -->	
+						<a class="btn" ng-click="fnList()" >刷新</a>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.Q_name_like_String"  dataTableSerch >
+			        <label for="input_lname">角色名称</label>
+			      </div>
+			    </div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text"  ng-model="serchData.Q_remark_like_String" dataTableSerch>
+						<label for="input_city">角色备注</label>
+				   </div>
+			    </div>
+			</div>
+			
+		
+			<div class="row">	
+		
+			<div class="col s12 "  >
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+				      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+	                  <th>姓名</th>
+	                  <th>性别</th>
+	                  <th>年龄</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+				</table>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+
+
+

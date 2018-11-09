@@ -1,0 +1,21 @@
+CREATE TABLE `sys_user_qx` (
+  `U_ID` varchar(100) NOT NULL,
+  `C1` int(10) DEFAULT NULL,
+  `C2` int(10) DEFAULT NULL,
+  `C3` int(10) DEFAULT NULL,
+  `C4` int(10) DEFAULT NULL,
+  `Q1` int(10) DEFAULT NULL,
+  `Q2` int(10) DEFAULT NULL,
+  `Q3` int(10) DEFAULT NULL,
+  `Q4` int(10) DEFAULT NULL,
+  PRIMARY KEY (`U_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user_qx` */
+
+insert  into `sys_user_qx`(`U_ID`,`C1`,`C2`,`C3`,`C4`,`Q1`,`Q2`,`Q3`,`Q4`) values ('03b00e767e4440cdb67ea3d4e6bacb79',0,0,0,0,0,0,0,0),('1',1,0,0,0,0,0,0,0),('2',1,1,1,1,1,1,1,1),('3aa9dca97417445d8948cef0554f5a95',0,0,0,0,0,0,0,0),('3e9f1a20f4274d9d8cb06bc421cad45c',0,0,0,0,0,0,0,0),('55896f5ce3c0494fa6850775a4e29ff6',0,0,0,0,0,0,0,0),('5918bc7a61af4c718a0372354ed91943',0,0,0,0,0,0,0,0),('68f23fc0caee475bae8d52244dea8444',0,0,0,0,0,0,0,0),('7791f7b751214649b1e2eda35bf0dd12',0,0,0,0,0,0,0,0),('7a71af7455944680b889b1aa4ed1d349',0,0,0,0,0,0,0,0),('7dfd8d1f7b6245d283217b7e63eec9b2',0,0,0,0,0,0,0,0),('ac66961adaa2426da4470c72ffeec117',0,0,0,0,0,0,0,0),('b0c77c29dfa140dc9b14a29c056f824f',0,0,0,0,0,0,0,0),('e74f713314154c35bd7fc98897859fe3',0,0,0,0,0,0,0,0),('f944a9df72634249bbcb8cb73b0c9b86',0,0,0,0,0,0,0,0);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

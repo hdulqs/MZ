@@ -1,0 +1,45 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppbusinessmanbankList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-12-18 16:55:04      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppBusinessmanBank</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/businessman/appbusinessmanbank/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					bankcard<input type="text" name="bankcard" value="{{formData.bankcard}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					bankname<input type="text" name="bankname" value="{{formData.bankname}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					bankowner<input type="text" name="bankowner" value="{{formData.bankowner}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					businessmanId<input type="text" name="businessmanId" value="{{formData.businessmanId}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

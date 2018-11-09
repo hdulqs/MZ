@@ -1,0 +1,332 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicocoinList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-08-17 18:22:22      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppIcoCoin</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/coin/appicocoin/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="name" ng-model="formData.name" /> <label for="name">产品名称</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="issueTotalMoney" ng-model="formData.issueTotalMoney" /> <label for="issueTotalMoney">发行总额（人民币）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="totalNum" ng-model="formData.totalNum" /> <label for="totalNum">发行总量
+            </label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="issuePrice" ng-model="formData.issuePrice" /> <label for="issuePrice">发行价格（单价）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="issueTime" ng-model="formData.issueTime" /> <label for="issueTime">发行时间</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="issueState" ng-model="formData.issueState" /> <label for="issueState">0 ：  准备状态
+            1 ：  正在发行
+            2 ：  停牌
+            3 ：  退市</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinCode" ng-model="formData.coinCode" /> <label for="coinCode">币的代码 (股票代码)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="splitMinCoin" ng-model="formData.splitMinCoin" /> <label for="splitMinCoin">拆分最小份数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="issueId" ng-model="formData.issueId" /> <label for="issueId">发行方id(未来参考发行方表)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="issueName" ng-model="formData.issueName" /> <label for="issueName">发行方名称</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="stock" ng-model="formData.stock" /> <label for="stock">产品存量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sort" ng-model="formData.sort" /> <label for="sort">排序字段</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="arithmetic" ng-model="formData.arithmetic" /> <label for="arithmetic">算法说明</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="proveMode" ng-model="formData.proveMode" /> <label for="proveMode">证明方式</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="productReferral" ng-model="formData.productReferral" /> <label for="productReferral">产品介绍</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="pamState" ng-model="formData.pamState" /> <label for="pamState">产品的状态（0 表示没有  1 表示有用）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="blockspeed" ng-model="formData.blockspeed" /> <label for="blockspeed">多少秒产生一个区块</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="buyFeeRate" ng-model="formData.buyFeeRate" /> <label for="buyFeeRate">买方费率</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sellFeeRate" ng-model="formData.sellFeeRate" /> <label for="sellFeeRate">买方费率</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="buyMinMoney" ng-model="formData.buyMinMoney" /> <label for="buyMinMoney">最小成交金额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sellMinCoin" ng-model="formData.sellMinCoin" /> <label for="sellMinCoin">最小成交数量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="minBlockSize" ng-model="formData.minBlockSize" /> <label for="minBlockSize">区块大小最小值</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="maxBlockSize" ng-model="formData.maxBlockSize" /> <label for="maxBlockSize">区块大小最大值</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="walletDownload" ng-model="formData.walletDownload" /> <label for="walletDownload">钱包下载地址</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="soundDownload" ng-model="formData.soundDownload" /> <label for="soundDownload">源码下载地址</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="blockBrowser" ng-model="formData.blockBrowser" /> <label for="blockBrowser">区块浏览器</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="officialWebsite" ng-model="formData.officialWebsite" /> <label for="officialWebsite">官方网站</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="officialForum" ng-model="formData.officialForum" /> <label for="officialForum">官方论坛</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="miningAddress" ng-model="formData.miningAddress" /> <label for="miningAddress">挖矿地址</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="isRecommend" ng-model="formData.isRecommend" /> <label for="isRecommend">是否置顶（ 0 表示不置顶 ， 1 表示置顶）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="openingTime" ng-model="formData.openingTime" /> <label for="openingTime">开市时间</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="closeTime" ng-model="formData.closeTime" /> <label for="closeTime">闭市时间</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="picturePath" ng-model="formData.picturePath" /> <label for="picturePath">产品图片路径</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="closePlateTime" ng-model="formData.closePlateTime" /> <label for="closePlateTime">closePlateTime</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="openAndclosePlateTime" ng-model="formData.openAndclosePlateTime" /> <label for="openAndclosePlateTime">openAndclosePlateTime</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="transactionType" ng-model="formData.transactionType" /> <label for="transactionType">1竞价 --也就是正常的  2坐市</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="prepaidFeeRate" ng-model="formData.prepaidFeeRate" /> <label for="prepaidFeeRate">充值手续费率</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="paceFeeRate" ng-model="formData.paceFeeRate" /> <label for="paceFeeRate">提现手续费率</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="oneTimePaceNum" ng-model="formData.oneTimePaceNum" /> <label for="oneTimePaceNum">每次提现的最大数量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="oneDayPaceNum" ng-model="formData.oneDayPaceNum" /> <label for="oneDayPaceNum">每天提现的最大数量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="leastPaceNum" ng-model="formData.leastPaceNum" /> <label for="leastPaceNum">最小提现 数量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="circulation" ng-model="formData.circulation" /> <label for="circulation">融币的手续费率</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="priceLimits" ng-model="formData.priceLimits" /> <label for="priceLimits">文章正文</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="keepDecimalForCoin" ng-model="formData.keepDecimalForCoin" /> <label for="keepDecimalForCoin">币的保留几位小数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="keepDecimalForCurrency" ng-model="formData.keepDecimalForCurrency" /> <label for="keepDecimalForCurrency">钱的保留几位小数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="openBell" ng-model="formData.openBell" /> <label for="openBell">1表示开市   2表示闭市</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="decline" ng-model="formData.decline" /> <label for="decline">跌幅</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="rose" ng-model="formData.rose" /> <label for="rose">涨幅</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="averagePrice" ng-model="formData.averagePrice" /> <label for="averagePrice">均价(收盘价)</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="oneTimeOrderNum" ng-model="formData.oneTimeOrderNum" /> <label for="oneTimeOrderNum">每次下单的最大数量（个）</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

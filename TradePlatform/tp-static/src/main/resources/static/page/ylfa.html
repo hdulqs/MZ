@@ -1,0 +1,155 @@
+<!doctype html>
+<html >
+<head>
+<meta charset="utf-8">
+<title>{{headTitle}}--{{user.username}}</title>
+<!--css-->
+<!-- hurong styles -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="http://localhost/static/static/lib/_con/images/icon.png">
+  <!-- nanoScroller -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/nanoScroller/nanoscroller.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/ui.css" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/material-design-icons/css/material-design-icons.min.css" />
+
+  <!-- IonIcons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/ionicons/css/ionicons.min.css" />
+
+  <!-- WeatherIcons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/weatherIcons/css/weather-icons.min.css" />
+
+  <!-- Rickshaw -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/rickshaw/rickshaw.min.css" />
+   <!-- select2 -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/select2/css/select2.min.css" />
+  <!-- jvectormap -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/jquery-jvectormap/jquery-jvectormap.css" />
+
+  <!-- Google Prettify -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/google-code-prettify/prettify.css" />
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/_con/css/_con.min.css" />
+  
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/pikaday/pikaday.css" />
+  <link rel="stylesheet"  type="text/css" href="http://localhost/static/static/lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/dropzone/dropzone.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/hry.css" />
+
+</head>
+<body >
+<!-- Main Content -->
+<section class="content-wrap">
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+
+
+<!-- 企业客户-基本信息 -->
+<!--左侧导航 -->
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">预览资金方案 </span>
+		 </h4>
+		 <hr>		  
+		  <div class="row">		  		 
+		   		<div class="col s12">	  
+		   			<p class="mb-20">
+		   				还款方式：
+						<input type="checkbox" id="checkbox1" />
+						<label for="checkbox1">等额本息</label>
+						
+						<input type="checkbox" id="checkbox2" />
+						<label for="checkbox2">等额本金</label>
+						
+						<input type="checkbox" id="checkbox3" />
+						<label for="checkbox3">等本等息</label>
+						
+						<input type="checkbox" id="checkbox4" />
+						<label for="checkbox4">按期收息到期还本</label>
+					</p> 
+					<p class="mb-20">
+		   				还款周期：
+						<input type="checkbox" id="checkbox5" />
+						<label for="checkbox5">月</label>
+						
+						<input type="checkbox" id="checkbox6" />
+						<label for="checkbox6">季</label>						
+					</p> 
+					<p class="mb-20">
+						是否前置：
+						<input name="radios1" type="radio" id="radios1-1" checked />
+						<label for="radios1-1">是</label>
+									
+						<input name="radios1" type="radio" id="radios1-2" />
+						<label for="radios1-2">否</label>
+				    </p>			
+		   		</div>	
+					<p class="center">
+					    <!-- 完成按钮 -->
+						<shiro:hasPermission name="">
+							<!--<a class="btn-large mr-20 fs-16"  ng-click="">保存</a>-->
+							<button class="btn mr-20 fs-16">完成</button>
+						</shiro:hasPermission> 
+						<!-- 返回按钮 -->
+						<shiro:hasPermission name="">
+							<a class="btn grey fs-16" ng-click="" >返回</a>
+						</shiro:hasPermission>
+				    </p>      
+				</div>
+			</div>
+		</div>
+	</div> 
+</div>
+	
+
+<!-- /企业客户-基本信息    --> 
+
+
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+
+<!-- PhotoSwipe -->
+<link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/PhotoSwipe/photoswipe.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/PhotoSwipe/default-skin/default-skin.css" />
+</section>
+
+
+
+
+<!-- /Main Content -->
+<script type="text/javascript" src="http://localhost/static/static/lib/_con/js/_hry.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="http://localhost/static/static/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/dataTables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/libs/ui.js"></script>
+<!-- jQuery RAF (improved animation performance) -->
+<script type="text/javascript" src="http://localhost/static/static/lib/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
+<!-- nanoScroller -->
+<script type="text/javascript" src="http://localhost/static/static/lib/nanoScroller/jquery.nanoscroller.min.js"></script>
+<!-- Materialize -->
+<script type="text/javascript" src="http://localhost/static/static/lib/materialize/js/materialize.min.js"></script>
+<!-- Sortable -->
+<script type="text/javascript" src="http://localhost/static/static/lib/sortable/Sortable.min.js"></script>
+<!-- Google Prettify -->
+<script type="text/javascript" src="http://localhost/static/static/lib/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/_con/js/_con.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.jquery.js"></script>
+<!-- require -->
+<!-- <script data-main="http://localhost/static/static/js/main" src="http://localhost/static/static/lib/require.js"></script> -->
+<script type="text/javascript" src="http://localhost/static/static/lib/dropzone/dropzone.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/js/common/hryDropzone.js"></script>
+<!-- <script type="text/javascript" src="http://localhost/static/static/lib/angularjs-dataTables/angular-datatables.js"></script> -->
+<!-- select2 -->
+<script type="text/javascript" src="http://localhost/static/static/lib/select2/js/select2.full.js"></script>
+
+</body>
+</html>

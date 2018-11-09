@@ -1,0 +1,75 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppbusinessmanList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-12-06 18:43:30      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改交易商户</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/businessman/appbusinessman/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="trueName" ng-model="formData.trueName" /> <label for="trueName">真实姓名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="nationality" ng-model="formData.nationality" /> <label for="nationality">国籍</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+						<select   data-allow-clear="true"    data-placeholder="商家类型 " id="type">
+							<option value="0">A类</option>
+							<option value="1">B类</option>
+						</select>
+				</div>
+			</div>
+			
+<!-- 			<div class="col s12 m6">
+				<div class="input-field">
+						<select   data-allow-clear="true"    data-placeholder="手续费类型 " id="feeType">
+							<option value="0">固定费率</option>
+							<option value="1">百分比费率</option>
+						</select>
+				</div>
+			</div> -->
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="changeCoin" ng-model="formData.changeCoin" /> <label for="changeCoin">交易币种</label>
+				</div>
+			</div>
+			<!-- <div class="col s12 m6">
+				<div class="input-field">
+					<input type="number" id="fee" ng-model="formData.fee" /> <label for="fee">手续费</label>
+				</div>
+			</div> -->
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="changeCoin" ng-model="formData.price" /> <label for="price">交易定价</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

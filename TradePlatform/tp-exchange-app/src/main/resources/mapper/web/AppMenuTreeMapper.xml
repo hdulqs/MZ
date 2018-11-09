@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.web.menu.dao.AppMenuTreeDao">
+
+	<resultMap id="findByUserIdResultMap" type="com.mz.web.menu.model.AppMenuTree">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="name" property="name" javaType="java.lang.String" />
+		<result column="appName" property="appName" javaType="java.lang.String" />
+		<result column="mkey" property="mkey" javaType="java.lang.String" />
+		<result column="pkey" property="pkey" javaType="java.lang.String" />
+		<result column="type" property="type" javaType="java.lang.String" />
+		<result column="url" property="url" javaType="java.lang.String" />
+		<result column="isOpen" property="isOpen" javaType="java.lang.String" />
+		<result column="isOutLink" property="isOutLink" javaType="java.lang.String" />
+		<result column="orderNo" property="orderNo" javaType="java.lang.Integer" />
+	</resultMap>
+	
+	
+	<!-- 查询一个用户对应的appmenutree 列表 -->
+	<select id="findByUserId" parameterType="java.util.Map"
+		resultMap="findByUserIdResultMap">
+		SELECT
+		a.id,
+		a.name,
+		a.appName,
+		a.mkey,
+		a.pkey,
+		a.type,
+		a.url,
+		a.isOpen,
+		a.isOutLink,
+		a.orderNo
+		FROM
+		app_menu_tree as a
+		LEFT JOIN app_role_menutree as b
+		on a.id =
+		b.menuTreeId
+		left join app_user_role c
+		on b.roleId = c.roleId
+		<where>
+			<if test=" eqtype!=null and eqtype == 'eq' ">
+				and type = #{type}
+			</if>
+			<if test=" eqtype!=null and eqtype == 'neq' ">
+				<!-- and type != #{type} -->
+				
+				and type not in 
+				<foreach item="item" index="index" collection="type" open="("
+					separator="," close=")">
+					#{item}
+				</foreach>
+				
+			</if>
+			
+			<if test=" appName!=null and appName != '' ">
+				and appName = #{appName}
+			</if>
+			<if test=" userId!=null and userId != '' ">
+				and userId = #{userId}
+			</if>
+		</where>
+
+		order by orderNo
+	</select>
+	
+	
+	<!-- 查询一个角色对应的appmenutree 列表 -->
+	<select id="findRoleByApp" parameterType="java.util.Map" resultMap="findByUserIdResultMap">
+		SELECT
+		am.id,
+		am.name,
+		am.appName,
+		am.mkey,
+		am.pkey,
+		am.type,
+		am.url,
+		am.isOpen,
+		am.isOutLink
+		FROM
+			app_menu_tree AS am
+		LEFT JOIN app_role_menutree AS ar ON am.id = ar.menuTreeId
+		where am.appName =  #{appName}
+		and ar.roleId =  #{roleId}
+		order by orderNo
+	</select>
+	<!--查找相应用户的权限名字-->
+	<!-- <select id="findRoleByUser" parameterType="java.lang.Long" resultType="java.lang.String">
+	SELECT
+		GROUP_CONCAT(ar.`name`)
+		FROM
+		app_role AS ar
+		LEFT JOIN app_user_role AS aur ON ar.id = aur.roleId
+		WHERE aur.userId
+		= #{id}
+	</select> -->
+</mapper>

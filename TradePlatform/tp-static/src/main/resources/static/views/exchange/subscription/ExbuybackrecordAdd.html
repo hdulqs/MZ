@@ -1,0 +1,100 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ExbuybackrecordList.html     -->
+ <!-- @author:      zenghao  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-24 16:36:09      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看ExBuybackRecord</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/exchange/subscription/exbuybackrecord/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="recordId" ng-model="formData.recordId" /> <label for="recordId">认购记录id</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="customerId" ng-model="formData.customerId" /> <label for="customerId">客户id</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="userName" ng-model="formData.userName" /> <label for="userName">账户名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="trueName" ng-model="formData.trueName" /> <label for="trueName">真实姓名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinCode" ng-model="formData.coinCode" /> <label for="coinCode">币种代码</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinName" ng-model="formData.coinName" /> <label for="coinName">币种名称</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="period" ng-model="formData.period" /> <label for="period">认购期数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="backPrice" ng-model="formData.backPrice" /> <label for="backPrice">认购价格</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="backAmount" ng-model="formData.backAmount" /> <label for="backAmount">回购数量</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="transactionNum" ng-model="formData.transactionNum" /> <label for="transactionNum">回购单号</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="state" ng-model="formData.state" /> <label for="state">状态（0未审核，1已通过，2已驳回，3用户撤销）</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="remarks" ng-model="formData.remarks" /> <label for="remarks">驳回备注</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

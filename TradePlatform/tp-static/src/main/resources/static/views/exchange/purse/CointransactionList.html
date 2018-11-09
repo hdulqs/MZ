@@ -1,0 +1,63 @@
+	
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           	<div class="row">
+			
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+					
+							
+						<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->			
+
+	<div >
+			<div class="row">	
+		
+			<div class="col s12 "  >
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+	                  <th>用户名</th>
+	                  <th>币的地址</th>
+	                  <th>类型</th> 
+	                  <th>交易金额</th> 
+	                  <th>手续费</th>  
+	                  <th>确认节点数</th>
+	                  <th>区块时间</th>
+	                  <th>交易单号</th>
+	                  <th>时间</th>
+	                  <th>时间</th>
+				    </tr>
+				    <tr  ng-repeat="item in list">
+				    <td>{{item.account}}</td>
+				    <td>{{item.address}}</td>
+				    <td>{{item.category}}</td>
+				    <td>{{item.amount}}</td>
+				    <td>{{item.fee}}</td>
+				    <td>{{item.confirmations}}</td>
+				    <td>{{item.blocktime}}</td>
+				    <td>{{item.txid}}</td>
+				    <td>{{item.time}}</td>
+				    <td>{{item.timereceived}}</td>
+				    
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+	
+
+
+

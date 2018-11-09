@@ -1,0 +1,102 @@
+
+app_customer; -- 个人账号表
+app_person_info; -- 个人账号详细信息表
+
+ex_product;   --  产品表
+ex_product_parameter;-- 产品参数表
+ex_product_platetime;
+ex_cointo_coin;-- 交易币——定价币表
+
+
+
+app_our_account;  -- 我方账户
+app_account_record; -- 我方账户流水表
+
+app_account; -- 个人资金账户表
+app_account_sureold; -- 个人资金确认
+app_cold_account_record; -- 个人冷账户流水表
+app_hot_account_record; --  个人热账户流水表
+ex_digitalmoney_account;  -- 币账户表
+ex_dm_cold_account_record;-- 币冷账号流水表
+ex_dm_hot_account_record;-- 币热账户流水表
+ex_dm_customer_publickey;
+ex_dm_lend; -- 借钱借币记录
+ex_dm_lend_intent;-- 借钱借币还款表
+ex_dm_ping;-- 平帐表
+ex_dm_transaction; -- 币的入账出账业务表
+app_transaction; --  资金入账出账业务表
+ex_entrust;--  委托单主表
+ex_entrust_oneday;-- 委托单临时表，目前不用保留
+ex_order_info; -- 成交记录详情表
+app_platform_settlement_record; --  平台结算表
+coin_transaction;  -- 定时刷币的表
+app_artic_category; -- 文章分类表
+app_article; -- 文章表
+
+app_bank_card; -- 个人银行卡表
+app_banner; -- banner表
+
+
+app_dictionary;--  数据字典表
+app_exception; -- 异常记录表
+app_file;  --  文件表
+app_file_relation;
+app_friendlink; -- 友情链接
+
+
+app_log; -- 日志
+app_log_login_customer; -- 前台登录日志
+app_log_login_user;-- 后台登录日志
+app_log_thirdpay;  -- 第三方日志
+app_sms_send; --  短信发送记录
+app_message;--  消息
+app_message_category;-- 消息分类
+message_as_customer;-- 消息接受记录
+
+
+
+app_quartz_job; -- 定时器
+
+
+
+app_resource;-- 后台应用级别的功能表
+app_role;-- 后台角色表
+app_role_menutree;-- 后台所有细化树结构的菜单功能表
+app_role_resource;-- 后台
+app_setting;-- 后台
+
+
+
+angest_as_money;-- 给代理商直接划账的记录表
+commission_detail; -- 代理商应该返佣的详情表
+customer_as_agents;-- 代理商多级关系表
+app_agencytranaward_record; -- 卖币交易给推荐人返佣记录
+app_coinreward_record; -- 注册或推荐奖励币的记录
+app_agents_custromer; -- 代理商表
+app_trade_factorage;-- 代理商多级应该返佣的详情表
+
+ex_api_apply;--  api申请记录表
+
+
+
+
+
+
+product_review; -- 产品评论表
+app_holiday_config;-- 节假日表
+
+
+================================================补充========================
+ex_entrust_oneday        没用
+ex_entrust_plan           没用 
+ex_buy_back_record    没用
+ex_order       没用
+ex_order_info  成交订单信息
+
+ex_dm_lend           杠杆借款表
+ex_dm_lend_intent    利息表
+ex_dm_lendtimes      杠杆倍数表
+ex_dm_ping           杠杆平仓记录
+
+ex_subscription_plan    没用  
+fee_withdrawals_record  没用

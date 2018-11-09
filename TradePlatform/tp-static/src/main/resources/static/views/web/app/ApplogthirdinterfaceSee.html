@@ -1,0 +1,39 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ApplogthirdinterfaceList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-28 15:16:24      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppLogThirdInterface</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/app/applogthirdinterface/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					url<input type="text" name="url" value="{{formData.url}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					params<input type="text" name="params" value="{{formData.params}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					result<input type="text" name="result" value="{{formData.result}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,192 @@
+<!doctype html>
+<html >
+<head>
+<meta charset="utf-8">
+<title>{{headTitle}}--{{user.username}}</title>
+<!--css-->
+<!-- hurong styles -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="http://localhost/static/static/lib/_con/images/icon.png">
+  <!-- nanoScroller -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/nanoScroller/nanoscroller.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/ui.css" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/material-design-icons/css/material-design-icons.min.css" />
+
+  <!-- IonIcons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/ionicons/css/ionicons.min.css" />
+
+  <!-- WeatherIcons -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/weatherIcons/css/weather-icons.min.css" />
+
+  <!-- Rickshaw -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/rickshaw/rickshaw.min.css" />
+   <!-- select2 -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/select2/css/select2.min.css" />
+  <!-- jvectormap -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/jquery-jvectormap/jquery-jvectormap.css" />
+
+  <!-- Google Prettify -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/google-code-prettify/prettify.css" />
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/_con/css/_con.min.css" />
+  
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/pikaday/pikaday.css" />
+  <link rel="stylesheet"  type="text/css" href="http://localhost/static/static/lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/dropzone/dropzone.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/hry.css" />
+
+</head>
+<body >
+<!-- Main Content -->
+<section class="content-wrap">
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制开始----------------------------------------------------------------->
+
+
+<!-- 企业客户-基本信息 -->
+<!--左侧导航 -->
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">资金方案配置</span>
+		 </h4>
+		 <hr>
+		  <div class="row">
+		  	   <div class="col s12">
+                     <div class="btn-group">
+					  <a class="btn">新增</a>
+					  <a class="btn">编辑</a>
+					  <a class="btn">删除</a>
+					  <a class="btn">预览</a>
+					</div>
+               </div>
+		  </div>
+		  <div class="row">		  		 
+			<!--左侧导航 -->
+			  <div class="_tt_layout_tabnav">
+			  	<ul class="_tt_side_subnav">
+					<h3 class="fs-20 center">类型名称</h3>
+		            <li class="active">
+		              <a href="#">还款方式（HKFS）</a>
+		            </li>
+		            <li>
+		              <a href="#">法人信息</a>
+		            </li>
+		            <li>
+		              <a href="#">股东信息</a>
+		            </li>
+					<li>
+		              <a href="#">实际控制人信息</a>
+		            </li>
+		            <li>
+		              <a href="#">银行卡信息</a>
+		            </li>
+				</ul> 
+			</div>
+			<!--end 左侧导航 -->
+			<div class="_tt_layout_container">
+		   		<div class="_tt_plan_container">
+		   			<div class="row">
+		   				<div class="col s12">
+		   					<div class="input-field">
+						        <input id="input_fname" type="text" ng-model="formData.name" required>
+						        <label for="input_fname">*方案KEY</label>
+						     </div>
+						     <div class="input-field">
+						     	 <textarea id="textarea1" class="materialize-textarea" required></textarea>
+					 			 <label for="textarea1">*方案适用说明</label>						       
+						     </div>
+						     <div class="row">
+						         <div class="col s9">
+					   			 	<label for="input_fname">*还款方式</label>
+						   			<select class="select2"  data-allow-clear="true"    multiple="">
+										  <optgroup label="Alaskan/Hawaiian Time Zone">
+										    <option value="AK">Alaska</option>
+										    <option value="HI">Hawaii</option>
+										  </optgroup>
+										  <optgroup label="Pacific Time Zone">
+										    <option value="CA">California</option>
+										    <option value="NV">Nevada</option>
+										    <option value="OR">Oregon</option>
+										    <option value="WA">Washington</option>
+										  </optgroup>
+									</select>
+								</div>
+								<div class="col s3">
+									<p>
+										 <input type="checkbox" id="checkbox1" />
+										 <label for="checkbox1">显示</label>
+									</p>
+								</div>								
+						      </div>
+						      <div class="row">
+						      	<label for="input_fname">*还款方式</label>
+									<p>
+									  <input name="radios1" type="radio" id="radios1-1" checked />
+									  <label for="radios1-1">有进出口许可证</label>
+									
+									  <input name="radios1" type="radio" id="radios1-2" />
+									  <label for="radios1-2">无进出口许可证</label>
+									</p>
+								</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		</div>	 
+	</div> 
+</div>
+	
+
+<!-- /企业客户-基本信息    --> 
+
+
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+<!------------------------------------------------------------- 复制结束----------------------------------------------------------------->
+
+<!-- PhotoSwipe -->
+<link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/PhotoSwipe/photoswipe.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost/static/static/lib/PhotoSwipe/default-skin/default-skin.css" />
+</section>
+
+
+
+
+<!-- /Main Content -->
+<script type="text/javascript" src="http://localhost/static/static/lib/_con/js/_hry.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="http://localhost/static/static/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/dataTables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/libs/ui.js"></script>
+<!-- jQuery RAF (improved animation performance) -->
+<script type="text/javascript" src="http://localhost/static/static/lib/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
+<!-- nanoScroller -->
+<script type="text/javascript" src="http://localhost/static/static/lib/nanoScroller/jquery.nanoscroller.min.js"></script>
+<!-- Materialize -->
+<script type="text/javascript" src="http://localhost/static/static/lib/materialize/js/materialize.min.js"></script>
+<!-- Sortable -->
+<script type="text/javascript" src="http://localhost/static/static/lib/sortable/Sortable.min.js"></script>
+<!-- Google Prettify -->
+<script type="text/javascript" src="http://localhost/static/static/lib/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/_con/js/_con.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/lib/pikaday/pikaday.jquery.js"></script>
+<!-- require -->
+<!-- <script data-main="http://localhost/static/static/js/main" src="http://localhost/static/static/lib/require.js"></script> -->
+<script type="text/javascript" src="http://localhost/static/static/lib/dropzone/dropzone.min.js"></script>
+<script type="text/javascript" src="http://localhost/static/static/js/common/hryDropzone.js"></script>
+<!-- <script type="text/javascript" src="http://localhost/static/static/lib/angularjs-dataTables/angular-datatables.js"></script> -->
+<!-- select2 -->
+<script type="text/javascript" src="http://localhost/static/static/lib/select2/js/select2.full.js"></script>
+
+</body>
+</html>

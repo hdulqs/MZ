@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+    <menu key="wenjianguanli" name="文件管理" url="/file/appfile/list/anon" shiroUrl="/file/appfile/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="wenjianfenlei" name="文件分类" url="/file/appfile/manage/anon" shiroUrl="/file/appfile/manage/anon" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="oneleveldic" name="普通数据字典" url="/dictionary/appdiconelevel/list/anon" shiroUrl="/dictionary/appdiconelevel/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="oneleveldic_add" name="添加数据字典" shiroUrl="/dictionary/appdiconelevel/add"/>  
+        <function key="oneleveldic_modify" name="修改数据字典" shiroUrl="/dictionary/appdiconelevel/modify"/>  
+        <function key="oneleveldic_remove" name="删除数据字典" shiroUrl="/dictionary/appdiconelevel/remove"/> 
+    </menu>  
+    <menu key="bankmutileveldic" name="银行数据字典" url="/dictionary/appdicmultilevel/list/bank" shiroUrl="/dictionary/appdicmultilevel/list/bank" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="bankmutileveldic_add" name="添加数据字典" shiroUrl="/dictionary/appdicmultilevel/add"/>  
+        <function key="bankmutileveldic_modify" name="修改数据字典" shiroUrl="/dictionary/appdicmultilevel/modify"/>  
+        <function key="bankmutileveldic_remove" name="删除数据字典" shiroUrl="/dictionary/appdicmultilevel/remove"/> 
+    </menu>  
+    <menu key="areamutileveldic" name="地区字典" url="/dictionary/appdicmultilevel/list/area" shiroUrl="/dictionary/appdicmultilevel/list/area" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="areamutileveldic_add" name="添加数据字典" shiroUrl="/dictionary/appdicmultilevel/add/id"/>  
+        <function key="areamutileveldic_modify" name="修改数据字典" shiroUrl="/dictionary/appdicmultilevel/modify/id"/>  
+        <function key="areamutileveldic_remove" name="删除数据字典" shiroUrl="/dictionary/appdicmultilevel/remove/id"/> 
+    </menu>  
+    <menu key="systemconfigguanli" name="系统配置项设置" url="/app/appconfig/list/anon" shiroUrl="/app/appconfig/list" isOpen="0" isOutLink="0" orderNo="">
+        <function key="systemconfigguanli_add" name="添加配置项" shiroUrl="/app/appconfig/add"/>  
+        <function key="systemconfigguanli_save" name="保存配置信息" shiroUrl="/app/appconfig/modify"/>  
+        <function key="systemconfigguanli_find" name="查询配置类型" shiroUrl="/app/appconfig/find"/>
+    </menu>
+    <menu key="systemconfiglendguanli" name="杠杆配置项设置" url="/app/applendconfig/list/anon" shiroUrl="/app/applendconfig/list" isOpen="0" isOutLink="0" orderNo="">
+        <function key="systemconfiglendguanli_add" name="添加配置项" shiroUrl="/app/appconfig/add"/>
+        <function key="systemconfiglendguanli_save" name="保存配置信息" shiroUrl="/app/appconfig/modify"/>
+        <function key="systemconfiglendguanli_find" name="查询配置类型" shiroUrl="/app/appconfig/find"/>
+    </menu>
+    <menu key="clientguanli" name="网站功能开关" url="/app/appsetting/list/anon" shiroUrl="/app/appsetting/list" isOpen="0" isOutLink="0" orderNo="">
+        <function key="clientguanli_add" name="添加网站功能信息" shiroUrl="/app/appsetting/add"/>
+        <function key="clientguanli_modify" name="修改网站功能信息" shiroUrl="/app/appsetting/modify"/>
+        <function key="clientguanli_see" name="查询网站功能信息" shiroUrl="/app/appsetting/see"/>
+    </menu>
+    <menu key="cacheguanli" name="缓存配置" url="/app/appcache/list/anon" shiroUrl="/app/appcache/list" isOpen="0" isOutLink="0" orderNo="">
+        <function key="cacheguanli_update" name="刷新缓存" shiroUrl="/app/appcache/update"/> 
+    </menu>  
+    <menu key="yichangrizhi" name="异常日志" url="/log/appexception/list/anon" shiroUrl="/log/appexception/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="caozhuorizhi" name="操作日志" url="/log/applog/list/anon" shiroUrl="/log/applog/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="denglurizhi" name="后台账户登录日志" url="/log/apploglogin/list/anon" shiroUrl="/log/apploglogin/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="qiantaidenglurizhi" name="前台账户登录日志" url="/log/apploglogin/customerlist/anon" shiroUrl="/log/apploglogin/customerlist" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="JavaMelodyrizhi" name="JavaMelody日志" url="/log/monitoring" shiroUrl="/log/monitoring" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="Druidjiankong" name="Druid监控" url="/log/druid" shiroUrl="/log/druid" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="wenzhangneirongguanli-zhongwen" name="文章内容管理-中文" url="/article/apparticle/list/cn/anon" shiroUrl="/article/apparticle/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <!-- <function key="wenzhangneirongguanli_add" name="文章内容添加"  shiroUrl="/article/apparticle/add"></function> --> 
+    </menu>  
+    <menu key="wenzhangleibieguanli-zhongwen" name="文章类别管理-中文" url="/article/appcategory/list/cn" shiroUrl="/article/AppCategory/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <!-- <function key="wenzhangneirongguanli_selectlist" name="文章下拉款查询方法"  shiroUrl="/rticle/apparticle/selectlist"></function> --> 
+    </menu>  
+    <menu key="wenzhangneirongguanli-guoji" name="文章内容管理-国际" url="/article/apparticle/list/en/anon" shiroUrl="/article/apparticle/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <!-- <function key="wenzhangneirongguanli_add" name="文章内容添加"  shiroUrl="/article/apparticle/add"></function> --> 
+    </menu>  
+    <menu key="wenzhangleibieguanli-guoji" name="文章类别管理-国际" url="/article/appcategory/list/en" shiroUrl="/article/AppCategory/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <!-- <function key="wenzhangneirongguanli_selectlist" name="文章下拉款查询方法"  shiroUrl="/rticle/apparticle/selectlist"></function> --> 
+    </menu>  
+    <menu key="youqinglianjieguanli-zhongwen" name="友情链接管理-中文" url="/article/appfriendlink/list/cn" shiroUrl="/article/appfriendlink/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="youqinglianjieguanli-guoji" name="友情链接管理-国际" url="/article/appfriendlink/list/en" shiroUrl="/article/appfriendlink/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xiaoxixiangqingguanli" name="消息管理" url="/message/appmessage/list/anon" shiroUrl="/message/appmessage/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xiaoxileibieguanli" name="消息类别管理" url="/message/appmessagecategory/list/anon" shiroUrl="/message/appmessagecategory/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="caogaoxiang" name="草稿箱" url="/message/appmessage/see/anon" shiroUrl="/message/appmessage/see" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="woyaoxiexing" name="我要写信" url="/message/appmessage/add/anon" shiroUrl="/message/appmessage/add" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="guizesheding" name="规则设定" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="yishenghechaxun" name="已通过审核查询" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="weishenghechaxun" name="未通过审核查询" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xinzengyonghutongjitu" name="新增用户统计图" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="yonghuzhucequyufenbutu" name="用户注册区域分布图" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="huiyuanshouyitu" name="会员收益图" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="chongzhijiaoyitu" name="充值交易图" url="" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="bannerguanli" name="banner管理" url="/article/appbanner/list/anon" shiroUrl="/article/appbanner/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="bannerguanli_add" name="添加banner" shiroUrl="/article/appbanner/add"/>  
+        <function key="bannerguanli_modify" name="修改banner" shiroUrl="/article/appbanner/modify"/>  
+        <function key="bannerguanli_remove" name="删除banner" shiroUrl="/article/appbanner/remove"/> 
+    </menu>  
+    <menu key="apiguanli" name="api管理" url="/app/appapi/list/anon" shiroUrl="/app/appapi/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="apiguanli_add" name="添加api接口" shiroUrl="/app/appapi/add"/>  
+        <function key="apiguanli_modify" name="修改api接口" shiroUrl="/app/appapi/modify"/>  
+        <function key="apiguanli_remove" name="删除api接口" shiroUrl="/app/appapi/remove"/>  
+        <function key="apiguanli_seeinfo" name="查看api接口" shiroUrl="/app/appapi/seeinfo"/>  
+        <function key="apiguanli_findlist" name="查看api参数" shiroUrl="/app/appapiparam/list/"/> 
+    </menu>  
+    <menu key="apiparamguanli" name="api参数管理" url="/app/appapiparam/list/anon" shiroUrl="/app/appapiparam/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="apiparamguanli_add" name="添加api参数" shiroUrl="/app/appapiparam/add"/>  
+        <function key="apiparamguanli_modify" name="修改api参数" shiroUrl="/app/appapiparam/modify"/>  
+        <function key="apiparamguanli_remove" name="删除api参数" shiroUrl="/app/appapiparam/remove/"/>  
+        <function key="apiparamguanli_seeapi" name="查看api接口" shiroUrl="/app/appapi/list/"/> 
+    </menu>  
+    <menu key="unitmutileveldic" name="单位数据字典" url="/dictionary/appdicmultilevel/list/unit" shiroUrl="/dictionary/appdicmultilevel/list/unit" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="unitmutileveldic_add" name="添加数据字典" shiroUrl="/dictionary/appdicmultilevel/add/unitid"/>  
+        <function key="unitmutileveldic_modify" name="修改数据字典" shiroUrl="/dictionary/appdicmultilevel/modify/unitid"/>  
+        <function key="unitmutileveldic_remove" name="删除数据字典" shiroUrl="/dictionary/appdicmultilevel/remove/unitid"/> 
+    </menu>  
+    <menu key="exchangemutileveldic" name="交易所数据字典" url="/dictionary/appdicmultilevel/list/exchange" shiroUrl="/dictionary/appdicmultilevel/list/exchange" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="exchangemutileveldic_add" name="添加数据字典" shiroUrl="/dictionary/appdicmultilevel/add/exchange"/>  
+        <function key="exchangemutileveldic_modify" name="修改数据字典" shiroUrl="/dictionary/appdicmultilevel/modify/exchange"/>  
+        <function key="exchangemutileveldic_remove" name="删除数据字典" shiroUrl="/dictionary/appdicmultilevel/remove/exchange"/> 
+    </menu>  
+    <menu key="jieriguanlixitong" name="节日管理系统" url="/app/appholidayconfig/list/anon" shiroUrl="/app/appholidayconfig/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="bixitongchaxun" name="币系统查询" url="/coin/coinmanage/list/anon" shiroUrl="/coin/coinmanage/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="web_AppLogLogin" name="AppLogLogin" url="/app/apploglogin/list/anon" shiroUrl="/app/apploglogin/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="web_AppLogLogin_see" name="查看" shiroUrl="/app/apploglogin/see"/>  
+        <function key="web_AppLogLogin_add" name="添加" shiroUrl="/app/apploglogin/add"/>  
+        <function key="web_AppLogLogin_modify" name="修改" shiroUrl="/app/apploglogin/modify"/>  
+        <function key="web_AppLogLogin_remove" name="删除" shiroUrl="/app/apploglogin/remove"/> 
+    </menu>  
+    <menu key="web_AppCodeMirror" name="网站模板配置" url="/codemirror/appcodemirror/list/anon" shiroUrl="/codemirror/appcodemirror/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="web_AppCodeMirror_see" name="查看" shiroUrl="/codemirror/appcodemirror/see"/>  
+        <function key="web_AppCodeMirror_add" name="添加" shiroUrl="/codemirror/appcodemirror/add"/>  
+        <function key="web_AppCodeMirror_modify" name="修改" shiroUrl="/codemirror/appcodemirror/modify"/>  
+        <function key="web_AppCodeMirror_remove" name="删除" shiroUrl="/codemirror/appcodemirror/remove"/> 
+    </menu>  
+    <menu key="web_SysOpenUser" name="open后台" url="/open/sysopenuser/list/anon" shiroUrl="/open/sysopenuser/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="web_SysOpenUser_see" name="查看" shiroUrl="/open/sysopenuser/see"/>  
+        <function key="web_SysOpenUser_add" name="添加" shiroUrl="/open/sysopenuser/add"/>  
+        <function key="web_SysOpenUser_modify" name="修改" shiroUrl="/open/sysopenuser/modify"/>  
+        <function key="web_SysOpenUser_remove" name="删除" shiroUrl="/open/sysopenuser/remove"/> 
+    </menu>
+    <menu key="web_SysCodeValue" name="系统代码维护" url="/system/syscodevalue/list/anon" shiroUrl="/system/syscodevalue/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="web_SysCodeValue_see" name="查看" shiroUrl="/system/syscodevalue/see"/>
+        <function key="web_SysCodeValue_add" name="添加" shiroUrl="/system/syscodevalue/add"/>
+        <function key="web_SysCodeValue_modify" name="修改" shiroUrl="/system/syscodevalue/modify"/>
+        <function key="web_SysCodeValue_remove" name="删除" shiroUrl="/system/syscodevalue/remove"/>
+    </menu>
+    <menu key="web_AppMemberPointConfig" name="会员积分配置维护" url="/system/appmemberpointconfig/list/anon" shiroUrl="/system/appmemberpointconfig/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="web_AppMemberPointConfig_add" name="添加" shiroUrl="/system/appmemberpointconfig/add"/>
+        <function key="web_AppMemberPointConfig_modify" name="修改" shiroUrl="/system/appmemberpointconfig/modify"/>
+        <function key="web_AppMemberPointConfig_remove" name="删除" shiroUrl="/system/appmemberpointconfig/remove"/>
+    </menu>
+    <!-- 调用第三方日志记录 -->  
+    <menu key="AppLogThirdInterface" name="接口调用日志" url="/app/applogthirdinterface/list/anon" shiroUrl="/app/applogthirdinterface/list" isOpen="0" isOutLink="0" orderNo="0"/>  
+    <menu key="web_ExDmTransfColdDetail" name="归集币种冷账户明细" url="/exdmtransfcolddetail/exdmtransfcolddetail/list/anon" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="web_ExDmTransfColdDetail_see" name="查看" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/see"/>
+        <function key="web_ExDmTransfColdDetail_add" name="添加" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/add"/>
+        <function key="web_ExDmTransfColdDetail_modify" name="修改" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/modify"/>
+        <function key="web_ExDmTransfColdDetail_remove" name="删除" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/remove"/>
+    </menu>
+    
+    <menu key="web_ExDmTransfCold" name="归集币种冷账户" url="/exdmtransfcolddetail/exdmtransfcolddetail/operation/anon" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/operation" isOpen="0" isOutLink="0" orderNo="0">
+    </menu>
+    
+    <menu key="web_ExDmTransfCold_listTokenAssets" name="代币资产信息" url="/exdmtransfcolddetail/exdmtransfcolddetail/listTokenAssets/anon" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/listTokenAssets" isOpen="0" isOutLink="0" orderNo="0"> 
+    <function key="web_exdmtransfcolddetail_rechargeTxFee2TokenAddress" name="充值旷工费" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/rechargeTxFee2TokenAddress"/> 
+    <function key="web_exdmtransfcolddetail_tokenCollect" name="归集" shiroUrl="/exdmtransfcolddetail/exdmtransfcolddetail/tokenCollect"/> 
+    </menu>
+</root>

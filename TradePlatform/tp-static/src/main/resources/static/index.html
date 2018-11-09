@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{appConfigData.managerName}}</title>
+<link rel="stylesheet" href="static/lib/codemirror/lib/codemirror.css"/>  
+<script type="text/javascript" src="static/lib/codemirror/lib/codemirror.js"></script>  
+<!-- 主题 -->
+ <link href="static/lib/codemirror/theme/liquibyte.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/lib/codemirror/theme/3024-day.css">  
+<link rel="stylesheet" href="static/lib/codemirror/theme/3024-day.css">  
+<link rel="stylesheet" href="static/lib/codemirror/theme/monokai.css">  
+
+<!-- mode -->
+    <script type="text/javascript" src="static/lib/codemirror/mode/sql/sql.js"></script>  
+    <script type="text/javascript" src="static/lib/codemirror/mode/htmlmixed/htmlmixed.js"></script>  
+    
+    
+<script type="text/javascript" src="static/lib/codemirror/mode/sql/sql.js"></script>  
+    <script type="text/javascript" src="static/lib/codemirror/addon/hint/show-hint.js"></script>  
+    <script type="text/javascript" src="static/lib/codemirror/addon/hint/sql-hint.js"></script> 
+<!-- 编辑 -->
+ <script type="text/javascript" src="static/lib/codemirror/addon/edit/matchbrackets.js"></script>
+<!-- hint -->
+<script type="text/javascript" src="static/lib/codemirror/addon/hint/javascript-hint.js"></script>
+<script type="text/javascript" src="static/lib/codemirror/addon/hint/show-hint.js"></script>
+<link href="static/lib/codemirror/addon/hint/show-hint.css" rel="stylesheet">
+
+<link href='static/lib/_con/css/googleapis.min.css' rel='stylesheet'
+	type='text/css'>
+	
+ <link rel="icon" type="image/png" href="{{appConfigData.siteIcon}}">
+nanoScroller
+Select2
+<link rel="stylesheet" type="text/css"
+	href="static/lib/select2/css/select2.min.css" />
+
+<link rel="stylesheet" type="text/css" href="static/lib/nanoScroller/nanoscroller.css" />
+<link rel="stylesheet" type="text/css" href="static/style/ui.css" />
+FontAwesome
+<link rel="stylesheet" type="text/css"
+	href="static/lib/font-awesome/css/font-awesome.min.css" />
+Material Design Icons
+<link rel="stylesheet" type="text/css"
+	href="static/lib/material-design-icons/css/material-design-icons.min.css" />
+IonIcons
+<link rel="stylesheet" type="text/css"
+	href="static/lib/ionicons/css/ionicons.min.css" />
+WeatherIcons
+<link rel="stylesheet" type="text/css"
+	href="static/lib/weatherIcons/css/weather-icons.min.css" />
+Main
+<link rel="stylesheet" type="text/css"
+	href="static/lib/_con/css/_con.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="static/lib/dropzone/dropzone.min.css" />
+
+
+<style>
+/*******校验*******/
+.ng-invalid.ng-dirty { border-bottom: 2px solid red}
+.ng-valid.ng-dirty {}
+.validation-invalid{ color:red}
+
+.app-content-loading {
+
+	z-index: 9999;
+	height: 100%;
+	width: 100%;
+	opacity: 0.5;
+	filter: alpha(opacity = 50)
+}
+
+.dialog {
+width: 100px;/*元素的宽度*/ 
+height:200px;/*元素的高度*/ 
+position: absolute; 
+left: 50%;/*配合margin-left的负值实现水平居中*/ 
+margin-left: 10px;/*值的大小等于元素宽度的一半*/ 
+top:50%;/*配合margin-top的负值实现垂直居中*/ 
+margin-top: -100px;/*值的大小等于元素高度的一半*/ 
+}
+</style>
+
+</head>
+<body ng-controller='appCtrl' class="app-content-loading">
+	<div growl></div>
+	<div ng-show="loading" class="dialog">
+		<div class="preloader-wrapper big active " style="z-index:99999">
+			<div class="spinner-layer spinner-blue">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+
+			<div class="spinner-layer spinner-red">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+
+			<div class="spinner-layer spinner-yellow">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+
+			<div class="spinner-layer spinner-green">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<hry-framework>
+</body>
+<script type="text/javascript" src="static/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="static/js/hry.js"></script>
+<script type="text/javascript" data-main="static/js/main"
+	src="static/lib/require.js"></script>
+
+</html>

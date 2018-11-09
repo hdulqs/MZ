@@ -1,0 +1,91 @@
+<hr class="mt-0 pt-0">
+<div class="card-panel mt-0 pt-0">
+	
+	<div class="row mt-0 pt-0">
+		<div class="col s12 mt-0 pt-0">
+			<ul class="tabs mt-0 pt-0">
+				<li class="tab col s3  "><a href="#img"  ng-click="fnSearchImg();">图片</a></li>
+				<li class="tab col s3  "><a href="#file" ng-click="fnSearchFile();">文件</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="img" class="col s12" >
+		<div  class="row">
+			<div class="col l12 m12 s12">
+			<h6>
+				<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">文件搜索</span>
+				
+			</h6>
+			</div>
+			<div class="col l3 m4 s12">
+		        <div class="input-field">
+				        <input type="text"    ng-model="fileName" >
+				        <label for="input_lname">文件名</label>
+			    </div>
+			</div>
+			<a class="btn" ng-click="fnSearchImg()">查询</a>
+		</div>
+		<hr>
+		
+		<div class="row photoswipe-gallery isotope mt-0">
+	        <a  ng-repeat="item in imgList" class="col s12 m6 l3 item" href="{{HRY.host}}/{{item.fileWebPath}}" data-size="2880x1800" data-med="{{HRY.host}}/{{item.fileWebPath}}" data-med-size="1440x900" data-author="{{item.username}}">
+	          	<img src="{{HRY.host}}/{{item.fileWebPath}}" alt="{{item.filename}}" />
+	            <figure>{{item.filename}}</figure>
+	        </a>
+        </div>
+	        
+		
+	  
+    </div>
+	
+	
+	<div id="file" class="col s12" >
+		<div  class="row">
+			<div class="col l12 m12 s12">
+			<h6>
+				<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">文件搜索</span>
+				
+			</h6>
+			</div>
+			<div class="col l3 m4 s12">
+		        <div class="input-field">
+				        <input type="text"    ng-model="fileName" >
+				        <label for="input_lname">文件名</label>
+			    </div>
+			</div>
+			<a class="btn" ng-click="fnSearchFile()">查询</a>
+		</div>
+		<hr>
+		
+	    <div class="row ">
+	    	<div  ng-repeat="item in fileList" class="col l3 m4 s12 ">
+	    		<div class="row">
+	    			<div class="col l12 m12 s12 h-20">{{item.filename}}</div>
+	    			<div class="col l12 m12 s12">
+			    		<div class="card-panel align-center wow zoomInUp  h-100" data-wow-duration="2000ms" data-wow-delay="200ms">
+				             <i class="fa fa-5x fa-send wow jello" data-wow-delay="1300ms"></i>
+				        </div>
+			        </div>
+		        	<div class="col l12 m12 s12">
+		        	<a ng-click="fnDown($event)" path={{item.fileWebPath}}>下载</a>
+		        	<a ng-click="fnDelete($event,'file')"  path={{item.fileWebPath}}>删除</a>
+		        	&nbsp;&nbsp;&nbsp;&nbsp;上传人:{{item.username}}</div>
+		        </div>
+		        <!-- <div class="row">
+		        	
+		        </div> -->
+	    	</div>
+	    </div>
+    </div>
+    
+
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('ul.tabs').tabs();
+	});
+</script>
+
+
+

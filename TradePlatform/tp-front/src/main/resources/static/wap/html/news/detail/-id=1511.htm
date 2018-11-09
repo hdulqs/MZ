@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="description" content="基于实体珠宝发行的数字资产币，可以自由兑换珠宝，商品等等！" />
+    <meta name="keywords" content="珠宝币" />
+    <title>
+        珠宝币项目官方首页-互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee" />
+  
+</head>
+<body>
+<div class="Wf-div1" style="border-bottom: none;">
+	<a onclick="history.back(-1)">返回</a>
+</div>
+<p class="bull_dels">
+    <span id="title"></span></p>
+<p class="bull_dels_time">
+            <span id="createtime"></span>     </p>
+<div class="bull_content">
+    <span id="content"></span></div>
+<div style="clear: both;"></div>
+</body>
+</html>
+
+<script type="text/javascript" src="../../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js"
+	},
+	preload : ['jquery'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/coins.js'],function(c){
+	c.content();
+});
+</script>
+

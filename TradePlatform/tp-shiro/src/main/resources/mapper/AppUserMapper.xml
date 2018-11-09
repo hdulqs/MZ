@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.shiro.dao.AppUserDao">
+	<resultMap id="BaseResultMap" type="com.mz.oauth.user.model.AppUser">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="created" property="created" javaType="java.util.Date" />
+		<result column="modified" property="modified" javaType="java.util.Date" />
+		<result column="saasId" property="saasId" javaType="java.lang.String" />
+		<result column="age" property="age" javaType="java.lang.Integer" />
+		<result column="appuserprefix" property="appuserprefix"
+			javaType="java.lang.String" />
+		<result column="birthday" property="birthday" javaType="java.util.Date" />
+		<result column="email" property="email" javaType="java.lang.String" />
+		<result column="homeAddress" property="homeAddress" javaType="java.lang.String" />
+		<result column="isDelete" property="isDelete" javaType="java.lang.String" />
+		<result column="isLock" property="isLock" javaType="java.lang.String" />
+		<result column="mobilePhone" property="mobilePhone" javaType="java.lang.String" />
+		<result column="name" property="name" javaType="java.lang.String" />
+		<result column="number" property="number" javaType="java.lang.String" />
+		<result column="password" property="password" javaType="java.lang.String" />
+		<result column="picturePath" property="picturePath" javaType="java.lang.String" />
+		<result column="qqNumber" property="qqNumber" javaType="java.lang.String" />
+		<result column="remark" property="remark" javaType="java.lang.String" />
+		<result column="salt" property="salt" javaType="java.lang.String" />
+		<result column="secondPhone" property="secondPhone" javaType="java.lang.String" />
+		<result column="sex" property="sex" javaType="java.lang.String" />
+		<result column="username" property="username" javaType="java.lang.String" />
+		<result column="weixinNumber" property="weixinNumber" javaType="java.lang.String" />
+		<result column="workDate" property="workDate" javaType="java.util.Date" />
+		<result column="roleName" property="roleName" javaType="java.lang.String"/>
+		<result column="departmentName" property="departmentName" javaType="java.lang.String"/>
+	</resultMap>
+
+	<select id="findPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		a.*,
+		(SELECT
+		GROUP_CONCAT(ar.`name`)
+		FROM
+		app_role AS ar
+		LEFT JOIN app_user_role AS aur ON ar.id = aur.roleId
+		where aur.userId
+		= a.id) as roleName,
+		
+		(SELECT
+	GROUP_CONCAT(ao.`name`)
+FROM
+	app_organization AS ao
+LEFT JOIN app_user_organization AS auo ON ao.id = auo.organizationId
+where auo.userId = a.id
+and ao.type = "department") as departmentName
+		
+		FROM
+		app_user as a
+		LEFT JOIN app_user_organization as ao
+		on a.id = ao.userId
+		where
+		a.username !='admin' and
+		a.appuserprefix !="vip" and
+		ao.organizationId in
+
+		<foreach item="item" index="index" collection="ids" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		<if test="username!=null and username!='' ">
+			and a.username like #{username}
+		</if>
+		<if test="mobilePhone!=null and mobilePhone!='' ">
+			and a.mobilePhone like #{mobilePhone}
+		</if>
+		GROUP BY a.id
+	</select>
+
+
+	<!-- 查询全部的权限 -->
+	<select id="findAllShiroUrl" resultType="java.lang.String">
+		select shiroUrl from app_menu_tree where shiroUrl is not null
+	</select>
+	
+	
+	<!-- 查询用户下的权限 -->
+	<select id="findUserShiroUrl" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		SELECT
+		shiroUrl
+		FROM
+		app_menu_tree as a
+		LEFT JOIN
+		app_role_menutree as b
+		on a.id =
+		b.menuTreeId
+		left join app_user_role c
+		on b.roleId = c.roleId
+		where
+		shiroUrl is not null
+		and userId = #{userId}
+	</select>
+
+
+
+
+
+</mapper>

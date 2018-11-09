@@ -1,0 +1,56 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicocoinList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-08-17 18:22:22      -->
+
+<div class="page-title">
+	<div class="row">
+		<div class="col s12 m6 l7">
+			<h4>
+				<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">ico货币管理</span>
+			</h4>
+		</div>
+		<div class="col s12 m6 l5 right-align pr-30">
+			<div class="row">
+				<!--查看按钮 -->
+				<a class="btn" ng-if="requiresPermissions('ico','/coin/appicocoin/see')" ng-click="fnSee()">查看</a>
+				<!--添加按钮 -->
+				<a class="btn" ng-if="requiresPermissions('ico','/coin/appicocoin/add')" ng-click="fnAdd()">添加</a>
+				<!--修改按钮 -->
+				<a class="btn" ng-if="requiresPermissions('ico','/coin/appicocoin/modify')" ng-click="fnModify()">修改</a>
+				<!--删除按钮 -->
+				<a class="btn" ng-if="requiresPermissions('ico','/coin/appicocoin/remove')" ng-click="fnRemove()">删除</a>
+				<!--刷新按钮 -->
+				<a class="btn" ng-click="fnList()">刷新</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+					  <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+	                  <th>币的名称</th>
+	                  <th>发行量(个)</th>
+	                  <th>发行单价(￥)</th> 
+	                  <th>产品状态</th> 
+	                  <th>开启/关闭</th> 
+	                  <th>代码 </th> 
+	                  <th>发行方名称</th>
+	                  <th>时间</th> 
+				    </tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+

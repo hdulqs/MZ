@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">  
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~接口实现和发布~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- 具体的实现bean -->
+    <bean id="remoteAppAccountServiceImpl" class="com.mz.account.remote.RemoteAppAccountServiceImpl" />
+    <!-- 声明需要暴露的服务接口 -->  
+    <dubbo:service ref="remoteAppAccountServiceImpl"  interface="com.mz.account.remote.RemoteAppAccountService"   />
+    
+    <bean id="remoteAppBankCardServiceImpl" class="com.mz.account.remote.RemoteAppBankCardServiceImpl" />
+    <dubbo:service ref="remoteAppBankCardServiceImpl"  interface="com.mz.account.remote.RemoteAppBankCardService"  />
+    
+    <bean id="remoteAppTransactionServiceImpl" class="com.mz.account.remote.RemoteAppTransactionServiceImpl" />
+    <dubbo:service ref="remoteAppTransactionServiceImpl"  interface="com.mz.account.remote.RemoteAppTransactionService"  />
+    
+    <bean id="remoteAppColdAccountRecordServiceImpl" class="com.mz.account.remote.RemoteAppColdAccountRecordServiceImpl" />
+    <dubbo:service ref="remoteAppColdAccountRecordServiceImpl"  interface="com.mz.account.remote.RemoteAppColdAccountRecordService"  />
+ 	
+    <bean id="remoteAppHotAccountRecordServiceImpl" class="com.mz.account.remote.RemoteAppHotAccountRecordServiceImpl" />
+    <dubbo:service ref="remoteAppHotAccountRecordServiceImpl"  interface="com.mz.account.remote.RemoteAppHotAccountRecordService"  />
+ 	
+ 	
+ 	<bean id="remoteAppOurAccountServiceImpl" class="com.mz.account.remote.RemoteAppOurAccountServiceImpl" />
+    <dubbo:service ref="remoteAppOurAccountServiceImpl"  interface="com.mz.account.remote.RemoteAppOurAccountService"  />
+ 	
+   	
+ 	<bean id="remoteAppAccountSureoldServiceImpl" class="com.mz.account.remote.RemoteAppAccountSureoldServiceImpl" />
+    <dubbo:service ref="remoteAppAccountSureoldServiceImpl"  interface="com.mz.account.remote.RemoteAppAccountSureoldService"  />
+ 	
+   	
+
+     
+</beans>  

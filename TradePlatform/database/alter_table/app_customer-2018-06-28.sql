@@ -1,0 +1,1 @@
+ALTER TABLE app_customer ADD (openOtcStates INT(20) DEFAULT 0 COMMENT '打开otc状态 0 关闭 1 打开' );

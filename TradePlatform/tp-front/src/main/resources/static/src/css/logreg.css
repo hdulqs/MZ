@@ -1,0 +1,35 @@
+.reg-box {
+  min-height: 760px;
+  background: url("../img/reg_02.jpg") repeat-y center top;
+  width: 100%; }
+
+.reg form {
+  background: #fff;
+  width: 514px;
+  padding: 30PX 80px 42px;
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* -webkit-transform: translate(-50%,-65%); */
+  /* transform: translate(-50%,-203PX); */
+  border-radius: 4px;
+  MARGIN: 127px AUTO 0;
+  display: inline-block; }
+  .reg form .logreg-title {
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .reg form .logreg-title span {
+      font-size: 16px;
+      color: #181818; }
+
+.input-lg {
+  font-size: 14px !important; }
+
+.form-group .iconfont {
+  top: 7px;
+  font-size: 22px;
+  position: absolute;
+  left: 30px; }

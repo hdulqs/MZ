@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.customer.businessman.dao.OtcTransactionDao">
+	
+	<select id="otclist" parameterType="java.util.Map" resultType="com.mz.customer.businessman.model.OtcTransaction">
+		select 
+		   *
+		from otc_transaction
+		<where>
+			status in  (1,4,6) and
+			businessFlag = "Y"
+			<if test="transactionType!=null and transactionType!='' ">
+				and  transactionType = #{transactionType}
+			</if>
+			<if test="coinCode!=null and coinCode!='' ">
+				and  coinCode = #{coinCode}
+			</if>
+	    </where>
+		<choose>
+			<when test="OrderByClause == 'desc'">
+				order by transactionPrice desc
+			</when>
+			<otherwise>
+				order by transactionPrice asc
+			</otherwise>
+		</choose>
+	</select>
+	<select id="otclists" parameterType="java.util.Map" resultType="com.mz.customer.businessman.model.OtcTransaction">
+		select
+		*
+		from otc_transaction
+		<where>
+			1 = 1
+			<if test="customerId!=null and customerId!='' ">
+				and  customerId = #{customerId}
+			</if>
+			<if test="transactionType!=null and transactionType!='' ">
+				and  transactionType = #{transactionType}
+			</if>
+			<if test="coinCode!=null and coinCode!='' ">
+				and  coinCode = #{coinCode}
+			</if>
+		</where>
+		order by created desc
+	</select>
+	
+</mapper>

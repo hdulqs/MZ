@@ -1,0 +1,31 @@
+
+<!-- With Search -->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修复K线【修复前一天24小时区间的数据】</span>
+	</h4>
+	<hr>
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s3 ">
+			<form ng-submit="processForm()">
+				<div class="input-field">
+							<label for="input_city"></label>
+							<hry-select
+								url="{{HRY.host}}{{HRY.modules.exchange}}product/exproduct/selectlist"
+								placeholder="币种" name="name" value="coinCode"
+								selectId="coinCode" dataTableSerch></hry-select>
+				</div>
+				<div class="input-field">
+					<input class="pikaday" type="text" readonly ng-model="formData.startDate"> <label for="input_text">修复日期</label>
+				</div>
+				<button class="btn" type="submit" >开始修复</button>
+			</form>
+
+		</div>
+		<div class="col s2 "></div>
+	</div>
+
+</div>
+
+

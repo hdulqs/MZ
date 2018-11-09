@@ -1,0 +1,54 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommendtradeList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-28 17:40:59      -->
+ 
+        <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+         	<div class="row">
+					<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text" ng-model="serchData.trueName_like"  dataTableSerch >
+			        <label for="input_trueName">返佣账号</label>
+			      </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+					<div class="row">
+
+
+				<a class="btn" ng-click="fnList()">刷新</a>
+				<!--导出按钮 -->
+				<a class="btn" ng-click="fnExcel()">导出</a>
+			</div>
+        </div>
+      </div>
+
+    </div>
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>返佣账号</th>
+						<th>返佣金额</th>
+						<th>返佣币种</th>
+						<th>返佣状态</th>
+						<th>返佣时间</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+

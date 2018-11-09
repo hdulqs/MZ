@@ -1,0 +1,212 @@
+  <form ng-submit="processForm()">
+   <!-- card 卡片   row ：行  col： 列-->
+   
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>文章基础信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content"> 
+      
+     <div class="row ">
+     
+          <div class="col s12 l3">
+            <div class="input-field">
+                                          产品名称 <input type="text" id="name"  ng-model="formData.name"   />
+            </div>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                                           发行总额(人民币)  <input type="text" id="issueTotalMoney"  ng-model="formData.issueTotalMoney"   />
+            </div>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                                           发行总量 <input type="text" id="totalNum"  ng-model="formData.totalNum"   />
+            </div>
+          </div>
+          
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                                         发行单价 <input type="text" id="issuePrice" ng-model="formData.issuePrice"   />
+            </div>
+          </div>
+          
+    </div>
+    
+   <div class="row ">
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                                       币的代码 <input type="text" id="coinCode"  ng-model="formData.coinCode"   />
+            </div>
+          </div>
+          
+       <!--   <div class="col s12 m6 l3">
+             <div class="input-field">
+              <select id="issueState" name="issueState" class="form-control">
+                            		<option  value = "0">准备状态</option>
+                            		 <option  value = "1">正在发行</option>
+                            		 <option  value = "2">停牌</option>
+                            		 <option  value = "3">退市</option>
+                </select>
+                 </div>
+           </div> -->
+           
+           
+          <div class="col s12 m6 l3">
+            <div class="input-field">
+                                           发行方名称 <input type="text" id="issueName"  ng-model="formData.issueName"   />
+            </div>
+          </div>
+          
+           <div class="col s12 m6 l3">
+           <div class="input-field"> 
+				     产品的存量  <input type="text" name="stock" ng-model="formData.stock"   />
+			</div>
+         </div>
+          
+    </div>
+
+    <div class="row ">
+     
+    	<div class="input-field"> 
+            产品介绍 <div class="ueditor" config="_simpleConfig" ng-model="formData.productReferral"></div>
+		</div>
+	
+		 <div class="input-field"> 
+			算法说明 <input  name="arithmetic"  ng-model="formData.arithmetic"/>
+		</div>
+		
+		<div class="input-field"> 
+			证明方式	<input  name="proveMode"  ng-model="formData.proveMode"/>
+		</div>
+	
+    </div>
+   
+    <div class="row ">
+     	<div class="col s12 m6 l3">
+    	  <div class="input-field"> 
+				区块的小值<input type="text" name="minBlocksize" ng-model="formData.minBlocksize"   />
+		  </div>
+		 </div>
+		 
+		  <div class="col s12 m6 l3">
+		  <div class="input-field"> 
+				区块最大值<input type="text" name="maxBlocksize" ng-model="formData.maxBlocksize"   />
+		  </div>
+		  </div>
+		 
+		<div class="col s12 m6 l3"> 	
+		<div class="input-field"> 
+			多少秒产生一个区块(秒)<input type="text" name="blockspeed" ng-model="formData.blockspeed"   />
+		</div>
+		</div> 
+		 
+		   <div class="col s12 m6 l3">
+		  <div class="input-field"> 
+				钱包下载地址 <input type="text" name="walletDownload" ng-model="formData.walletDownload"   />
+		   </div>
+		   </div>
+		    <div class="col s12 m6 l3">
+			   <div class="input-field"> 
+					源码下载地址 <input type="text" name="soundDownload" ng-model="formData.soundDownload"   />
+				</div>
+   			 </div>
+   			 
+		    <div class="col s12 m6 l3">
+			   <div class="input-field"> 
+					排序字段 <input type="text" name="sort" ng-model="formData.sort"   />
+				</div>
+   			 </div>
+   			 
+		    <div class="col s12 m6 l3">
+		    
+			   <select id="isRecommend" name="issueState" class="select2"  data-allow-clear="true"    data-placeholder="请选择状态">
+                            	<option value="">不限</option>
+                            		<option  value = "1">推荐</option>
+                            		 <option  value = "0">不推荐</option>
+                </select>
+   			 </div>
+   			 
+   		<div class="col s12 m6 l3">
+         	 <div class="col s12 ">
+ 			 <select id="wselectid"  class="select2"  data-allow-clear="true"    data-placeholder="请选择交易参数类型" name="parameterName" >
+                </select>
+ 			 </div>
+ 		</div>
+</div>
+ 			 
+ <div class="row ">
+     <div class="col s12 m6 l3">
+	     <div class="input-field"> 
+		买方手续费率：<input id="buyFeeRate" ng-model="formData.buyFeeRate" type="text" placeholder="{{parameter.buyFeeRate}}"value="{{parameter.buyFeeRate}}">
+		 </div>
+	 </div>
+	 
+	  <div class="col s12 m6 l3">
+		 <div class="input-field"> 
+ 		卖方手续费率：<input id="sellFeeRate" ng-model="formData.sellFeeRate" type="text" placeholder="{{parameter.sellFeeRate}}" value="{{parameter.sellFeeRate}}">
+
+		 </div>
+	  </div>
+
+     <div class="col s12 m6 l3">
+		 <div class="input-field"> 
+		买方最小买入金额：<input id="buyMinMoney" ng-model="formData.buyMinMoney" type="text" placeholder="{{parameter.buyMinMoney}}" value="{{parameter.buyMinMoney}}">
+		 </div>
+	 </div>
+	 
+	  <div class="col s12 m6 l3">
+		 <div class="input-field"> 
+ 		卖方最小卖出币数：<input id="sellMinCoin" ng-model="formData.sellMinCoin" type="text" placeholder="{{parameter.sellMinCoin}}" value="{{parameter.sellMinCoin}}">
+		 </div>
+	  </div>
+</div>
+  
+  
+    
+   
+   
+ <div class="row ">
+     <div class="col s12 m6 l3">
+	     <div class="input-field"> 
+				区块浏览器<input type="text" name="remark" ng-model="formData.blockBrowser"   />
+		 </div>
+	 </div>
+	 
+	  <div class="col s12 m6 l3">
+		 <div class="input-field"> 
+				官方网址<input type="text" name="remark" ng-model="formData.officialWebsite"   />
+		 </div>
+	  </div>
+
+     <div class="col s12 m6 l3">
+		 <div class="input-field"> 
+				官方论坛 <input type="text" name="remark" ng-model="formData.officialForum"   />
+		 </div>
+	 </div>
+	 
+	  <div class="col s12 m6 l3">
+		 <div class="input-field"> 
+				挖矿地址 <input type="text" name="remark" ng-model="formData.miningAddress"   />
+		 </div>
+	  </div>
+</div>
+   
+   
+    <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+	<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+</form>
+			
+
+
+

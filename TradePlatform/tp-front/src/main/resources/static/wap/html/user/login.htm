@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>互融网｜第一数字资产交易平台</title>
+    <style>
+        #captchaimg {
+            margin-bottom: -15px;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <header class="header">
+            <a href="../coins.htm">
+                <div class="logo"></div>
+            </a>
+            <div class="nav">
+                <a href="../coins.htm">交易中心</a>
+                <a href="login.htm" class="a-on">登录</a>
+                <a href="./reg.htm">注册</a>
+            </div>
+        </header>
+        <div class="strip"></div>
+        <div class="d-main">
+            <h2>登录互融网</h2>
+            <form id="form" onsubmit="return valiForm();">
+                <p>
+                    <input type="text" name="email" id="email" value="" placeholder="邮箱">
+                    <span class="note" id="emailmsg" style="color:red;margin-top: 10px;display: inline-block;"></span>
+                </p>
+                <p>
+                    <input type="password" name="pwd" id="pwd" placeholder="密码">
+                    <span class="note" id="pwdmsg" style="color:red;margin-top: 10px;display: inline-block;"></span>
+                </p>
+                <p id="loginPhoneCode" style="display:none;">
+                    <label>验证码：</label>
+                    <span style="margin-left:0px;">
+                        <input type="text" style="margin:0px;width:2.7rem;" placeholder="请输入验证码" id="authCode"   maxlength="7" value=" " autocomplete="false" >
+                    </span>
+                    <span style="float:right;">
+                    <label style="display:block;width:2.3rem;border-radius:5px;margin-right: 0.07rem;height:0.85rem;line-height:0.85rem;text-align: center;background: #f60;color: #fff;cursor:pointer;font-size:0.24rem;" name="getPhoneCode" class="verify phone_code retry-send" onclick="sendPhoneCode();">获取短信验证码</label>
+                    </span><br>
+                    <p style="margin-top:10px;margin-bottom:10px;font-size:13px;color:red;display:none" class="pcode">验证码错误</p>
+                </p>
+                <p>
+                    <input type="button" value="登录" style="background:#f60;color:white;font-size: 0.3rem;width: 6.88rem;border: none;padding:0;margin-top: 0.2rem;" class="denglu dengluu" id="sublogin">
+
+                </p>
+            </form>
+            <p>
+                <a href="findpwd.htm" class="L" style="color:#f60">忘记密码？</a>
+                <span class="R" style="float:right">没有账号去<a  id="reg"  style="color:#f60">注册</a></span>
+                <div style="clear: both;"></div>
+            </p>
+        </div>
+
+        <footer class="footer" style="margin-top:4.8rem;">
+            <div>
+                Copyright2013-2016 互融网
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/login.js'],function(l){
+	l.init();
+});
+</script>

@@ -1,0 +1,84 @@
+   
+   <form name="AppmessageForm">
+   <!-- card 卡片   row ：行  col： 列-->
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>添加消息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content">
+     
+     
+      	<div class="row no-margin-top">
+       	<label >消息类型</label>
+          <div class="col s12 ">
+              <hry-select  url="{{HRY.host}}{{HRY.modules.web}}message/appmessagecategory/selectList" name="name" value="id" selectId="companySet"></hry-select>
+          </div>
+        </div>
+
+
+  		<div class="row">
+          <div class="col s12 ">
+            <div class="input-field">
+             <input type="text" id="title"  ng-model="formData.title"  required  />
+             <label for="title">标题</label> 
+            </div>
+          </div>
+        </div>
+
+
+       <div class="row">
+          <div class="col s12 ">
+            <div class="input-field">
+             <input type="text" id="sortTitle"  ng-model="formData.sortTitle"  required  />
+             <label for="title">消息简介</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row ">
+          <div class="row no-margin-top">
+      		 	<label >接收人用户名( <font color="red">* 如果不填写默认全选,如果填写请以“,”分割</font> )</label>
+         		 <div class="col s12 ">
+          		    <input type="text" ng-model="formData.userNames"></input>
+         		</div>
+        	</div>
+        </div>
+        
+ 
+         <div class="row">
+          <div class="col s12 ">
+          <label >消息内容<label>
+            <div class="input-field">
+                 <div class="ueditor" config="_simpleConfig" ng-model="formData.content" required></div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+	
+	
+       <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+       <p class="center">
+       
+       <button ng-click="submit()" ng-disabled="AppmessageForm.$invalid"  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存</button>
+      
+       <button ng-click="sendSubmit()" ng-disabled="AppmessageForm.$invalid"  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存并发送</button>
+      
+       <button  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">重置</button>
+       </p>
+      
+      </div>
+  
+   <!--/文章扩展信息-->
+   </form>
+   <script type="text/javascript" src="/manage/static/ueditor/ueditor.config.js"></script>
+   <script type="text/javascript" src="/manage/static/ueditor/ueditor.all.js"></script>

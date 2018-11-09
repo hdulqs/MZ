@@ -1,0 +1,54 @@
+version: '3.3'
+services:
+  elasticsearch:
+    image: 192.168.1.102:5000/elk/elasticsearch:6.4.3
+    ports:
+    - 9200:9200
+    - 9300:9300
+    networks:
+    - front
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        preferences:
+        - spread: node.labels.work
+  logstash:
+    image: 192.168.1.102:5000/elk/logstash:6.4.3
+    ports:
+    - 5044:5044
+    networks:
+    - front
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        preferences:
+        - spread: node.labels.work
+    depends_on:
+    - elasticsearch
+  kibana:
+    image: 192.168.1.102:5000/elk/kibana:6.4.3
+    ports:
+    - 5601:5601
+    networks:
+    - front
+    - admin
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        preferences:
+        - spread: node.labels.work
+    depends_on:
+    - elasticsearch
+networks:
+  front:
+    external: true
+  admin:
+    external: true

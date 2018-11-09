@@ -1,0 +1,41 @@
+package com.mz.util;
+
+import org.apache.shiro.codec.Base64;
+import org.apache.shiro.session.Session;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+/**
+ * 
+ * <p> TODO</p>
+ * @author:         Liu Shilei 
+ * @Date :          2016年1月13日 上午10:31:28
+ */
+public class SerializableUtils {
+
+    public static String serialize(Session session) {
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(session);
+            return Base64.encodeToString(bos.toByteArray());
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	return null;
+        }
+    }
+    public static Session deserialize(String sessionStr) {
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(sessionStr));
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            return (Session)ois.readObject();
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	return null;
+            //throw new RuntimeException("deserialize session error", e);
+        }
+    }
+}

@@ -1,0 +1,74 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppaccountdisableList.html     -->
+ <!-- @author:      Gao mimi  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-12-12 19:39:39      -->
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+	<div class="row">
+		<div class="col s12 m9 l7">
+			<div class="row">
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">用户账号</label>
+					</div>
+				</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_lname">真实姓名</label>
+					</div>
+				</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<hry-select dataTableSerch url="{{HRY.host}}{{HRY.modules.exchange}}product/exproduct/selectlist" name="coinCode" value="coinCode" selectId="coinCode_EQ"></hry-select>
+					</div>
+
+				</div>
+					<div class="col m3 s12">
+						<div class="input-field">
+							<select class="select2" data-allow-clear="true"
+								data-placeholder="状态" name="status_EQ" dataTableSerch>
+								<option value="">不限</option>
+								<option value="1">禁用</option>
+								<option value="2">解禁</option>
+							</select>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="col s12 m3 l5 right-align pt-20">
+			<!--查看按钮 -->
+				<a class="btn" ng-if="requiresPermissions('exchange','/account/appaccountdisable/encoindisable')" ng-click="fnEncoindisable()">解禁</a>
+				<!--刷新按钮 -->
+				<a class="btn" ng-click="fnList()">刷新</a>
+		</div>
+	</div>
+
+</div>
+<!-- /Handle -->
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+					    
+						<th>用户名</th>
+						<th>真实姓名</th>
+						<th>币种</th>
+						<th>禁用数量</th>
+						<th>状态</th>
+						<th>备注</th>
+						<th>禁用时间</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+

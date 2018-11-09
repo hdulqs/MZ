@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<menu key="wofangzhanghuguanli" name="我方账户管理"  url="/fund/appouraccount/list/anon" shiroUrl="/fund/appouraccount/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="yinhangzhanghuguanli_wofangyinghangka_add" name="添加"  shiroUrl="/fund/appouraccount/add"></function>
+		<function key="yinhangzhanghuguanli_wofangyinghangka_see" name="查看"  shiroUrl="/fund/appouraccount/see"></function>
+		<function key="yinhangzhanghuguanli_wofangyinghangka_modify" name="修改"  shiroUrl="/fund/appouraccount/modify"></function>
+		<function key="yinhangzhanghuguanli_wofangyinghangka_remove" name="删除"  shiroUrl="/fund/appouraccount/remove"></function>
+	</menu>
+	<menu key="wofangbizhongzhanghuguanli" name="我方币种账户管理"  url="/fund/appourdmaccount/list/anon" shiroUrl="/fund/appourdmaccount/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="bizhongzhanghuguanli_wofangybizhongka_add" name="添加"  shiroUrl="/fund/appouraccount2/add"></function>
+		<function key="bizhongzhanghuguanli_wofangbizhongka_see" name="查看"  shiroUrl="/fund/appouraccount2/see"></function>
+		<function key="bizhongzhanghuguanli_wofangbizhongka_modify" name="修改"  shiroUrl="/fund/appouraccount2/modify"></function>
+		<function key="bizhongzhanghuguanli_wofangbizhongka_remove" name="删除"  shiroUrl="/fund/appouraccount2/remove"></function>
+	</menu>
+	
+	<menu key="wofangzijinliushuiguanli" name="我方资金流水管理"  url="/fund/appaccount/list/anon" shiroUrl="" isOpen="0" isOutLink="0" orderNo="" >
+	</menu>
+
+	
+	<menu key="huiyuanzhanghuguanli" name="资金账户管理"  url="/fund/appaccount/list/anon" shiroUrl="/fund/appaccount/list" isOpen="0" isOutLink="0" orderNo="" />
+	
+	<menu key="zijinchongzhijishoufeitaizhang" name="资金充值及收费台账"  url="/fund/apptransaction/dreport/anon" shiroUrl="/fund/apptransaction/dreport" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="zijinquxianjishoufeitaizhang" name="资金取现及收费台账"  url="/fund/apptransaction/wreport/anon" shiroUrl="/fund/apptransaction/wreport" isOpen="0" isOutLink="0" orderNo="" />
+	
+	
+	<menu key="chongzhishenqinshenhe" name="充值申请审核"  url="/fund/apptransaction/dapplylist/1" shiroUrl="/fund/apptransaction/depositlist1" isOpen="0" isOutLink="0" orderNo="">
+		<function key="chongzhishenqinshenhe_tongguo" name="通过"  shiroUrl="/fund/apptransaction/confirm"></function>
+		<function key="chongzhishenqinshenhe_invalid" name="驳回"  shiroUrl="/fund/apptransaction/dinvalid"></function>
+	</menu>
+	<menu key="chongzhichenggongchaxun" name="充值成功查询"  url="/fund/apptransaction/dsuccesslist/2" shiroUrl="/fund/apptransaction/depositlist2" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="chongzhishibaichaxun" name="充值失败查询"  url="/fund/apptransaction/dfaillist/3" shiroUrl="/fund/apptransaction/depositlist3" isOpen="0" isOutLink="0" orderNo="" />
+	
+	<menu key="quxianshenqinshenhe" name="取现申请审核"  url="/fund/apptransaction/wapplylist/1" shiroUrl="/fund/apptransaction/withdrawlist1" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="quxianshenqinshenhe_tongguo" name="通过"  shiroUrl="/fund/apptransaction/confirmwithdraw"></function>
+		<function key="quxianshenqinshenhe_invalid" name="驳回"  shiroUrl="/fund/apptransaction/winvalid"></function>
+	</menu>
+	<menu key="quxianchenggongchaxun" name="取现成功查询"  url="/fund/apptransaction/wsuccesslist/2" shiroUrl="/fund/apptransaction/withdrawlist2" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="quxianshibaichaxun" name="取现失败查询"  url="/fund/apptransaction/wfaillist/3" shiroUrl="/fund/apptransaction/withdrawlist3" isOpen="0" isOutLink="0" orderNo="" />
+	
+	
+	<menu key="yinhangzhanghuguanli_keyong" name="可用金额流水"  url="/fund/apphotaccountrecord/list/anon" shiroUrl="/fund/apphotaccountrecord/list" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="yinhangzhanghuguanli_yinghangka" name="银行卡管理"  url="/fund/appbankcard/list/anon" shiroUrl="/fund/appbankcard/list" isOpen="0" isOutLink="0" orderNo="" />
+	
+	
+	<menu key="wofangliushuiguanli" name="我方账户流水"  url="/fund/appaccountrecord/list/anon" shiroUrl="/fund/appaccountrecord/list" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="wofangliushuiguanli1" name="平台收取卖币佣金"  url="/fund/appaccountrecord1/list/anon" shiroUrl="/fund/appaccountrecord/list" isOpen="0" isOutLink="0" orderNo="" />
+	
+	
+	<!-- 金科新加菜单 -->
+	<menu key="jianglibijilu" name="注册或推荐奖励币记录"  url="/fund/appCoinRewardRecord/list/anon" shiroUrl="/fund/appCoinRewardRecord/list" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="tuijianrenshouqushouxufeichaxun" name="推荐人收取手续费查询"  url="/fund/appAgencyTranAwardRecord/list/anon" shiroUrl="/fund/appAgencyTranAwardRecord/list" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="dailirenyongjinyemian" name="代理人佣金查询"  url="/fund/agentList" shiroUrl="/fund/appaccount/agentList" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="jifendaorujilu" name="积分导入记录"  url="/fund/IntegralImportRecordList" shiroUrl="/fund/appaccount/IntegralImportRecordList" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="shouxufeitixianjilu" name="手续费提现记录"  url="/fund/FeeWithdrawalsRecordList" shiroUrl="/fund/appaccount/FeeWithdrawalsRecordList" isOpen="0" isOutLink="0" orderNo="" />
+	
+	
+	 <menu key="ico_ourAccount" name="我方币种账户管理"  url="/fund/appourdmaccount/icolist/anon" shiroUrl="/fund/appourdmaccount/list" isOpen="0" isOutLink="0" orderNo="" >
+		<function key="ourAccount_add" name="添加"  shiroUrl="/fund/appouraccount2/add"></function>
+		<function key="ourAccount_see" name="查看"  shiroUrl="/fund/appouraccount2/see"></function>
+		<function key="ourAccount_modif" name="修改"  shiroUrl="/fund/appouraccount2/modify"></function>
+		<function key="ourAccount_remove" name="删除"  shiroUrl="/fund/appouraccount2/remove"></function>
+	</menu>
+	
+</root>

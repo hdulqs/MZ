@@ -1,0 +1,102 @@
+
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+
+	<div class="row">
+		<div class="col s12 m9 l4">
+			<div class="row">
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">用户账号</label>
+					</div>
+				</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_trueName">用户真名</label>
+					</div>
+				</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<select   name="currencyType"  dataTableSerch>
+							<option value="">账户类型</option>
+							<option value="cny">CNY</option>
+							<option value="usd">USD</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m3 l8 right-align pt-20">
+			<a class="btn pr-10 pl-10" ng-if="requiresPermissions('calculate','/report/appaccountcheck/allerrorinfo')" ng-click="allfnaccountingerrorTomongoSure('report/appaccountredischeck/allerrorinfo')"><i class="fa fa-refresh "></i>全部缓存错误余额核算 </a>
+       		<a class="btn pr-10 pl-10" ng-if="requiresPermissions('calculate','/report/appaccountcheck/allerrorinfo')" ng-click="allfnaccountingerror('report/appaccountredischeck/allerrorinfo')"><i class="fa fa-refresh "></i>全部缓存错误余额信息 </a>
+       		<a class="btn pr-10 pl-10" ng-if="requiresPermissions('calculate','/report/appaccountcheck/allerrorinfo')" ng-click="fnaccountingerror('report/appaccountredischeck/allerrorinfo')"><i class="fa fa-refresh "></i>缓存核算错误信息 </a>
+       		<a class="btn pr-10 pl-10" ng-if="requiresPermissions('calculate','/appReportSettlement/culAccountByCustomer')" ng-click="fnaccounting()"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>缓存核算到数据库</a>
+        	<a class="btn pr-10 pl-10" ng-if="requiresPermissions('calculate','/appReportSettlement/culAccountByCustomer')" ng-click="fnaccountingerrorAndRight()"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>缓存余额详情</a>
+        	
+        	
+        	<!-- 刷新按钮 -->
+			<a class="btn pr-10 pl-10" ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+			
+		
+			
+		</div>
+	</div>
+
+</div>
+<!-- /Handle -->
+
+<!-- 分公司管理 -->
+<div class="">
+
+
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2" class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>用户账号</th>
+						<th>真实姓名</th>
+						<th>账户类型</th>
+						<th>资金账户号</th>
+						<th>总资产</th>
+						<th>可用金额</th>
+						<th>冻结金额</th>
+						<th>杠杆金额</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+<div class="col s4 hide" id="matchDetailDiv">
+			
+				<!-- begin row -->
+			
+				<div class="row">
+				  <div class="col m4 s12">
+				          前几天到现在有过资金变化的客户才进行核算
+				  </div>
+				  <div class="col m4 s12">
+					<div class="input-field">
+						<input type="text" ng-model="days"  > <label for="input_lname"></label>
+				 	</div>
+				  </div>
+					
+					<a class="btn pr-10 pl-10"  ng-click="allfnaccountingerrorTomongo()"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>开始计算</a>
+ 
+					<!-- end col-3 -->
+				</div>
+				<!-- end row -->
+		</div>
+
+
+
+

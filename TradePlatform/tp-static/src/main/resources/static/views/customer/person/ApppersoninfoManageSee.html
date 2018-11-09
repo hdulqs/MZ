@@ -1,0 +1,88 @@
+
+<!-- 基础信息 -->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">基础材料</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/person/apppersoninfo/list/anon">返回</a>
+	</h4>
+	<hr>
+	<div class="row">
+		<div class="col s3 ">
+				<div class="input-field">
+           			  姓名 <input type="text" readonly="readonly" id="name"  ng-model="formData.trueName"  required />
+				</div>
+				<div class="input-field">
+           	  		 性别 <input type="text" readonly="readonly" id="name"  ng-model="formData.sex==0?'男':'女'"  required />
+				</div>
+				<div class="input-field">
+           			 身份证号 <input type="text" readonly="readonly" id="name"  ng-model="formData.cardId"  required />
+				</div>
+				<div class="input-field">
+           	  		身份证有效期 <input type="text" readonly="readonly" id="name"  ng-model="formData.cardIdValidPeriod"  required />
+				</div>
+		</div>
+		<div class="col s3 ">	
+				<div class="input-field">
+           	  		通讯地址 <input type="text" readonly="readonly" id="name"  ng-model="formData.postalAddress"  required />
+				</div>
+				<div class="input-field">
+           	  		邮编 <input type="text" readonly="readonly" id="name"  ng-model="formData.postCode"  required />
+				</div>
+				<div class="input-field">
+           	 		 紧急联系人 <input type="text" readonly="readonly" id="name"  ng-model="formData.contacts"  required />
+				</div>
+				<div class="input-field">
+           			 紧急联系人电话 <input type="text" readonly="readonly" id="name"  ng-model="formData.contactsTel"  required />
+				</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 签约银行 -->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">签约银行</span>
+	</h4>
+	<hr>
+	<div class="row">
+		<div class="col s3 ">
+				<div class="input-field">
+           	  		签约银行通道 <input type="text" readonly="readonly" id="name"  ng-model="formData.appBankCard.signBank"  required />
+				</div>
+				<div class="input-field">
+           	  		银行名称 <input type="text" readonly="readonly" id="name"  ng-model="formData.appBankCard.cardBank"  required />
+				</div>
+		</div>
+		<div class="col s3 ">
+				<div class="input-field">
+           	  		开户名称 <input type="text" readonly="readonly" id="name"  ng-model="formData.appBankCard.cardName"  required />
+				</div>
+				<div class="input-field">
+           	  		银行账号<input type="text" readonly="readonly" id="name"  ng-model="formData.appBankCard.cardNumber"  required />
+				</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 签约银行 -->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看照片</span>
+	</h4>
+	<hr>
+	<div class="row">
+			手持身份证照片 <img src="{{HRY.host}}/{{formData.handIdCardUrl}}"  alt="" class="media-object"><br>
+			身份证正面照片 <img src="{{HRY.host}}/{{formData.idCardFrontUrl}}" alt="" class="media-object"><br>
+			身份证反面照片<img src="{{HRY.host}}/{{formData.idCardBackUrl}}" alt="" class="media-object"><br>
+			手持协议照片<img src="{{HRY.host}}/{{formData.handDealUrl}}" alt="" class="media-object"><br>
+	</div>
+</div>
+
+	<button class="btn"  ng-click="closeExamine()">关闭</button>
+			
+
+
+

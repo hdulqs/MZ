@@ -1,0 +1,61 @@
+ <!-- Breadcrumb -->
+    <div class="page-title">
+
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <h4 >单级数据字典树</h4>
+	      
+        </div>
+       
+      </div>
+
+    </div>
+    <!-- /Breadcrumb -->
+
+
+<!-- With Search -->
+		<div class="row">
+				<div id="tree" class="ztree" >
+			</div>
+		</div>
+
+<!-- With Search -->
+	<div class=" pl-10 pr-10 mw-700 hide"  id="modifyNodeDiv">
+		<div class="row ">
+		<form name="v_form">
+			<div class="col s6 ">
+			     <div class="input-field"> 
+				   值    <input type="text"name="itemValue" ng-model="formData.itemValue"  />
+				     </div>
+					 <div class="input-field"> 
+				    名字   <input type="text" name="itemName" ng-model="formData.itemName"  required/>
+				     </div>
+				     	 <div class="input-field"> 
+				   key    <input type="text" name="dicKey" ng-model="formData.dicKey"  />
+				     </div>
+			</div>
+			<div class="col s6 ">
+				
+				
+					 <div class="input-field"> 
+				     描述  <input type="text" name="dicDescrption" ng-model="formData.dicDescrption" />
+				     </div>
+				     
+					 <div class="input-field"> 
+				      排序 <input type="number"  name="orderNo"  ng-model="formData.orderNo"   ng-pattern="/^\+?[1-9][0-9]*$/"/>
+				     </div>
+			          <div class="input-field"> 
+				 父key      <input type="text"  name="pDicKey"  ng-model="formData.pDicKey"  />
+				     </div>       
+					 	
+				
+				</div>
+			
+			
+			</div>
+		<div class="row text-align"><button class="waves-effect btn" type="submit" ng-disabled="!form.checkValid(v_form)" ng-click="form.submit(v_form,processForm)">提交</button><span >{{ message }}</span>
+					</div>
+		</div>
+		</form>
+	</div>
+	<!-- /With Search --> 

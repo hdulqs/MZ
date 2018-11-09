@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 182.133px;">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。">
+	<meta name="keywords" content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+
+	<meta property="wb:webmaster" content="8af72a3a7309f0ee">
+	<title>
+		互融网｜综合数字资产交易平台
+	</title>
+</head>
+<body>
+	<div id="main">
+		<div class="main_box" style="padding:0; background:#fff;">
+			<div class="raise right clearfix">
+				<div class="Wf-div1">
+					<a onclick="history.back(-1)">返回</a>
+					<span>修改交易密码</span><strong style="color:red"></strong>
+				</div>
+				<div class="strip"></div>
+				<!--登录密码盒子 开始-->
+				<div class="cb-box1 tb-box1" id="tagContent0" style="">
+					<form method="post" onsubmit="return false;" onkeydown="if (event.keyCode == 13) {return false;}">
+						<!--    <form method="post" action="/user_index/pwd">-->
+						<p class="p5"><label>新密码</label><input style="width: 5.44rem;" type="password" id="newaccountPassWord" name="pwd" placeholder="设置新密码，长度在6-20个字符之间"></p>
+						<p class="p5"><label>重复密码</label><input style="width: 5.44rem;" type="password" id="newaccountPassWordref" name="repwd" placeholder="请再次输入新密码"></p>
+						<p class="p5 p5_f">
+							<span>
+            <label>验证码</label><input style="width: 3rem;" type="text" class="Txt22" name="phone_code" id="phone_code_login" placeholder="请输入短信验证码">
+            </span>
+							<label class="verify phone_code verify_code" name="getPhoneCode" id="sendsmsBtn">获取短信验证码</label>
+						</p>
+						<p class="p5" style="margin-top: 0.7rem"><input type="submit" style="margin-top:0.3rem" class="input_news_password" value="确认修改" id="submitBtn"></p>
+					</form>
+				</div>
+				<!--登录密码盒子 结束-->
+				<!--交易密码盒子 开始-->
+				<div class="cb-box1 tb-box1" id="tagContent1" style="display: none">
+					<form method="post" onsubmit="return false;" onkeydown="if (event.keyCode == 13) { return false; }">
+						<p class="p5"><label>登录密码</label><input style="width: 5.44rem;" type="password" name="oldpwd" placeholder="请输入登录密码"></p>
+						<p class="p5"><label>交易密码</label><input style="width: 5.44rem;" type="password" name="oldpwdtrade" placeholder="请输入交易密码"></p>
+						<p class="p5"><label>新密码</label><input style="width: 5.44rem;" type="password" name="pwd" placeholder="设置新密码，长度在6-20个字符之间"></p>
+						<p class="p5"><label>重复密码</label><input style="width: 5.44rem;" type="password" name="repwd" placeholder="请再次输入新密码"></p>
+						<p class="p5 p5_f">
+							<span>
+        <label>验证码</label><input style="width:3rem;" type="text" class="Txt22" name="phone_code" id="phone_code_trade" placeholder="请输入短信验证码">
+        </span>
+							<label class="verify phone_code verify_code" name="getPhoneCode" onclick="Password.gettradePhoneCode(this)">获取短信验证码</label>
+						</p>
+						<p class="p5" style="margin-top: 0.7rem"><input type="submit" style="margin-top:0.3rem" class="input_news_password" value="确认修改" onclick="Password.tradePwd();"></p>
+					</form>
+					<p class="wangjijiaoyi" style="margin-top:0.1rem"><a href="./repwdtrade">忘记交易密码？</a></p>
+				</div>
+				<!--交易密码盒子 结束-->
+				<div style="clear: both;"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</body>
+<!-- <script>
+	$(function() {
+		$(".bullet_p .bull_click").click(function() {
+			$(this).addClass('actives').siblings().removeClass('actives');
+			var index = $(".bullet_p .bull_click").index(this);
+			$(".cb-box1").eq(index).show().siblings(".cb-box1").hide();
+		});
+	})
+</script> -->
+</html>
+
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript"  src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+	base : basepath,
+	alias : {
+		"jquery" : "style/js/jquery/1.9.1.min.js",
+		"jq" : "style/js/jquery/jquery.js",
+		"layer" : "style/js/layer/layer.js"
+	},
+	preload : ['jquery','jq','layer'],
+	map:[['.js','.js?v='+new Date().getTime()]]
+});
+seajs.use(['style/js/extract/seajs/pwd_tran.js'],function(r){
+	r.init();
+	r.sendsms();
+});
+</script>

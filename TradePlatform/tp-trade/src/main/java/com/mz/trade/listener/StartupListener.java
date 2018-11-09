@@ -1,0 +1,112 @@
+/**
+ * Copyright:   北京互融时代软件有限公司
+ *
+ * @author: Yuan Zhicheng
+ * @version: V1.0
+ * @Date: 2015年9月16日 上午11:04:39
+ */
+package com.mz.trade.listener;
+
+import com.github.pagehelper.util.StringUtil;
+import com.mz.exchange.product.model.ExCointoCoin;
+import com.mz.redis.common.utils.RedisTradeService;
+import com.mz.trade.entrust.service.ExEntrustService;
+import com.mz.util.log.LogFactory;
+import com.mz.util.properties.PropertiesUtils;
+import com.mz.util.sys.ContextUtil;
+import com.mz.core.quartz.QuartzJob;
+import com.mz.core.quartz.QuartzManager;
+import com.mz.core.quartz.ScheduleJob;
+import com.mz.trade.entrust.dao.CommonDao;
+import com.mz.trade.model.TradeRedis;
+import java.util.List;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+/**
+ *
+ * @author Administrator
+ *
+ */
+@Component
+public class StartupListener implements CommandLineRunner {
+
+  @Override
+  public void run(String... strings) {
+
+    LogFactory
+        .info("--------------------------------------------------------------------------------");
+    LogFactory
+        .info("---------------------------------加载应用app----------------------------------------");
+    LogFactory.info("------------------" + PropertiesUtils.APP.getProperty("app.loadApp")
+        + "-----------------");
+    //加载每个应用的启动方法
+    String isStartRobot = PropertiesUtils.APP.getProperty("app.isStartRobot");
+    if (!StringUtil.isEmpty(isStartRobot) && isStartRobot.equals("true")) {
+      //机器人定时器
+      ScheduleJob autoAddExEntrust = new ScheduleJob();
+      autoAddExEntrust.setSpringId("exEntrustService");
+      autoAddExEntrust.setMethodName("autoAddExEntrust");
+      QuartzManager
+          .addJob("autoAddExEntrust", autoAddExEntrust, QuartzJob.class, "0/5 * * * * ?");// 两秒
+
+      ScheduleJob cancelAutoAddExEntrust = new ScheduleJob();
+      cancelAutoAddExEntrust.setSpringId("exEntrustService");
+      cancelAutoAddExEntrust.setMethodName("cancelAutoAddExEntrust");
+      QuartzManager.addJob("cancelAutoAddExEntrust", cancelAutoAddExEntrust, QuartzJob.class,
+          "0/30 * * * * ?");// 两秒
+
+    }
+
+    //缓存定时入库
+    ScheduleJob reidsToMysql = new ScheduleJob();
+    reidsToMysql.setSpringId("exOrderInfoService");
+    reidsToMysql.setMethodName("reidsToMysqlmq");
+    QuartzManager.addJob("reidsToMysql", reidsToMysql, QuartzJob.class, "0/2 * * * * ?");// 两秒
+    try {
+      Thread.sleep(300);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    //缓存定时入reids日志，委托定时入库
+    ScheduleJob reidsToredisLog = new ScheduleJob();
+    reidsToredisLog.setSpringId("exOrderInfoService");
+    reidsToredisLog.setMethodName("reidsToredisLogmq");
+    QuartzManager.addJob("reidsToredisLog", reidsToredisLog, QuartzJob.class,
+        "0/2 * * * * ?");// 两秒 0/2 * * * * ?
+
+    //委托单
+    ScheduleJob jobRunTimepushMarket = new ScheduleJob();
+    jobRunTimepushMarket.setSpringId("webSocketScheduleService");
+    jobRunTimepushMarket.setMethodName("pushMarket");
+    QuartzManager.addJob("jobRunTimepushMarket", jobRunTimepushMarket, QuartzJob.class,
+        "0/1 * * * * ?");// 两秒
+		
+		
+	/*	//委托单深度
+		ScheduleJob jobRunTimepushEntrusDephMarket= new ScheduleJob();
+		jobRunTimepushEntrusDephMarket.setSpringId("webSocketScheduleService");
+		jobRunTimepushEntrusDephMarket.setMethodName("pushEntrusDephMarket");
+		QuartzManager.addJob("jobRunTimepushEntrusDephMarket", jobRunTimepushEntrusDephMarket, QuartzJob.class, "0/6 * * * * ?");// 两秒
+	*/
+
+    ExEntrustService exEntrustService = (ExEntrustService) ContextUtil.getBean("exEntrustService");
+    long start1 = System.currentTimeMillis();
+    exEntrustService.tradeInit();
+    long end = System.currentTimeMillis();
+    System.out.println("初始化交易数据：");
+    System.out.println(end - start1);
+
+    //启动的时候要把这个设置成1，不然刚启动完之后，所有的数据都没了，必须下一单才会出来
+    CommonDao commonDao = (CommonDao) ContextUtil.getBean("commonDao");
+    List<ExCointoCoin> listExCointoCoin = commonDao.getExointocoinValid();
+    RedisTradeService redisTradeService = (RedisTradeService) ContextUtil
+        .getBean("redisTradeService");
+    for (ExCointoCoin exCointoCoin : listExCointoCoin) {
+      redisTradeService.save(TradeRedis
+          .getEntrustTimeFlag(exCointoCoin.getCoinCode(), exCointoCoin.getFixPriceCoinCode()), "1");
+    }
+  }
+
+}

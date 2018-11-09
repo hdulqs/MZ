@@ -1,0 +1,135 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicocoinaccountList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-08-17 18:26:08      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppIcoCoinAccount</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/coinAccount/appicocoinaccount/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					版本号<input type="text" name="version" value="{{formData.version}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					用户id<input type="text" name="customerId" value="{{formData.customerId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					可用总额<input type="text" name="hotMoney" value="{{formData.hotMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					冻结总额<input type="text" name="coldMoney" value="{{formData.coldMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					用户登录名<input type="text" name="userName" value="{{formData.userName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					虚拟账号（证件号+账户类型 0 线上注册用户 1线下注册用户）<input type="text" name="accountNum" value="{{formData.accountNum}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					虚拟币种（ BTC  LTC ...）<input type="text" name="currencyType" value="{{formData.currencyType}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					账户状态（0 不可用1可用）<input type="text" name="status" value="{{formData.status}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					公钥<input type="text" name="publicKey" value="{{formData.publicKey}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					公钥<input type="text" name="privateKey" value="{{formData.privateKey}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					已借金额<input type="text" name="lendMoney" value="{{formData.lendMoney}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					虚拟币种汉语名称（ 比特币 莱特币...）<input type="text" name="coinName" value="{{formData.coinName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					币种（CNY）<input type="text" name="coinCode" value="{{formData.coinCode}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					中国站标识默认中国站<input type="text" name="website" value="{{formData.website}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					psitioNaveragePrice<input type="text" name="psitioNaveragePrice" value="{{formData.psitioNaveragePrice}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					psitioProtectPrice<input type="text" name="psitioProtectPrice" value="{{formData.psitioProtectPrice}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					sumCost<input type="text" name="sumCost" value="{{formData.sumCost}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					trueName<input type="text" name="trueName" value="{{formData.trueName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					禁用<input type="text" name="disableMoney" value="{{formData.disableMoney}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

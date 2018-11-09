@@ -1,0 +1,92 @@
+	
+	 <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+         	<div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.name_like"  dataTableSerch >
+			        <label for="input_lname">产品名称</label>
+			      </div>
+			    </div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text"  ng-model="serchData.issueState_in" dataTableSerch>
+						<label for="input_city">产品状态</label>
+				   </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+					
+						<!-- 增加按钮 -->
+						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/add')" ng-click="fnAdd('product/exproduct/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>添加</a>
+						
+						<!-- 修改按钮 -->
+						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/modify')" ng-click="fnModify('product/exproduct/modify')"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>修改</a>
+					
+ 						<!-- 发布 产品  -->
+ 						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/publishProduct')"   ng-click="fnPublish()" > <i class="fa fa-sign-out " aria-hidden="true"></i>发布</a>
+ 						
+ 						<!-- 开启c2c -->
+ 						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/openc2c')"   ng-click="openc2c()" > <i class="fa fa-sign-out " aria-hidden="true"></i>开启C2C</a>
+ 						<!-- 关闭c2c -->
+ 						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/closec2c')"   ng-click="closec2c()" > <i class="fa fa-sign-out " aria-hidden="true"></i>关闭C2C</a>
+ 						
+ 						<!-- 开启交易 -->
+ 						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/openTransaction')"   ng-click="openTransaction()" > <i class="fa fa-sign-out " aria-hidden="true"></i>开启交易</a>
+ 						<!-- 关闭交易 -->
+ 						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/closeTransaction')"   ng-click="closeTransaction()" > <i class="fa fa-sign-out " aria-hidden="true"></i>关闭交易</a>
+ 						
+ 						<!-- <a class="btn pr-10 pl-10"  ng-click="fnOpen()" > <i class="fa fa-sign-out " aria-hidden="true"></i>开启</a> -->
+ 						
+ 						<!-- <a class="btn pr-10 pl-10"  ng-click="fnEnd()" > <i class="fa fa-sign-out " aria-hidden="true"></i>关闭</a> -->
+ 						 
+ 						<!-- 产品退市   -->
+<!--  						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/delistProduct')" ng-click="delistProduct()" ><i class="fa fa-trash-o " aria-hidden="true"></i> 退市</a>  
+ --> 						
+ 						<!-- 删除按钮 
+ 						<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/remove')"   ng-click="removeProduct()" > <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+ 						 --> 
+						<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+	
+
+	
+	<!-- 分公司管理 -->
+	<div >			
+			<div class="row">	
+		
+			<div class="col s12 "  >
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+				      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+	                  <th>币的名称</th>
+	                  <th>发行量(个)</th>
+	                  <th>发行单价(￥)</th> 
+	                  <th>产品状态</th> 
+	                  <th>代码 </th> 
+	                  <th>发行方名称</th>
+	                  <!-- <th>C2C交易</th> -->
+	                  <th>时间</th> 
+	                   <th>交易状态</th> 
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+	
+<div growl></div>
+
+

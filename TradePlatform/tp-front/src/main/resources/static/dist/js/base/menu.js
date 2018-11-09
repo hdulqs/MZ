@@ -1,0 +1,1 @@
+define(function(require,exports,module){var i=require("base");module.exports={loadstaticmenu:function(){$("#sidebar").find("li a").on("click",function(n){var a=$(this).attr("src");void 0!=a&&i.loadUrl(a)})}}});

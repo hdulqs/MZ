@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.account.fund.dao.AppAccountDao">
+	<update id="updateByVersion" parameterType="com.mz.account.fund.model.AppAccount"
+		flushCache="true">
+		update app_account
+		<set>
+			coldMoney= #{arg0},
+			hotMoney= #{arg1},
+			lendMoney= #{arg2},
+			version= #{arg3}
+		</set>
+		where customerId = #{arg4} and currencyType = #{arg5} and version= #{arg6}
+	</update>
+
+	<resultMap id="findPageBySqlMap" type="com.mz.account.fund.model.AppAccount">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="created" property="created" javaType="java.util.Date" />
+		<result column="modified" property="modified" javaType="java.util.Date" />
+		<result column="saasId" property="saasId" javaType="java.lang.String" />
+				
+		<result column="userName" property="userName" javaType="java.lang.String" />
+		<result column="trueName" property="trueName" javaType="java.lang.String" />
+		<result column="customerId" property="customerId" javaType="java.lang.Long" />
+		<result column="hotMoney" property="hotMoney" javaType="java.math.BigDecimal" />
+		<result column="coldMoney" property="coldMoney" javaType="java.math.BigDecimal" />
+		<result column="rewardMoney" property="rewardMoney" javaType="java.math.BigDecimal" />
+		<result column="hasRewardMoney" property="hasRewardMoney" javaType="java.math.BigDecimal" />
+		<result column="lendMoney" property="lendMoney" javaType="java.math.BigDecimal" />
+		<result column="currencyType" property="currencyType" javaType="java.lang.String" />
+		<result column="accountNum" property="accountNum" javaType="java.lang.String" />
+		
+		<association property="appPersonInfo"
+			javaType="com.mz.customer.person.model.AppPersonInfo">
+			<result column="created" property="created" javaType="java.util.Date" />
+			<result column="modified" property="modified" javaType="java.util.Date" />
+			<result column="saasId" property="saasId" javaType="java.lang.String" />
+			<result column="mobilePhone" property="mobilePhone" javaType="java.lang.String" />
+			<result column="mobilePhone" property="mobilePhone" javaType="java.lang.String" />
+			<result column="jkAgentName" property="jkAgentName" javaType="java.lang.String" />
+			<result column="jkAgentType" property="jkAgentType" javaType="java.lang.Integer" />
+			<result column="trueName" property="trueName" javaType="java.lang.String"/>
+			
+			<result column="jkAgentProvince" property="jkAgentProvince" javaType="java.lang.String"/>
+			<result column="jkAgentCity" property="jkAgentCity" javaType="java.lang.String"/>
+			<result column="jkAgentCounty" property="jkAgentCounty" javaType="java.lang.String"/>
+
+		</association>
+	</resultMap>
+
+
+	<!-- 通过sql分页查询 -->
+	<select id="findPageBySql" parameterType="java.util.Map"
+		resultMap="findPageBySqlMap">
+		SELECT
+		*
+		FROM
+		app_account AS aa
+		LEFT JOIN app_person_info AS ap ON
+		aa.customerId = ap.customerId
+		<where>
+			<if test="userName!=null and userName!='' ">
+				aa.userName like
+				#{userName,jdbcType=VARCHAR}
+			</if>
+			<if test="trueName!=null and trueName!='' ">
+				aa.trueName like
+				#{trueName,jdbcType=VARCHAR}
+			</if>
+			<if test="currencyType!=null and currencyType!='' ">
+				aa.currencyType = 
+				#{currencyType,jdbcType=VARCHAR}
+			</if>
+
+		</where>
+	</select>
+	
+	
+	<!-- 通过sql分页查询 -->
+	<select id="findAgentPageBySql" parameterType="java.util.Map" resultMap="findPageBySqlMap">
+		SELECT
+		*
+		FROM
+		app_account AS aa
+		LEFT JOIN app_person_info AS ap ON
+		aa.customerId = ap.customerId
+		<where>
+			<if test="mobilePhone!=null and mobilePhone!='' ">
+				ap.mobilePhone like
+				#{mobilePhone,jdbcType=VARCHAR}
+			</if>
+			<if test="trueName!=null and trueName!='' ">
+				ap.trueName like
+				#{trueName,jdbcType=VARCHAR}
+			</if>
+			<!-- 1,2,3是代理   0不是 -->
+			and ap.jkAgentType in (1,2,3)
+		</where>
+	</select>
+	
+	
+	<select id="findListAccount" parameterType="String" resultType="com.mz.account.fund.model.AppAccount">
+		SELECT * FROM app_account WHERE STATUS = 1
+		<if test="userName != null and userName !='' ">
+			AND userName=#{userName} 
+		</if>
+		<if test="website != null and website !='' ">
+			AND website=#{website}  
+		</if>
+	</select>
+	
+	<select id="findDigitalmoneyAccount" parameterType="String" resultType="com.mz.account.fund.model.AppAccount">
+		SELECT * FROM ex_digitalmoney_account WHERE status = 1  
+		<if test="userName !=null and userName !='' ">
+			AND userName=#{userName}  
+		</if>
+		<if test="website != null and website !='' ">
+			AND website=#{website}
+		</if>
+	</select>
+	
+	
+
+</mapper>

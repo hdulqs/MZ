@@ -1,0 +1,142 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ExsubscriptionplanList.html     -->
+ <!-- @author:      zenghao  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-21 15:48:50      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">认购计划列表详情</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/exchange/subscription/exsubscriptionplan/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					币种代码<input type="text" name="coinCode" value="{{formData.coinCode}}" readonly />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					币种名称<input type="text" name="coinName" value="{{formData.coinName}}" readonly />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购期数<input type="text" name="period" value="{{formData.period}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					开始认购时间<input type="text" name="startTime" value="{{formData.startTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					开放认购数量(个)<input type="text" name="openNumber" value="{{formData.openNumber}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					最低认购人民币(￥)<input type="text" name="minimumNumber" value="{{formData.minimumNumber}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					最高认购人民币(￥)<input type="text" name="maximumNumber" value="{{formData.maximumNumber}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购初始价(￥)<input type="text" name="initialPrice" value="{{formData.initialPrice}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购最高价(￥)<input type="text" name="highestPrice" value="{{formData.highestPrice}}" readonly />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					交易初始价(￥)<input type="text" name="startInitialPrice" value="{{formData.startInitialPrice}}" readonly />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					回购有效期(天)<input type="text" name="repurchasePeriod" value="{{formData.repurchasePeriod}}" readonly />
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					状态<input type="text" name="state" value="{{formData.state}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					回购手续费(%)<input type="text" name="repurchaseFee" value="{{formData.repurchaseFee}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					涨价基数(个)<input type="text" name="priceBase" value="{{formData.priceBase}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					涨幅(￥)<input type="text" name="rose" value="{{formData.rose}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购返佣比例一级(%)<input type="text" name="sratioOne" value="{{formData.sratioOne}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购返佣比例二级(%)<input type="text" name="sratioTwo" value="{{formData.sratioTwo}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					认购返佣比例三级(%)<input type="text" name="sratioTheree" value="{{formData.sratioTheree}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					已认购数量(个)<input type="text" name="purchaseNumber" value="{{formData.purchaseNumber}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					剩余可认购个数(个)<input type="text" name="surplusNumber" value="{{formData.surplusNumber}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					交易最高价(￥)<input type="text" name="transactionPrice" value="{{formData.transactionPrice}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

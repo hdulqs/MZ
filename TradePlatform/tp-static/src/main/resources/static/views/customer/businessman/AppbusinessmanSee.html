@@ -1,0 +1,69 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppbusinessmanList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-12-06 18:43:30      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看交易商户</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/businessman/appbusinessman/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					userId<input type="text" name="userId" value="{{formData.userId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					真实姓名<input type="text" name="trueName" value="{{formData.trueName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					type<input type="text" name="type" value="{{formData.type}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					feeType<input type="text" name="feeType" value="{{formData.feeType}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					fee<input type="text" name="fee" value="{{formData.fee}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					papersType<input type="text" name="papersType" value="{{formData.papersType}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					nationality<input type="text" name="nationality" value="{{formData.nationality}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					changeCoin<input type="text" name="changeCoin" value="{{formData.changeCoin}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

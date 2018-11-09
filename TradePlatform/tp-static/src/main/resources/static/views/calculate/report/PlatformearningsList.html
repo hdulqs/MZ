@@ -1,0 +1,87 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+			     <div class="col m3 s12">
+			      <div class="input-field">
+			        <input id="fristData"   class="pikaday" type="text" readonly dataTableSerch> <label for="input_text">开始时间-起</label>
+			      </div>
+			    </div>
+			 	<div class="col m3 s12">
+					<div class="input-field">
+						<input id="endTime" class="pikaday" type="text" readonly  dataTableSerch> <label for="input_text">结束时间-止</label>
+				   </div>
+			    </div> 
+			    
+			    <div class="col m3 s12 hide">
+					<div class="input-field">
+				      	<select id="customerType" class="select2"  data-allow-clear="true"    data-placeholder="用户类型" >
+						<option value="">不限</option>
+						  <option value="1">甲</option>
+						  <option value="2">乙</option>
+						  <option value="3">丙</option>
+						</select>
+			   		</div>
+			     </div>
+			    
+			      </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+        <input class="btn pr-10 pl-10" style="background-color:gray;"  type = "button" ng-click="querySpecific()" value="查询"></input>
+				<!-- 刷新按钮 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+
+    <!-- /Handle -->
+
+
+<!-- 分公司管理 -->
+	<div  >
+			<div class="row">	
+			<div class="col s12 "  >
+				<table  >
+					<tr>
+					    <td >充值成功总金额</td>
+					    <td >充值手续费</td>
+					    <td >提现成功总金额</td>
+					    <td >提现手续费</td>
+					    <!-- <td >买成交总金额</td>
+					    <td >卖成交总金额</td> -->
+					    <td >交易手续费</td>
+				  <!--  <td >累计杠杆金额</td>
+					    <td >累计杠杆收费</td>  -->
+					  </tr>
+					  <tr>
+					  	<td>{{totalAccountForReport.postTotalMoney | number:2}}</td>
+					  	<td>{{totalAccountForReport.postFee | number:2}}</td>
+					  	<td>{{totalAccountForReport.getTotalMoney | number:2}}</td>
+					  	<td>{{totalAccountForReport.getFee | number:2}}</td>
+					  	<!-- <td>{{totalAccountForReport.buySumMoney | number:2}}</td>
+					  	<td>{{totalAccountForReport.sellSumMoney | number:2}}</td> -->
+					  	<td>{{totalAccountForReport.orderSumFee | number:2}}</td>
+					  	<!-- <td>{{totalAccountForReport.leverageMoney}}</td>
+					  	<td>{{totalAccountForReport.leverageFee}}</td>  -->
+					  </tr>
+					  
+					  <tr>
+					    <td >充值未完成总金额</td>
+					    <td >可用资金总额</td>
+					    <td >冻结资金总额</td>
+					    <td >用户总资产</td>
+					  </tr>
+					  <tr>
+					  	<td>{{totalAccountForReport.rechargeDoingTotalMoney | number:2}}</td>
+					  	<td>{{totalAccountForReport.availableTotalMoney | number:2}}</td>
+					  	<td>{{totalAccountForReport.frozenTotalMoney | number:2}}</td>
+					  	<td>{{totalAccountForReport.userTotalMoney | number:2}}</td>
+					  </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+

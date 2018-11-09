@@ -1,0 +1,39 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicoprojectshareList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-26 20:15:55      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppIcoProjectShare</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/project/appicoprojectshare/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					website<input type="text" name="website" value="{{formData.website}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					projectId<input type="text" name="projectId" value="{{formData.projectId}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					customerId<input type="text" name="customerId" value="{{formData.customerId}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

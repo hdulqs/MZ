@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.customer.trade.dao.AppCommendTradeDao">
+
+
+
+
+
+     <select id="findOne" resultType="java.math.BigDecimal">
+		select IFNULL(sum(rewardmoney),0) rewardmoney from app_commend_trade where custromerid=#{arg0} and hierarchy=1   and  fixPriceCoinCode=#{arg1}
+
+	</select>
+	
+	
+	   <select id="findTwo" resultType="java.math.BigDecimal">
+		select IFNULL(sum(rewardmoney),0) rewardmoney from app_commend_trade where custromerid=#{arg0} and hierarchy=2 and  fixPriceCoinCode=#{arg1}
+
+	</select>
+	
+	
+	   <select id="findThree" resultType="java.math.BigDecimal">
+		select IFNULL(sum(rewardmoney),0) rewardmoney from app_commend_trade where custromerid=#{arg0} and hierarchy=3  and  fixPriceCoinCode=#{arg1}
+
+	</select>
+	
+	   <select id="findLater" resultType="java.math.BigDecimal">
+		select IFNULL(sum(rewardmoney),0) rewardmoney from app_commend_trade where custromerid=#{arg0} and hierarchy not in(1,2,3) and  fixPriceCoinCode=#{arg1}
+
+	</select>
+	
+	
+	 <select id="selectCommendTrade" resultType="com.mz.customer.trade.model.AppCommendTrade">
+		select fixPriceCoinCode,coinCode, sum(rewardmoney) rewardmoney from app_commend_trade where  custromerName=#{custromerName} GROUP BY fixPriceCoinCode
+
+	</select>
+
+	<select id="findByUids" parameterType="java.util.List" resultType="com.mz.customer.trade.model.AppCommendTrade">
+		select * from app_commend_trade where custromerId in
+		<foreach collection="list" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</select>
+
+	<select id="findByUsername" parameterType="java.lang.String" resultType="com.mz.customer.trade.model.AppCommendTrade">
+		SELECT
+			*, (
+				changeMoney + userMoney
+			) AS feemoney
+		FROM
+			app_commend_trade
+		WHERE
+			custromerName = #{username}
+	</select>
+	
+	<!-- 用户平台返佣统计(新增) -->
+	<select id="findList" parameterType="java.util.List" resultType="com.mz.customer.trade.model.AppCommendTrade">
+		
+        
+        SELECT custromerId,custromerName,ordertNum,created,modified,saasId,fixPriceType,fixPriceCoinCode,pid,feeamout,basemoney,SUM(rewardmoney) AS rewardmoney,sid,deliveryName,deliveryId,hierarchy,modified,transactionTime,coinCode,changeMoney,ratetype,userMoney,personType,currentMoney 
+        FROM app_commend_trade WHERE custromerId = (SELECT custromerId FROM app_commend_trade WHERE id = #{id}) and coinCode = (SELECT coinCode FROM app_commend_trade WHERE id = #{id}) GROUP BY custromerName
+	</select>
+	
+</mapper>

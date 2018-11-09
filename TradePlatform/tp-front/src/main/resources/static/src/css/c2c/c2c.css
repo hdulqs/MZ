@@ -1,0 +1,20 @@
+.c2cleft{
+	width:17%;
+	float:left;
+}
+.c2cleft li{
+	height:65px;
+	line-height:65px;
+	color:#000;
+	font-size:20px;
+	display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+}
+.c2cleft li.active{
+	background:#cacaca;
+}
+.c2cright{
+	background:#fff;
+	width:83%;
+}

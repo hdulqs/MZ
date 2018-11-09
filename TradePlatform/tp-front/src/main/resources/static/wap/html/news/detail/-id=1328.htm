@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="description" content="国内唯一，全球领先的可编程智能合约项目，是智能合约系统与数字货币的完美结合。" />
+    <meta name="keywords" content="智能坊（DACRS）" />
+    <link rel="stylesheet" href="../../../style/css/mobile/css/css.css"  />
+    <script  type="text/javascript" src="../../../style/js/jquery/1.9.1.min.js"  ></script>
+    <script type="text/javascript" src="../../../style/js/mobile/js/zepto.js" ></script>
+    <script src="../../../style/js/mobile/js/public.js" ></script>
+    <script src="../../../style/js/index.js" ></script>
+    <title>
+        智能坊（DACRS）项目官方首页-互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee" />
+  
+</head>
+<body>
+<div class="Wf-div1" style="border-bottom: none;">
+	<a onclick="history.back(-1)">返回</a>
+</div>
+<p class="bull_dels">
+    【智能币】智能币Dacrs-d 1.1.2.7RC 版本更新内容公告</p>
+<p class="bull_dels_time">
+            2017-01-16     </p>
+<div class="bull_content">
+    <strong>智能币官方及负责人保证信息披露的内容真实、准确、完整、没有虚假记载、误导性陈述或重大遗漏。</strong>
+<p>
+	更新日期：2017-01-11
+</p>
+<strong><span style="font-size:16px;">dacrs-d更新版本至1.1.2.7RC</span></strong><br />
+1. 修改燃料费率不能上升的bug<br />
+2. 修复在linux下 MINIUPNPC_VERSION，MINIUPNPC_API_VERSION版本号没定义<br />
+3. 修复lvm.c中step计算bug<br />
+4. 增加注册lua脚本时的语法检查功能<br />
+5. 修改CVmlua::syntaxcheck错误输出<br />
+6. 修改在某一高度后，采用时间戳取代高度，对合约账户进行加减操作<br />
+7. 在CRegisterAppTx::ExecuteTx添加lua脚本语法检查功能<br />
+8. 修改DoxyFile配置信息<br />
+9. 燃料费率调整浮点运算改为整数运算<br />
+10. AutoMergeFreezeToFree函数中添加脚本注册高度与块高度比较，以兼容以前版本<br />
+11. 在高度nBlockRemainCoinDayHeight后，用新计算剩余币龄方法算<br />
+12. 考虑负数情况，加一个accert，修复 合约支持往为发生过交易的账号转币，同步遗漏的代码<br />
+13. 叉链校验合法性时，只校验chainwork值大于当前高度的区块所在的链，不对所有的区块做合法性校验<br />
+14. 更新liblua53库，以前修改了lua源代码中step计算<br />
+15. 修改 叉链合法性校验，只校验chainwork值大于当前高度的区块所在的链<br />
+16. 修改估算合约交易资源的接口.1、不用加载本地文件 2、交易小费需要放到足够大<br />
+17. 修改估算合约交易资源的接口：将估算输入小费用最大值<br />
+18. 修改AutoMergeFreezeToFree函数调用，fix luaD_call崩溃bug<br />
+19. 添加gettransaction rpc接口，GetTxAddressDetail，修改CTransaction::GetValue函数 <br />
+<br />
+<strong><span style="font-size:16px;">DacrsUI更新版本至v1.0.3.3RC</span></strong><br />
+1. 用新的升级方式进行升级<br />
+2. 去掉了之前的验证方法encrypt.ini<br />
+3. 客户端添加了getassets，getappinfo，gettotalassets，dispersebalance，notionalpoolingbalance的RPC命令<br />
+4. Block chain链接去掉index
+<p style="text-align:right;">
+	智能币官方<br />
+2017年1月16日
+</p></div>
+<div style="clear: both;"></div>
+</body>
+<script>
+  $(function(){
+         $(".bullet_p .bull_click").click(function() {
+           $(this).addClass('actives').siblings().removeClass('actives');
+            var index =   $(".bullet_p .bull_click").index(this);
+            $("#box_bull > ul").eq(index).show().siblings().hide();
+        });
+  })
+</script>
+</html>

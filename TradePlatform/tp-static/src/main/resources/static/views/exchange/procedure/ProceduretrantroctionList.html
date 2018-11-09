@@ -1,0 +1,58 @@
+	
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           	<div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.userName_like"  dataTableSerch >
+			        <label for="input_lname">用户名</label>
+			      </div>
+			    </div>
+			  
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text"  ng-model="serchData.currencyType_like" dataTableSerch>
+						<label for="input_city">币种</label>
+				   </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+				<!-- 刷新按钮 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->			
+
+	<div >
+			<div class="row">	
+		
+			<div class="col s12 "  >
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+				      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+	                  <th>充值订单号</th>
+	                  <th>用户名</th>
+	                  <th>充值金额</th> 
+	                  <th>实收手续费</th>  
+	                  <th>币的类型</th>
+	                  <th>操作类型</th>
+	                  <th>时间</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+	
+
+
+

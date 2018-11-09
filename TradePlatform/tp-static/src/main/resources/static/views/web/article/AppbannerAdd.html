@@ -1,0 +1,117 @@
+   
+   <form ng-submit="processForm()">
+   <!-- card 卡片   row ：行  col： 列-->
+   
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>添加banner</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content">
+     
+     
+  <div class="row no-margin-top">
+    
+
+       <div class="row">
+          <div class="col s3 ">
+            <div class="input-field">
+             <input type="text" id="title"  ng-model="formData.name"  required  />
+             <label for="title">banner名称</label>
+            </div>
+          </div>
+        </div>
+
+       <div class="row">
+          <div class="col s4">
+            <div class="input-field">
+              
+				<hry-uploadtwo path="bannerImage" delbtn="false" uploadbtn="true"></hry-uploadtwo>
+            </div>
+          </div>
+         </div>
+         
+           <div class="row ">
+             <div class="col s12 m6 l3">
+             <div class="input-field">
+                <input type="text" id="remark2" ng-model="formData.remark2"   />
+               <label for="remark2">url</label>
+            </div>
+          </div>
+        </div>
+         
+         <div class="row ">
+             <div class="col s12 m6 l3">
+             <div class="input-field">
+                <input type="number" id="sort" ng-model="formData.sort"   />
+               <label for="sort">排序值</label>
+            </div>
+          </div>
+        </div>
+        
+       <div class="row ">
+          <div class="col s12 l6">
+              <label >banner类型</label>
+              <input name="remark1" type="radio" id="remark1-1" value="0"  ng-model="formData.remark1" ng-checked="true"/>
+              <label for="remark1-1">中文banner</label>
+              <input name="remark1" type="radio" id="remark1-2" value="1" ng-model="formData.remark1"   />
+              <label for="remark1-2">英文banner</label>
+              <input name="remark1" type="radio" id="remark1-3" value="2" ng-model="formData.remark1"   />
+              <label for="remark1-3">泰文banner</label>
+          </div>
+           </div>
+           
+           
+           <div class="row ">
+          <div class="col s12 l6">
+              <label >应用类型</label>
+              <input name="appType1" type="radio" id="appType1-1" value="0"  ng-model="formData.applicationType" ng-checked="true"/>
+              <label for="appType1-1">电脑版</label>
+              <input name="appType2" type="radio" id="appType1-2" value="1" ng-model="formData.applicationType"   />
+              <label for="appType1-2">手机版</label>
+          </div>
+           </div>
+      
+      <div class="row ">
+          <div class="col s12 l6">
+              <label >是否显示</label>
+              <input name="radios1" type="radio" id="radios1-1" value="1"  ng-model="formData.isShow" ng-checked="true"/>
+              <label for="radios1-1">是</label>
+              <input name="radios1" type="radio" id="radios1-2" value="0" ng-model="formData.isShow"   />
+              <label for="radios1-2">否</label>
+          </div>
+           </div>
+
+       
+        
+
+        
+       </div>
+      
+       <!--/内容-->
+    </div>
+    
+   
+   
+ 
+  
+      
+       <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+        <p class="center">
+       
+       <button type="submit"  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存</button>
+      
+      <button  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">重置</button>
+       </p>
+      
+      
+      </div>
+  
+   <!--/文章扩展信息-->
+   </form>

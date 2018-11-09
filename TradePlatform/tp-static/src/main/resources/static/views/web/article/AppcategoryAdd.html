@@ -1,0 +1,38 @@
+    <!-- With Search -->
+    <div class="card-panel">
+      <h4>添加文章类别</h4>
+      <div class="row">
+      	<div class="col s1 "></div>
+		<div class="col s3 ">
+			<form ng-submit="processForm()">
+			
+                    <div class="input-field"> 
+				   	   <hry-select  url="{{HRY.host}}{{HRY.modules.web}}article/appcategory/selectlist?website={{website}}"  placeholder="选择父类" name="name" value="id" selectId="preateId" ></hry-select>
+				    </div>
+                    <div class="input-field"> 
+				       <input type="text" name="name" ng-model="formData.name"  required  />
+				       <label for="input_text">类别名称</label>
+				    </div>
+				    
+				    <div class="input-field"> 
+				       <input type="text" name="seoFication" ng-model="formData.seoFication"   />
+				       <label for="input_text">seo标识</label>
+				    </div>
+				     <div class="input-field"> 
+				       <input type="number" name="remark" ng-model="formData.sort"   />
+				       <label for="input_text">排序</label>
+				    </div>
+				     <div class="input-field"> 
+				       <input type="text" name="describes" ng-model="formData.describes"   />
+				       <label for="input_text">描述</label>
+				    </div>
+				    
+					<input type="hidden" name="appResourceSet" id="appResourceSet"  />
+					<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+			</form>
+			
+		</div>
+		
+      </div>
+    </div>
+   

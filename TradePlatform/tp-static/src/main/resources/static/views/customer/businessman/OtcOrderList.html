@@ -1,0 +1,331 @@
+
+<!-- @author:      zongwei  -->
+<!-- @version:     V1.0             -->
+<!-- @Date:        20180526     -->
+<style type="text/css">
+    .privilege .tb-list2 {
+        font-size:14px;
+    }
+    .privilege .tb-list2 b {
+        color:#f00;
+    }
+    .privilege .tb-list2 th {
+        border:1px solid #f3da91;
+        background-color:#fffbef;
+        text-align:right; height:28px;
+        line-height:28px;
+        padding-right:15px;
+    }
+    .privilege .tb-list2 td {
+        border:1px solid #f3da91;
+        background-color:#fff;
+        text-align:left;
+        height:28px;
+        line-height:28px;
+        padding-left:15px;
+    }
+    .privilege .tb-list2 tr {
+        height:40px;
+    }
+    .privilege .do a {
+        width:140px;
+    }
+    .privilege .do a h4 {
+        width:125px;
+    }
+    a.alibtn_orange35 {
+        background-color: #de211d;
+        border-color: #de211d;
+        padding: 0px 12px;
+        height:35px;
+        border-radius: 3px;
+        transition: all .2s linear;
+        font-size: 16px;
+        color: #fff;
+    }
+    ul.uploadList{
+        overflow: hidden;
+        list-style: none;
+        width: 100%;
+    }
+    ul.uploadList li{
+        float: left;
+        padding: 0; /* 将默认的内边距去掉 */
+        margin-right: 10px; /* 将默认的外边距去掉 */
+        position: relative;
+    }
+    .uploadList li input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    ul.uploadList li img{
+        display: block;
+        float: left;
+        width: 160px;
+        height: 160px;
+    }
+</style>
+<div class="page-title">
+    <div class="row">
+        <div class="col s12 m6 l7">
+            <h4>
+                <i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">交易订单管理</span>
+            </h4>
+        </div>
+        <div class="col s12 m6 l5 right-align pr-30">
+            <div class="row">
+                <!--刷新按钮 -->
+                <a class="btn" ng-click="fnList()">刷新</a>
+                <!-- 导出按钮 -->
+                <a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-title pt-0 pb-3 ">
+    <div class="row">
+        <div class="col s12 m9 l7">
+            <div class="row">
+                <div class="col m3 s12" style="width:15%;">
+                    <div class="input-field" >
+                        <input type="text" id="coinCode" ng-model="serchData.coinCode_like" dataTableSerch> <label
+                            for="userName">交易币种</label>
+                    </div>
+                </div>
+                <div class="col m3 s12 " style="width:15%;" >
+                    <div class="input-field">
+                        <input type="text" id="transactionNum" ng-model="serchData.transactionNum_like" dataTableSerch> <label
+                            for="userName">订单号</label>
+                    </div>
+                </div>
+                <div class="col s4" style="width:15%;">
+                    <div class="input-field">
+                        <input class="pikaday" type="text" readonly ng-model="serchData.created_GT" dataTableSerch> <label for="input_text">开始时间-起</label>
+                    </div>
+                </div>
+                <div class="col s4" style="width:15%;">
+                    <div class="input-field">
+                        <input class="pikaday" type="text" readonly ng-model="serchData.created_LT" dataTableSerch> <label for="input_text">结束时间-止</label>
+                    </div>
+                </div>
+                <div class="col m3 s12" style="width:15%;">
+                    <div class="input-field">
+                        <select class="select2" data-placeholder="状态" data-allow-clear="true" id="status_EQ"
+                                name="status_EQ" dataTableSerch>
+                            <option value="">
+                                全部
+                            </option>
+                            <option value="1">
+                                未付款
+                            </option>
+                            <option value="2">
+                                已付款
+                            </option>
+                            <option value="3">
+                                已取消
+                            </option>
+                            <option value="4">
+                                已完成
+                            </option>
+                            <option value="5">
+                                已关闭
+                            </option>
+                            <option value="6">
+                                申诉中
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div>
+    <div class="row">
+        <div class="col s12 ">
+            <table id="dataTable" class="display table table-bordered table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkboxAll"/><label for="checkboxAll"></label></th>
+                    <th>交易订单号</th>
+                    <th>创建时间</th>
+                    <th>交易种类</th>
+                    <th>单价</th>
+                    <th>数量(个)</th>
+                    <th>金额</th>
+                    <th>手续费</th>
+                    <th>付款时间</th>
+                    <th>成交时间</th>
+                    <th>买方</th>
+                    <th>卖方</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="hide" id="OtcPayInfor">
+<!-- 头部 -->
+<div class="mtitle">
+    <h3>付款信息</h3>
+</div>
+<div class="main-bd" style="padding:10px 20px; border:none;">
+    <div class="mention">
+        <div class="privilege">
+            <table width="100%" class="tb-list2">
+                <tbody>
+                <tr>
+                    <th scope="row">交易方账号</th>
+                    <td>{{formData.userinfo.username}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">姓名</th>
+                    <td>{{formData.userinfo.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">手机号</th>
+                    <td>{{formData.userinfo.phone}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">银行开户名</th>
+                    <td><b>{{formData.Bankinfo.cardName}}</b></td>
+                </tr>
+                <tr>
+                    <th scope="row">银行名称</th>
+                    <td><b>{{formData.Bankinfo.cardBank}}</b></td>
+                </tr>
+                <tr>
+                    <th scope="row">银行账号</th>
+                    <td><b>{{formData.Bankinfo.cardNumber}}</b></td>
+                </tr>
+                <tr>
+                    <th scope="row">支付宝账号</th>
+                    <td>
+                        <b>{{formData.Bankinfo.alipay}}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">微信账号</th>
+                    <td>
+                        <b>{{formData.Bankinfo.weChat}}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">付款金额</th>
+                    <td><b>{{formData.orderinfo.transactionMoney}}</b></td>
+                </tr>
+                <tr>
+                    <th scope="row">付款备注</th>
+                    <td><b>{{formData.orderinfo.randomNum}}</b></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="margint20"></div>
+    <div ng-if="formData.orderinfo.paymentTime!='' && formData.orderinfo.paymentTime!=null">
+    <div class="margint20"><label>付款方式：</label>
+        <span ng-if="formData.orderinfo.paymentType == 'Alipay'">支付宝</span>
+        <span ng-if="formData.orderinfo.paymentType == 'WeChat'">微信</span>
+        <span ng-if="formData.orderinfo.paymentType == 'Bank'">银行转账</span>
+   </div>
+    <div class="margint16" style="width: 100%;height: auto;">
+        <label>付款凭证：</label>
+        <ul class="uploadList">
+            <li ng-if="formData.orderinfo.img1!='' && formData.orderinfo.img1!=null">
+                <a href="{{formData.orderinfo.img1}}" target="_blank">
+                <img src="{{formData.orderinfo.img1}}"/>
+                </a>
+            </li>
+            <li ng-if="formData.orderinfo.img2!='' && formData.orderinfo.img2!=null">
+                <a href="{{formData.orderinfo.img2}}" target="_blank">
+                <img src="{{formData.orderinfo.img2}}"/>
+                </a>
+            </li>
+            <li ng-if="formData.orderinfo.img3!='' && formData.orderinfo.img3!=null">
+                <a href="{{formData.orderinfo.img3}}" target="_blank">
+                <img src="{{formData.orderinfo.img3}}"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div><label>付款时间：</label><span>{{formData.orderinfo.paymentTime}}</span></div>
+    </div>
+    <hr/>
+</div>
+<!--页面中部内容结束-->
+</div>
+<!--申诉处理-->
+<div class="hide" id="applyArbitrationinfo">
+    <!-- 头部 -->
+    <div class="mtitle">
+        <h3>付款信息</h3>
+    </div>
+<div class="main-bd" style="padding:10px 20px; border:none;">
+    <div class="margint20"></div>
+    <div style="display: none">
+        <input  id="otctransactionorderid"  name="transactionorderid" value="{{applyArbitrationData.orderinfo.id}}" >
+    </div>
+    <div class="margint20 remark">
+        <span>申请方账号：{{applyArbitrationData.Appealuser.username}}</span>
+    </div>
+    <div class="margint20 remark">
+        <span>姓名：{{applyArbitrationData.Appealuser.surname}}{{applyArbitrationData.Appealuser.truename}}</span>
+    </div>
+    <div class="margint20 remark">
+        <span>买方：{{applyArbitrationData.buyuser.username}}</span>
+    </div>
+    <div class="margint20 remark">
+        <span>卖方：{{applyArbitrationData.selluser.username}}</span>
+    </div>
+    <div class="margint20 remark">
+        <span>申诉原因：</span>
+        <textarea name="appealReason" readonly placeholder="请填写申诉原因~">{{applyArbitrationData.orderinfo.appealReason}}</textarea>
+    </div>
+    <div class="margint16" style="width: 100%;height: auto;">
+        <label>申诉凭证：</label>
+        <ul class="uploadList">
+            <li ng-if="applyArbitrationData.orderinfo.img4!='' && applyArbitrationData.orderinfo.img4!=null">
+                <a href="{{applyArbitrationData.orderinfo.img4}}" target="_blank">
+                <img src="{{applyArbitrationData.orderinfo.img4}}"/>
+                </a>
+            </li>
+            <li ng-if="applyArbitrationData.orderinfo.img5!='' && applyArbitrationData.orderinfo.img5!=null">
+                <a href="{{applyArbitrationData.orderinfo.img5}}" target="_blank">
+                <img src="{{applyArbitrationData.orderinfo.img5}}"/>
+                </a>
+            </li>
+            <li ng-if="applyArbitrationData.orderinfo.img6!='' && applyArbitrationData.orderinfo.img6!=null">
+                <a href="{{applyArbitrationData.orderinfo.img6}}" target="_blank">
+                <img src="{{applyArbitrationData.orderinfo.img6}}"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="applyArbitrationinfobt" class="center" style="width: 100%">
+        <button ng-click="close_otc()" class="margint30 btn btn-primary btn-confirm">关闭订单</button>
+        <button ng-click="finish_otc()"  style="margin-left: 20px" class="margint30 btn btn-primary btn-otccancel">交易完成</button>
+        <button ng-click="refuse_otc()"  style="margin-left: 20px" class="margint30 btn btn-primary btn-otccancel">驳回申诉</button>
+    </div>
+    <div id="applyArbitrationHandle" class="center" style="width: 100%">
+         <SPAN>处理结果：{{applyArbitrationData.orderinfo.appealHandle}}</SPAN>
+     <div/>
+</div>
+</div>
+

@@ -1,0 +1,69 @@
+
+.verifyLayout,.verifyLayout1,.verifyLayout2{
+	 display:none;
+	 position:relative;
+}
+.dialog-close{
+	position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    cursor:pointer;
+}
+.verifyLayout .main,.verifyLayout1 .main,.verifyLayout2 .main {
+    width: 518px;
+    padding: 65px 30px 40px;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 55%;
+    text-align: center;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin-top: -41px;
+    z-index:999;
+}
+.verifyLayout .dialog_bg,.verifyLayout1 .dialog_bg,.verifyLayout2 .dialog_bg{
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #000;
+    left: 0;
+    top: 0;
+    z-index: 55;
+    opacity: 0.8;
+	
+}
+.verifyLayout .main .icon-logo {
+    margin-bottom: 24px;
+    height: 40px;
+}
+.verify{width:330px; margin:0 auto;text-align:center;}
+.verify-title{font-size:16px;color:#ff4646;margin-bottom:30px;position:relative;}
+.verify-title:after{display:inline-block;content:" ";width:100%;height:1px;background:#f1f1f1;position:absolute;left:0;top:50%;}
+.verify-title span{padding:0 30px;background:#fff;position:relative;z-index:99;}
+.verify .Validform_checktip{height:20px;line-height:20px;}
+.verify .ipt{
+	width:308px;
+	height:38px;
+	line-height:38px;
+	padding:0 10px;
+	border:1px solid #d4d4d4;
+	margin-bottom:0;
+	}
+.verify .ipt[readonly]{background:#f3f3f3;color:#999;}
+.verify .label{font-size:12px;color:#666;line-height:1.8;}
+.verify .btns{margin-bottom:14px;width:100%;}
+.verify .btn{padding:0 12px;height:38px;line-height:38px;vertical-align:middle;}
+.verify .btns .btn{border-radius:0;padding:0 10px;width:auto;box-sizing:border-box;height:40px;line-height:40px;text-align:center;margin-left:-1px;vertical-align:middle;}
+.verify .btn.btn-grey{background:#f5f5f5;width:auto;padding:0 10px;}
+.verify .btn.btn-red{background:#ff4646;width:auto;padding:0 10px;color: #fff}
+.verify .btn.btn-grey.btn-disabled{border-color:#d4d4d4!important;background:#f5f5f5!important;color:#333;}
+.verify .btns .btn.cur{background:#1392dd;color:#fff;}

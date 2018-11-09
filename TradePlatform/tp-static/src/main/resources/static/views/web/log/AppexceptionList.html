@@ -1,0 +1,68 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+			<form id="seeForm" ng-submit="seeProcessForm()">
+				<div class="row">
+					<div class="col m3 s12">
+						<div class="input-field">
+							<input id="input_fname" type="text"  ng-model="serchData.Q_name_like_String"  dataTableSerch>
+							<label for="input_fname">异常名称</label>
+						</div>
+					</div>
+					<div class="col m3 s12">
+						<div class="input-field">
+							<input id="input_lname" type="text"  ng-model="serchData.Q_requestaddress_like_String"  dataTableSerch>
+							<label for="input_lname">url</label>
+						</div>
+					</div>
+				</div>
+			</form>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+
+			<!--<a class="btn" ng-if="requiresPermissions('true')" ng-click="fnAdd('user/appuser/add')">添加</a>
+				查看按钮
+				<a class="btn" ng-if="requiresPermissions('true')" ng-click="fnSee('user/appuser/see')" >查看</a>
+				修改按钮
+				<a class="btn" ng-if="requiresPermissions('true')" ng-click="fnModify('user/appuser/modify')" >修改</a>
+				删除按钮
+				<a class="btn" ng-if="requiresPermissions('true')" ng-click="fnRemove('user/appuser/remove')" >删除</a> -->
+			<!-- 刷新按钮 -->
+			<a class="btn" ng-click="fnList()" >刷新</a>
+		</div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+
+
+
+<!-- 部门人员 -->
+	<div class="" >
+
+		<div class="row">	
+		<div class="col s12 "  >
+			<table id="dataTable" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+				      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+		              <th>异常名称</th>
+		              <th>异常类型</th>
+		              <th>请求ip地址</th>
+		              <th>请求url地址</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+			</table>
+		
+			</div>
+		</div>
+		
+	</div>
+<!-- /部门人员  --> 
+
+
+

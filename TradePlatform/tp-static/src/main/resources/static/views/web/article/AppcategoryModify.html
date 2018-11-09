@@ -1,0 +1,26 @@
+    <!-- With Search -->
+    <div class="card-panel">
+      <h4>修改类别信息</h4>
+      <div class="row">
+      	<div class="col s1 "></div>
+		<div class="col s3 ">
+		    <form ng-submit="processForm()">
+                     <div class="input-field"> 
+				     类别名称  <input type="text" name="name" value="{{model.name}}" ng-model="formData.name"  required  />
+				    </div>
+				    
+				     <div class="input-field"> 
+				      seo标识 <input type="text" name="seoFication" value="{{model.seoFication}}" ng-model="formData.seoFication"   />
+				    </div>
+				     <div class="input-field"> 
+				      排序 <input type="text" name="remark" value="{{model.sort}}"  ng-model="formData.sort"   />
+				    </div>
+				     <div class="input-field"> 
+				      描述 <input type="text" name="describes" value="{{model.describes}}" ng-model="formData.describes"   />
+				    </div>
+				    
+					<input type="hidden" name="appResourceSet" id="appResourceSet"  />
+					<button class="btn" type="submit" id="addAppRolesSubmit" >保存</button>
+			</form>
+			
+		</div>

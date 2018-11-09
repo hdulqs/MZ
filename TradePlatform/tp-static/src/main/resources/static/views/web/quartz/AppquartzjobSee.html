@@ -1,0 +1,57 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppquartzjobList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-10 20:31:53      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppQuartzJob</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/web/quartz/appquartzjob/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					定时器名称<input type="text" name="name" value="{{formData.name}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					类名<input type="text" name="beanClass" value="{{formData.beanClass}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					方法名<input type="text" name="methodName" value="{{formData.methodName}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					定时时间<input type="text" name="quarzTime" value="{{formData.quarzTime}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					备注<input type="text" name="remark" value="{{formData.remark}}" readonly />
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					是否启动<input type="text" name="start" value="{{formData.start}}" readonly />
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<menu key="duanxinfasongjilu" name="短信发送记录"  url="/send/appsmssend/list/anon" shiroUrl="/send/appsmssend/list/anon" isOpen="0" isOutLink="0" orderNo="" />
+	<menu key="juherizi" name="聚合日志"  url="/send/appjuhesend/list/anon" shiroUrl="/send/appjuhesend/list/anon" isOpen="0" isOutLink="0" orderNo="" />
+</root>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.shiro.dao.AppResourceDao"   >
+
+	<resultMap id="BaseResultMap" type="com.mz.oauth.user.model.AppResource">
+		<id column="id" property="id" javaType="java.lang.Long"></id>
+		<result column="created" property="created" javaType="java.util.Date" />
+		<result column="modified" property="modified" javaType="java.util.Date" />
+		<result column="saasId" property="saasId" javaType="java.lang.String" />
+		<result column="userId" property="userId" javaType="java.lang.Long" />
+	</resultMap>
+	
+	<select id="findByAppRole" resultMap="BaseResultMap" >
+		select * from app_resource left JOIN app_role_resource 
+		on app_resource.id = app_role_resource.resourceId
+		where 
+		app_role_resource.roleId  = #{arg0}
+		and
+		app_role_resource.saasId = #{arg1}
+	</select>
+	
+
+
+
+</mapper>

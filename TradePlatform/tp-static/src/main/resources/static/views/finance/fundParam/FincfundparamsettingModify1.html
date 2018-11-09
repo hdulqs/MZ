@@ -1,0 +1,202 @@
+
+ <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/hry.css" />
+
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">新增资金方案</span>
+		 </h4>
+		 <hr>		 
+		 <form ng-submit="modify()"> 
+		  <div class="row">		  		 
+		   		<div class="col s12">
+		   		<input type="hidden" name="configid"  ng-model="formData.paramsettingId"/>
+		   			<div class="input-field">
+						*方案名称<input id="paramsettingName"  type="text" ng-model="formData.paramsettingName" >
+				    </div>
+		   			<div class="input-field">
+						*方案KEY<input  id="paramsettingKey" type="text" ng-model="formData.paramsettingKey" >
+				    </div>
+					<div class="input-field">
+						*方案适用说明<textarea id="paramsettingRemark" class="materialize-textarea" ng-model="formData.paramsettingRemark" ></textarea>
+					</div>
+				    <div class="row">
+				         <div class="col s9">
+			   			 	<label for="repaymentMethod">*还款方式</label>
+				   			<hry-fincparam-select     selectId="repaymentMethod" pparamDicKey="repaymentMethod"  nmodel="formData.repaymentMethod">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenRepaymentMethod"  ng-model="formData.isHiddenRepaymentMethod"   />
+								 <label for="isHiddenRepaymentMethod">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			          <div class="row">
+				         <div class="col s9">
+			   			 	<label for="repaymentCycle">*还款周期</label>
+							<hry-fincparam-select     selectId="repaymentCycle" pparamDicKey="repaymentCycle"  ng-model="formData.repaymentCycle">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenRepaymentCycle" ng-model="formData.isHiddenRepaymentCycle"  />
+								 <label for="isHiddenRepaymentCycle">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			         <div class="row">
+				         <div class="col s9">
+			   			 	<label for="preposePayAccrual">*前置情况</label>
+							<hry-fincparam-select     selectId="preposePayAccrual" pparamDicKey="preposePayAccrual"  ng-model="formData.preposePayAccrual">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenPreposePayAccrual" ng-model="formData.isHiddenPreposePayAccrual"  />
+								 <label for="isHiddenPreposePayAccrual" >隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="interestByOneTime">*一次性情况</label>
+							<hry-fincparam-select     selectId="interestByOneTime" pparamDicKey="interestByOneTime"  ng-model="formData.interestByOneTime">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenInterestByOneTime" ng-model="formData.isHiddenInterestByOneTime"  />
+								 <label for="isHiddenInterestByOneTime" >隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="repaymentDate">*偿还日</label>
+							<hry-fincparam-select     selectId="repaymentDate" pparamDicKey="repaymentDate"  ng-model="formData.repaymentDate">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenRepaymentDate" ng-model="formData.isHiddenRepaymentDate" />
+								 <label for="isHiddenRepaymentDate">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="dateModel">*日期模型</label>
+							<hry-fincparam-select     selectId="dateModel" pparamDicKey="dateModel"  ng-model="formData.dateModel">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenDateModel" ng-model="formData.isHiddenDateModel" />
+								 <label for="isHiddenDateModel">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="ccalculateFirstAndEnd">*算头算尾情况</label>
+							<hry-fincparam-select     selectId="ccalculateFirstAndEnd" pparamDicKey="ccalculateFirstAndEnd"  ng-model="formData.ccalculateFirstAndEnd">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenCcalculateFirstAndEnd" ng-model="formData.isHiddenCcalculateFirstAndEnd" />
+								 <label for="isHiddenCcalculateFirstAndEnd">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			          <div class="row">
+				         <div class="col s9">
+			   			 	<label for="intentDateType">*还款日的方式</label>
+							<hry-fincparam-select     selectId="intentDateType" pparamDicKey="intentDateType"  ng-model="formData.intentDateType">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenIntentDateType" ng-model="formData.isHiddenIntentDateType" />
+								 <label for="isHiddenIntentDateType">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="consultationMoneyWay">{{fundMoneyType[0].text}}</label>
+							<hry-fincparam-select     selectId="consultationMoneyWay" pparamDicKey="fundCcalculateType"  ng-model="formData.fundCcalculateType">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenConsultationMoneyWay" ng-model="formData.isHiddenConsultationMoneyWay" />
+								 <label for="isHiddenConsultationMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="serviceMoneyWay">{{fundMoneyType[1].text}}</label>
+							<hry-fincparam-select     selectId="serviceMoneyWay" pparamDicKey="fundCcalculateType"  ng-model="formData.serviceMoneyWay">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenServiceMoneyWay"  ng-model="formData.isHiddenServiceMoneyWay" />
+								 <label for="isHiddenServiceMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="otherOneFundMoneyWay">{{fundMoneyType[2].text}}</label>
+							<hry-fincparam-select     selectId="otherOneFundMoneyWay" pparamDicKey="fundCcalculateType"  ng-model="formData.otherOneFundMoneyWay">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenOtherOneFundMoneyWay" ng-model="formData.isHiddenOtherOneFundMoneyWay" />
+								 <label for="isHiddenOtherOneFundMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="otherTwoFundMoneyWay">{{fundMoneyType[3].text}}</label>
+							<hry-fincparam-select     selectId="otherTwoFundMoneyWay" pparamDicKey="fundCcalculateType"  ng-model="formData.otherTwoFundMoneyWay">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox" id="isHiddenOtherTwoFundMoneyWay" ng-model="formData.isHiddenOtherTwoFundMoneyWay" />
+								 <label for="isHiddenOtherTwoFundMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+			                 <div class="row">
+				         <div class="col s9">
+			   			 	<label for="otherTreeFundMoneyWay">{{fundMoneyType[4].text}}</label>
+							<hry-fincparam-select     selectId="otherTreeFundMoneyWay" pparamDicKey="fundCcalculateType"  ng-model="formData.otherTreeFundMoneyWay">
+							</hry-fincparam-select>
+						</div>
+						<div class="col s3">
+							<p>
+								 <input type="checkbox"  id="isHiddenOtherTreeFundMoneyWay" ng-model="formData.isHiddenOtherTreeFundMoneyWay" />
+								 <label for="isHiddenOtherTreeFundMoneyWay">隐藏</label>
+							</p>
+						</div>								
+			        </div>
+	
+					<p class="center">
+							<button class="btn mr-20 fs-16"  type="submit">修改保存</button>
+				    </p>      
+				
+			</div>
+		</div>
+		</form>
+					</div>
+				</div>

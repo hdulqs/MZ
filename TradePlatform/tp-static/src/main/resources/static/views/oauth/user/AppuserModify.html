@@ -1,0 +1,152 @@
+<!-- 添加分公司-->
+	<div class="card-panel" >
+		 <h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">基本信息</span>
+       		<!-- 返回按钮 -->
+      		<a class="btn fs-16 right" ng-click="returnList();">返回</a>
+		 </h4>
+		 <hr>
+		<form id="seeForm" ng-submit="processForm()">
+		<div class="row">
+			<div class="col m8 s12 left">				
+					<div class="col m6 s12">
+				      <div class="input-field">
+				        *登陆账号<input  type="text" value="{{formData.username}}"  ng-model="formData.username" readonly  >
+				      </div>
+				    </div>
+					<div class="col m6 s12">
+				      <div class="input-field">
+				        *员工姓名<input type="text"  value="{{formData.name}}"  ng-model="formData.name"  >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        *登陆密码<input  type="password" value="{{formData.password}}"  ng-model="formData.password"  >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				    	    员工编号<input type="text" value="{{formData.number}}"  ng-model="formData.number" >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        	<select     data-placeholder="请选择性别" id="sex">
+								<option value="">不限</option>
+								<option value="0">男</option>
+								<option value="1">女</option>
+							</select>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+						        电子邮箱<input  type="text" value="{{formData.email}}" ng-model="formData.email"   >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        	入职时间<input class="pikaday" readonly type="text" value="{{formData.workDate}}"  ng-model="formData.workDate"  >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        	手机号码<input   type="text" value="{{formData.mobilePhone}}"  ng-model="formData.mobilePhone" >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+					       	 家庭住址<input   type="text"  value="{{formData.homeAddress}}"  ng-model="formData.homeAddress" >
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				    	          第二联系电话<input   type="text" value="{{formData.secondPhone}}"  ng-model="formData.secondPhone" >
+				      </div>
+				    </div>
+					<div class="col s12">
+				      	<div class="input-field">
+						  	备注<textarea id="textarea1" class="materialize-textarea" length="120" value="{{formData.remark}}"  ng-model="formData.remark"></textarea>
+						</div>
+				    </div>			
+		</div>
+		<!-- 
+		<div class="col m4 s12 right">
+			<div class="row">
+				<h4 class="fs-20 lh-20">员工风貌</h4>
+				<hry-uploadtwo path="imgSrc" delbtn="false" ></hry-uploadtwo>
+	   		</div>
+		</div>
+		 -->
+	</div>
+		<div class="row">
+			<div class="col s12">
+				<div class="col m1 s12 left">
+					<span class="lh-50">所属公司</span>
+				</div>
+				<div class="col m11 s12  right">
+				    <hry-select  url="{{HRY.host}}{{HRY.modules.oauth}}company/subcompany/findCompanyList" name="name" value="id" selectId="companySet"></hry-select>
+				</div>
+				
+			</div>
+<!-- 			<div class="col s12">
+				<div class="col m1 s12 left">
+					<span class="lh-50">所属门店</span>
+				</div>
+				<div class="col m11 s12  right">
+					<div class="input-field">
+						   <hry-select  url="{{HRY.host}}{{HRY.modules.oauth}}company/apporganization/findByCompanyId?type=shop" name="name" value="id" selectId="shopSet" parentId="companySet"></hry-select>
+					</div>
+				</div>
+			</div> -->
+			<div class="col s12">
+				<div class="col m1 s12 left">
+					<span class="lh-50">所属部门</span>
+				</div>
+				<div class="col m11 s12  right">
+					   <hry-select multiple   url="{{HRY.host}}{{HRY.modules.oauth}}company/apporganization/findByCompanyId?type=department" name="name" value="id" selectId="departmentSet" parentId="companySet"></hry-select>
+				</div>    
+			</div>
+			<div class="col s12">
+				<div class="col m1 s12 left">
+					<span class="lh-50">职称岗位</span>
+				</div>
+				<div class="col m11 s12  right">
+					<div class="input-field">
+						<input   type="text"  ng-model="formData.organizeCode">
+					    <label for="input_text">岗位</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col s12">
+				<div class="col m1 s12 left">
+					<span class="lh-50">角色</span>
+				</div>
+				<div class="col m11 s12  right">
+					  <hry-select multiple   url="{{HRY.host}}{{HRY.modules.oauth}}user/approle/findToJsonOnUserAdd" name="name" value="id" selectId="appRoleSet"  ></hry-select>
+				</div>
+			</div>
+			
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn"  type="submit" >保存</button>
+				<!-- 返回按钮 -->
+				<a class="btn"  ng-click="returnList();" >返回</a>
+			</p>
+	
+		</div>
+		</form>
+		
+</div>
+<!-- /添加分公司  --> 
+
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<!-- 
+<script type="text/javascript">
+function nofind(){
+var img=event.srcElement;
+img.src=HRY.staticUrl + "/static/images/logo_person.png";
+}
+</script>
+ -->

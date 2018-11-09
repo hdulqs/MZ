@@ -1,0 +1,50 @@
+<!-- With Search -->
+<div class="card-panel">
+	<h4>修改</h4>
+	
+		<hr>
+	<div class="row">
+		<div class="col s12 ">
+			<div class="row">
+			
+				<a class="btn" ng-click="fnQuery()">查看第三方支付配置信息</a>
+				<!-- 刷新按钮 -->
+				<a class="btn" ng-click="fnList()">刷新</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s4 ">
+			<form ng-submit="processForm()">
+			
+				
+			   <input type="hidden" id="currentType" value="{{formData.remark1}}"
+						/>
+						
+						 <input type="hidden" id="thirdPayConfig" value="{{formData.thirdPayConfig}}"
+						/>
+				<div class="input-field">
+		         <hry-select   url="{{HRY.host}}{{HRY.modules.thirdpay}}pay/appthirdpayconfig/type" name="thirdPayName" value="thirdPayConfig" selectId="thirdPaySet"  ng-model="formData.thirdPayConfig" ></hry-select>
+				 </div>
+				 <div class="input-field">
+					<input type="text" name="currentConfigName" ng-model="formData.thirdPayName"
+						required /> <label for="input_text">当前第三方支付：</label>
+				</div> 
+				 <div class="input-field"> 
+				      <input type="radio" name="thirdPayEnvironment" value="normal" id ="open" ng-model="formData.thirdPayEnvironment"   />
+				    <label for="open">正式环境</label>
+				    <input type="radio" name="thirdPayEnvironment"  value="test" id ="close" ng-model="formData.thirdPayEnvironment"   />
+				    <label for="close">测试环境</label>
+				   </div>
+		</div>
+		<!--<button class="btn" type="submit">保存修改</button>  -->
+		<a class="btn" ng-click="fnUpdate()">修改第三方支付</a>
+		</form>
+	</div>
+
+
+</div>
+</div>
+<!-- /With Search -->
+

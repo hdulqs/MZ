@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="description"
+	content="互融网，第一数字资产交易平台！我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。" />
+<meta name="keywords"
+	content="互融网,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+" />
+<title>互融网｜综合数字资产交易平台</title>
+<meta property="wb:webmaster" content="8af72a3a7309f0ee" />
+</head>
+<body>
+	<header class="header">
+		<a href="javascript:void(0);" id="logo"><div class="logo"></div></a>
+		<div class="nav" id="isToken"></div>
+	</header>
+	<div class="strip"></div>
+	<div class="j-box1">
+		<h2 style="text-indent: 0.1rem;">
+			<img src="../../style/images/coin/coin_abc.png"
+				style="float: left; margin-right: 0px" />
+			<p id="title"></p>
+			<!--                K线图-->
+			<!-- 		<span onclick="clicks();">
+			<img src="../../style/images/image/icon_kline_03.png"  alt="" class="img">
+			<em class="return" style="display:none;color:#f60;margin-right:0.3rem; margin-top:0.2rem;float:right;height:0.5rem;font-size:13px;text-align:center;line-height:0.5rem">返回</em>
+		</span> -->
+		</h2>
+		<table class="j_boxtab">
+			<tr>
+				<td>最新价</td>
+				<td>最高价</td>
+				<td>最低价</td>
+				<td>日成交量</td>
+			</tr>
+			<tr>
+				<td id='new_price'>加载中...</td>
+				<td id='24h_max'>加载中...</td>
+				<td id='24h_min'>加载中...</td>
+				<td id='24h_count'>加载中...</td>
+			</tr>
+		</table>
+	</div>
+	<!--交易区域-->
+	<div id="trade_area">
+		<div class="j-box2" style="padding: 0 0.3rem; position: relative;">
+
+			<!--	导航-->
+			<div class="j-nav">
+				<a href="javascript:;" class="dangqian">买入</a> <a
+					href="javascript:;">卖出</a> <a href="javascript:;" class="last">我的委托</a>
+				<!-- <a href="#" class="last">我的成交</a> -->
+				<div style="clear: both;"></div>
+			</div>
+			<!--买入卖出-->
+			<div class="">
+				<div class="j-L">
+					<div style="height: 5.76rem;">
+						<!-- 				<table class="j-tabL latest_list weituo">
+					<tbody  id="coinsalelist">
+					<tr><td style="text-align:center">数据加载中...</td></tr>
+					</tbody>
+				</table> -->
+
+						<!-- //买入委托 -->
+						<table class="j-tabL latest_list weituo">
+							<thead>
+								<tr class="j-bg-c">
+									<td></td>
+									<td>单价</td>
+									<td style="padding-right: 10px;">委托量</td>
+								</tr>
+							</thead>
+							<tbody id="view_new_price">
+
+							</tbody>
+						</table>
+						<!-- 	//卖出委托 -->
+						<table class="j-tabL latest_list weituo">
+							<thead>
+								<tr class="j-bg-c">
+									<td></td>
+									<td>单价</td>
+									<td style="padding-right: 10px;">委托量</td>
+								</tr>
+							</thead>
+							<tbody id="view_depth_ask">
+
+							</tbody>
+						</table>
+						<table class="j-tabL1">
+							<tbody id="colorhtml">
+							</tbody>
+						</table>
+					</div>
+
+
+					<a href="../moretrade/moretrust/name/abc2cny.htm"
+						style="margin-top: 0.35rem; width: 3.3rem; height: 0.8rem; display: inline-block; line-height: 0.8rem; text-align: center; font-size: 0.3rem; border: 1px solid #ddd; color: #666; display: none; border-radius: 5px;"
+						class="moretrust">更多委托</a>
+				</div>
+				<div class="buys" style="height: auto">
+					<div class="j-R">
+						<div style="position: relative;">
+							<p class="j-p1_top" style="margin-bottom: 0.07rem;">
+								<span>买入价格</span>
+							</p>
+							<input class="j-p2" type="text" name="price" id="coinpricein">
+							<i
+								style="position: absolute; z-index: 2; font-size: 0.22rem; right: 0.15rem; top: 0.65rem; color: #999;">CNY</i>
+						</div>
+						<span class="j-p3" style="display: none">可买：<span
+							id="coinbuy_max"
+							onclick="$('#numberin').val(this.innerHTML,'cny')"
+							title="点击将数值写入数量输入框" style="font-weight: bold;">0</span></span>
+						<div style="display: none">
+							买入比例：
+							<div id="buy-SliderVal" class="ratio">0%</div>
+							<div id="buy-slider" data_slide='buy'></div>
+						</div>
+						<div style="position: relative">
+							<p class="j-p1">买入数量</p>
+
+							<input type="text" class="coinbuy-number j-p2" name="buynum"
+								id="numberin" autocomplete="off" placeholder="0" /> <i
+								style="position: absolute; z-index: 2; font-size: 0.22rem; right: 0.15rem; top: 0.65rem; color: #999;">ABC</i>
+						</div>
+						<div style="position: relative;">
+							<p class="j-p1" class="buys" style="clear: both">
+								<span>交易额</span> <span class="posSpan1" style="float: right">手续费：0%
+									ABC</span>
+							</p>
+
+							<input class="coinbuy-number j-p2" readonly="true" name="buynum"
+								id="coinin_sumprice" autocomplete="off" type="text" value="0.00">
+							<i
+								style="position: absolute; z-index: 2; font-size: 0.22rem; right: 0.15rem; top: 0.65rem; color: #999;">CNY</i>
+						</div>
+						<div class="MaiChu">
+							<input type="button" id="trustbtnin" class="submit" value="买入"
+								style="background: red; font-size: 0.3rem; border-radius: 5px;" />
+						</div>
+
+					</div>
+					<div style="clear: both;"></div>
+
+				</div>
+
+				<div class="sales" style="height: auto; display: none">
+					<div class="j-R">
+						<div style="position: relative;">
+							<p class="j-p1_top">卖出价格</p>
+							<input type="text" class="buyinput j-p2" id="coinpriceout">
+							<i
+								style="position: absolute; z-index: 2; font-size: 0.22rem; right: 0.15rem; top: 0.65rem; color: #999;">CNY</i>
+						</div>
+						<p class="j-p3" style="display: none">
+							可卖：<b id="coinsale_max"
+								onclick="$('#numberout').val(this.innerHTML)"
+								title="点击将数值写入数量输入框" style="font-weight: bold;">0</b>
+						</p>
+						<div style="display: none">
+							卖出比例：
+							<div id="sale-SliderVal" class="ratio">0%</div>
+							<div id="sale-slider" data_slide='sale'></div>
+						</div>
+						<div style="position: relative;">
+							<p class="j-p1">卖出数量</p>
+							<input type="text" class="buyinput coinsale-number j-p2"
+								placeholder="0" id="numberout" autocomplete="off" /> <i
+								style="position: absolute; z-index: 2; font-size: 0.22rem; right: 0.15rem; top: 0.65rem; color: #999;">ABC</i>
+						</div>
+						<div style="position: relative;">
+							<p class="j-p1" class="buys">
+								交易额
+								<!--						<b  id="coinout_sumprice">0.00</b> -->
+								<span class="posSpan1" style="float: right">手续费：<i>0.2%
+										CNY</i></span>
+							</p>
+							<input type="text" class="buyinput coinsale-number j-p2"
+								id="coinout_sumprice" value="0.00CNY" autocomplete="off" /> <i
+								style="position: absolute; z-index: 2; font-size: 0.22rem; right: 0.15rem; top: 0.65rem; color: #999;">CNY</i>
+						</div>
+						<div class="MaiChu">
+							<input type="button" class="submit" id="trustbtnout" value="卖出"
+								style="background: #669900; font-size: 0.3rem; border-radius: 5px;" />
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+
+				</div>
+				<!--提示-->
+				<!-- 	<div class="msg" style="height:35px;font-size:13px;text-align:center;line-height:35px;">
+				<span  style="color:red">数字货币交易具有极高的风险，投资需谨慎！</span>
+			</div> -->
+
+			</div>
+			<!--	我的委托-->
+			<div class="mywait wt-box2" style="display: none;">
+				<!--			<div id="bg-f"></div>-->
+				<table class="tab_wt">
+					<thead>
+						<tr>
+							<th>类型</th>
+							<th>价格</th>
+							<th>个数(个)</th>
+							<th>剩余(个)</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+				</table>
+
+				<div class="tab_overflow">
+					<table id="table_current" 
+						data-toolbar="#toolbar"
+						data-show-refresh="false" 
+						data-show-columns="false"
+						data-show-export="false" 
+						data-search="false"
+						data-detail-view="false" 
+						data-minimum-count-columns="2"
+						data-pagination="true" 
+						data-id-field="id"
+						data-page-list="[10, 25, 50, 100, ALL]" 
+						data-show-footer="false"
+						data-side-pagination="server">
+					</table>
+					<!-- <div class="much" style="display:none;font-size:12px;text-align:center;height:40px;line-height:40px">
+					无更多内容
+				</div> -->
+				</div>
+			</div>
+
+		</div>
+		<div style="clear: both;"></div>
+		<!--成交记录-->
+		<div class="j-box3 su_log">
+			<h3 style="margin-top: 0px">
+				<span class="history_order">成交记录</span>
+			</h3>
+			<table class="j-tab3 log_history">
+				<thead>
+					<tr>
+						<th>成交时间</th>
+						<!--				<th>类型</th>-->
+						<th>成交价</th>
+						<th>成交量</th>
+						<th>总金额（CNY）</th>
+					</tr>
+				</thead>
+				<tbody id="coinorderlist">
+
+				</tbody>
+			</table>
+			<!--	我的成交-->
+			<div class="mysuccess" style="display: none">
+				<table class="j-tab3">
+					<thead>
+						<tr>
+							<th>成交时间</th>
+							<th>成交价</th>
+							<th>委托量</th>
+							<th>成交总价</th>
+						</tr>
+					</thead>
+					<tbody id="mysuccess">
+
+					</tbody>
+				</table>
+
+				<div class="j-div3">
+					<a href="javascript:;" id="more"></a>
+				</div>
+			</div>
+
+			<format id="price_float" data="3"></format>
+		</div>
+		<!--历史委托-->
+		<div class="j-box3 wt-box3" style="display: none">
+			<h3>
+				历史委托 <select id="status">
+					<option value="4" selected="selected">全部</option>
+					<option value="1">部分成交</option>
+					<option value="2">已成交</option>
+					<option value="3">已撤销</option>
+				</select>
+			</h3>
+			<table class="j-tab3">
+				<thead>
+					<tr>
+						<th>时间</th>
+						<th>类型</th>
+						<th>价格</th>
+						<th>个数(个)</th>
+						<th>剩余(个)</th>
+						<th>状态</th>
+					</tr>
+				</thead>
+
+				<tbody id="more_history">
+
+				</tbody>
+			</table>
+		</div>
+		<!--历史委托-->
+		<div class="j-box3 wt-box3" style="display: none">
+			<h3>
+				交易记录 <select id="status">
+					<option value="4" selected="selected">全部</option>
+					<option value="1">买</option>
+					<option value="2">卖</option>
+				</select>
+			</h3>
+			<table class="j-tab3">
+				<thead>
+					<tr>
+						<th>交易时间</th>
+						<th>交易类型</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>金额</th>
+						<th>手续费</th>
+					</tr>
+				</thead>
+
+				<tbody id="Tran_history">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!--k线-->
+<!-- 	<div id="kline" class="j-box2" style="display: none">
+		<iframe style="border: 0px; width: 100%; height: 565px;"
+			src="../market-symbol=abc2cny.htm" /></iframe>
+	</div> -->
+
+	<!--隐藏值-->
+	<div class="hiddenValue" style="display: none">
+		<input type="hidden" value="abc2cny" id="coinnames"> <input
+			type="hidden" value="CNY" class="cointo"> <input
+			type="hidden" id="pnumber"> <input type="hidden"
+			id="historynum"> <input type="hidden" id="logid" value="">
+		<ul>
+			<li>买一价 / 卖一价<br /> <span id='24h_sell'>加载中...</span><span>
+					/ </span><span id='24h_buy'>加载中...</span></li>
+		</ul>
+	</div>
+
+	<footer class="footer">
+		<!--   <div class="footer_kefu_news">
+        <a href="tel:4008367667"><i></i>4008-367-667</a>
+        <a><i></i>hry@hry.com</a>
+    </div> -->
+
+		<!--    <p  style="text-align:center" >
+			<span>
+			<a href="javascript:void(0);" class="a1" id="phone">手机版</a>
+				<i>|</i>
+				<a href="javascript:void(0);" class="a2" id="window">电脑版</a>
+			</span>
+            </p>-->
+
+		<div>Copyright2013-2016 互融网</div>
+	</footer>
+
+</body>
+</html>
+
+<script type="text/javascript" src="../../style/js/base.js"></script>
+<script type="text/javascript" src="../../style/js/sea.js"></script>
+<script type="text/javascript">
+	seajs.config({
+		base : basepath,
+		alias : {
+			"jquery" : "style/js/jquery/1.9.1.min.js",
+			"jquery2" : "style/js/bootstrap/js/jquery-2.0.3.js",
+			"jq" : "style/js/jquery/jquery.js",
+			"layer" : "style/js/layer/layer.js"
+		},
+		preload : [ 'jquery', 'jquery2', 'jq', 'layer' ],
+		map : [ [ '.js', '.js?v=' + new Date().getTime() ] ]
+	});
+	seajs.use([ 'style/js/extract/seajs/abc2cny.js' ], function(a) {
+		a.init();
+	});
+</script>

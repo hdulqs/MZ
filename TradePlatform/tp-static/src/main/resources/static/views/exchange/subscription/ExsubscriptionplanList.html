@@ -1,0 +1,88 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- ExsubscriptionplanList.html     -->
+ <!-- @author:      zenghao  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2016-11-21 15:48:50      -->
+
+<div class="page-title">
+	<div class="row">
+		<div class="col s12 m6 l7">
+			<div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.coinCode_like"  dataTableSerch >
+			        <label for="input_lname">产品代码</label>
+			      </div>
+			    </div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text"  ng-model="serchData.state_in" dataTableSerch>
+						<label for="input_city">状态</label>
+				   </div>
+			    </div>
+			    <div class="col m3 s12">
+					<div class="input-field">
+						<input type="text"  ng-model="serchData.period_like" dataTableSerch>
+						<label for="input_city">期数</label>
+				   </div>
+			    </div>
+			</div>
+		</div>
+		<div class="col s12 m6 l5 right-align pr-30">
+			<div class="row">
+				<!--查看按钮 -->
+				<a class="btn" ng-if="requiresPermissions('exchange','/subscription/exsubscriptionplan/see')" ng-click="fnSee()">查看</a>
+				<!-- 制定认购计划 -->
+				<a class="btn pr-10 pl-10" ng-if="requiresPermissions('exchange','/product/exproduct/add')" ng-click="fnAdd('product/exproduct/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>制定认购计划</a>
+				<!--添加按钮 -->
+				<a class="btn" ng-if="requiresPermissions('exchange','/subscription/exsubscriptionplan/release')" ng-click="fnRelease()">发布</a>
+				<!--修改按钮 -->
+				<a class="btn" ng-if="requiresPermissions('exchange','/subscription/exsubscriptionplan/modify')" ng-click="fnModify()">修改</a>
+				<!--删除按钮 -->
+				<a class="btn" ng-if="requiresPermissions('exchange','/subscription/exsubscriptionplan/remove')" ng-click="fnRemove()">删除</a>
+				<!--刷新按钮 
+				<a class="btn" ng-click="fnList()">刷新</a>-->
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>币种代码</th>
+						<th>币种名称</th>
+						<th>认购期数</th>
+						<th>开始认购时间</th>
+						<th>开放认购数量(个)</th>
+						<th>最低认购人民币(￥)</th>
+						<th>最高认购人民币(￥)</th>
+						<th>认购初始价(￥)</th>
+						<th>认购最高价(￥)</th>
+						<th>交易初始价(￥)</th>
+						<th>回购有效期(天)</th>
+						<th>状态</th>
+						<th>回购手续费(%)</th>
+						<th>涨价基数(个)</th>
+						<th>涨幅(￥)</th>
+						<th>认购返佣比例一级(%)</th>
+						<th>认购返佣比例二级(%)</th>
+						<th>认购返佣比例三级(%)</th>
+						<th>已认购数量(个)</th>
+						<th>剩余可认购个数(个)</th>
+						<th>交易最高价(￥)</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+

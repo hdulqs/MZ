@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+.backColor_white{
+	background: #fff !important; 
+}
+.backColor_white th tr{
+	background: #fff !important; 
+}
+#otc_table{
+	width:100%;
+	font-size: 14px;
+	color:#333;
+}
+#otc_table tr td,#otc_table th{
+	padding:5px 0;
+	text-align: center;
+}
+.otc_btn{
+	width:60px;
+	height:30px;
+	color:#fff;
+	line-height: 30px;
+	text-align: center;
+	border-radius:3px;
+	margin:auto;
+	cursor:pointer;
+}
+.otc_btn_sold{
+	background: #3dc18e;
+}
+.otc_btn_buy{
+	background: #ff5b57;
+}
+.table_scroll_panel{
+	width:780px;
+	height: 300px;
+	margin:auto;
+	overflow-y: scroll;
+}
+
+.mask{
+	display: none;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+}
+.mask2{
+	display: none;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+}
+.dialogOtc{
+	position: absolute;
+	background: #fff;
+	top: 50%;
+	left: 50%;
+	width: 458px;
+	height: 280px;
+	margin-top: -140px;
+	margin-left: -229px;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid rgba(187, 187, 187, 1);
+	border-radius: 12px;
+}
+.dialogOtc .diaConfirm{
+	position: absolute;
+	bottom: 30px;
+	left: 102px;
+	height: 30px;
+	line-height: 30px;
+	width: 120px;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #3dc18e;
+	color: rgba(255, 255, 255, 1);
+	font-size: 14px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+}
+.dialogOtc .diaConfirm2{
+	position: absolute;
+	bottom: 30px;
+	left: 102px;
+	height: 30px;
+	line-height: 30px;
+	width: 120px;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #3dc18e;
+	color: rgba(255, 255, 255, 1);
+	font-size: 14px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+}
+.dialogOtc .back{
+	position: absolute;
+	bottom: 30px;
+	right: 102px;
+	width: 115px;
+	height: 30px;
+	border-radius: 4px;
+	background-color: #ff5b57;
+	color: rgba(255, 255, 255, 1);
+	font-size: 14px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+
+}
+.dialogOtc .dialog_input{
+	padding: 0 20px;
+}
+.color-red{
+	color: #ff5b57;
+}
+.color-green{
+	color: #3dc18e;
+}
+.fonts14{
+	font-size: 14px;
+}

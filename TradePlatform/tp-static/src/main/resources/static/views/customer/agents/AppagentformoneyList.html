@@ -1,0 +1,63 @@
+<!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+				<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text" id="agentNameId" ng-model="serchData.agentName"  dataTableSerch >
+			        <label for="input_lname">代理商名称</label>
+			      </div>
+			    </div>
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+				<!-- 批量提现佣金 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnBatchPost()"><i class="fa fa-refresh "></i>批量派发佣金</a>	
+					
+				<!-- 提现佣金 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnPost()"><i class="fa fa-refresh "></i>派发佣金</a>
+				
+				<!-- 刷新按钮 -->
+				<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+
+<!-- 分公司管理 -->
+	<div  >
+			<div class="row">	
+						<!-- <font color="red" class="pull-right" style="font-size:12px;margin-right: 60px;">提示： 如果佣金结算金额不一致，以最大值为准 </font> -->
+			<div class="col s12 "  >
+				<table id="table2" class="display table table-bordered table-striped table-hover">
+				   <thead>
+				    <tr>
+				      <th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+	                  <th>代理商名</th>
+ 	              	  <!-- <th>代理地址</th> -->
+ 	              	  <th>交易币种</th>
+ 	              	<!--   <th>货币类型</th> -->
+	                  <th>一级佣金</th>
+	                  <th>二级佣金</th>
+	                  <th>三级佣金</th>
+	                  <th>总佣金</th>
+	                  <th>已派发佣金</th>
+	                  <th>最后派发时间</th>
+	                  <th>待派发佣金</th>
+	                  <th>成为代理时间</th> 
+				    </tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+				</table>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+
+

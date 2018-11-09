@@ -1,0 +1,1 @@
+define(function(n,i,l){n.async("slider"),l.exports={language:function(){$(".curbox").on("click",function(){$(this).next(".lang-list").slideToggle()}),$(".lang-list li").on("click",function(){var n=$(".lang-cur").html();$(this).parent().hide(),$(".lang-cur").html($(this).html()),$(this).html(n)})}}});

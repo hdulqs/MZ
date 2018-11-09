@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mall_goodsclassMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" useGeneratedKeys="true" keyProperty="GOODSCLASSID" parameterType="pd">
+		insert into mall_goodsclass(
+			CLASSNAME,	
+			DISPLAY,	
+			LEVEL,	
+			RECOMMEND,	
+			SEQUENCE,	
+			PARENT_ID,	
+			ICON_PATH
+		) values (
+			#{CLASSNAME},	
+			#{DISPLAY},	
+			#{LEVEL},	
+			#{RECOMMEND},	
+			#{SEQUENCE},	
+			#{PARENT_ID},	
+			#{ICON_PATH}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from mall_goodsclass
+		where 
+			ID = #{ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  mall_goodsclass
+			set 
+			CLASSNAME = #{CLASSNAME}
+			,DISPLAY = #{DISPLAY}
+			,RECOMMEND = #{RECOMMEND}
+			<if test="LEVEL !=null and LEVEL !=''">
+				,LEVEL = #{LEVEL}
+			</if>
+			<if test="SEQUENCE !=null and SEQUENCE !=''">
+				,SEQUENCE = #{SEQUENCE}
+			</if>
+			<if test="PARENT_ID !=null and PARENT_ID !=''">
+				,PARENT_ID = #{PARENT_ID}
+			</if>
+			<if test="ICON_PATH !=null and ICON_PATH !=''">
+				,ICON_PATH = #{ICON_PATH}
+			</if>
+			where 
+				ID = #{ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			ADDTIME,	
+			CLASSNAME,	
+			DISPLAY,	
+			LEVEL,	
+			RECOMMEND,	
+			SEQUENCE,	
+			PARENT_ID,	
+			ICON_PATH,	
+			ID
+		from 
+			mall_goodsclass
+		where 
+			ID = #{ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.ADDTIME,	
+				a.CLASSNAME,	
+				a.DISPLAY,	
+				a.LEVEL,	
+				a.RECOMMEND,	
+				a.SEQUENCE,	
+				a.PARENT_ID,	
+				a.ICON_PATH,	
+				a.ID
+		from 
+				mall_goodsclass a
+	</select>
+	
+		<!-- 列表 -->
+	<select id="ztreelistPage" parameterType="page" resultType="pd">
+		select
+				a.ADDTIME,	
+				a.CLASSNAME as name,	
+				a.DISPLAY,	
+				a.LEVEL,	
+				a.RECOMMEND,	
+				a.SEQUENCE,
+				a.PARENT_ID as pId,	
+				a.ICON_PATH,	
+				a.ID as id
+		from 
+				mall_goodsclass a
+	</select>
+	
+	
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.ADDTIME,	
+				a.CLASSNAME,	
+				a.DISPLAY,	
+				a.LEVEL,	
+				a.RECOMMEND,	
+				a.SEQUENCE,	
+				a.PARENT_ID,	
+				a.ICON_PATH,	
+				a.ID
+		from 
+				mall_goodsclass a
+	</select>
+	
+	<!-- 列表(查询分类信息) -->
+	<select id="fenleilistAll" parameterType="pd" resultType="pd">
+		SELECT
+				a.ADDTIME,	
+				a.CLASSNAME,	
+				a.DISPLAY,	
+				a.LEVEL,	
+				a.RECOMMEND,	
+				a.SEQUENCE,	
+				a.PARENT_ID,	
+				a.ICON_PATH,	
+				a.ID
+		FROM 
+				mall_goodsclass a WHERE 1=1 AND a.`level`=#{LEVEL}
+				
+				
+	</select>
+	
+	
+	
+		<!-- 列表(查询分类1信息) -->
+	<select id="level1listAll" parameterType="pd" resultType="pd">
+		SELECT b.`ID` FROM `mall_goodsclass` AS b WHERE b.`parent_id`=#{ID} AND b.`level`='1'
+	</select>
+	
+	
+		
+	<!-- 列表(查询分类3信息) -->
+	<select id="DATA_IDSlistAll" parameterType="String" resultType="pd">
+		SELECT
+				a.ADDTIME,	
+				a.CLASSNAME,	
+				a.DISPLAY,	
+				a.LEVEL,	
+				a.RECOMMEND,	
+				a.SEQUENCE,	
+				a.PARENT_ID,	
+				a.ICON_PATH,	
+				a.ID
+		FROM 
+				mall_goodsclass a WHERE
+				a.PARENT_ID in
+				<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+		                 #{item}
+				</foreach>
+	</select>
+	
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from mall_goodsclass
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	
+	<!-- 修改父ID -->
+	<update id="editParent_id" parameterType="pd">
+		UPDATE `mall_goodsclass` SET parent_id=#{GOODSCLASSID} WHERE id=#{SON_ID}
+	</update>
+	
+</mapper>

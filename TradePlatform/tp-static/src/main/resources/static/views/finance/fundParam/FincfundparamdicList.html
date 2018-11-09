@@ -1,0 +1,61 @@
+
+ 
+  <link rel="stylesheet" type="text/css" href="http://localhost/static/static/style/hry.css" />
+
+
+
+<!-- 企业客户-基本信息 -->
+<!--左侧导航 -->
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">资金数据字典配置</span>
+		 </h4>
+		  <hr>
+		  <div class="row">
+		  	<div class="col s12 m3">
+                     <div class="input-field">
+                          <input  type="text" name="Q_text_like_String" class="dataSearch" >
+                          <label for="input_email">关键字：</label>
+                   </div>
+               </div>
+		  </div>
+		  <div class="row">		  		 
+	<!--左侧导航 -->
+			  <div class="_tt_layout_tabnav">
+			  	<ul class="_tt_side_subnav">
+					<h3 class="fs-20 center">类型名称</h3>
+		            <li ng-repeat="oneLevel in listByoneLevel" ng-click="changeClass(oneLevel)" name={{oneLevel.paramDicKey}}>
+		                   <a style="cursor:pointer">{{oneLevel.text}}（{{oneLevel.paramDicKey}}）</a>
+		            </li>
+				</ul> 
+			</div>
+			<!--end 左侧导航 -->
+			<div class="_tt_layout_container">
+		   		<div class="_tt_plan_container">
+	   				<table id="table2" class="display table table-bordered table-striped table-hover centered">
+					  <thead>
+					    <tr>
+					      <th>子类名称</th>
+						  <th>KEY</th>
+						   <th>排序</th>
+						  <th>描述</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+                      <tr ng-repeat="manyLevel in listByManyLevel"  style="cursor:default"  ng-click="fnModify('fundParam/fincfundparamdic/modify',manyLevel)">
+					      <td>{{manyLevel.text}}</td>
+					      <td>{{manyLevel.paramDicKey}}</td>
+					      <td>{{manyLevel.orderNo}}</td>
+					      <td>{{manyLevel.paramDicDescrption}}</td>
+				      </tr>
+                      
+					  </tbody>
+					</table>
+				</div>
+		    </div>
+		    </div>	 
+		</div> 
+</div>
+	

@@ -1,0 +1,15 @@
+npm install express
+npm install socket.io@1.4.5
+npm install request
+npm install redis
+npm install -g forever
+
+
+
+//操作命令如下：
+//启动
+forever start index.js
+//查看
+forever list
+//停止
+forever stop index.js

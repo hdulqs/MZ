@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">  
+      <!-- 权限+Session -->
+      <dubbo:reference  id="remoteOauthService" interface="com.mz.oauth.oauth.core.RemoteOauthService" check="false" ></dubbo:reference>
+      <!-- AppUser -->
+      <dubbo:reference id="remoteAppUserService" interface="com.mz.oauth.remote.user.RemoteAppUserService"  check="false"></dubbo:reference>
+      <!-- AppResource -->
+      <dubbo:reference id="remoteAppResourceService" interface="com.mz.oauth.remote.user.RemoteAppResourceService"  check="false"></dubbo:reference>
+      <!-- AppOrganization -->
+      <dubbo:reference id="remoteAppOrganizationService" interface="com.mz.oauth.remote.company.RemoteAppOrganizationService"  check="false"></dubbo:reference>
+	  
+      <!-- AppRoleMenuTree -->
+      <dubbo:reference id="remoteAppRoleMenuTreeService" interface="com.mz.oauth.remote.user.RemoteAppRoleMenuTreeService"  check="false"></dubbo:reference>
+	  
+	  
+	  
+</beans> 

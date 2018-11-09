@@ -1,0 +1,70 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- 代理上申请列表 -->
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+           <div class="row">
+				<div class="col s3">
+			<div class="input-field">
+				<input type="text" id="input_uname" ng-model="serchData.userName_like" dataTableSerch> <label for="input_lname">会员账号</label>
+			</div>
+		</div>
+		<div class="col s3">
+			<div class="input-field">
+				<input type="text" id="input_name" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_lname">姓名</label>
+			</div>
+		</div>
+			</div>
+        </div>
+        <div class="col s12 m3 l7 right-align pt-20">
+			<!--审核通过按钮 -->
+			<a class="btn" ng-click="fnPass()">审核通过</a>
+			<!--审核拒绝按钮 -->
+			<a class="btn" ng-click="fnRefuse()">审核拒绝</a>
+			<!--刷新按钮 -->
+			<a class="btn" ng-click="fnList()">刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+
+
+
+
+
+
+
+
+
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>用户账号</th>
+						<th>真实姓名</th>
+						<th>申请代理商类型</th>
+						<th>申请所在省</th>
+						<th>申请所在市</th>
+						<th>申请所在区（县）</th>
+						<th>申请时间</th>
+						<!-- <th>用户可用币额</th> -->
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+
+
+

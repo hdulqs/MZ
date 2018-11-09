@@ -1,0 +1,115 @@
+<!-- 添加分公司-->
+	<div class="card-panel" >
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">基本信息</span>
+       		<!-- 返回按钮 -->
+			<a class="btn fs-16 right"  href="#/oauth/company/subcompany/list/anon" >返回</a>
+		 </h4>
+		 <hr>
+		<div class="row">
+			<div class="col m8 s12 left">
+				<form id="seeForm" ng-submit="processForm()">
+					<div class="col m6 s12">
+				      <div class="input-field">
+				        <input type="text" ng-model="formData.name" required>
+				        <label for="input_fname">*分公司名称</label>
+				      </div>
+				    </div>
+					<div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.shortName" required>
+				        <label for="input_lname">*分公司短称</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.companyNo" required>
+				        <label for="input_lname">*分公司编号</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.englishName">
+				        <label for="input_lname">公司英文缩写</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.person">
+				        <label for="input_lname">联系人</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.mobile">
+				        <label for="input_lname">联系人电话</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.fax">
+				        <label for="input_lname">传真</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input class="pikaday" type="text"  ng-model="formData.setDate" >
+				        <label for="input_lname">成立日期</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.address">
+				        <label for="input_lname">地址</label>
+				      </div>
+				    </div>
+				    <div class="col m6 s12">
+				      <div class="input-field">
+				        <input   type="text"  ng-model="formData.postalcode">
+				        <label for="input_lname">邮政编码</label>
+				      </div>
+				    </div>
+					<div class="col s12">
+				    	<div class="input-field">
+						  <textarea id="textarea1" class="materialize-textarea" length="120" ng-model="formData.remark"></textarea>
+						  <label for="textarea1">备注</label>
+						</div>
+				    </div>
+				    <p>
+					    <!-- 保存按钮 -->
+						<button class="btn" type="submit" >下一步</button>
+						<!-- 返回按钮 -->
+						<a class="btn" href="#/oauth/company/subcompany/list/anon" >返回</a>
+				    </p>
+			</form>
+		</div>
+		<div class="col m4 s12 right">
+			<div class="row">
+				<h4 class="fs-20 lh-20">公司logo</h4>
+				<div class="row photoswipe-gallery isotope mr-20">
+				    <a class="col s12 item"  data-size="2880x1800" data-med="" data-med-size="1440x900" data-author="John Doe">
+				    	<img id="imgShow" src="" alt="" onerror = "nofind();"/>
+				    	<figure>logo</figure>
+				    </a>
+			    </div>
+			    <p>
+			    	<!-- 上传按钮 -->
+					<!-- 删除按钮 -->
+			  		<input type="hidden" id="imgSrc" />  
+				    <input class="btn" type="button" id="btnUploadImg" value="上传" />  
+				    <input class="btn" type="button" id="btnDeleteImg" value="删除" /> 
+			    </p>
+	   		</div>
+		</div>
+
+		
+	</div>
+<!-- /添加分公司  --> 
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<script type="text/javascript">
+function nofind(){
+var img=event.srcElement;
+img.src=HRY.host+"/static/static/images/logo_company.png";
+}
+</script>

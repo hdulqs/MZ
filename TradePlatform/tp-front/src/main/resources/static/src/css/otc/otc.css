@@ -1,0 +1,257 @@
+/********通用css************/
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+.center{
+	text-align: center;
+}
+.margint16{
+	margin-top: 16px;
+}
+.margint20{
+	margin-top: 20px;
+}
+.margint30{
+	margin-top: 30px;
+}
+.marginb16{
+	margin-bottom: 16px;
+}
+.marginb20{
+	margin-bottom: 20px;
+}
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.btn-info {
+	color: #fff;
+	background-color: #5bc0de;
+	border-color: #46b8da;
+}
+.btn.btn-primary {
+	color: #fff;
+	background: #348fe2;
+	border-color: #348fe2;
+}
+.btn-gray {
+	color: #fff;
+	background-color: #ccc;
+	border-color: #ccc;
+}
+.btn-spacing{
+	margin-right: 10px;/******按钮右边距********/
+}
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+button, select {
+	text-transform: none;
+}
+button {
+	overflow: visible;
+}
+button, input, optgroup, select, textarea {
+	margin: 0;
+	font: inherit;
+	color: inherit;
+}
+/******表格垂直居中*******/
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+	vertical-align: middle;
+}
+/***********otc付款信息标题**********/
+.mtitle {
+	padding-top: 16px;
+	color: rgba(16, 16, 16, 1);
+	font-size: 16px;
+	text-align: left;
+	font-family: Roboto;
+
+}
+.mtitle h3 {
+	margin:0px; padding-left:20px; color:#666;
+}
+/*******付款信息表格**********/
+.privilege .tb-list2 {
+	font-size:14px;
+}
+.privilege .tb-list2 b {
+	color:#f00;
+}
+.privilege .tb-list2 th {
+	border:1px solid #f3da91;
+	background-color:#fffbef;
+	text-align:right; height:28px;
+	line-height:28px;
+	padding-right:15px;
+}
+.privilege .tb-list2 td {
+	border:1px solid #f3da91;
+	background-color:#fff;
+	text-align:left;
+	height:28px;
+	line-height:28px;
+	padding-left:15px;
+}
+.privilege .tb-list2 tr {
+	height:40px;
+}
+.privilege .do a {
+	width:140px;
+}
+.privilege .do a h4 {
+	width:125px;
+}
+a.alibtn_orange35 {
+	background-color: #de211d;
+	border-color: #de211d;
+	padding: 0px 12px;
+	height:35px;
+	border-radius: 3px;
+	transition: all .2s linear;
+	font-size: 16px;
+	color: #fff;
+}
+/*******付款凭证********/
+ul.uploadList{
+	overflow: hidden;
+	list-style: none;
+	width: 100%;
+}
+ul.uploadList li{
+	float: left;
+	padding: 0; /* 将默认的内边距去掉 */
+	margin-right: 10px; /* 将默认的外边距去掉 */
+	position: relative;
+}
+.uploadList li input {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+ul.uploadList li img{
+	display: block;
+	float: left;
+	width: 160px;
+	height: 160px;
+}
+/*********完成付款***********/
+.radio-box{
+	display: inline;
+	padding-right: 10px;
+}
+.remark span{
+	vertical-align: top;
+}
+.remark textarea{
+	padding: 10px;
+	border-radius: 5px;
+	left: 470px;
+	top: 166px;
+	width: 80%;
+	height: 100px;
+	line-height: 20px;
+	color: rgba(136, 136, 136, 1);
+	font-size: 14px;
+	text-align: left;
+	font-family: Microsoft Yahei;
+	border: 1px solid #e0dfe3;
+
+}
+.canceltext{
+	left: 735px;
+	top: 1025px;
+	width: 445px;
+	height: 45px;
+	line-height: 20px;
+	color: rgba(229, 28, 35, 1);
+	font-size: 14px;
+	text-align: left;
+	font-family: Roboto;
+
+}
+
+#reDialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+.codeDialog {
+	width: 400px;
+	height: 500px;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	margin-top: -100px;
+	margin-left: -100px;
+	background: #fff;
+}
+
+.code_close {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: -10px;
+	right: -10px;
+	background: #fff;
+	border-radius: 100%;
+	border: 2px solid #000;
+}
+
+.close_img {
+	width: 10px;
+	height: 10px;
+	margin: 5px auto;
+	background: url("../static/src/img/noticeClose.png") center no-repeat;
+	background-size: 100% 100%;
+}
+
+.code {
+	width: 100%;
+	height: 100%;
+}
+
+.code img {
+	width: 350px;
+	height: 450px;
+	margin: 25px;
+}

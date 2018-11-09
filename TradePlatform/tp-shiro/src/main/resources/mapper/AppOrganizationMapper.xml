@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.shiro.dao.AppOrganizationDao">
+
+	<resultMap id="BaseResultMap" type="com.mz.oauth.user.model.AppOrganization">
+		<id column="id" property="id" javaType="java.lang.Long"></id>
+		<result column="created" property="created" javaType="java.util.Date" />
+		<result column="modified" property="modified" javaType="java.util.Date" />
+		<result column="saasId" property="saasId" javaType="java.lang.String" />
+		<result column="type" property="type" javaType="java.lang.String" />
+		<result column="pid" property="pid" javaType="java.lang.Long" />
+		<result column="isDelete" property="isDelete" javaType="java.lang.String" />
+		<result column="orderNo" property="orderNo" javaType="java.lang.String" />
+		<result column="logoPath" property="logoPath" javaType="java.lang.String" />
+		<result column="name" property="name" javaType="java.lang.String" />
+		<result column="shortName" property="shortName" javaType="java.lang.String" />
+		<result column="companyNo" property="companyNo" javaType="java.lang.String" />
+		<result column="englishName" property="englishName" javaType="java.lang.String" />
+		<result column="person" property="person" javaType="java.lang.String" />
+		<result column="mobile" property="mobile" javaType="java.lang.String" />
+		<result column="fax" property="fax" javaType="java.lang.String" />
+		<result column="setDate" property="setDate" javaType="java.util.Date" />
+		<result column="address" property="address" javaType="java.lang.String" />
+		<result column="postalcode" property="postalcode" javaType="java.lang.String" />
+		<result column="remark" property="remark" javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="findSonOrganization" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select * from app_organization where pid = #{id,jdbcType=BIGINT}
+	</select>
+	
+
+</mapper>

@@ -1,0 +1,338 @@
+<!-- top -->
+<nav class="navbar-top navbar-under navbar-static">
+    <div class="nav-wrapper">
+      <!-- Sidebar toggle -->
+      <a href="#" class="yay-toggle">
+        <div class="burg1"></div>
+        <div class="burg2"></div>
+        <div class="burg3"></div>
+      </a>
+      <!-- Sidebar toggle -->
+      
+      <!-- Logo  -->
+      <a href="#!" class="brand-logo">
+        <img src="{{appConfigData.managerSysLogo}}" alt="{{appConfigData.managerName}}" onerror="nofind('logo')" >
+      </a>
+      <!-- /Logo -->
+	  
+	 
+      <!-- Menu -->
+      <ul>
+     	<li>
+          <a class="dropdown-button" href="#!"  data-activates="more-app">更多应用<!-- <i class="mdi-navigation-apps fs-28 "></i> --><i class="mdi-navigation-expand-more right"></i></a>
+          <ul id="more-app" class="dropdown-content">
+          
+         	<li ng-repeat="app in AllApplicactions">
+            	<a ng-click="switchApp($event);"  appname="{{app.appName}}" ><i class="fa fa-user"></i>{{app.name}}</a>
+            </li>
+            <li class="divider"></li>
+          
+         <!--  	<li>
+            	<a ng-click="switchAppMenu('hurong_index');"><i class="fa fa-user"></i>云基础平台</a>
+            </li>
+            <li class="divider"></li> -->
+         <!--    <li>
+            	<a ng-click="switchAppMenu('hurong_exchange');"><i class="fa fa-user"></i>云交易所系统</a>
+            </li>
+            <li class="divider"></li>
+             <li>
+            	<a ng-click="switchAppMenu('hurong_customer');"><i class="fa fa-user"></i>客户管理系统</a>
+            </li>
+            <li class="divider"></li>
+             <li>
+            	<a ng-click="switchAppMenu('hurong_account');"><i class="fa fa-user"></i>金融账户系统</a>
+            </li> -->
+          </ul>
+        </li>
+        
+        <!-- 搜索框  交流 -->
+      <!--   <li><a href="#!" class="search-bar-toggle"><i class="mdi-action-search"></a></i>
+        <li><a href="#!" id="chatOnline" class="chat-toggle"><i class="fa fa-comments"></a></i> -->
+        <li class="user">
+          <a class="dropdown-button" href="#!"  data-activates="user-dropdown">
+            <img src="static/lib/_con/images/user.jpg" alt="John Doe" class="circle"> <span id="username"  user-Islogin>
+                          {{user.username}}
+            
+            </span><i class="mdi-navigation-expand-more right"></i>
+          </a>
+		  <div id="show_message_area"></div>
+          <ul id="user-dropdown" class="dropdown-content">
+            <li>
+            	<a ng-click="switchAppMenu('personalCenter');"><i class="fa fa-user"></i>个人中心</a>
+            </li>
+          <!--   <li>
+            	<a ><i class="fa fa-envelope"></i> 我的消息 <span class="badge new">2</span></a>
+            </li> -->
+            <li>
+            	<a ng-if="user.username=='admin'" ng-click="switchAppMenu('systemSetting');"><i class="fa fa-cogs"></i> 设置</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+            	<a href="/oauth/layout.do"><i class="fa fa-sign-out"></i>退出</a>
+            </li>
+            <li>
+	        </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- /Menu -->
+	</div>
+</nav>
+
+<!-- top end -->
+
+<!-- left -->
+<aside class="yaybar yay-shrink yay-hide-to-small yay-gestures">
+	<div class="top">
+		<div>
+			<!-- Sidebar toggle -->
+			<a href="#" class="yay-toggle">
+				<div class="burg1"></div>
+				<div class="burg2"></div>
+				<div class="burg3"></div>
+			</a>
+			<!-- Sidebar toggle -->
+			<!-- Logo -->
+			<a href="#!" class="brand-logo" style="padding-top: 0px;"> <img src="{{appConfigData.managerSysLogo}}" alt="{{appConfigData.managerName}}" onerror="nofind('logo')" style="height: 58px; width: auto; padding: 10px 0;"></a>
+			
+			
+		</div>
+	</div>
+	
+	<div class="nano">
+		<div class="nano-content">
+			
+          
+			
+			<ul id="menuHTML">
+			
+			</ul>
+		</div>
+	</div>
+</aside>
+<!-- left end-->
+
+
+<!-- ------------------------------------------------------------------------------聊天窗 -->
+  <!--
+  Chat
+    .chat-light - light color scheme
+-->
+
+<input type="hidden" id="sendUserId" value="{{user.id }}"/>
+<input type="hidden" id="receiveUserId" value=""/>
+  <div class="chat">
+    <div class="layer-overlay"></div>
+
+    <div class="layer-content">
+
+      <!-- Contacts -->
+      <div class="contacts">
+        <!-- Top Bar -->
+        <div class="topbar">
+          <a href="#!" class="text">聊天室</a>
+          <a href="#!" class="chat-toggle"><i class="mdi-navigation-close"></i></a>
+        </div>
+        <!-- /Top Bar -->
+
+        <div class="nano">
+          <div class="nano-content" id="chat">
+			
+			<!-- 在线人列表样例start -->
+            <span class="label">Online</span>
+
+            <div class="user">
+              <img src="static/lib/_con/images/user2.jpg" alt="Felecia Castro" class="circle photo">
+              <div class="name">Felecia Castro</div>
+              <div class="status">Lorem status</div>
+              <div class="online"><i class="green-text fa fa-circle"></i>
+              </div>
+            </div>
+
+            <span class="label">Offline</span>
+            
+            <div class="user">
+              <img src="static/lib/_con/images/user11.jpg" alt="Darren Cunningham" class="circle photo">
+              <div class="name">Darren Cunningham</div>
+              <div class="status">Lorem status</div>
+            </div>
+            <!-- 在线人列表样例end -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /Contacts -->
+
+      <!-- 聊天记录页面 -->
+      <div class="messages">
+
+        <!-- 聊天记录Top Bar -->
+        <div class="topbar">
+          <a href="#!" class="chat-toggle"><i class="mdi-navigation-close"></i></a>
+          <a href="#!" class="chat-back">
+          	<i class="mdi-hardware-keyboard-arrow-left"></i>Back
+          	<u id="receiveUserName"></u>
+          </a>
+        </div>
+        <!-- /Top Bar with back link -->
+		
+        <!-- 聊天记录list -->
+        <div class="list">
+          <div class="nano scroll-bottom">
+            <div class="nano-content" id="chatlog">
+			  
+			  <!-- 聊天记录样例start-->
+              <div class="date">2015-10-02 23:11</div>
+			  
+			  <!-- 发送者 -->
+              <div class="from-me">
+                Hi, 你好
+              </div>
+              <div class="clear"></div>
+              
+			  <!-- 接收者 -->
+              <div class="from-them">
+                <img src="static/lib/_con/images/user2.jpg" alt="John Doe" class="circle photo">
+              	  我很好
+              </div>
+              <div class="clear"></div>
+              <!-- 聊天记录样例end-->
+
+            </div>
+          </div>
+        </div>
+        <!-- /聊天记录list -->
+
+
+
+        <!-- 发送聊天记录 -->
+        <div class="send">
+          <!-- <form action="#!"> -->
+            <div class="input-field">
+              <input id="chatmessage" type="text" name="chat-message" />
+            </div>
+            <button class="btn waves-effect z-depth-0"  onclick="sendMessage()" >
+            	<i class="mdi-content-send"></i>
+            </button>
+          <!-- </form> -->
+        </div>
+       <!-- /发送聊天记录 -->
+       
+
+      </div>
+      <!-- /Messages -->
+    </div>
+
+  </div>
+  <!-- /Chat -->
+<!----------------------------------------------------------------------------------------------- /聊天窗 -->
+
+
+<!-- search -->
+
+
+<!-- Search Bar -->
+  <div class="search-bar">
+    <div class="layer-overlay"></div>
+    <div class="layer-content">
+      <form action="#!">
+        <!-- Header -->
+        <a class="search-bar-toggle grey-text text-darken-2" href="#!"><i class="mdi-navigation-close"></i></a>
+
+        <!-- Search Input -->
+        <div class="input-field">
+          <i class="mdi-action-search prefix"></i>
+          <input type="text" name="con-search" placeholder="Search...">
+        </div>
+
+        <!-- Search Results -->
+        <div class="search-results">
+
+          <div class="row">
+            <div class="col s12 l4">
+              <h4>Users</h4>
+
+              <div class="each-result">
+                <img src="static/lib/_con/images/user2.jpg" alt="Felecia Castro" class="circle photo">
+                <div class="title">Felecia Castro</div>
+                <div class="label">Content Manager</div>
+              </div>
+
+              <div class="each-result">
+                <img src="static/lib/_con/images/user3.jpg" alt="Max Brooks" class="circle photo">
+                <div class="title">Max Brooks</div>
+                <div class="label">Programmer</div>
+              </div>
+
+              <div class="each-result">
+                <img src="static/lib/_con/images/user4.jpg" alt="Patsy Griffin" class="circle photo">
+                <div class="title">Patsy Griffin</div>
+                <div class="label">Support</div>
+              </div>
+
+              <div class="each-result">
+                <img src="static/lib/_con/images/user6.jpg" alt="Vernon Garrett" class="circle photo">
+                <div class="title">Vernon Garrett</div>
+                <div class="label">Photographer</div>
+              </div>
+            </div>
+            <div class="col s12 l4">
+              <h4>Articles</h4>
+
+              <div class="each-result">
+                <div class="icon circle blue white-text">MD</div>
+                <div class="title">Material Design</div>
+                <div class="label nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequatur debitis veritatis dolorum, enim libero!</div>
+              </div>
+
+              <div class="each-result">
+                <div class="icon circle teal white-text">
+                  <i class="fa fa-dashboard"></i>
+                </div>
+                <div class="title">Admin Dashboard</div>
+                <div class="label nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequatur debitis veritatis dolorum, enim libero!</div>
+              </div>
+
+              <div class="each-result">
+                <div class="icon circle orange white-text">RD</div>
+                <div class="title">Responsive Design</div>
+                <div class="label nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequatur debitis veritatis dolorum, enim libero!</div>
+              </div>
+
+              <div class="each-result">
+                <div class="icon circle red white-text">
+                  <i class="fa fa-tablet"></i>
+                </div>
+                <div class="title">Mobile First</div>
+                <div class="label nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequatur debitis veritatis dolorum, enim libero!</div>
+              </div>
+            </div>
+            <div class="col s12 l4">
+              <h4>Posts</h4>
+
+              <div class="no-result">No results were found ;(</div>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <!-- /Search Bar -->
+<!-- search end -->
+
+  <!-- Main Content -->
+<section class="content-wrap"  style="background-color:#ffffff;">
+<!-- 路由页面 -->
+<div ui-view ></div>
+
+
+</section>
+<!-- /Main Content -->
+
+<!-- footer -->
+<footer>
+    &copy; {{appConfigData.siteCopyright}}
+</footer>
+<!-- /footer -->

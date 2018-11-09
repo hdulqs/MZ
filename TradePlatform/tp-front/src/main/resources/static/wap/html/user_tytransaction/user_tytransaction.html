@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 42.6667px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="我们拥有领先的技术实力、优质的客户服务和良好的用户体验，为广大数字货币爱好者提供一个自由的网上交换的平台。">
+    <meta name="keywords" content="互融云,数字货币交易,虚拟货币交易,数字资产,互融币交易行情,ybc互融币,abcTAI,太一元,btc比特币,ltc莱特币,狗狗币,fct公证币,irc储备币,vap增值积分,猴币
+">
+    <link rel="stylesheet" href="../../style/mobile/css/css.css">
+    <link rel="stylesheet" href="../../style/css/layer.css">
+    <script type="text/javascript" src="../../style/mobile/js/zepto.js"></script>
+    <script type="text/javascript" src="../../style/js/jquery/1.9.1.min.js"></script>
+    <script src="../../style/mobile/js/public.js"></script>
+    <title>
+        互融网｜综合数字资产交易平台
+    </title>
+    <meta property="wb:webmaster" content="8af72a3a7309f0ee">
+</head>
+<body>
+    <header class="header">
+        <a href="../coins.htm">
+            <div class="logo"></div>
+        </a>
+        <div class="nav">
+            <a href="../coins.htm">交易中心</a>
+            <a href="../../hyhtml/user/user-index.html">我的账户</a>
+            <a href="../../hyhtml/user/account">
+                <img src="../../style/mobile/image/icon_home_03.png" alt="" style="width:0.35rem;height:0.35rem; position: relative;top:0.08rem">
+            </a>
+        </div>
+    </header>
+    <div id="main">
+        <div class="main_box">
+            <div class="raise right clearfix">
+                <style>
+                    .cb-box2 ul li span {
+                        display: inline-block;
+                        width: 1.67rem;
+                    }
+
+                    .box_common {
+                        width: 70%;
+                        height: 3rem;
+                        margin: -160px 0 0 0;
+                        background: #fff;
+                        z-index: 9999;
+                        position: fixed;
+                        left: 15%;
+                        border-radius: 5px;
+                    }
+
+                    .box_common p {
+                        font-size: 0.24rem;
+                        color: #666;
+                        text-align: center;
+                        padding: 0.5rem 0.3rem;
+                        display: table-cell;
+                        vertical-align: middle;
+                        height: 1rem;
+                    }
+
+                    .box_btn a {
+                        display: block;
+                        width: 1.5rem !important;
+                        height: 40px;
+                        line-height: 40px;
+                        font-size: 0.24rem;
+                        color: #fff;
+                        text-decoration: none;
+                        margin: 0 auto;
+                    }
+
+                    .box_common .box_btn {
+                        width: 100%;
+                    }
+                </style>
+                <div class="strip"></div>
+                <div class="Wf-div1" style="border-bottom: none;">
+                   <a onclick="history.back(-1)">返回</a>
+                    <span>太一元</span>
+                </div>
+                <p class="bullet_p" id="bullet_p">
+                    <a class="bull_click actives" name="d">太一元兑换</a><i class="bull_span_shu">|</i><a name="g" class="bull_click">太一元购买</a>
+                </p>
+                <!--太一元兑换开始-->
+                <div class="hezi_taiyi" style="display: block;" id="dh">
+                    <div class="cb-box1 tb-box1">
+                        <form method="post">
+                            <p class="p4">
+                                <label style="width:1.2rem;text-align: right;">兑换比例</label><span style="margin-left: 0;color:#333">1太一元=1人民币</span>
+                            </p>
+                            <p class="p4">
+                                <label style="width:1.2rem;text-align: right;">可用余额</label><span style="margin-left: 0;color:#333">0.0000太一元</span>
+                            </p>
+                            <p class="p5"><label>兑换数量</label><input class="input_coins" type="number" name="num" autocomplete="new-password" id="yrmbNum" placeholder="最多可兑换0太一元"></p>
+                            <p class="p5"><label>可兑换</label><input class="input_coins" style="background:#ebebe4;" type="text" disabled=""><span class="pos_span_news2" style="left:1.5rem;"><span id="cny2yrmb">0</span><span> 元</span></span>
+                            </p>
+                            <p class="p5"><label>交易密码</label><input class="input_coins" type="password" name="pwdtrade" id="yrmbPwd" autocomplete="new-password" placeholder="请输入交易密码"></p>
+                            <p class="p50"><input type="button" class="confirm yrmb2cny" value="兑换" style="background:#ff6600;width:90%;height:44px;color:white;font-size:13px"></p>
+                        </form>
+                    </div>
+
+                    <div class="cb-box2">
+                        <h5>兑换记录</h5>
+                        <ul class="ul2" id="list">
+                            <li>
+                                <strong>时间</strong>
+                                <strong>记录ID</strong>
+                                <strong>太一元</strong>
+                                <strong>人民币</strong>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p class="much" name="1" id="t_much" style="display:none">暂无更多内容</p>
+                            </li>
+                        </ul>
+                        <!--太一元兑换-->
+                    </div>
+                </div>
+                <!--太一元兑换结束-->
+                <!--太一元购买开始-->
+
+                <div class="hezi_taiyi" style="display: none;" id="gm">
+                    <div class="cb-box1 tb-box1">
+                        <form method="post">
+                            <p class="p4">
+                                <label style="width:1.2rem;text-align: right;">兑换比例</label><span style="margin-left: 0;color:#333">1人民币=1太一元</span>
+                            </p>
+                            <p class="p4">
+                                <label style="width:1.2rem;text-align: right;">可用余额</label><span style="margin-left: 0;color:#333">0.00元</span>
+                            </p>
+                            <p class="p5"><label>兑换数量</label><input class="input_coins" type="number" id="ty_number" name="num" autocomplete="new-password" placeholder="最多可兑换0太一元"></p>
+                            <p class="p5"><label>可兑换</label><input class="input_coins" style="background:#ebebe4" type="text" disabled=""><span class="pos_span_news2" style="left:1.5rem;"><span id="yrmb2cny">0</span>太一元</span>
+                            </p>
+                            <p class="p5"><label>交易密码</label><input class="input_coins" type="password" id="pwdtrade" autocomplete="new-password" placeholder="请输入交易密码"></p>
+                            <p class="p50"><input type="button" class="confirm cny2trmb" value="兑换" style="background:#ff6600;width:90%;height:44px;color:white;font-size:13px"></p>
+                        </form>
+                    </div>
+                    <div class="cb-box2">
+                        <h5>购买记录</h5>
+                        <ul class="ul2" id="li">
+                            <li>
+                                <strong>时间</strong>
+                                <strong>记录ID</strong>
+                                <strong>太一元</strong>
+                                <strong>人民币</strong>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p class="much" name="2" id="r_much" style="display:none">暂无更多内容</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--太一元购买结束-->
+                <div style="clear: both;"></div>
+                <!-- <script type="text/javascript" src="./互融网｜综合数字资产交易平台_files/tytansaction.js"></script> -->
+                <script src="../../style/mobile/js/fastclick.js"></script>
+                <input type="hidden" id="aa" value="d">
+                <input type="hidden" id="request" value="d">
+                <script>
+                    $(function() {
+                        var action = $("#aa").val();
+                        if (action) {
+                            if (action == 'd') {
+                                $('#dh').show();
+                                $('.bull_click').eq(0).addClass('actives');
+                            }
+                            if (action == 'g') {
+                                $('#gm').show();
+                                $('.bull_click').eq(1).addClass('actives');
+                            }
+                        }
+
+                        FastClick.attach(document.body);
+                        $(".bullet_p .bull_click").click(function() {
+                            if ($("#request").val() != $(this).attr('name')) $("#request").val($(this).attr('name'));
+                            $(this).addClass('actives').siblings().removeClass('actives');
+                            var index = $(".bullet_p .bull_click").index(this);
+                            $(".hezi_taiyi").eq(index).show().siblings(".hezi_taiyi").hide();
+                        });
+
+
+                    })
+                </script>
+                <script src="../js/layer/layer.js"></script>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer_kefu_news">
+            <a href="tel:4008367667"><i></i>4008-367-667</a>
+            <a><i></i>hry@hry.com</a>
+        </div>
+        <p>
+            <span>
+        <a href="javascript:void(0);" class="a1" id="phone">手机版</a>
+                <i>|</i>
+                <a href="javascript:void(0);" class="a2" id="window">电脑版</a>
+        </span>
+        </p>
+
+        <div>
+            Copyright2013-2016 互融网
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+ <!-- Handle -->
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l7">
+           <div class="row">
+			
+			
+			</div>
+        </div>
+        <div class="col s12 m3 l5 right-align pt-20">
+        <span style="color:red">
+									
+						<!-- 增加按钮 -->
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/article/appbanner/add')"  ng-click="fnAdd('article/appbanner/add')"  ><i class="fa fa-plus-circle " aria-hidden="true"></i>添加</a>
+						
+ 						
+						<!-- 修改按钮 -->
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/article/appbanner/modify')"  ng-click="fnModify('article/appbanner/modify')"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>修改</a>
+						<!-- 删除按钮 -->
+						
+						<a class="btn pr-10 pl-10"   ng-if="requiresPermissions('web','/article/appbanner/remove')"  ng-click="fnRemove('article/appbanner/remove')"> <i class="fa fa-trash-o " aria-hidden="true"></i>删除</a>
+
+						<!-- 刷新按钮 -->
+						<a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Handle -->
+
+<div >
+	<div class="row">
+
+		<div class="col s12 ">
+			<table id="table2"
+				class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label
+							for="checkboxAll"></label></th>
+						<th>banner</th>
+						<th>图片路径</th>
+						<!-- <th>类型</th> -->
+						<th>排序</th>
+						<th>是否显示</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+<span>刷新缓存后生效<a href="#/web/app/appcache/list/anon">进入缓存设置</a></span>
+		</div>
+	</div>
+
+</div>
+
+
+
+

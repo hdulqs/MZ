@@ -1,0 +1,160 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppicoprojectList.html     -->
+ <!-- @author:      shangxl  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-07-19 13:40:56      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改AppIcoProject</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/ico/project/appicoproject/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="website" ng-model="formData.website" /> <label for="website">website</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="step" ng-model="formData.step" /> <label for="step">项目资料填写到第几步 0.完善个人信息，1.项目基本信息 2.项目详细介绍 3.设置投资回报 4.提交审核 5.已完善</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="productName" ng-model="formData.productName" /> <label for="productName">项目名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="projectStage" ng-model="formData.projectStage" /> <label for="projectStage">产品所属阶段  0.尚未开启 1.产品开发中 2.产品已上市 3.已经盈利</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="trueName" ng-model="formData.trueName" /> <label for="trueName">真实姓名</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="workAddress" ng-model="formData.workAddress" /> <label for="workAddress">办公地址</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="teamSize" ng-model="formData.teamSize" /> <label for="teamSize">团队人数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="financingStage" ng-model="formData.financingStage" /> <label for="financingStage">融资阶段 0.未融资 1.D轮 2.C轮 3.B轮 4.A轮 5.天使轮</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="info" ng-model="formData.info" /> <label for="info">项目简介</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="icoDays" ng-model="formData.icoDays" /> <label for="icoDays">ico天数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinType" ng-model="formData.coinType" /> <label for="coinType">币种</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="isLimitMoney" ng-model="formData.isLimitMoney" /> <label for="isLimitMoney">是否限制目标金额  0.否、1.是</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sumMoney" ng-model="formData.sumMoney" /> <label for="sumMoney">目标金额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="linkman" ng-model="formData.linkman" /> <label for="linkman">联系人</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="position" ng-model="formData.position" /> <label for="position">职位</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="phone" ng-model="formData.phone" /> <label for="phone">联系人电话</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="startDays" ng-model="formData.startDays" /> <label for="startDays">申请多少天内开始</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="status" ng-model="formData.status" /> <label for="status">项目状态 0.即将开始 1.进行中 2.已完成</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="support" ng-model="formData.support" /> <label for="support">支持人数</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="getMoney" ng-model="formData.getMoney" /> <label for="getMoney">已获取支持金额</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="startTime" ng-model="formData.startTime" /> <label for="startTime">项目开始时间</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="endTime" ng-model="formData.endTime" /> <label for="endTime">项目结束时间</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

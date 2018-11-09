@@ -1,0 +1,30 @@
+<!-- With Search -->
+	<div class="card-panel">
+		<h4>修改</h4>
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s4 ">
+				<form ng-submit="processForm()">
+				<input type="hidden" name="configid"  ng-model="formData.configid"/>
+							                      <div class="input-field"> 
+				       <input type="text" name="configkey"  ng-model="formData.configkey" required />
+				       <label for="input_text">configkey：</label>
+				     </div>
+							                      <div class="input-field"> 
+				       <input type="text" name="value"  ng-model="formData.value" required />
+				       <label for="input_text">value：</label>
+				     </div>
+							                      <div class="input-field"> 
+				       <input type="text" name="name"   ng-model="formData.configdescription" />
+				       <label for="input_text">configdescription：</label>
+				     </div>
+
+				     </div>
+				      <button class="btn" type="submit">保存修改</button><span >{{ message }}</span>
+				</form>
+			</div>
+		
+		
+		</div>
+	</div>
+	<!-- /With Search --> 

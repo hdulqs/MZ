@@ -1,0 +1,42 @@
+
+		<div class="card-panel">
+		
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s4 ">
+				<form ng-submit="processForm()">
+					<div class="input-field"> 
+					   <input type="text" name="configname" ng-model="formData.configname" />
+				       <label for="input_text">新增配置项的名字</label>
+				     </div>
+				     <div class="input-field"> 
+				      <input type="text" name="configkey" ng-model="formData.configkey" required />
+				       <label for="input_text">新增配置项的key值(前台获取数据时使用)</label>
+				     </div>
+					 <div class="input-field"> 
+				       <input type="text" name="value"  ng-model="formData.value" required />
+				       <label for="input_text">新增配置项的值</label>
+				     </div>
+					
+				     
+				     
+					 <div class="input-field"> 
+					  <hry-select   url="{{HRY.host}}{{HRY.modules.web}}app/appconfig/find" name="typename" value="typekey" selectId="appRoleSet"  ></hry-select>
+				       
+				     </div>
+					 <div class="input-field">    
+							<input type="radio" name="datatype" value="1" id ="string" ng-model="formData.datatype"   />
+				           <label for="string">输入框</label>
+				           <input type="radio" name="datatype"  value="2" id ="int" ng-model="formData.datatype"   />
+				           <label for="int">单选按钮       </label> 
+				           <input type="radio" name="datatype"  value="3" id ="picture" ng-model="formData.datatype"   />
+				           <label for="picture">图片上传        (新增配置项添加值的方式)</label> 
+							</div>
+							                    
+					 <button class="waves-effect btn" type="submit">保存</button><span >{{ message }}</span>
+				</form>
+			</div>
+		
+		
+		</div>
+	</div>

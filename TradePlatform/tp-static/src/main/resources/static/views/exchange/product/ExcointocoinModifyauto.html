@@ -1,0 +1,99 @@
+
+<!-- Copyright:   北京互融时代软件有限公司 -->
+<!-- ExcointocoinList.html     -->
+<!-- @author:      gaomimi  -->
+<!-- @version:     V1.0             -->
+<!-- @Date:        2017-07-06 19:40:34      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5"></span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right"
+			href="#/exchange/product/excointocoin/listauto/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					交易币种<input type="text" name="remark"
+						ng-model="formData.coinCode" readonly="readonly" />
+				</div>
+			</div>
+
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					定价币种<input type="text" name="remark"
+						ng-model="formData.fixPriceCoinCode" readonly="readonly" />
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				  <div class="input-field">
+		              <select id="isSratAuto" name="isSratAuto" class="form-control">
+		                            		<option  value = "0">关闭自动交易</option>
+		                            		 <option  value = "1">开启自动交易</option>
+		                            	
+		                </select>
+                 </div>
+			</div>
+			<div class="col s12 m6">
+				<div class="input-field">
+					交易账号<input type="text" name="autoUsername"
+						ng-model="formData.autoUsername" required />
+				</div>
+			</div>
+			
+		  <div class="col s12 m6">
+				  <div class="input-field">
+		              <select id="atuoPriceType" name="atuoPriceType" class="form-control">
+                         	
+                         		 <option  value = "1">定价下单</option>
+                         		 	<option  value = "2">市价下单</option>
+		                            	
+		                </select>
+                 </div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					价格基准 <input id="autoPrice" type="text" name="autoPrice" ng-model="formData.autoPrice" />
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					价格浮动(%) <input type="text" name="autoPriceFloat"
+						ng-model="formData.autoPriceFloat" required/>
+				</div>
+			</div>
+
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					数量基准<input type="text" name="autoCount"
+						ng-model="formData.autoCount" required/>
+				</div>
+			</div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					数量浮动(%) <input type="text" name="autoCountFloat"
+						ng-model="formData.autoCountFloat" required/>
+				</div>
+			</div>
+		
+		</div>
+
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit">保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

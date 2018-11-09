@@ -1,0 +1,82 @@
+<!-- 分公司管理 -->
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">客户菜单管理</span>
+		<!-- 返回按钮 -->
+	</h4>
+	<hr>
+	<div class="row">
+		<div class="col s6">
+			<div class="alert green lighten-4 green-text text-darken-2">客户菜单：
+				<br/>
+				一丶点击配置客户菜单，到系统菜单中为客户配置对应的功能
+				<br/>
+				二丶选择对应的按钮进行隐藏,隐藏后按钮显示为红色,再次点击隐藏按钮后恢复
+				<br>
+				三丶客户菜单与应用菜单不实时同步，客户菜单给产品经理用，应用菜单放开给客户用
+				<br/>
+				   新上线的功能不会在客户菜单中显示
+				<br/>
+				   新上线的按钮会在客户菜单中显示为红色
+				<br/>
+			</div>
+			<a class="btn" ng-click="fnCheckedAll('tree');">全选</a>
+			<div id="tree" class="ztree"></div>
+		</div>
+		<div class="col s2">
+			<a class="btn" ng-click="selectAppMenu();">配置客户菜单</a> 
+			<br /> <br /> 
+			<a class="btn" ng-click="fnRemove();">删除客户菜单</a>
+			<br /> <br /> 
+			<a class="btn" ng-click="fnIsVisible();">隐藏按钮</a>
+		</div>
+	</div>
+	<div class="row pl-20 pr-10  mw-900 hide" id="selectTreeDiv">
+			<div class="row">
+				<div class="col m3 s12">
+					
+						<select data-placeholder="请选择应用" id="appName_EQ" dataTableSerch>
+							<option value="" selected>系统分类</option>
+							<option value="hurong_oauth">组织权限</option>
+							<option value="hurong_web">基础应用</option>
+							<option value="hurong_account">财务应用</option>
+							<option value="hurong_customer">客户应用</option>
+							<option value="hurong_exchange">交易所应用</option>
+							<option value="hurong_sms">消息应用</option>
+							<option value="hurong_spotchange">委托应用</option>
+						</select>
+			</div>
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.name_like" dataTableSerch> <label for="input_lname">功能名称</label>
+					</div>
+				</div>
+				
+				<div class="col m3 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.mkey_like" dataTableSerch> <label for="input_lname">功能key</label>
+					</div>
+				</div>
+				
+				<div class="col m3 s12"><a class="btn" ng-click="fnAdd();">保存</a></div>
+				
+
+			</div>
+			<div class="row">
+			<table id="table2" class="display table table-bordered table-striped table-hover ">
+						<thead>
+							<tr>
+								<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+								<th>系统分类</th>
+								<th>应用名称</th>
+								<th>应用KEY</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+			
+			</div>
+		
+	</div>
+	<!-- /With Search -->

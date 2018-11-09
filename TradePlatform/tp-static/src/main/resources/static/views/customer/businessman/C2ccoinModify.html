@@ -1,0 +1,72 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- C2ctransactionList.html     -->
+ <!-- @author:      liushilei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-12-07 14:06:38      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">修改c2c交易参数</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/businessman/c2ccoin/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="coinCode" ng-model="formData.coinCode" /> <label for="coinCode">交易币种</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col s12 m6">
+				<div class="input-field">
+					<select   data-allow-clear="true"    data-placeholder="c2c交易开关" id="isOpen">
+						<option value="0">关闭</option>
+						<option value="1">开启</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="buyPrice" ng-model="formData.buyPrice" /> <label for="buyPrice">买入价</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sellPrice" ng-model="formData.sellPrice" /> <label for="sellPrice">卖出价</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="minCount" ng-model="formData.minCount" /> <label for="minCount">交易最小数量</label>
+				</div>
+			</div>
+		</div>	
+		<div class="row">	
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="maxCount" ng-model="formData.maxCount" /> <label for="maxCount">交易最大数量</label>
+				</div>
+			</div>
+		</div>		
+			
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

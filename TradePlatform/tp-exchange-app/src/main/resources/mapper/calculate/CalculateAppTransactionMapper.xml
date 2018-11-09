@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.calculate.mvc.dao.CalculateAppTransactionDao">
+
+  <select id="selectAppTransactionOfRmb" resultType="com.mz.calculate.mvc.po.PendingOrders">
+
+		SELECT
+		* from
+		(
+		SELECT
+		SUM(transactionMoney) as sunMoney
+		FROM
+		`app_transaction`
+		WHERE
+		STATUS = 1
+		AND transactionType IN (5, 3, 1)
+		) AS sunMoney,
+		(
+		SELECT
+		COUNT(transactionMoney) as dmTransaxtionCount
+		FROM
+		ex_dm_transaction
+		WHERE
+		STATUS = 1
+		AND transactionType = 1
+		) as
+		dmTransaxtionCount
+
+
+
+	</select>
+
+
+  <select id="selectAppTransactionOfRmbGet" resultType="com.mz.calculate.mvc.po.PendingOrders">
+
+	
+		SELECT
+		* from
+		(
+		SELECT
+		SUM(transactionMoney) as sunMoney
+		FROM
+		`app_transaction`
+		WHERE
+		STATUS = 1
+		AND transactionType IN (2,4)
+		) AS sunMoney,
+		(
+		SELECT
+		COUNT(transactionMoney) as dmTransaxtionCount
+		FROM
+		ex_dm_transaction
+		WHERE
+		STATUS = 1
+		AND transactionType = 2
+		) as
+		dmTransaxtionCount
+	</select>
+
+
+  <select id="selectTransactionDayAgo" parameterType="Integer"
+    resultType="com.mz.calculate.mvc.po.CalculatePo">
+		SELECT
+		b.name codeName,
+		a.coinCode CODE,
+		SUM(a.transactionCount) trancateMoney
+		FROM
+		ex_order a,ex_product b
+		WHERE DATEDIFF(
+		DATE_FORMAT(NOW(), '%Y-%m-%d'),
+		DATE_FORMAT(transactionTime, '%Y-%m-%d')
+		) = #{dayAgo} AND a.coinCode = b.coinCode
+		GROUP BY a.coinCode
+
+	</select>
+
+
+  <!-- <select id="selectCustromerNum" parameterType="Integer"
+    resultType="CustromerRegisterPo">
+    <![CDATA[ SELECT (SELECT COUNT(ab.userName) FROM
+              app_customer ab WHERE
+              ab.isDelete =#{isDelete} AND
+              DATEDIFF(DATE_FORMAT(NOW(),'%Y-%m-%d'),DATE_FORMAT(ab.created,'%Y-%m-%d'))<= #{dayAgo}) AS newCustromer ,
+              COUNT(ac.userName) AS oldCustromer
+              FROM  app_customer ac WHERE ac.isDelete =#{isDelete}; ]]>
+  </select> -->
+  <select id="selectCustromerNum" parameterType="Integer"
+    resultType="com.mz.calculate.mvc.po.CustromerRegisterPo">
+		<![CDATA[
+     SELECT (SELECT count(1) FROM app_customer ab
+				WHERE ab.isDelete =#{isDelete} 
+				AND STR_TO_DATE(date_add(NOW(), interval - #{dayAgo} day),'%Y-%m-%d')<STR_TO_DATE(ab.created,'%Y-%m-%d')) AS newCustromer ,
+				COUNT(ac.userName) AS oldCustromer 
+				FROM  app_customer ac WHERE ac.isDelete =#{isDelete};
+    ]]>
+	</select>
+  <select id="findUserDistribution" resultType="com.mz.calculate.mvc.po.AppStatisticalToIndexVo">
+		SELECT
+		a.userName countToRegist,
+		b.userName countToReal,
+		c.userName countToPost,
+		d.userName countToClinch
+		FROM
+		(SELECT
+		COUNT(DISTINCT (userName)) userName
+		FROM
+		app_customer
+		WHERE isReal = 0) a,
+		(SELECT
+		COUNT(DISTINCT (aaa.userName)) userName
+		FROM
+		app_customer aaa
+		WHERE isReal = 1
+		AND aaa.id NOT IN
+		(SELECT DISTINCT
+		(customerId)
+		FROM
+		app_transaction
+		WHERE STATUS = 2)) b,
+		(SELECT
+		COUNT(DISTINCT (ccc.userName)) userName
+		FROM
+		app_transaction ccc,
+		ex_order_info ddd
+		WHERE ccc.userName NOT IN
+		(SELECT DISTINCT
+		(userName)
+		FROM
+		ex_order_info)) c,
+		(SELECT
+		COUNT(DISTINCT (userName)) userName
+		FROM
+		ex_order_info) d
+	</select>
+
+  <select id="findOrderDistribution"
+    resultType="com.mz.calculate.settlement.model.AppOrderDistributionVo">
+		SELECT * FROM
+           ((SELECT		coinCode,		NAME coinName
+             FROM  		ex_product
+             WHERE     issueState = 1) a
+             LEFT JOIN
+            (SELECT coinCode,SUM(entrustCount) coinCount
+             from ex_entrust  
+             WHERE type='1' and  (`status`='2' OR `status`='3' OR `status`='1') 
+             GROUP BY coinCode) b
+             ON a.coinCode = b.coinCode)
+	</select>
+
+  <select id="findTotalMoney" parameterType="String" resultType="Integer">
+		SELECT IFNULL(SUM(transactionSum),0)/2 totalMoney FROM ex_order_info
+		WHERE website=#{website}
+	</select>
+
+
+</mapper>

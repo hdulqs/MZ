@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+    <!-- 交易产品按钮   -->  
+    <menu key="jiaoyichanpingguanli" name="币种资料管理" url="/product/exproduct/list/anon" shiroUrl="/product/ecproduct/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="jiaoyichanpingguanli_add" name="添加" shiroUrl="/product/exproduct/add"/>  
+        <function key="jiaoyichanpingguanli_modify" name="修改" shiroUrl="/product/exproduct/modify"/>  
+        <function key="jiaoyichanpingguanli_remove" name="删除" shiroUrl="/product/exproduct/remove"/>  
+        <function key="jiaoyichanpingguanli_publishProduct" name="发布" shiroUrl="/product/exproduct/publishProduct"/>  
+        <function key="jiaoyichanpingguanli_openc2c" name="开启c2c" shiroUrl="/product/exproduct/openc2c"/>  
+        <function key="jiaoyichanpingguanli_closec2c" name="关闭c2c" shiroUrl="/product/exproduct/closec2c"/>  
+       <!--  <function key="jiaoyichanpingguanli_delistProduct" name="退市" shiroUrl="/product/exproduct/delistProduct"/>  -->
+        <function key="jiaoyichanpingguanli_openTransaction" name="开启交易" shiroUrl="/product/exproduct/openTransaction"/> 
+          <function key="jiaoyichanpingguanli_closeTransaction" name="关闭交易" shiroUrl="/product/exproduct/closeTransaction"/> 
+    </menu>  
+    <menu key="jiaoyichanpingcanshu" name="币种交易参数配置" url="/product/productparameter/list/anon" shiroUrl="/product/productparameter/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="jiaoyichanpingcanshu_modify" name="修改" shiroUrl="/product/exproduct/modify"/> 
+    </menu>  
+    <!-- <menu key="chanpingfabu" name="产品的发布" url="/product/exproduct/publish/anon" shiroUrl="/product/exproduct/list" isOpen="0" isOutLink="0" orderNo="" />  isOutLink="0" = 0 是本地连接      = 1 是外链   -->  
+    <menu key="chanpingpinglunguanli" name="币种评论管理" url="/product/productreview/list/anon" shiroUrl="/product/productreview/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="chanpingpinglunguanli_tongguo" name="通过" shiroUrl="/product/productreview/pass"/>  
+        <function key="chanpingpinglunguanli_shanchu" name="删除" shiroUrl="/product/exproduct/delete"/> 
+    </menu>  
+    <menu key="qubiqianbaoguanli" name="提币地址管理" url="/transaction/exdmcustomerpublickey/list/anon" shiroUrl="/account/exdmcustomerpublickey/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="chongbidizhiguanli" name="货币账户管理" url="/account/exdigitalmoneyaccount/list/anon" shiroUrl="/account/exdigitalmoneyaccount/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="chongbidizhiguanli_recharge" name="手动充值" shiroUrl="/account/exdigitalmoneyaccount/recharge"/>
+        <function key="chongbidizhiguanli_tibi" name="手动提币" shiroUrl="/account/exdigitalmoneyaccount/tibi"/>
+        <function key="chongbidizhiguanli_disable" name="禁用" shiroUrl="/account/exdigitalmoneyaccount/disable"/>  
+        <function key="chongbidizhiguanli_coindisable" name="币禁用" shiroUrl="/account/exdigitalmoneyaccount/coindisable"/> 
+    </menu>  
+    <!--<menu key="qubiqianbaoguanli" name="取币钱包管理"  url="/transaction/exdmcustomerpublickey/list/anon" shiroUrl="/account/exdmcustomerpublickey/list" isOpen="0" isOutLink="0" orderNo="" />  
+	    <menu key="coinAddressInfo" name="钱包操作明细查询"  url="/transaction/exdmcustomerpublickey/list/anon" shiroUrl="/account/exdmcustomerpublickey/list1" isOpen="0" isOutLink="0" orderNo="" /> 
+		<menu key="chongbidizhiguanli" name="充币地址管理"  url="/account/exdigitalmoneyaccount/list/anon" shiroUrl="/account/exdigitalmoneyaccount/list" isOpen="0" isOutLink="0" orderNo="" /> -->  
+    <!-- <menu key="coinAddressInfo" name="钱包操作明细查询"  url="/transaction/exdmcustomerpublickey/list/anon" shiroUrl="/account/exdmcustomerpublickey/list1" isOpen="0" isOutLink="0" orderNo="" /> -->  
+    <menu key="xunibidongjieliushuiguanli" name="热账户流水管理" url="/account/exdmhotaccountrecord/list/anon" shiroUrl="/account/exdmhotaccountrecord/list" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="xunibikeyongliushuiguanli" name="冷账户流水管理" url="/account/exdmcoldaccountrecord/list/anon" shiroUrl="/account/exdmcoldaccountrecord/list" isOpen="0" isOutLink="0" orderNo=""/>
+    <!--	
+  	<menu key="xunibidingdanguanli" name="虚拟币订单管理"  url="/transaction/exdmtransaction/list/anon" shiroUrl="/account/exdmtransaction/list" isOpen="0" isOutLink="0" orderNo="" />
+ -->  
+    <!-- 	<menu key="xunibichongzhiguanli" name="虚拟币充值管理"  url="/transaction/exdmtransaction/succeedlist/1" shiroUrl="/account/exdmtransaction/succeedlist" isOpen="0" isOutLink="0" orderNo="" />
+  	<menu key="xunibitixianguanli" name="虚拟币提现管理"  url="/transaction/exdmtransaction/underwaylist/2" shiroUrl="/account/exdmtransaction/underwaylist" isOpen="0" isOutLink="0" orderNo="" />
+  	<menu key="xunibishibaiguanli" name="虚拟币失败管理"  url="/transaction/exdmtransaction/defeatedlist/3" shiroUrl="/account/exdmtransaction/defeatedlist" isOpen="0" isOutLink="0" orderNo="" />
+
+ -->  
+    <menu key="weituojiaoyiguanli_listnow" name="当前委托" url="/entrust/exentrust/listnow/anon" shiroUrl="/entrust/exentrust/listnow/anon" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="weituojiaoyiguanli_listhistory" name="历史委托" url="/entrust/exentrust/listhistory/anon" shiroUrl="/entrust/exentrust/listhistory/anon" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="weituojiaoyiguanli_listed" name="全部成交委托" url="/entrust/exentrust/listed/anon" shiroUrl="/entrust/exentrust/listed/anon" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="weituojiaoyiguanli_listpart" name="部分成交委托中" url="/entrust/exentrust/listpart/anon" shiroUrl="/entrust/exentrust/listpart/anon" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="weituojiaoyiguanli_listing" name="全部待成交委托" url="/entrust/exentrust/listing/anon" shiroUrl="/entrust/exentrust/listing/anon" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="weituojiaoyiguanli_listcancel" name="全部撤销委托" url="/entrust/exentrust/listcancel/anon" shiroUrl="/entrust/exentrust/listcancel/anon" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="weituojiaoyiguanli_listcancelpart" name="部分成交已撤销委托" url="/entrust/exentrust/listcancelpart/anon" shiroUrl="/entrust/exentrust/listcancelpart/anon" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="yinhangzhanghuguanli_dongjie" name="冻结金额流水"  url="/fund/appColdAccountRecord/list" shiroUrl="/fund/appColdAccountRecord/list" isOpen="0" isOutLink="0" orderNo="" />
+    <menu key="jiaoyishouxufei" name="平台收取交易手续费查询" url="/entrust/exorderinfo/listfees/anon" shiroUrl="/entrust/exorderinfo/listfees" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="gangganpingcangjilu" name="平仓记录" url="/lend/exDmLendPing/list" shiroUrl="/lend/exDmLendPing/list" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="jiaoyishouxufeiaaa" name="平仓管理" url="/entrust/exorderinfo/listfees/anon" shiroUrl="/entrust/exorderinfoping/listfees" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="chengjiaojiluchaxun" name="成交记录查询" url="/entrust/exorderinfo/list/anon" shiroUrl="/entrust/exorderinfo/list/anon" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="chongzhishuoxufeichaxun" name="充值手续费查询" url="/procedure/proceduretrantroction/list/1" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="tixianshuoxufeichaxun" name="提现手续费查询" url="/procedure/proceduretrantroction/list/2" shiroUrl="" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xunibichongzhiapply" name="充币申请审核" url="/transaction/exdmtransaction/DapplyList" shiroUrl="/transaction/exdmtransaction/DapplyList" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="xunibichongzhiapply_record" name="转入记录刷新" shiroUrl="/transaction/exdmtransaction/record"/>  
+        <function key="xunibichongzhiapply_tonguo" name="通过" shiroUrl="/transaction/exdmtransaction/post/"/>  
+        <function key="xunibichongzhiapply_bohui" name="驳回" shiroUrl="/transaction/exdmtransaction/stop/"/> 
+    </menu>  
+    <menu key="xunibichongzhisuccess" name="充币成功查询" url="/transaction/exdmtransaction/DsuccessList" shiroUrl="/transaction/exdmtransaction/DsuccessList" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="xunibichongzhisuccess_bohui" name="驳回" shiroUrl="/transaction/exdmtransaction/bohui"/> 
+    </menu>  
+    <menu key="xunibichongzhifaile" name="充币失败查询" url="/transaction/exdmtransaction/DfailList" shiroUrl="/transaction/exdmtransaction/DfailList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xunibirecharger" name="货币充币及收费台账" url="/transaction/exdmtransaction/RechargeList" shiroUrl="/transaction/exdmtransaction/allList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xunibitixianapply" name="提币申请审核" url="/transaction/exdmtransaction/WapplyList" shiroUrl="/transaction/exdmtransaction/WapplyList" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="xunibitixianapply_tongguo" name="通过" shiroUrl="/transaction/exdmtransaction/post"/>  
+        <function key="xunibitixianapply_bohui" name="驳回" shiroUrl="/transaction/exdmtransaction/stop"/> 
+    </menu>  
+    <menu key="xunibitixiansuccess" name="提币成功查询" url="/transaction/exdmtransaction/WsuccessList" shiroUrl="/transaction/exdmtransaction/WsuccessList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xunibitixianfaile" name="提币失败查询" url="/transaction/exdmtransaction/WfailList" shiroUrl="/transaction/exdmtransaction/WfailList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="xunibiwithdraw" name="货币提币及收费台账" url="/transaction/exdmtransaction/WithdrawList" shiroUrl="/transaction/exdmtransaction/allList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="chongbibohui" name="充币驳回" url="/transaction/exdmtransaction/RejectedList" shiroUrl="/transaction/exdmtransaction/rejectedList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="rongziapply" name="融资申请查询" url="/lend/exdmLend/find" shiroUrl="/lend/exdmLend/find" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="gangganbeishuguanli" name="杠杆倍数管理" url="/lend/exDmLendTimes/list" shiroUrl="/lend/exDmLendTimes/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="gangganshoufei" name="杠杆借款明细" url="/lend/exdmLend/see" shiroUrl="/lend/exdmLend/see" isOpen="0" isOutLink="0" orderNo=""/>
+    <menu key="pursetransaction" name="钱包交易数据查询" url="/purse/cointransaction/list" shiroUrl="/purse/cointransaction/list" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="apiapplyguanli" name="API申请管理" url="/account/exapiapply/list" shiroUrl="/account/exapiapply/list" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="apiapplyguanli_delete" name="删除" shiroUrl="/account/exapiapply/delete"/> 
+    </menu>  
+    <menu key="hxbxunibitixianapply" name="提币请审核(海香币)" url="/transaction/hxbexdmtransaction/WapplyList" shiroUrl="/transaction/hxbexdmtransaction/WapplyList" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="hxbxunibitixianapply_tongguo" name="通过" shiroUrl="/transaction/hxbexdmtransaction/post"/>  
+        <function key="hxbxunibitixianapply_bohui" name="驳回" shiroUrl="/transaction/hxbexdmtransaction/stop"/> 
+    </menu>  
+    <menu key="hxbxunibitixiansuccess" name="提币成功查询(海香币)" url="/transaction/hxbexdmtransaction/WsuccessList" shiroUrl="/transaction/hxbexdmtransaction/WsuccessList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="hxbxunibitixianfaile" name="提币失败查询(海香币)" url="/transaction/hxbexdmtransaction/WfailList" shiroUrl="/transaction/hxbexdmtransaction/WfailList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="hxbxunibichongzhisuccess" name="充币成功查询(海香币)" url="/transaction/hxbexdmtransaction/DsuccessList" shiroUrl="/transaction/hxbexdmtransaction/DsuccessList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <menu key="hxbxunibichongzhifaile" name="充币失败查询(海香币)" url="/transaction/hxbexdmtransaction/DfailList" shiroUrl="/transaction/hxbexdmtransaction/DfailList" isOpen="0" isOutLink="0" orderNo=""/>  
+    <!--  <menu key="exchange_ExSubscriptionPlan" name="制定认购计划" url="/subscription/exsubscriptionplan/formulate/anon" shiroUrl="/subscription/exsubscriptionplan/formulate" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="exchange_ExSubscriptionPlan_add" name="添加" shiroUrl="/subscription/exsubscriptionplan/add"/> 
+    </menu> -->  
+    <menu key="exSubscriptionPlan" name="制定认购计划" url="/subscription/exsubscriptionplan/list/anon" shiroUrl="/subscription/exsubscriptionplan/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="exchange_ExSubscriptionPlan_see" name="查看" shiroUrl="/subscription/exsubscriptionplan/see"/>  
+        <function key="exchange_ExSubscriptionPlan_release" name="发布" shiroUrl="/subscription/exsubscriptionplan/release"/>  
+        <function key="exchange_ExSubscriptionPlan_modify" name="修改" shiroUrl="/subscription/exsubscriptionplan/modify"/>  
+        <function key="exchange_ExSubscriptionPlan_remove" name="删除" shiroUrl="/subscription/exsubscriptionplan/remove"/> 
+    </menu>  
+    <menu key="exchange_ExSubscriptionRecord" name="认购计划管理" url="/subscription/exsubscriptionrecord/list/anon" shiroUrl="/subscription/exsubscriptionrecord/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="exchange_ExSubscriptionRecord_see" name="查看" shiroUrl="/subscription/exsubscriptionrecord/see"/>  
+        <function key="exchange_ExSubscriptionRecord_buyBack" name="回购" shiroUrl="/subscription/exsubscriptionrecord/buyBack"/> 
+    </menu>  
+    <menu key="exchange_ExBuybackRecord" name="回购记录管理" url="/subscription/exbuybackrecord/list/anon" shiroUrl="/subscription/exbuybackrecord/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="exchange_ExBuybackRecord_see" name="查看" shiroUrl="/subscription/exbuybackrecord/see"/>  
+        <function key="exchange_ExBuybackRecord_passed" name="通过" shiroUrl="/subscription/exbuybackrecord/passed"/>  
+        <function key="exchange_ExBuybackRecord_reject" name="驳回" shiroUrl="/subscription/exbuybackrecord/reject"/> 
+    </menu>  
+    <menu key="bijingyongchaxun" name="币禁用查询" url="/account/appaccountdisable/list/anon" shiroUrl="/account/appaccountdisable/list/anon" isOpen="0" isOutLink="0" orderNo=""> 
+        <function key="bijingyongchaxun_encoindisable" name="解除禁用" shiroUrl="/account/appaccountdisable/encoindisable"/> 
+    </menu>  
+    <menu key="exchange_ExCointoCoin" name="定价交易币管理" url="/product/excointocoin/list/anon" shiroUrl="/product/excointocoin/list" isOpen="0" isOutLink="0" orderNo="0"> 
+        <function key="exchange_ExCointoCoin_see" name="查看" shiroUrl="/product/excointocoin/see"/>  
+        <function key="exchange_ExCointoCoin_add" name="添加" shiroUrl="/product/excointocoin/add"/>  
+        <function key="exchange_ExCointoCoin_modify" name="修改" shiroUrl="/product/excointocoin/modify"/>  
+        <function key="exchange_ExCointoCoin_remove" name="删除" shiroUrl="/product/excointocoin/remove"/> 
+    </menu>  
+    <menu key="autoExchange" name="自动交易管理" url="/product/excointocoin/listauto/anon" shiroUrl="/product/excointocoin/list" isOpen="0" isOutLink="0" orderNo="0"></menu>  
+    <menu key="exchange_ExDmLendTimes" name="ExDmLendTimes" url="/lend/exdmlendtimes/list/anon" shiroUrl="/lend/exdmlendtimes/list" isOpen="0" isOutLink="0" orderNo="0">
+        <function key="exchange_ExDmLendTimes_see" name="查看" shiroUrl="/lend/exdmlendtimes/see"/>
+        <function key="exchange_ExDmLendTimes_add" name="添加" shiroUrl="/lend/exdmlendtimes/add"/>
+        <function key="exchange_ExDmLendTimes_modify" name="修改" shiroUrl="/lend/exdmlendtimes/modify"/>
+        <function key="exchange_ExDmLendTimes_remove" name="删除" shiroUrl="/lend/exdmlendtimes/remove"/>
+    </menu>
+</root>

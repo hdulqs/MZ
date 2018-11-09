@@ -1,0 +1,37 @@
+spring:
+  redis:
+    host: 192.168.1.102
+    port: 6379
+    password: Credit2016Admin
+    pool:
+      max-active: 20
+      max-wait: 1
+      max-idle: 5
+      min-idle: 0
+    timeout: 10000
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.1.102:3306/changes?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: N2ftZPPQeBZKztvn
+      initial-size: 1
+      min-idle: 1
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  rabbitmq:
+    host: 192.168.1.102
+    port: 5672
+    username: qq
+    password: 1234
+    virtual-host: /qq

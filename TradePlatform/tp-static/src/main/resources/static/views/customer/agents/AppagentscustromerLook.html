@@ -1,0 +1,77 @@
+
+    <!-- 代理客户基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>代理客户信息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content"> 
+      
+
+
+    <div class="row ">
+	     <div class="col s12 m6 l3">
+	    	<div class="input-field"> 
+	    		用户名  <input  readonly="readonly" type="text" name="agentName" ng-model="model.agentName"   />
+			</div>
+		</div>
+		<div class="col s12 m6 l3">
+	    	<div class="input-field"> 
+	    		姓氏  <input  readonly="readonly" type="text" name="surname" ng-model="model.surname"   />
+			</div>
+		</div>
+		<div class="col s12 m6 l3">
+	    	<div class="input-field"> 
+	    		性别  <input  readonly="readonly" type="text" name="sex" ng-model="model.sex"   />
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+	     <div class="col s12 m6 l3">
+	    	<div class="input-field"> 
+	    		证件号  <input  readonly="readonly" type="text" name="papersNo" ng-model="model.papersNo"   />
+			</div>
+		</div>
+		<div class="col s12 m6 l3">
+	    	<div class="input-field"> 
+	    		 证件类型 	<input ng-if=" model.papersType == 1 " disabled="disabled" type="text" name="papersType" value="国内"   />
+				        <input ng-if=" model.papersType == 2 " disabled="disabled" type="text" name="papersType" value="海外"   />
+			</div>
+		</div>
+		<div class="col s12 m6 l3">
+	    	<div class="input-field"> 
+	    		地区  <input  readonly="readonly" type="text" name="address" ng-model="model.address"   />
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col s12 m6 l3">
+			 <div class="input-field">
+				 是否认证 	<input ng-if=" model.states == 0 " disabled="disabled" type="text" name="maxBlocksize" value="否"   />
+				        <input ng-if=" model.states == 2 " disabled="disabled" type="text" name="maxBlocksize" value="是"   />
+				        
+			</div>
+		</div>
+		
+		<div class="col s12 m6 l3">
+			<div class="input-field"> 
+				  <span ng-if=" model.modified !=undefined " > 认证时间</span>  <input ng-if=" model.modified !=undefined " disabled="disabled" type="text" name="modified" ng-model="model.modified"  > </input>
+			</div>
+		</div>
+	
+    </div>
+   
+	</div>	
+</div>
+
+
+			
+
+
+

@@ -1,0 +1,76 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommendmoneyList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-29 10:05:55      -->
+
+<div class="card-panel">
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">查看AppCommendMoney</span>
+		<!-- 返回按钮 -->
+		<a class="btn fs-16 right" href="#/customer/money/appcommendmoney/list/anon">返回</a>
+	</h4>
+	<hr>
+	<form ng-submit="processForm()">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="custromerId" ng-model="formData.custromerId" /> <label for="custromerId">custromerId</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="custromerName" ng-model="formData.custromerName" /> <label for="custromerName">custromerName</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="refecode" ng-model="formData.refecode" /> <label for="refecode">邀请码</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="moneyNum" ng-model="formData.moneyNum" /> <label for="moneyNum">总佣金</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="paidMoney" ng-model="formData.paidMoney" /> <label for="paidMoney">已派发佣金</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="sid" ng-model="formData.sid" /> <label for="sid">所有下级</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="fixPriceType" ng-model="formData.fixPriceType" /> <label for="fixPriceType">fixPriceType</label>
+				</div>
+			</div>
+			
+			<div class="col s12 m6">
+				<div class="input-field">
+					<input type="text" id="fixPriceCoinCode" ng-model="formData.fixPriceCoinCode" /> <label for="fixPriceCoinCode">fixPriceCoinCode</label>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<p class="center mb-20">
+				<!-- 保存按钮 -->
+				<button class="btn" type="submit" >保存</button>
+			</p>
+		</div>
+	</form>
+</div>
+
+

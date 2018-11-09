@@ -1,0 +1,92 @@
+spring:
+  redis:
+    host: 192.168.1.102
+    port: 6379
+    password: 123456
+    pool:
+      max-active: 20
+      max-wait: 1
+      max-idle: 5
+      min-idle: 0
+    timeout: 10000
+  redis1:
+    host: 192.168.1.102
+    port: 6380
+    password: 123456
+    pool:
+      max-active: 20
+      max-wait: 1
+      max-idle: 5
+      min-idle: 0
+    timeout: 10000
+  datasource:
+    druid:
+      filters: config,stat,wall
+      connect-properties: config.file=http://47.75.200.109/druid-pool.properties
+      driver-class-name: com.mysql.jdbc.Driver
+      url:
+      username:
+      password:
+      initial-size: 1
+      min-idle: 1
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  rabbitmq:
+    host: 192.168.1.102
+    port: 5672
+    username: qq
+    password: 1234
+    virtual-host: /qq
+  freemarker:
+    allow-request-override: false
+    allow-session-override: false
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    prefer-file-system-access: true
+    suffix: .ftl
+    template-loader-path: classpath:/view/
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      classic_compatible: true
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      datetime_format: yyyy-MM-dd HH:mm:ss
+  messages:
+    basename: messages/message
+    fallback-to-system-locale: false
+server:
+  port: 8083
+  context-path: /
+mybatis:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper:
+    not-empty: false
+    identity: mysql
+zookeeper:
+  url: zookeeper://192.168.1.102:2181
+dubbo:
+  name: tp-front
+  port: 20903
+  host: 192.168.1.102
+  cachepath: cache
+logging:
+  level: trace
+  path: logback.xml

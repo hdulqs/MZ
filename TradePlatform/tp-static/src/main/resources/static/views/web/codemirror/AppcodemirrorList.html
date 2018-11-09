@@ -1,0 +1,177 @@
+
+ <!-- Breadcrumb -->
+    <div class="page-title">
+
+      <div class="row">
+         <div class="col s12 m6 l7">
+         <h4>
+		<i class="mdi-action-view-list fs-26"></i> <span class="fs-16 p-5">配置应用菜单</span>
+	      </h4>
+        </div> 
+       
+       <div class="col s12 m6 l5 right-align pr-30">
+        <div class="row">
+			</div>
+        </div>
+       
+      </div>
+
+    </div>
+    <!-- /Breadcrumb -->
+
+
+<!-- 分公司管理 -->
+<div class="">
+	
+	<div class="row">
+		<div class="col s3">
+			<div class="alert green lighten-4 green-text text-darken-2">通过文件树菜单配置模板</div>
+			<div id="tree" class="ztree"></div>
+		</div>
+		<div class="col s9"   >
+			<div class="card-panel"  id="ye" style="display: none" >
+				<!-- <hr> -->
+				<div class="cc col m12 s12">
+					<div class="input-field">
+						菜单名称<input type="text" id="name" required>
+					</div>
+				</div>
+				<div class="col m12 s12">
+				
+				选择类型
+				    <p>
+              <input name="pay-type" type="radio" id="visa" checked value="1"/>
+              <label for="visa">文件夹</label>
+
+              <input name="pay-type" type="radio" id="mastercard" value="0"/>
+              <label for="mastercard">文件</label>
+
+            </p>
+            
+            
+            
+				</div>
+				<div class="col m12 s12">
+					<div class="input-field">
+						<input type="hidden" name="superiorMenuId" id="superiorMenuId" /> 选择上级<input placeholder="请点击选择上级菜单" type="text" name="superiorMenu" id="superiorMenu" ng-click="selectAppMenuTree();" readonly="readonly" required />
+					</div>
+				</div>
+	
+				<p class="center mb-20">
+					<a class="btn" ng-click="fnAdd();">保存</a>
+				</p>
+			</div>
+
+
+
+		
+		
+		
+		<div id="codemirr" style="display: none">
+		
+		<article style="font-size: 14px;" id="aa" >  
+   <h4 style="color: green" > <span id="editcode"></span></h4> <a style=" margin-top: -55px;
+    margin-bottom: 10px; margin-left: 664px;" class="btn" ng-click="update()">保存</a>
+   
+    <form id="ceshi">  
+            <textarea id="code" name="code" style="height: 400px;" > 
+        
+            
+            </textarea> 
+    </form>  
+   
+</article>
+		</div>
+		
+		</div>
+		
+	</div>
+
+	<div class="row mw-500 pl-20 hide" id="selectTreeDiv">
+		<div class="col s12">
+			<ul id="selectTree" class="ztree"></ul>
+		</div>
+	</div>
+
+	<!-- 配置功能窗体 -->
+	<div class="row hide" id="selectAppMenuCustDiv">
+<div class="col s12">
+			<a class="btn" ng-click="fnSelectAppMenuCustTree();">保存</a>
+			
+			
+					<article style="font-size: 14px;" id="aa" >  
+   <h4 style="color: green" > CodeMirror  Html  Editor</h4> 
+   
+    <form id="ceshie">  
+            <textarea id="code2" name="code" style="height: 300px;" rows="50" cols="50" > 
+        
+            
+            </textarea> 
+          
+    </form>  
+   
+</article>
+     </div>
+	
+
+	</div>
+	
+	<!-- 修改名称窗体 -->
+	<div class="hide pl-10 pr-10" id="modifyNodeDiv">
+		<div class="col s10">
+			<div class="input-field">
+			<input ></input>
+				菜单名称<input type="text" id="modifyNodeName" required>
+			</div>
+		</div>
+		<p class="center mb-20">
+			<a class="btn w-150" ng-click="fnModifyNode();">修改</a>
+		</p>
+	</div>
+
+	<!-- 菜单树的添加功能 -->
+	<div class="row  pl-15 mw-900 hide" id="treeAddDiv">
+		
+		 <!-- Breadcrumb -->
+    <div class="page-title" style="margin-top:-40px">
+
+      <div class="row">
+        <div class="col s12 m6 l7 ">
+         <div class="row">
+         <div class="col m4 s12">
+					<div class="input-field">
+						<select  data-placeholder="请选择应用" id="appName2" dataTableSerch></select>
+					</div>
+				</div>
+
+				<div class="col m4 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.name_like" dataTableSerch> <label for="input_lname">功能名称</label>
+					</div>
+				</div>
+				<div class="col m4 s12">
+					<div class="input-field">
+						<input type="text" ng-model="serchData.mkey_like" dataTableSerch> <label for="input_lname">功能key</label>
+					</div>
+				</div>
+         </div>
+        </div>
+       
+       <div class="col s12 m6 l5 right-align pr-30 pt-20">
+        <div class="row">
+        <a class="btn" ng-click="fnTreeAddBtn();">添加</a>
+			</div>
+        </div>
+       
+      </div>
+
+    </div>
+	</div>
+</div>
+<!-- /With Search -->
+ <style type="text/css">
+
+     .CodeMirror{border:1px solid black;font-   size:15px;width:100%;height:600px}
+
+    </style>
+

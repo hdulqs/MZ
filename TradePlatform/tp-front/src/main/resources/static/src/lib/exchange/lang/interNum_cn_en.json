@@ -1,0 +1,776 @@
+{
+  "data": [
+    {
+      "code": "00244",
+      "name": "Angola（安哥拉）"
+    },
+    {
+      "code": "0093",
+      "name": "Afghanistan（阿富汗）"
+    },
+    {
+      "code": "00355",
+      "name": "Albania（阿尔巴尼亚）"
+    },
+    {
+      "code": "00213",
+      "name": "Algeria（阿尔及利亚）"
+    },
+    {
+      "code": "00376",
+      "name": "Andorra（安道尔共和国）"
+    },
+    {
+      "code": "001264",
+      "name": "Anguilla（安圭拉岛）"
+    },
+    {
+      "code": "001268",
+      "name": "AntiguaandBarbuda（安提瓜和巴布达）"
+    },
+    {
+      "code": "0054",
+      "name": "Argentina（阿根廷）"
+    },
+    {
+      "code": "00374",
+      "name": "Armenia（亚美尼亚）"
+    },
+    {
+      "code": "00247",
+      "name": "Ascension（阿森松）"
+    },
+    {
+      "code": "0061",
+      "name": "Australia（澳大利亚）"
+    },
+    {
+      "code": "0043",
+      "name": "Austria（奥地利）"
+    },
+    {
+      "code": "00994",
+      "name": "Azerbaijan（阿塞拜疆）"
+    },
+    {
+      "code": "001242",
+      "name": "Bahamas（巴哈马）"
+    },
+    {
+      "code": "00973",
+      "name": "Bahrain（巴林）"
+    },
+    {
+      "code": "00880",
+      "name": "Bangladesh（孟加拉国）"
+    },
+    {
+      "code": "001246",
+      "name": "Barbados（巴巴多斯）"
+    },
+    {
+      "code": "00375",
+      "name": "Belarus（白俄罗斯）"
+    },
+    {
+      "code": "0032",
+      "name": "Belgium（比利时）"
+    },
+    {
+      "code": "00501",
+      "name": "Belize（伯利兹）"
+    },
+    {
+      "code": "00229",
+      "name": "Benin（贝宁）"
+    },
+    {
+      "code": "001441",
+      "name": "BermudaIs.（百慕大群岛）"
+    },
+    {
+      "code": "00591",
+      "name": "Bolivia（玻利维亚）"
+    },
+    {
+      "code": "00267",
+      "name": "Botswana（博茨瓦纳）"
+    },
+    {
+      "code": "0055",
+      "name": "Brazil（巴西）"
+    },
+    {
+      "code": "00673",
+      "name": "Brunei（文莱）"
+    },
+    {
+      "code": "00359",
+      "name": "Bulgaria（保加利亚）"
+    },
+    {
+      "code": "00226",
+      "name": "Burkina-faso（布基纳法索）"
+    },
+    {
+      "code": "0095",
+      "name": "Burma（缅甸）"
+    },
+    {
+      "code": "00257",
+      "name": "Burundi（布隆迪）"
+    },
+    {
+      "code": "00237",
+      "name": "Cameroon（喀麦隆）"
+    },
+    {
+      "code": "001",
+      "name": "Canada（加拿大）"
+    },
+    {
+      "code": "001345",
+      "name": "CaymanIs.（开曼群岛）"
+    },
+    {
+      "code": "00236",
+      "name": "CentralAfricanRepublic（中非共和国）"
+    },
+    {
+      "code": "00235",
+      "name": "Chad（乍得）"
+    },
+    {
+      "code": "0056",
+      "name": "Chile（智利）"
+    },
+    {
+      "code": "0086",
+      "name": "China（中国）"
+    },
+    {
+      "code": "0057",
+      "name": "Colombia（哥伦比亚）"
+    },
+    {
+      "code": "00243",
+      "name": "Congo（刚果）"
+    },
+    {
+      "code": "00682",
+      "name": "CookIs.（库克群岛）"
+    },
+    {
+      "code": "00506",
+      "name": "CostaRica（哥斯达黎加）"
+    },
+    {
+      "code": "0053",
+      "name": "Cuba（古巴）"
+    },
+    {
+      "code": "00357",
+      "name": "Cyprus（塞浦路斯）"
+    },
+    {
+      "code": "00420",
+      "name": "CzechRepublic（捷克）"
+    },
+    {
+      "code": "0045",
+      "name": "Denmark（丹麦）"
+    },
+    {
+      "code": "00253",
+      "name": "Djibouti（吉布提）"
+    },
+    {
+      "code": "001809",
+      "name": "DominicaRep.（多米尼加共和国）"
+    },
+    {
+      "code": "00593",
+      "name": "Ecuador（厄瓜多尔）"
+    },
+    {
+      "code": "0020",
+      "name": "Egypt（埃及）"
+    },
+    {
+      "code": "00503",
+      "name": "EISalvador（萨尔瓦多）"
+    },
+    {
+      "code": "00372",
+      "name": "Estonia（爱沙尼亚）"
+    },
+    {
+      "code": "00251",
+      "name": "Ethiopia（埃塞俄比亚）"
+    },
+    {
+      "code": "00679",
+      "name": "Fiji（斐济）"
+    },
+    {
+      "code": "00358",
+      "name": "Finland（芬兰）"
+    },
+    {
+      "code": "0033",
+      "name": "France（法国）"
+    },
+    {
+      "code": "00594",
+      "name": "FrenchGuiana（法属圭亚那）"
+    },
+    {
+      "code": "00241",
+      "name": "Gabon（加蓬）"
+    },
+    {
+      "code": "00220",
+      "name": "Gambia（冈比亚）"
+    },
+    {
+      "code": "00995",
+      "name": "Georgia（格鲁吉亚）"
+    },
+    {
+      "code": "0049",
+      "name": "Germany（德国）"
+    },
+    {
+      "code": "00233",
+      "name": "Ghana（加纳）"
+    },
+    {
+      "code": "00350",
+      "name": "Gibraltar（直布罗陀）"
+    },
+    {
+      "code": "0030",
+      "name": "Greece（希腊）"
+    },
+    {
+      "code": "001473",
+      "name": "Grenada（格林纳达）"
+    },
+    {
+      "code": "001671",
+      "name": "Guam（关岛）"
+    },
+    {
+      "code": "00502",
+      "name": "Guatemala（危地马拉）"
+    },
+    {
+      "code": "00224",
+      "name": "Guinea（几内亚）"
+    },
+    {
+      "code": "00592",
+      "name": "Guyana（圭亚那）"
+    },
+    {
+      "code": "00509",
+      "name": "Haiti（海地）"
+    },
+    {
+      "code": "00504",
+      "name": "Honduras（洪都拉斯）"
+    },
+    {
+      "code": "00852",
+      "name": "Hongkong（中国香港）"
+    },
+    {
+      "code": "0036",
+      "name": "Hungary（匈牙利）"
+    },
+    {
+      "code": "00354",
+      "name": "Iceland（冰岛）"
+    },
+    {
+      "code": "0091",
+      "name": "India（印度）"
+    },
+    {
+      "code": "0062",
+      "name": "Indonesia（印度尼西亚）"
+    },
+    {
+      "code": "0098",
+      "name": "Iran（伊朗）"
+    },
+    {
+      "code": "00964",
+      "name": "Iraq（伊拉克）"
+    },
+    {
+      "code": "00353",
+      "name": "Ireland（爱尔兰）"
+    },
+    {
+      "code": "00972",
+      "name": "Israel（以色列）"
+    },
+    {
+      "code": "0039",
+      "name": "Italy（意大利）"
+    },
+    {
+      "code": "00225",
+      "name": "IvoryCoast（科特迪瓦）"
+    },
+    {
+      "code": "001876",
+      "name": "Jamaica（牙买加）"
+    },
+    {
+      "code": "0081",
+      "name": "Japan（日本）"
+    },
+    {
+      "code": "00962",
+      "name": "Jordan（约旦）"
+    },
+    {
+      "code": "00855",
+      "name": "Kampuchea(Cambodia)（柬埔寨）"
+    },
+    {
+      "code": "007",
+      "name": "Kazakstan（哈萨克斯坦）"
+    },
+    {
+      "code": "00254",
+      "name": "Kenya（肯尼亚）"
+    },
+    {
+      "code": "0082",
+      "name": "Korea（韩国）"
+    },
+    {
+      "code": "00965",
+      "name": "Kuwait（科威特）"
+    },
+    {
+      "code": "00996",
+      "name": "Kyrgyzstan（吉尔吉斯坦）"
+    },
+    {
+      "code": "00856",
+      "name": "Laos（老挝）"
+    },
+    {
+      "code": "00371",
+      "name": "Latvia（拉脱维亚）"
+    },
+    {
+      "code": "00961",
+      "name": "Lebanon（黎巴嫩）"
+    },
+    {
+      "code": "00266",
+      "name": "Lesotho（莱索托）"
+    },
+    {
+      "code": "00231",
+      "name": "Liberia（利比里亚）"
+    },
+    {
+      "code": "00218",
+      "name": "Libya（利比亚）"
+    },
+    {
+      "code": "00423",
+      "name": "Liechtenstein（列支敦士登）"
+    },
+    {
+      "code": "00370",
+      "name": "Lithuania（立陶宛）"
+    },
+    {
+      "code": "00352",
+      "name": "Luxembourg（卢森堡）"
+    },
+    {
+      "code": "00853",
+      "name": "Macao（澳门）"
+    },
+    {
+      "code": "00261",
+      "name": "Madagascar（马达加斯加）"
+    },
+    {
+      "code": "00265",
+      "name": "Malawi（马拉维）"
+    },
+    {
+      "code": "0060",
+      "name": "Malaysia（马来西亚）"
+    },
+    {
+      "code": "00960",
+      "name": "Maldives（马尔代夫）"
+    },
+    {
+      "code": "00223",
+      "name": "Mali（马里）"
+    },
+    {
+      "code": "00356",
+      "name": "Malta（马耳他）"
+    },
+    {
+      "code": "00223",
+      "name": "MarianaIs（马里亚那群岛）"
+    },
+    {
+      "code": "00596",
+      "name": "Martinique（马提尼克）"
+    },
+    {
+      "code": "00230",
+      "name": "Mauritius（毛里求斯）"
+    },
+    {
+      "code": "0052",
+      "name": "Mexico（墨西哥）"
+    },
+    {
+      "code": "00373",
+      "name": "Moldova,Republicof（摩尔多瓦）"
+    },
+    {
+      "code": "00377",
+      "name": "Monaco（摩纳哥）"
+    },
+    {
+      "code": "00976",
+      "name": "Mongolia（蒙古）"
+    },
+    {
+      "code": "001664",
+      "name": "MontserratIs（蒙特塞拉特岛）"
+    },
+    {
+      "code": "00212",
+      "name": "Morocco（摩洛哥）"
+    },
+    {
+      "code": "00258",
+      "name": "Mozambique（莫桑比克）"
+    },
+    {
+      "code": "00264",
+      "name": "Namibia（纳米比亚）"
+    },
+    {
+      "code": "00674",
+      "name": "Nauru（瑙鲁）"
+    },
+    {
+      "code": "00977",
+      "name": "Nepal（尼泊尔）"
+    },
+    {
+      "code": "00599",
+      "name": "NetheriandsAntilles（荷属安的列斯）"
+    },
+    {
+      "code": "0031",
+      "name": "Netherlands（荷兰）"
+    },
+    {
+      "code": "0064",
+      "name": "NewZealand（新西兰）"
+    },
+    {
+      "code": "00505",
+      "name": "Nicaragua（尼加拉瓜）"
+    },
+    {
+      "code": "00227",
+      "name": "Niger（尼日尔）"
+    },
+    {
+      "code": "00234",
+      "name": "Nigeria（尼日利亚）"
+    },
+    {
+      "code": "00850",
+      "name": "NorthKorea（朝鲜）"
+    },
+    {
+      "code": "0047",
+      "name": "Norway（挪威）"
+    },
+    {
+      "code": "00968",
+      "name": "Oman（阿曼）"
+    },
+    {
+      "code": "0092",
+      "name": "Pakistan（巴基斯坦）"
+    },
+    {
+      "code": "00507",
+      "name": "Panama（巴拿马）"
+    },
+    {
+      "code": "00675",
+      "name": "PapuaNewCuinea（巴布亚新几内亚）"
+    },
+    {
+      "code": "00595",
+      "name": "Paraguay（巴拉圭）"
+    },
+    {
+      "code": "0051",
+      "name": "Peru（秘鲁）"
+    },
+    {
+      "code": "0063",
+      "name": "Philippines（菲律宾）"
+    },
+    {
+      "code": "0048",
+      "name": "Poland（波兰）"
+    },
+    {
+      "code": "00689",
+      "name": "FrenchPolynesia（法属玻利尼西亚）"
+    },
+    {
+      "code": "00351",
+      "name": "Portugal（葡萄牙）"
+    },
+    {
+      "code": "001",
+      "name": "PuertoRico（波多黎各）"
+    },
+    {
+      "code": "00974",
+      "name": "Qatar（卡塔尔）"
+    },
+    {
+      "code": "00262",
+      "name": "Reunion（留尼旺）"
+    },
+    {
+      "code": "0040",
+      "name": "Romania（罗马尼亚）"
+    },
+    {
+      "code": "007",
+      "name": "Russia（俄罗斯）"
+    },
+    {
+      "code": "001758",
+      "name": "SaintLueia（圣卢西亚）"
+    },
+    {
+      "code": "001784",
+      "name": "SaintVincent（圣文森特岛）"
+    },
+    {
+      "code": "00685",
+      "name": "SamoaEastern（东萨摩亚(美)）"
+    },
+    {
+      "code": "00685",
+      "name": "SamoaWestern（西萨摩亚）"
+    },
+    {
+      "code": "00378",
+      "name": "SanMarino（圣马力诺）"
+    },
+    {
+      "code": "00239",
+      "name": "SaoTomeandPrincipe（圣多美和普林西比）"
+    },
+    {
+      "code": "00966",
+      "name": "SaudiArabia（沙特阿拉伯）"
+    },
+    {
+      "code": "00221",
+      "name": "Senegal（塞内加尔）"
+    },
+    {
+      "code": "00248",
+      "name": "Seychelles（塞舌尔）"
+    },
+    {
+      "code": "00232",
+      "name": "SierraLeone（塞拉利昂）"
+    },
+    {
+      "code": "0065",
+      "name": "Singapore（新加坡）"
+    },
+    {
+      "code": "00421",
+      "name": "Slovakia（斯洛伐克）"
+    },
+    {
+      "code": "00386",
+      "name": "Slovenia（斯洛文尼亚）"
+    },
+    {
+      "code": "00677",
+      "name": "SolomonIs（所罗门群岛）"
+    },
+    {
+      "code": "00252",
+      "name": "Somali（索马里）"
+    },
+    {
+      "code": "0027",
+      "name": "SouthAfrica（南非）"
+    },
+    {
+      "code": "0034",
+      "name": "Spain（西班牙）"
+    },
+    {
+      "code": "0094",
+      "name": "SriLanka（斯里兰卡）"
+    },
+    {
+      "code": "001758",
+      "name": "St.Lucia（圣卢西亚）"
+    },
+    {
+      "code": "001784",
+      "name": "St.Vincent（圣文森特）"
+    },
+    {
+      "code": "00249",
+      "name": "Sudan（苏丹）"
+    },
+    {
+      "code": "00597",
+      "name": "Suriname（苏里南）"
+    },
+    {
+      "code": "00268",
+      "name": "Swaziland（斯威士兰）"
+    },
+    {
+      "code": "0046",
+      "name": "Sweden（瑞典）"
+    },
+    {
+      "code": "0041",
+      "name": "Switzerland（瑞士）"
+    },
+    {
+      "code": "00963",
+      "name": "Syria（叙利亚）"
+    },
+    {
+      "code": "00886",
+      "name": "Taiwan（中国台湾省）"
+    },
+    {
+      "code": "00992",
+      "name": "Tajikstan（塔吉克斯坦）"
+    },
+    {
+      "code": "00255",
+      "name": "Tanzania（坦桑尼亚）"
+    },
+    {
+      "code": "0066",
+      "name": "Thailand（泰国）"
+    },
+    {
+      "code": "00228",
+      "name": "Togo（多哥）"
+    },
+    {
+      "code": "00676",
+      "name": "Tonga（汤加）"
+    },
+    {
+      "code": "001868",
+      "name": "TrinidadandTobago（特立尼达和多巴哥）"
+    },
+    {
+      "code": "00216",
+      "name": "Tunisia（突尼斯）"
+    },
+    {
+      "code": "0090",
+      "name": "Turkeywords（土耳其）"
+    },
+    {
+      "code": "00993",
+      "name": "Turkmenistan（土库曼斯坦）"
+    },
+    {
+      "code": "00256",
+      "name": "Uganda（乌干达）"
+    },
+    {
+      "code": "00380",
+      "name": "Ukraine（乌克兰）"
+    },
+    {
+      "code": "00971",
+      "name": "UnitedArabEmirates（阿拉伯联合酋长国）"
+    },
+    {
+      "code": "0044",
+      "name": "UnitedKiongdom（英国）"
+    },
+    {
+      "code": "001",
+      "name": "UnitedStatesofAmerica（美国）"
+    },
+    {
+      "code": "00598",
+      "name": "Uruguay（乌拉圭）"
+    },
+    {
+      "code": "00998",
+      "name": "Uzbekistan（乌兹别克斯坦）"
+    },
+    {
+      "code": "0058",
+      "name": "Venezuela（委内瑞拉）"
+    },
+    {
+      "code": "0084",
+      "name": "Vietnam（越南）"
+    },
+    {
+      "code": "00967",
+      "name": "Yemen（也门）"
+    },
+    {
+      "code": "00338",
+      "name": "Yugoslavia（南斯拉夫）"
+    },
+    {
+      "code": "0027",
+      "name": "SouthAfrica（南非）"
+    },
+    {
+      "code": "00263",
+      "name": "Zimbabwe（津巴布韦）"
+    },
+    {
+      "code": "00243",
+      "name": "Zaire（扎伊尔）"
+    },
+    {
+      "code": "00260",
+      "name": "Zambia（赞比亚）"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+
+		<div class="card-panel">
+		
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s5 ">
+				<form ng-submit="processForm()">
+				
+					<div class="input-field"> 
+					   <hry-select    url="{{HRY.host}}{{HRY.modules.web}}/app/appapiparam/findlist" placeholder="币种类型"  name="title" value="id" selectId="id_EQ" ></hry-select>
+                     </div>
+				
+					<!-- <div class="input-field"> 
+					   <input type="text" name="title" id="input_title" ng-model="formData.title" />
+				       <label for="input_title">标题</label>
+				     </div>
+				     <div class="input-field"> 
+				      <input type="text" name="description" id="input_description" ng-model="formData.description" required />
+				       <label for="input_description">描述</label>
+				     </div> -->
+					 <div class="input-field"> 
+				       <input type="text" name="param" id="input_param" ng-model="formData.param" required />
+				       <label for="input_param">参数</label>
+				     </div>
+				      <div class="input-field"> 
+				       <input type="text" name="paramName" id="input_paramName"  ng-model="formData.paramName" required />
+				       <label for="input_paramName">参数名称</label>
+				     </div>
+				     
+				     
+				       <div class="input-field"> 
+				       <input type="text" name="paramType" id="input_paramType"  ng-model="formData.paramType" required />
+				       <label for="input_paramType">参数类型</label>
+				     </div>
+					
+					
+					
+					  <div class="input-field"> 
+				       <input type="text" name="paramDesc" id="input_paramDesc"  ng-model="formData.paramDesc" required />
+				       <label for="input_paramDesc">参数描述</label>
+				     </div>
+				     
+			          <div class="input-field"> 
+			           
+			              <input name="radios1" type="radio" id="radios1-1" value="1"  ng-model="formData.isShow" ng-checked="true"/>
+			              <label for="radios1-1">不可为空</label>
+			              <input name="radios1" type="radio" id="radios1-2" value="0" ng-model="formData.isShow"   />
+			              <label for="radios1-2">可空</label>
+			          </div>
+           
+           
+                        <div class="input-field"> 
+			              <input type="text" name="example" id="input_example"  ng-model="formData.example" required />
+				          <label for="input_example">样例</label>
+			          </div>
+       
+         
+		             <div class="input-field">
+		                <input type="text" id="sort" ng-model="formData.sort"   />
+		               <label for="sort">排序值</label>
+		            </div>
+      
+				     
+				     
+					           
+					 <button class="waves-effect btn" type="submit">保存</button><span ></span>
+				</form>
+			</div>
+		
+		
+		</div>
+	</div>

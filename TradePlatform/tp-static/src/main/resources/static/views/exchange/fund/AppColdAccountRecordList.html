@@ -1,0 +1,150 @@
+<style>
+    .layui-layer-content {
+        overflow: hidden !important;
+    }
+</style>
+
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+    <div class="row">
+        <hry-search/>
+        <div class="col s12 m9 l8 ">
+            <div class="row">
+
+                <!-- 用户账号 -->
+                <div class="col m2 s12">
+                    <div class="input-field">
+                        <input type="text" ng-model="serchData.userName_LIKE" dataTableSerch> <label for="input_lname">用户账号</label>
+                    </div>
+                </div>
+                <div class="col m2 s12">
+                    <div class="input-field">
+                        <select class="select2"  data-allow-clear="true"    data-placeholder="请选择流水类型" id="recordType" dataTableSerch>
+                            <option value="">不限</option>
+                            <option value="1">增加</option>
+                            <option value="2">减少</option>
+                        </select>
+                        <!--<input type="text" ng-model="serchData.recordType_EQUALS" dataTableSerch> <label for="input_lname">流水类型</label>-->
+                    </div>
+                </div>
+                <div class="col m2 s12">
+                    <div class="input-field">
+                        <input type="text" ng-model="serchData.transactionNum_LIKE" dataTableSerch> <label for="input_lname">业务单号</label>
+                    </div>
+                </div>
+                <div class="col m2 s12">
+                    <div class="input-field">
+                        <input type="text" ng-model="serchData.remark_LIKE" dataTableSerch> <label for="input_lname">备注</label>
+                    </div>
+                </div>
+
+                <div class="col  s12 m12 l2">
+                    <div class="input-field">
+                        <input type="text" id="input_timeG" class="pikaday" name="lendTime_GT" ng-model="serchData.created_GT" dataTableSerch> <label for="input_timeG">创建时间</label>
+                    </div>
+                </div>
+                <div class="col  s12 m12 l2">
+                    <div class="input-field">
+                        <input type="text" id="input_timeL" class="pikaday" name="lendTime_LT" ng-model="serchData.created_LT" dataTableSerch> <label for="input_timeL">创建时间</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col s12 m3 l4 right-align pt-20">
+            <!-- 查看按钮 -->
+            <!--<a class="btn pr-10 pl-10" ng-if="requiresPermissions('customer',true)" ng-click="fnSee('user/appcustomer/see')" ><i class="fa fa-search-plus " aria-hidden="true"></i>查看</a>-->
+            <!-- 刷新按钮 -->
+            <a class="btn pr-10 pl-10"  ng-click="fnList()"><i class="fa fa-refresh "></i>刷新</a>
+        </div>
+    </div>
+</div>
+
+<!-- /Handle -->
+
+
+<!-- 分公司管理 -->
+<div class="">
+
+    <div class="row">
+
+        <div class="col s12 ">
+            <table id="table2" class="display table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkboxAll"/><label for="checkboxAll"></label></th>
+                    <th>用户账号</th>
+                    <th>流水类型</th>
+                    <th>交易金额</th>
+                    <th>状态</th>
+                    <th>业务单号</th>
+                    <th>备注</th>
+                    <th>创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 充值通过弹出窗 -->
+<div class="row hide" id="fnConfirmDiv">
+    <div class="col s2 "></div>
+    <div class="col s8 ">
+        <form ng-submit="fnConfirmSubmit()">
+            <p class="center mb-20">用户名：{{confirm.userName}}</p>
+            <p class="center mb-20">申请杠杆倍数：{{confirm.lendTimes}}</p>
+            <p class="center mb-20">预警线(%)<input type="text" id="lengRiskRate"></p>
+            <p class="center mb-20">平仓线(%)<input type="text" id="lengPing"></p>
+            <p class="center mb-20">
+                <button class="btn" type="submit">确认</button>
+                <a class="btn" onclick="layer.closeAll();">取消</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+
+<!-- 充值驳回弹出窗 -->
+<div class="row hide" id="fnInvalidDiv">
+    <div class="col s2 "></div>
+    <div class="col s8 ">
+        <form ng-submit="fnInvalidSubmit()">
+            <p class="center mb-20">用户名：{{invalid.userName}}</p>
+            <p class="center mb-20">申请杠杆倍数：{{invalid.transactionMoney}}</p>
+            <hr/>
+
+            <br>
+            <span id="message" style="color:red"></span>
+            <p class="center mb-20">
+                <button class="btn" type="submit">确认驳回</button>
+                <a class="btn" onclick="layer.closeAll();">取消</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+
+<!-- 充值驳回弹出窗 -->
+<div class="row hide" id="fnInvalidDiv1">
+    <div class="col s2 "></div>
+    <div class="col s8 ">
+        <form ng-submit="fnInvalidSubmit1()">
+            驳回理由:<textarea id="reason1" class="materialize-textarea" length="120"></textarea>
+
+            <br>
+            <span id="message" style="color:red"></span>
+            <p class="center mb-20">
+                <button class="btn" type="submit">确认驳回</button>
+                <a class="btn" onclick="layer.closeAll();">取消</a>
+            </p>
+            <span style="color:red">TIPS:驳回操作不可逆，请确认充值操作无效</span>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+/*����ֵ�ҳ����ʽ*/
+	._tt_layout_tabnav{
+		width: 30%;
+		float: left;
+		background-color: #555;
+	}
+	 ._tt_side_subnav {
+		padding-left: 20px;
+	}
+	 ._tt_side_subnav h3 {
+		color:#fff;
+		
+	}
+	._tt_side_subnav li {
+	line-height: 34px;
+	text-align: left;
+	margin-bottom: 5px;
+	}
+	._tt_side_subnav a {
+display: block;
+color: #ddd;
+padding-left: 20px;
+border: solid 1px #555;
+border-right: 0;
+-webkit-border-top-left-radius: 3px;
+-moz-border-radius-topleft: 3px;
+border-top-left-radius: 3px;
+-webkit-border-bottom-left-radius: 3px;
+-moz-border-radius-bottomleft: 3px;
+border-bottom-left-radius: 3px;
+font-size: 14px;
+line-height: 34px;
+height: 34px;
+position: relative;
+}
+	._tt_side_subnav .active a {
+		color: #333;
+		background-color: #fff;
+		font-weight: 700;
+		border-color: #fff;
+		}
+._tt_layout_container{
+	width: 70%;
+float: left;
+min-height: 768px;
+background-color: #fff;
+}
+._tt_plan_container {
+padding:0px 80px 0px 30px;
+}

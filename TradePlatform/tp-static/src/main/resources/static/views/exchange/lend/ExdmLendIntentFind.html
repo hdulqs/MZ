@@ -1,0 +1,76 @@
+<!-- Handle -->
+<div class="page-title pt-0 pb-3 ">
+	<div class="row">
+		<div class="col s12 m9 l6">
+			<div class="row">
+				<div class="col m2 s12">
+					<div class="input-field">
+						<input type="text" id="input_name" ng-model="serchData.userName_like" dataTableSerch> <label for="input_name">用户名</label>
+					</div>
+				</div>
+				<div class="col m2 s12">
+					<div class="input-field">
+						<input type="text" id="input_name" ng-model="serchData.trueName_like" dataTableSerch> <label for="input_name">真实姓名</label>
+					</div>
+				</div>
+				<div class="col m2 s12">
+					<div class="input-field">
+						<select id="lendCoinType" class="select2" data-allow-clear="true" dataTableSerch>
+							<option value="">不限</option>
+							<option value="money">资金</option>
+							<option value="virtualCoin">币种</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col  s12 m2 l2">
+					<div class="input-field">
+						<input class="pikaday" type="text" ng-model="serchData.beginTime" dataTableSerch> <label for="input_beginTime">申请时间</label>
+					</div>
+				</div>
+				<div class="col  s12 m2 l2">
+					<div class="input-field">
+						<input class="pikaday" type="text" ng-model="serchData.endTime" dataTableSerch> <label for="input_endTime">申请时间</label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col s12 m6 l6 right-align pt-20">
+			<!-- 导出按钮 -->
+			<a class="btn pr-10 pl-10" ng-click="fnExcel()"><i class="fa fa-refresh "></i>导出</a>
+		</div>
+	</div>
+
+</div>
+<!-- /Handle -->
+
+<!-- 分公司管理 -->
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="table2" class="display table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+						<th>用户账户</th>
+						<th>真实姓名</th>
+						<th>申请类型</th>
+						<th>申请金额</th>
+						<th>申请数量</th>
+						<th>利息还款</th>
+						<th>还款时间</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+

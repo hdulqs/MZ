@@ -1,0 +1,82 @@
+   
+   <form >
+   <!-- card 卡片   row ：行  col： 列-->
+    <!-- 文章基础信息  卡片-->
+    <div class="card">
+     <!-- 标题-->
+      <div class="title">
+        <h5><i class="mdi mdi-social-person"></i>修改消息</h5>
+        <a class="minimize" href="#">
+          <i class="mdi-navigation-expand-less"></i>
+        </a>
+      </div>
+      <!-- /标题-->
+      
+      <!--内容-->
+      <div class="content">
+     
+     
+      <div class="row no-margin-top">
+       <label >消息类型</label>
+          <div class="col s12 ">
+              <hry-select  url="{{HRY.host}}{{HRY.modules.web}}message/appmessagecategory/selectList" name="name" value="id" selectId="companySet"></hry-select>
+          </div>
+        </div>
+
+
+  <div class="row">
+          <div class="col s12 ">
+           <label >标题</label>
+            <div class="input-field">
+             <input type="text" id="title"  ng-model="formData.title"  required  />
+            </div>
+          </div>
+        </div>
+
+
+       <div class="row">
+          <div class="col s12 ">
+          <label >消息简介</label>
+            <div class="input-field">
+             <input type="text" id="sortTitle"  ng-model="formData.sortTitle"  required  />
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row ">
+          <div class="row no-margin-top">
+      		 	<label >接收人</label>
+         		 <div class="col s12 ">
+          		    <hry-select multiple url="{{HRY.host}}{{HRY.modules.customer}}user/appcustomer/findAll" name="userName" value="id" selectId="receiveUserNames"></hry-select>
+         		 </div>
+        	</div>
+        </div>
+        
+        
+ 
+         <div class="row">
+          <div class="col s12 ">
+          <label >消息内容<label>
+            <div class="input-field">
+             <div class="ueditor" config="_simpleConfig" ng-model="formData.content"></div>            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+	
+	
+       <input type="hidden" name="appResourceSet" id="appResourceSet"  />
+       <p class="center">
+       
+       <button ng-click="submit()"  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存</button>
+      
+       <button ng-click="sendSubmit()" class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">保存并发送</button>
+      
+       <button  class="waves-effect waves-light btn-large z-depth-0 z-depth-1-hover mb-20">重置</button>
+       </p>
+      
+      </div>
+  
+   <!--/文章扩展信息-->
+   </form>

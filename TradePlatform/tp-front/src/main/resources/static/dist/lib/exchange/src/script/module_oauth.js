@@ -1,0 +1,1 @@
+define(function(require,exports,module){function e(e){}require("jquery"),require("./module_ajax");exports.GetOauth=e});

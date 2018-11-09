@@ -1,0 +1,53 @@
+/**
+ * angular-growl - v0.4.0 - 2013-11-19
+ * https://github.com/marcorinck/angular-growl
+ * Copyright (c) 2013 Marco Rinck; Licensed MIT
+ */
+
+ 
+.growl {
+	position: fixed;
+	top: -15px;
+	left: 50%;
+	z-index: 9999
+}
+
+.growl-item.ng-enter {
+	 animation: my_fade_animation .3s linear;
+  -webkit-animation: my_fade_animation .3s linear;
+}
+
+.growl-item.ng-leave{
+	 animation: my_fadeout_animation .5s linear;
+  -webkit-animation: my_fadeout_animation .5s linear;
+}
+
+@keyframes my_fade_animation {
+  0% { position:fixed;top:-58px; }
+  100% { position:fixed;top:-15px; }
+}
+
+@-webkit-keyframes my_fade_animation {
+   0% { position:fixed;top:-58ox; }
+   100% { position:fixed;top:-15px; }
+}
+
+@keyframes my_fadeout_animation {
+  0% { position:fixed;top:-15px; }
+  100% { position:fixed;top:-58px; }
+}
+
+@-webkit-keyframes my_fadeout_animation {
+   0% { position:fixed;top:-15px; }
+  100% { position:fixed;top:-58px; }
+}
+
+/* 
+.growl-item.ng-enter, .growl-item.ng-leave.ng-leave-active {
+	opacity: 0
+}
+
+.growl-item.ng-leave, .growl-item.ng-enter.ng-enter-active {
+	opacity: 1
+}
+ */

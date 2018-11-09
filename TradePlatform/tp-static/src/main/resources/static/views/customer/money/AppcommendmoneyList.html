@@ -1,0 +1,80 @@
+
+ <!-- Copyright:   北京互融时代软件有限公司 -->
+ <!-- AppcommendmoneyList.html     -->
+ <!-- @author:      menwei  -->
+ <!-- @version:     V1.0             -->
+ <!-- @Date:        2017-11-29 10:05:55      -->
+
+    <div class="page-title pt-0 pb-3 ">
+      <div class="row">
+        <div class="col s12 m9 l5">
+         	<div class="row">
+					<div class="col m3 s12">
+			      <div class="input-field">
+			        <input type="text"    ng-model="serchData.custromerName_like"  dataTableSerch >
+			        <label for="input_custromerName">用户账号</label>
+			      </div>
+			   
+			    </div>
+			</div>
+        </div>
+		<div class="col s12 m6 l5 right-align pr-30">
+			<div class="row">
+				<a class="btn"  ng-click="fnPost()">派发佣金</a>
+				<!--  -->
+				<a class="btn"  ng-click="fncommend()">查看佣金详情</a>
+				
+				<!--刷新按钮 -->
+				<a class="btn" ng-click="fnList()">刷新</a>
+				
+				<!--导出按钮 -->
+				<a class="btn" ng-click="fnExcel1()">导出</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="row">
+		<div class="col s12 ">
+			<table id="dataTable" class="display table table-bordered table-striped table-hover ">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkboxAll" /><label for="checkboxAll"></label></th>
+					<!-- 	<th>custromerId</th> -->
+						<th>用户账户</th>
+					<!-- 	<th>邀请码</th> -->
+						<th>总佣金</th>
+						<th>未派发佣金</th>
+						<th>已派发佣金</th>
+						<th>交易方</th>
+						<!-- <th>所有下级</th> -->
+						<!-- <th>fixPriceType</th> -->
+						<th>返佣币种</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+	
+	
+	<div class="hide" id="modifyInfo" >
+	
+					<hr>
+						一级推荐佣金<div id="one"></div>
+					<br>
+					<hr>
+						　二级推荐佣金<div id="two"></div>
+					<br>
+					<hr>
+						　三级推荐佣金<div id="three"></div>
+					<br>
+					<hr>
+						　三级后推荐佣金<div id="later"></div>
+					<br>				
+	</div>
+</div>
+
+

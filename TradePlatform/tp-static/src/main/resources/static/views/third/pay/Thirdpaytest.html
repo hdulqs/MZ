@@ -1,0 +1,32 @@
+<!-- With Search -->
+	<div class="card-panel">
+		<h4>接口测试</h4>
+		<div class="row">
+			<div class="col s1 "></div>
+			<div class="col s4 ">
+				<form ng-submit="processForm()">
+				<input type="hidden" name="configid"  ng-model="formData.configid"/>
+							                      <div class="input-field"> 
+				       <input type="text" name="configkey"  ng-model="formData.configkey" required />
+				       <label for="input_text">：</label>
+				     </div>
+							                      <div class="input-field"> 
+				       <input type="text" name="value"  ng-model="formData.value" required />
+				       <label for="input_text">充值测试：</label>
+				     </div>
+							                      <div class="input-field"> 
+				       <input type="text" name="name"   ng-model="formData.configdescription" />
+				       <label for="input_text">提现测试：</label>
+				     </div>
+				     
+				     
+
+				     </div>
+				      <button class="btn" type="submit">保存修改</button><span >{{ message }}</span>
+				</form>
+			</div>
+		
+		
+		</div>
+	</div>
+	<!-- /With Search --> 

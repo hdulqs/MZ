@@ -1,0 +1,117 @@
+@-webkit-keyframes rotation {
+		from {-webkit-transform: rotate(0deg);
+	}
+	
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+	
+	}
+	.Rotation {
+		-webkit-transform: rotate(360deg);
+		animation: rotation 3s linear infinite;
+		-moz-animation: rotation 3s linear infinite;
+		-webkit-animation: rotation 3s linear infinite;
+		-o-animation: rotation 3s linear infinite;
+	}
+	
+	/*******校验*******/
+	.ng-invalid.ng-dirty {
+		
+	}
+	
+	.ng-valid.ng-dirty {
+		
+	}
+	
+	.validation-invalid {
+		color: red;
+		position: absolute;
+		width: 100%;
+		text-align: right;
+	}
+	
+	.page-list .pagination {
+		float: left;
+	}
+	
+	.page-list .pagination span {
+		cursor: pointer;
+	}
+	
+	.page-list .pagination .separate span {
+		cursor: default;
+		border-top: none;
+		border-bottom: none;
+	}
+	
+	.page-list .pagination .separate span:hover {
+		background: none;
+	}
+	
+	.page-list .page-total {
+		float: left;
+		margin: 20px 20px;
+	}
+	
+	.page-list .page-total input, .page-list .page-total select {
+		height: 35px;
+		border: 1px solid #ddd;
+	}
+	
+	.page-list .page-total input {
+		width: 40px;
+		padding-left: 3px;
+		border-radius: 5px;
+	}
+	
+	.page-list .page-total select {
+		width: 50px;
+		border-radius: 5px;
+	}
+	
+	.siteTypeSelect {
+		display: inline-block;
+		background: rgba(233, 233, 233, 0.3);
+		width: 75px;
+		height: 30px;
+		line-height: 25px;
+		color: #0072d7;
+		text-align: center;
+		margin-left: -4px;
+	}
+	
+	.skipToOtherWeb {
+		display: inline-block;
+		background: rgba(233, 233, 233, 0.3);
+		width: 75px;
+		height: 30px;
+		line-height: 25px;
+		color: #0072d7;
+		text-align: center;
+		margin-left: -4px;
+	}
+	
+	.app-content-loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 600px;
+		height: 300px;
+		line-height: 150px;
+		text-align: center;
+		z-index: 9999;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		/*filter:alpha(opacity=50);  
+	 -moz-opacity:0.5;  
+	 -khtml-opacity: 0.5;  
+	 opacity: 0.5;  */
+		transform: translate(-45%, -50%);
+	}
+	
+	.loading-spinner {
+		position: absolute;
+		left: 30%;
+	}

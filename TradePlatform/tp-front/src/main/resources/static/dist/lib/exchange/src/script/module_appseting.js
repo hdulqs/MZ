@@ -1,0 +1,1 @@
+define(function(require,exports,module){function n(n){}require("jquery"),require("./module_ajax");exports.GetAppConfigData=n});

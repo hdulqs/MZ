@@ -1,0 +1,126 @@
+<!-- Stats Panels -->
+    <div class="row sortable">
+      <div class="col l3 m6 s12">
+        <div style="width:260px;height:80px" class="card-panel stats-card red lighten-2 red-text text-lighten-5">
+          <i class="fa fa-comments-o"></i>
+         <a href="#/account/fund/apptransaction/dapplylist/1">
+	          <div class="name"><font color="white">待处理充值钱订单 :
+	          	<span ng-if="pendingOrdersPost.sunMoney != null" style="font-weight:bold;">{{pendingOrdersPost.sunMoney}}</span>
+	          	<span ng-if="pendingOrdersPost.sunMoney == null" style="font-weight:bold;">0</span>
+	          </font></div><br/>
+          </a>
+          <a href="#/exchange/transaction/exdmtransaction/DapplyList">
+	          <div class="name"><font color="white">待处理充值币订单 : 
+	          		<span ng-if="pendingOrdersPost.dmTransaxtionCount != null " style="font-weight:bold;">{{pendingOrdersPost.dmTransaxtionCount}}</span>
+	          		<span ng-if="pendingOrdersPost.dmTransaxtionCount == null" style="font-weight:bold;">0</span>
+	          </font></div>
+          </a>
+        </div>
+      </div>
+         
+      <div class="col l3 m6 s12">
+        <div style="width:260px;height:80px" class="card-panel stats-card blue lighten-2 blue-text text-lighten-5">
+          <i class="fa fa-send"></i>
+          	<a href="#/account/fund/apptransaction/wapplylist/1">
+          	 	<div class="name"><font color="white">待处理提现钱订单 :
+          	 		<span ng-if="pendingOrdersGet.sunMoney != null " style="font-weight:bold;">{{pendingOrdersGet.sunMoney}}</span>
+          	 		<span ng-if="pendingOrdersGet.sunMoney == null " style="font-weight:bold;">0</span>
+          	 	</font></div><br/>
+          	</a>
+          	
+          	<a href="#/exchange/transaction/exdmtransaction/WapplyList">
+          		<div class="name"><font color="white">待处理提现币订单 :
+          			<span ng-if="pendingOrdersGet.dmTransaxtionCount != null " style="font-weight:bold;">{{pendingOrdersGet.dmTransaxtionCount}}</span>
+          			<span ng-if="pendingOrdersGet.dmTransaxtionCount == null " style="font-weight:bold;">0</span>
+          		</font></div><br/>
+          	</a>
+          
+        </div>
+      </div>
+      <div style="width:260px;height:80px" class="col l3 m6 s12">
+        <a href="#" class="card-panel stats-card amber lighten-2 amber-text text-lighten-5" >
+          <i class="fa fa-cloud-upload"></i>
+            <div class="name">当日新增用户/总用户数</div>
+            <span class="count">{{custromerRatio.newCustromer}}/{{custromerRatio.oldCustromer}}</span>
+        </a>
+      </div>
+      <div style="width:260px;height:80px"  class="col l3 m6 s12">
+        <a href="#" class="card-panel stats-card green lighten-2 green-text text-lighten-5">
+          <i class="fa fa-spinner"></i>
+	          <div class="name">币种冠军</div>
+	          <span ng-if="FirstCoin != ''" class="count">{{FirstCoin.coinCode}}/{{FirstCoin.entrustCount}}</span>
+	          <span ng-if="FirstCoin == ''" class="count">BTC/00.000</span>
+        </a>
+      </div>
+    </div>
+<!-- /Stats Panels -->
+
+<!--<div class="row ">
+    <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>币种</th>
+      <th>服务器钱包总币数</th>
+      <th>服务器提币账户总币数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in ourCoinInfo">
+      <th ng-bind="$index+1">1</th>
+      <td>{{item.currencyType}}-{{item.website}}</td>
+      <td>{{item.coinTotalMoney}}</td>
+      <td>{{item.withdrawMoney}}</td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>-->
+
+<div class="row sortable" >
+      <!-- Stacked Area Chart -->
+      <div class="col s12 l5">
+        <div class="card">
+          <div class="title">
+            <h5>用户类型</h5>
+         <a class="close" href="#">
+              <i class="mdi-content-clear"></i>
+            </a>
+            <a class="minimize" href="#">
+              <i class="mdi-navigation-expand-less"></i>
+            </a> 
+          </div>
+          <div class="content">
+            <div id="flotLineChart" style="height: auto">
+            	<div id="container1">
+            	</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Stacked Area Chart -->
+
+      <!-- Pie Chart -->
+      <div class="col s12 l7">
+        <div class="card">
+          <div class="title">
+            <h5>交易汇总图</h5>
+            <a class="close" href="#">
+              <i class="mdi-content-clear"></i>
+            </a>
+            <a class="minimize" href="#">
+              <i class="mdi-navigation-expand-less"></i>
+            </a>
+          </div>
+          <div class="content">
+            <div id="flotPieChart" style="height: auto">
+            	<div id="container2">
+            	</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Pie Chart -->
+    </div>
+    
+

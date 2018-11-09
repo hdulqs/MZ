@@ -1,0 +1,155 @@
+ <link rel="stylesheet" type="text/css" href="static/style/hry.css" />
+<div class="row">
+	<div class="card-panel">	
+		<h4>
+			<i class="mdi-action-view-list fs-26"></i>
+       		<span class="fs-16 p-5">预览资金方案 </span>
+		 </h4>
+		 <hr>		  
+		  <form ng-submit="processForm()"> 
+		  <div class="row">		  		 
+		   		<div class="col s12" id="repaymentMethodspan">
+		   					<span class="left w-100">还款方式：</span>
+				</div>
+				<div class="col s12" id="repaymentCyclespan" >
+						<span class="left w-100 ">还款周期：</span>		
+				</div>
+				 <div class="col s12" id="preposePayAccrualspan"> 
+						<span class="left w-100 ">前置情况：</span>
+				 </div>
+				 <div class="col s12" id="interestByOneTimespan">
+						<span class="left w-100 ">一次性情况：</span>
+				 </div>
+				 <div class="col s12" id="repaymentDatespan">
+						<span class="left w-100 ">偿还日：</span>
+				 </div>
+				  <div class="col s12" id="dateModelspan">
+								<span class="left w-100 ">日期模型：</span>
+				   </div>
+				   <div class="col s12" id="ccalculateFirstAndEndspan">
+							<span class="left w-100 ">算头算尾情况：</span>
+				    </div>
+				 <div class="col s12" id="intentDateTypespan">
+						<span class="left w-100 ">还款日的方式：</span>
+				 </div>
+				 <div class="col s12" id="consultationMoneyWayspan">
+							<span class="left w-100 ">{{fundMoneyType[0].text}}：</span>
+				 </div>
+				    <div class="col s12" id="serviceMoneyWayspan">
+							<span class="left w-100 ">{{fundMoneyType[1].text}}：</span>
+				    </div>
+				     <div class="col s12" id="otherOneFundMoneyWayspan">
+							<span class="left w-100 ">{{fundMoneyType[2].text}}：</span>
+				    </div>
+				     <div class="col s12" id="otherTwoFundMoneyWayspan">
+							<span class="left w-100 ">{{fundMoneyType[3].text}}：</span>
+				    </div>
+				     <div class="col s12" id="otherTreeFundMoneyWayspan">	
+							<span class="left w-100 ">{{fundMoneyType[4].text}}：</span>
+				    </div>	
+				    <p class="center">
+					    <!-- 完成按钮 -->
+							<button class="btn mr-20 fs-16" type="submit" id="saveNext">保存</button>
+					
+				    </p>   
+			</div>
+		 </form> 
+		     <div class="row">
+		      <form ng-submit="fnCalcu()"> 		  		 
+		   		<div class="col s12">
+				    <div class="col s4 "  >
+					   <div class="input-field">
+							<input  id="projectMoney" type="text" ng-model='formcaluData.projectMoney' required>
+							 <label for="projectMoney">*本金</label>
+					    </div>
+				    </div>	
+				    <div class="col s4 "  >
+					   <div class="input-field">
+							<input  id="payintentPeriod" type="number" ng-model='formcaluData.payintentPeriod' required>
+							 <label for="payintentPeriod">*期数</label>
+					    </div>
+				    </div>
+				    <div class="col s4 "  >
+					   <div class="input-field">
+							<input  id="startDate" class="pikaday" type="text" ng-model='formcaluData.startDate' required>
+							 <label for="startDate">*开始日</label>
+					    </div>
+				    </div>	
+				    <div class="col s4 "  >
+					   <div class="input-field">
+							<input  id="intentDate"  type="text" ng-model='formcaluData.intentDate' readOnly required>
+							 <label for="intentDate">*结束日</label>
+					    </div>
+				    </div>
+				    <div class="col s4 "  >
+				     	<div class="input-field">
+							<input  id="loanInterestMoneyDayRate" type="text" ng-model="formcaluData.loanInterestMoneyDayRate" required>
+							 <label for="loanInterestMoneyDayRate">*日利率</label>
+					    </div>
+				    </div>	
+				    <div class="col s4 " id="consultationMoneyWayspanrate">
+						<div class="input-field">
+							<input  id="consultationMoneyDayRate" type="text" ng-model="formcaluData.consultationMoneyDayRate" required>
+							 <label for="consultationMoneyDayRate">*{{fundMoneyType[0].text}}日利率：</label>
+					    </div>	
+				    </div>
+				    <div class="col s4 " id="serviceMoneyWayspanrate">
+						 <div class="input-field">
+							<input  id="serviceMoneyDayRate" type="text" ng-model="formcaluData.serviceMoneyDayRate" required>
+							 <label for="serviceMoneyDayRate">*{{fundMoneyType[1].text}}日利率：</label>
+					    </div>	
+				    </div>
+				    <div class="col s4 " id="otherOneFundMoneyWayspanrate">
+						<div class="input-field">
+							<input  id="otherOneFundMoneyDayRate" type="text" ng-model="formcaluData.otherOneFundMoneyDayRate" required >
+							 <label for="otherOneFundMoneyDayRate">*{{fundMoneyType[2].text}}日利率：</label>
+					    </div>	
+				    </div>
+				    <div class="col s4 " id="otherTwoFundMoneyWayspanrate">
+						<div class="input-field">
+							<input  id="otherTwoFundMoneyDayRate" type="text" ng-model="formcaluData.otherTwoFundMoneyDayRate" required>
+							 <label for="otherTwoFundMoneyDayRate">*{{fundMoneyType[3].text}}日利率：</label>
+					    </div>	
+				    </div>	
+				    <div class="col s4 "  id="otherTreeFundMoneyWayspanrate">
+						<div class="input-field">
+							<input  id="otherTreeFundMoneyDayRate" type="text" ng-model="formcaluData.otherTreeFundMoneyDayRate" required>
+							 <label for="otherTreeFundMoneyDayRate">*{{fundMoneyType[4].text}}日利率：</label>
+					    </div>		
+		   			</div>	
+					
+				    <p class="center">
+					    <!-- 试算按钮 -->
+						<button class="btn mr-20 fs-16" type="submit">试算</button>
+						<a class="btn" ng-click="back()" >返回</a>
+				    </p> 
+				    </div>    
+				    </form> 
+				</div>
+				
+		<div class="row">	
+			<div class="col s12 "  >
+				<table id="dataTable" class="display table table-bordered table-striped table-hover">
+					   <thead>
+					    <tr>
+					    <th>期数</th>
+			              <th>计划到账日</th>
+			              <th>放款金额</th>
+			              <th>本金</th>
+			              <th>利息</th>
+			              <th id="fundMoneyTypeThOne"></th>
+			              <th id="fundMoneyTypeThTwo"></th>
+			              <th id="fundMoneyTypeThThree"></th>	
+			               <th id="fundMoneyTypeThFour"></th>
+			              <th id="fundMoneyTypeThFive"></th>
+					   
+		                  	
+					    </tr>
+					  </thead>
+					  <tbody>
+					  </tbody>
+				</table>
+			</div>
+		</div>		
+	</div>
+</div>

@@ -1,0 +1,215 @@
+<!-- 添加分公司-->
+<div class="card-panel" >
+	
+	<h4>
+		<i class="mdi-action-view-list fs-26"></i>
+	     		<span class="fs-16 p-5">分公司信息</span>
+	     		<!-- 返回按钮 -->
+		<a class="btn fs-16 right"  href="#/oauth/company/subcompany/list/anon" >返回</a>
+	</h4>
+	<hr>
+	<div class="row">
+	  <div class="col s12">
+	    <ul class="tabs">
+	      <li class="tab col s3  "><a  href="#test1">基本信息</a></li>
+	      <li class="tab col s3  "><a  href="#test2">管理员信息</a></li>
+	      <li class="tab col s3  "><a  href="#test3">管理员权限</a></li>
+	    </ul>
+	  </div>
+	  <div id="test1" class="col s12">
+	  		<div class="card-panel" >
+	  		<h4>
+				<i class="mdi-action-view-list fs-26"></i>
+	       		<span class="fs-16 p-5">基本信息</span>
+			 </h4>
+			 <hr>
+	  		
+	  		<div class="row">
+			<form id="seeForm" ng-submit="processForm()">
+				<div class="col m8 s12 left">
+						<div class="col m6 s12">
+					      <div class="input-field">
+				        		分公司名称<input type="text" ng-model="formData.appOrganization.name" readonly/>
+					       </div>
+					     </div>
+					    
+					    
+						<div class="col m6 s12">
+					      	<div class="input-field">
+					        	分公司短称<input   type="text"  ng-model="formData.appOrganization.shortName" readonly/>
+					     	</div>
+					     </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        分公司编号<input   type="text"  ng-model="formData.appOrganization.companyNo" readonly/>
+					     </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        公司英文缩写<input   type="text"  ng-model="formData.appOrganization.englishName"  readonly/>
+					        </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        联系人<input   type="text"  ng-model="formData.appOrganization.person"  readonly/>
+					       </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        联系人电话<input   type="text"  ng-model="formData.appOrganization.mobile"  readonly/>
+					       </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        传真<input   type="text"  ng-model="formData.appOrganization.fax"  readonly/>
+					        </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        成立日期<input   type="text"  ng-model="formData.appOrganization.setDate"  readonly/>
+					        </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        地址<input   type="text"  ng-model="formData.appOrganization.address"  readonly/>
+					        </div>
+					    </div>
+					    <div class="col m6 s12">
+					      <div class="input-field">
+					        邮政编码<input   type="text"  ng-model="formData.appOrganization.postalcode"  readonly/>
+					       </div>
+					    </div>
+						<div class="col s12">
+					    	<div class="input-field">
+							  备注<textarea id="textarea1" class="materialize-textarea" length="120" ng-model="formData.appOrganization.remark"  readonly></textarea>
+							  </div>
+					    </div>
+			</div>
+			</form>
+				<div class="col m4 s12 right">
+						<div class="row">
+							<h4 class="fs-20 lh-20">公司logo</h4>
+							<div class="row photoswipe-gallery isotope mr-20">
+							    <a class="col s12 item"  data-size="2880x1800" data-med="" data-med-size="1440x900" data-author="John Doe">
+							    	<img id="imgShow" src="" alt="" onerror = "nofind();"/>
+							    	<figure>logo</figure>
+							    </a>
+						    </div>
+						    <p>
+						    	<!-- 上传按钮 -->
+								<!-- 删除按钮 -->
+						  		<input type="hidden" id="imgSrc" />  
+							    <!-- <input class="btn" type="button" id="btnUploadImg" value="上传" />  
+							    <input class="btn" type="button" id="btnDeleteImg" value="删除" />  -->
+						    </p>
+				   		</div>
+			   	</div>
+		   </div>
+		   
+	 	 </div>
+	  </div>
+	  <div id="test2" class="col s12">
+	  	<!-- 创建管理员-->
+				<div class="card-panel" >
+					<h4>
+						<i class="mdi-action-view-list fs-26"></i>
+			       		<span class="fs-16 p-5">管理员信息</span>
+			       		<!-- 返回按钮 -->
+						<!-- <a class="btn fs-16 right" href="#/oauth/company/subcompany/see/anon" >返回</a> -->
+					 </h4>
+					 <hr>
+					<div class="row">
+						<!-- 提示信息 -->
+						<div class="col s12">
+							<div class="alert alert-dismissible orange lighten-4 black-text text-darken-2">
+								<i class="mdi-av-volume-up fs-20"></i>
+								  温馨提示：此账号为分公司内管理员，用于管理分公司内所授权菜单。			  
+							</div>
+						</div>
+						<!-- /提示信息 -->
+						<div class="col s12">
+							<form id="seeForm" ng-submit="processForm()">
+								 <div class="input-field">
+							        *管理员账号<input id="input_fname" type="text" ng-model="formData.appUser.username" readonly  />
+							     </div>
+							     <div class="input-field">
+							        *员工姓名<input id="input_fname" type="text" ng-model="formData.appUser.name" readonly />
+							      </div>
+							      <div class="input-field">
+							                           电子邮箱<input id="input_fname" type="text" ng-model="formData.appUser.email" readonly />
+							      </div>
+								
+							</form>
+						</div>
+				</div>
+			</div>
+				
+			<!-- /创建管理员--> 
+	  
+	  
+	  </div>
+	  <div id="test3" class="col s12">
+	  	<!-- 管理员权限-->
+			<div class="card-panel" >
+				<h4>
+					<i class="mdi-action-view-list fs-26"></i>
+		       		<span class="fs-16 p-5">管理员权限</span>
+		       		<!-- 返回按钮 -->
+					<!-- <a class="btn fs-16 right" ng-click="" >返回</a> -->
+				 </h4>
+				 <hr>
+				<div class="row">
+					<!-- 提示信息 -->
+					<div class="col s12">
+						<div class="alert alert-dismissible orange lighten-4 black-text text-darken-2">
+							<i class="mdi-av-volume-up fs-20"></i>
+							 温馨提示：以下为分公司级别所有授权菜单，勾选视为分派给分公司管理员，管理员可以自由授权给该公司的其他人员。			  
+						</div>
+					</div>
+					<!-- /提示信息 -->
+					<div class="col s12">
+						权限树
+						<div id="tree" class="ztree" >
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<form id="seeForm" ng-submit="processForm()">
+						<!-- 权限id -->
+						<input id="permissions" type="hidden" >
+						<!-- <button class="btn" type="submit" id="addPermissions" >保存</button> -->
+					</form>
+				</div>
+				
+				
+			</div>
+		<!-- /管理员权限--> 
+
+
+	  	
+	  
+	  
+	  
+	  </div>
+	</div>
+	
+	
+		
+		   
+</div>
+<!-- /添加分公司  --> 
+
+
+<script type="text/javascript" src="static/lib/jquery/ajaxupload.3.6.js"></script>
+<script type="text/javascript">
+function nofind(){
+var img=event.srcElement;
+img.src=HRY.host+"/static/static/images/logo_company.png";
+}
+
+$(document).ready(function(){
+  $('ul.tabs').tabs();
+});
+
+</script>

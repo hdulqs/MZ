@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mz.account.fund.dao.AppColdAccountRecordDao"   >
+	
+	<insert id ="insertRecord" parameterType="java.util.List" >
+             insert into app_cold_account_record
+             (accountId, customerId, userName,recordType,
+             transactionMoney, transactionNum, status, remark
+             )
+             values
+		<foreach collection ="list" item="record" index= "index" separator =",">
+                 (
+                  #{record.accountId},
+                  #{record.customerId},
+                  #{record.userName},
+                  #{record.recordType},
+                  
+                  #{record.transactionMoney},
+                  #{record.transactionNum},
+                  #{record.status},
+                  #{record.remark}
+                  
+               
+                )
+		</foreach>
+
+	</insert >
+	
+	
+		
+	<select id="find" parameterType="String" resultType="com.mz.account.fund.model.AppColdAccountRecord">
+		SELECT transactionMoney,recordType FROM app_cold_account_record WHERE 1=1
+		<if test="transactionNum != null and transactionNum !='' ">
+			AND transactionNum  like CONCAT('%',#{transactionNum},'%') 
+		</if>
+	</select>
+</mapper>
