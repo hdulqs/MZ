@@ -20,8 +20,19 @@
       <version>0.0.1-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>hurong_web_api</groupId>
-          <artifactId>hurong_web_api</artifactId>
+          <groupId>com.mz</groupId>
+          <artifactId>tp-mq</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.mz</groupId>
+      <artifactId>tp-thirdpay-app</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.mz</groupId>
+          <artifactId>tp-model</artifactId>
         </exclusion>
         <exclusion>
           <groupId>com.mz</groupId>

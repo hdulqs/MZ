@@ -31,7 +31,7 @@ public class ToolUtil {
 	
 	public static String secretKey = "wHY419uHwTxXTNjLhVqg39lhhFOmxBCoBe2pe4mT";
 	
-	public static String http = "http://oqwos88hj.bkt.clouddn.com/";
+	public static String http = "https://cdn.szfysoft.com/";
 	//图片类型
 	public static String imgypt = ".jpg";
 	//图片名称

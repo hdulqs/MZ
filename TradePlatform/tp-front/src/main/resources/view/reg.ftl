@@ -128,30 +128,30 @@
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-envelope" style="top: 11px; font-size:22px;"></i>-->
                                                 <i class="posa" style="left: 23px;top:15px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/email.png"/></i>
-                                                <input name="email" id="email" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code="please_write_email"/>"/>
+                                                <input name="email" id="email" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='please_write_email'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-keyboard-o"></i>-->
                                                 <i class="posa" style="left: 23px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
-                                                <input name="password" id="password" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code="denglumimma"/>"/>
+                                                <input name="password" id="password" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='denglumimma'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-keyboard-o"></i>-->
                                                 <i class="posa" style="left: 23px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
-                                                <input name="rePassword" id="rePassword" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code="denglumimma"/>"/>
+                                                <input name="rePassword" id="rePassword" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='denglumimma'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa megico"></i>-->
                                                 <div class="code-form-input clearfix">
                                                     <i class="posa" style="left: 23px;top:12px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/qrcode.png"/></i>
-                                                    <input style="padding-left:50px;outline:none;border:1px solid #ccc" name="registCode" id="registCode" class="form-picode input-lg" type="text" placeholder="<@spring.message code="tuxingyanzhengma"/>">
+                                                    <input style="padding-left:50px;outline:none;border:1px solid #ccc" name="registCode" id="registCode" class="form-picode input-lg" type="text" placeholder="<@spring.message code='tuxingyanzhengma'/>">
                                                     <span class="pull-right code-span"> <img id="img_captcha" title="换一张" src="${ctx}/sms/registcode?${t}" alt="换一张" width="80" > </span>
                                                 </div>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-user"></i>-->
                                                 <i class="posa" style="left: 23px;top:12px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/recommend.png"/></i>
-                                                <input name="referralCode" id="referralCode" value="${commendCode}" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code="tuijianrenshoujihao"/>"/>
+                                                <input name="referralCode" id="referralCode" value="${commendCode}" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='tuijianrenshoujihao'/>"/>
                                             </div>
                                             <div class="col-xs-12 col-sm-12">
                                                 <button class="btn btn-red-light btn-lg col-xs-12"  type="button"   id="regBtn" style="margin-top: 40px;"><@spring.message code="zhuce"/></button>
@@ -165,11 +165,11 @@
                                         </div>
                                         <!-- 手机注册 -->
                                         <div class="row form form1" style="padding-top: 30px;display:none;">
-                                            <div class="form-group  col-xs-12 col-sm-12">
+                                            <div class="col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-mobile" style="top: 11px; font-size:22px;"></i>-->
                                                 <div class="form-group  col-xs-8 col-sm-8" style="padding:0 !important;float: left !important;">
                                                     <i class="posa" style="left: 17px;top:12px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/mobile.png"/></i>
-                                                    <input id="mobile2"  name="mobile2" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code="qingshurushoujihao"/>
+                                                    <input id="mobile2"  name="mobile2" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='qingshurushoujihao'/>" />
                                                 </div>
                                                 <div class="filed col-xs-3 col-sm-3" style="position: relative;padding:0 !important;float: right !important;">
                                                     <input class="form-control input-lg" id="mobile" readonly  name="mobile" type="text"  class="">
@@ -180,37 +180,33 @@
                                                 <!--<i class="posa megico"></i>-->
                                                 <i class="posa" style="left: 26px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/qrcode.png"/></i>
                                                 <div class="code-form-input clearfix">
-                                                    <input style="padding-left:50px;outline:none; border:1px solid #ccc" name="registCode2" id="registCode2" class="form-picode input-lg" type="text" placeholder="<@spring.message code="tuxingyanzhengma"/>">
+                                                    <input style="padding-left:50px;outline:none; border:1px solid #ccc" name="registCode2" id="registCode2" class="form-picode input-lg" type="text" placeholder="<@spring.message code='tuxingyanzhengma'/>" />
                                                     <span class="pull-right code-span"> <img id="img_captcha2" title="换一张" src="${ctx}/sms/registcode?${t}" alt="换一张" width="80" > </span>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group  col-xs-12 col-sm-12">
-                                                <div class="col-xs-8 col-sm-8" style="padding:0 !important;">
+                                            <div class="form-group col-xs-12 col-sm-12" style="padding:0 !important;">
                                                     <!--  <i class="posa fa fa-keyboard-o" style="left:12px !important;"></i>-->
-                                                    <i class="posa" style="left: 16px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/code.png"/></i>
-                                                    <input name="registSmsCode" id="registSmsCode" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code="qingshurushoujiyanzhengma"/>
-                                                </div>
-                                                <div class="col-xs-3 col-sm-3" style="padding:0 !important;float: right !important;">
-                                                    <button class="form-control input-lg" type="button" id="sendsmsBtn" style="padding:0 !important;font-size: 12px !important;text-align: center;background: #ff4646;color:#fff;"><@spring.message code="fasongyanzhengma"/></button>
-                                                </div>
+                                                    <i class="posa" style="left: 26px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/code.png"/></i>
+                                                    <input name="registSmsCode" id="registSmsCode" class="form-control input-lg" style="width: 57%;margin-left: 10px;padding-left:50px;float: left" type="text" placeholder="<@spring.message code='qingshurushoujiyanzhengma'/>">
+                                                    <button class="form-control input-lg" type="button" id="sendsmsBtn" style="width: 130px;margin-right: 10px;padding:0 !important;float:right;font-size: 12px !important;text-align: center;background: #ff4646;color:#fff;"><@spring.message code="fasongyanzhengma"/></button>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-keyboard-o"></i>-->
                                                 <i class="posa" style="left: 26px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
-                                                <input name="password2" id="password2" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code="denglumimma"/>"/>
+                                                <input name="password2" id="password2" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='denglumimma'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-keyboard-o"></i>-->
                                                 <i class="posa" style="left: 26px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
-                                                <input name="rePassword2" id="rePassword2" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code="denglumimma"/>"/>
+                                                <input name="rePassword2" id="rePassword2" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='denglumimma'/>"/>
                                             </div>
 
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-user"></i>-->
                                                 <i class="posa" style="left: 26px;top:12px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/recommend.png"/></i>
                                                 <input id="pusername" type="hidden" value="${commendCode}">
-                                                <input name="referralCode2" id="referralCode2" value="${commendCode}" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code="tuijianrenshoujihao"/>"/>
+                                                <input name="referralCode2" id="referralCode2" value="${commendCode}" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='tuijianrenshoujihao'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <button class="btn btn-red-light btn-lg col-xs-12"  type="button"   id="regBtn2" style="margin-top: 40px;"><@spring.message code="zhuce"/></button>

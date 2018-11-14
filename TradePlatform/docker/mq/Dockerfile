@@ -92,6 +92,10 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
+COPY conf.d/rabbitmq.config /etc/rabbitmq/rabbitmq.config
+COPY conf.d/definitions.json /etc/rabbitmq/definitions.json
+RUN chmod 777 -R /etc/rabbitmq/
+
 EXPOSE 5672
 CMD ["rabbitmq-server"]
 

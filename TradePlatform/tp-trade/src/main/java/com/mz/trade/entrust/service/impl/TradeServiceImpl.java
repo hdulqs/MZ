@@ -198,6 +198,9 @@ public class TradeServiceImpl implements TradeService {
 
 			RedisUtil<UserRedis> redisUtil = new RedisUtil<UserRedis>(UserRedis.class);
 			UserRedis userRedis = redisUtil.get(entrust.getCustomerId().toString());
+			if (userRedis == null) {
+				return;
+			}
 
 			String code = entrust.getCoinCode();// 交易币
 			String priceCode = entrust.getFixPriceCoinCode(); // 定价币

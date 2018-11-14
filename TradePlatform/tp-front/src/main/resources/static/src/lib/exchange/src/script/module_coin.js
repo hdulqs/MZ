@@ -10,7 +10,7 @@ define(function(require, exports, module) {
 		//var op = options || {}, wrap = $('#view_coin_list'), temp = 'tmp_coin_list', Fn;
 		var op = options || {}, wrap = $('#all_coin'), temp = 'temp_all_coin', Fn;
 		Fn = new A({
-			"url" : HRY.host + "/coin/findAllCoin",
+			"url" : HRY.host + "/market/findAllCoin",
 			datatype : 'json'
 		}, function(data) {
 			var _code = data.code;

@@ -257,7 +257,6 @@ define(function(require, exports, module) {
 						},
 						dataType : "json",
 						success : function(data) {
-							debugger;
 							if(data){
 								if(data.success){
                                     layer.msg(data.msg,{time:1500},function(){

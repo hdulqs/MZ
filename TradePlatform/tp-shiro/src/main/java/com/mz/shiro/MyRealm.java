@@ -83,7 +83,6 @@ public class MyRealm extends AuthorizingRealm {
     );
     //-------------------------------------登录成功---------------------------------------------
     //设置session,saasId
-    System.out.println(SecurityUtils.getSubject().getSession().getId());
     SecurityUtils.getSubject().getSession().setAttribute("user", appUser);
     SecurityUtils.getSubject().getSession().setAttribute("userName", appUser.getUsername());
     SecurityUtils.getSubject().getSession().setAttribute("saasId", appUser.getSaasId());

@@ -6,7 +6,7 @@ var HRY = {
   },
   frontHost: "http://127.0.0.1:8081",
   filehost: 'http://127.0.0.1:8081',
-  staticUrl: '/admin',
+  staticUrl: '',
   ver: '20151203',
   head: '互融云软件',
   modules: {

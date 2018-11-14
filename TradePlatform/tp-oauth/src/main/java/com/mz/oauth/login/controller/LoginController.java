@@ -119,8 +119,9 @@ public class LoginController extends BaseController<AppUser, Long> {
   @RequestMapping("/index")
   public String index(HttpServletRequest request, HttpServletResponse response) {
     Subject subject = SecurityUtils.getSubject();
+    String indexHtml = request.getScheme() + "://" + request.getServerName() + "/admin/#/index";
     if (subject.isAuthenticated()) {
-      return "/";
+      return indexHtml;
     } else {
       return "/login.html";
     }
@@ -139,7 +140,7 @@ public class LoginController extends BaseController<AppUser, Long> {
   @MethodName(name = "用户登录效验")
   @RequestMapping("/login")
   @ResponseBody
-  public JsonResult login(HttpServletRequest request, HttpSession session) {
+  public JsonResult login(HttpServletRequest request) {
     JsonResult jsonResult = new JsonResult();
     String username = request.getParameter("username");
     String password = request.getParameter("password");
@@ -211,9 +212,8 @@ public class LoginController extends BaseController<AppUser, Long> {
 
     JsonResult jsonResult = new JsonResult();
     Subject subject = SecurityUtils.getSubject();
-    String backUrl = PropertiesUtils.APP.getProperty("app.url");
-    String loginHtml = backUrl + "/login.html";
-    String indexHtml = backUrl + "/#/index";
+    String loginHtml = request.getScheme() + "://" + request.getServerName() + "/admin/login.html";
+    String indexHtml = request.getScheme() + "://" + request.getServerName() + "/admin/#/index";
     String url = "";
 
     //如果认证信息存在，则直接返回主页，防止认证后再次返回登录页登录不成功的问题

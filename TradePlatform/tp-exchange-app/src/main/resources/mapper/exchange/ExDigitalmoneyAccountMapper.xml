@@ -66,8 +66,8 @@
 	<select id="findPageBySql" parameterType="java.util.Map"
 		resultMap="findPageBySqlMap" >
 		SELECT * FROM ex_digitalmoney_account AS aa 
-		/*LEFT JOIN app_person_info
-		AS ap ON aa.customerId = ap.customerId*/
+		LEFT JOIN app_person_info
+		AS ap ON aa.customerId = ap.customerId
 		<where>
 			<if test="userName!=null and userName!='' ">
 				aa.userName like

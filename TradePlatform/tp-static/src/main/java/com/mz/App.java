@@ -11,7 +11,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * <p>
  * Spring Boot入口
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.mz.webConfig"})
 public class App extends SpringBootServletInitializer {
 
   @Override

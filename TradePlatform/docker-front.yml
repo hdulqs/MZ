@@ -11,23 +11,23 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-        #constraints: [node.labels.work == a]
+#        constraints: [node.labels.work == a]
         preferences:
         - spread: node.labels.work
-  manage:
-    image: 192.168.1.102:5000/front/manage:0.0.1-SNAPSHOT
-    volumes:
-    - /home/logs/front_manage:/logs
-    networks:
-    - front
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-      placement:
-        #constraints: [node.labels.func == app]
-        preferences:
-        - spread: node.labels.work
+#  manage:
+#    image: 192.168.1.102:5000/front/manage:0.0.1-SNAPSHOT
+#    volumes:
+#    - /home/logs/front_manage:/logs
+#    networks:
+#    - front
+#    deploy:
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#      placement:
+##        constraints: [node.labels.work == a]
+#        preferences:
+#        - spread: node.labels.work
   trade:
     image: 192.168.1.102:5000/front/trade:0.0.1-SNAPSHOT
     volumes:
@@ -39,7 +39,7 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-        #constraints: [node.labels.func == app]
+#        constraints: [node.labels.work == a]
         preferences:
         - spread: node.labels.work
   coin:
@@ -53,7 +53,7 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-        #constraints: [node.labels.func == app]
+#        constraints: [node.labels.work == a]
         preferences:
         - spread: node.labels.work
 networks:

@@ -3,8 +3,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var redis = require("redis"),
     RDS_PORT = 6379,
-    RDS_HOST = 'middleware_redis1',
-    RDS_PWD = '123456',
+    RDS_HOST = '127.0.0.1',
+    RDS_PWD = 'Credit2016Admin',
     RDS_OPTS = {auth_pass: RDS_PWD},
     redis_client = redis.createClient(RDS_PORT, RDS_HOST, RDS_OPTS);
 
@@ -19,7 +19,7 @@ var onlineCount = 0;
 
 var request = require('request');
 
-var url_cn = "http://front"
+var url_cn = "http://127.0.0.1"
 
 function tochange(mobile, count) {
     console.log(count + "秒后再次提醒" + mobile + "更新")
@@ -288,5 +288,5 @@ setInterval(function () {
 
 //开启监听
 http.listen(process.env.npm_package_config_port, function () {
-    console.log('listening on *:3000');
+    console.log('listening on *:' + process.env.npm_package_config_port);
 });

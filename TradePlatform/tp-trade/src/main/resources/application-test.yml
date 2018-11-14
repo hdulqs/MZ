@@ -83,7 +83,7 @@ zookeeper:
 dubbo:
   name: tp-trade
   port: 20903
-  host: middleware_zookeeper
+  host: front_trade
   cachepath: cache
 logging:
   level: trace

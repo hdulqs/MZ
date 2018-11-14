@@ -336,11 +336,11 @@
 	    var target = $('.lang-cur').html();
 	    $(this).parent().hide(), $('.lang-cur').html($(this).html()), $(this).html(target);
 	    if($('.lang-cur').html().indexOf("CN")!=-1){
-	   		window.location.href = _ctx+"/language.do?language=zh_CN&split=/index";
+	   		window.location.href = _ctx+"?lang=zh_CN&split=/index";
 	    }else if($('.lang-cur').html().indexOf("EN")!=-1){
-	    	window.location.href = _ctx+"/language.do?language=en&split=/index";
+	    	window.location.href = _ctx+"?lang=en&split=/index";
 	    }else if($('.lang-cur').html().indexOf("TN")!=-1){
-	    	window.location.href = _ctx+"/language.do?language=tn&split=/index";
+	    	window.location.href = _ctx+"?lang=tn&split=/index";
 	    }
 	    
 	  })

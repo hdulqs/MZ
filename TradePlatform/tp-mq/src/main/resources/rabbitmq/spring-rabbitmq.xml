@@ -17,7 +17,7 @@
 	<!-- 定义RabbitMQ的连接工厂 -->
 	<rabbit:connection-factory id="connectionFactory" 
 
-		host="${rabbitmq.url}" 
+		host="${rabbitmq.host}"
 		port="${rabbitmq.port}"
 		username="${rabbitmq.username}" 
 		password="${rabbitmq.password}"

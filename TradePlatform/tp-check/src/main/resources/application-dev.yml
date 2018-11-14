@@ -68,7 +68,7 @@ zookeeper:
 dubbo:
   name: tp-exapi
   port: 20905
-  host: 192.168.1.102
+  host: 127.0.0.1
   cachepath: cache
 logging:
   level: trace

@@ -7,7 +7,7 @@
  */
 package com.mz.util.properties;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ public class PropertiesUtils {
 
   public static Properties APP;
   public static Properties RMI;
+  public static Properties SHIRO_PROPERTIES;
   public static Properties MULTIPLTEMAIL;
 
   public final static String SSOKEY = "app.sso";
@@ -37,19 +38,28 @@ public class PropertiesUtils {
   static {
     APP = new Properties();
     try {
-      InputStream ins = PropertiesUtils.class.getClassLoader()
-          .getResourceAsStream("app.properties");
-      APP.load(ins);
+      InputStream inputStream = new FileInputStream(
+          PropertiesUtils.class.getClassLoader().getResource(
+              ("app.properties")).getPath());
+      APP.load(inputStream);
     } catch (Exception e) {
       e.printStackTrace();
     }
-
     MULTIPLTEMAIL = new Properties();
     try {
-      InputStream ins = PropertiesUtils.class.getClassLoader()
-          .getResourceAsStream("multipleEmail.properties");
-      MULTIPLTEMAIL.load(ins);
-
+      InputStream inputStream = new FileInputStream(
+          PropertiesUtils.class.getClassLoader().getResource(
+              ("multipleEmail.properties")).getPath());
+      MULTIPLTEMAIL.load(inputStream);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    SHIRO_PROPERTIES = new Properties();
+    try {
+      InputStream inputStream = new FileInputStream(
+          PropertiesUtils.class.getClassLoader().getResource(
+              ("shiro-client.properties")).getPath());
+      SHIRO_PROPERTIES.load(inputStream);
     } catch (Exception e) {
       e.printStackTrace();
     }

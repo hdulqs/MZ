@@ -36,8 +36,7 @@ import com.dyuproject.protostuff.runtime.RuntimeSchema;
 @Component
 public class RedisUtil<T> implements ApplicationContextAware {
 
-
-  private static ApplicationContext applicationContext;
+  private static volatile ApplicationContext applicationContext;
 
   private static JedisPool jedisPool;
 

@@ -50,11 +50,11 @@ server:
   port: 8087
   context-path: /exapi
 zookeeper:
-  url: zookeeper://middleware_zookeeper:2181
+  url: zookeeper://192.168.1.102:2181
 dubbo:
   name: tp-exapi
   port: 20904
-  host: middleware_zookeeper
+  host: 127.0.0.1
   cachepath: cache
 logging:
   level: trace

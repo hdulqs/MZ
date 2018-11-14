@@ -106,7 +106,7 @@
 			<img src="/static/src/img/xiaosan.png" id='myImg'/>
 			<!--<div id='zhicode'>上传收款码</div>-->
 		</div>
-		<input style="display:none;" type="file" required  class="form-control" name="alipayPicture" id="alipayPicture" value="http://oqwos88hj.bkt.clouddn.com/smileFront57564cee-2b6d-4ce0-8b6c-2f18570be002.jps"/>
+		<input style="display:none;" type="file" required  class="form-control" name="alipayPicture" id="alipayPicture" value="https://cdn.szfysoft.com/smileFront57564cee-2b6d-4ce0-8b6c-2f18570be002.jps"/>
 		<input type="hidden" id="alipayPicture_1">
 	</div>
 </div>
@@ -132,7 +132,7 @@
 			<img src="/static/src/img/xiaosan.png" id='myImg2'/>
 			<!--<div id='zhicode2'>上传收款码</div>-->
 		</div>
-		<input style="display:none;" type="file" required  class="form-control" name="weChatPicture" id="weChatPicture"  value="http://oqwos88hj.bkt.clouddn.com/smileFront57564cee-2b6d-4ce0-8b6c-2f18570be002.jps"  />
+		<input style="display:none;" type="file" required  class="form-control" name="weChatPicture" id="weChatPicture"  value="https://cdn.szfysoft.com/smileFront57564cee-2b6d-4ce0-8b6c-2f18570be002.jps"  />
 		<input type="hidden" id="weChatPicture_1">
 	</div>
 </div>

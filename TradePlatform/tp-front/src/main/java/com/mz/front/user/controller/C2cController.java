@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.NoSuchMessageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -281,7 +282,7 @@ public class C2cController {
 				}
 
 				String session_verifyCode = redisService.get("SMS:smsphone:" + user.getPhone());
-				if (!verifyCode.equals(session_verifyCode)) {
+				if (verifyCode == null || !verifyCode.equals(session_verifyCode)) {
 					return new JsonResult().setMsg(SpringContextUtil.diff("短信验证错误或已失效！"));
 				}
 				if (user.getAccountPassWord() != null && !"".equals(user.getAccountPassWord())) {
@@ -326,7 +327,7 @@ public class C2cController {
 				if(remoteResult.getSuccess()){
 					return new JsonResult().setSuccess(true).setObj(remoteResult.getObj()).setMsg(SpringContextUtil.diff("success"));
 				}else{
-					return new JsonResult().setMsg(SpringContextUtil.diff(remoteResult.getMsg()));
+					return new JsonResult().setMsg(remoteResult.getMsg());
 				}
 			}else{
 				return new JsonResult().setMsg("remote错误");

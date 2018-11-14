@@ -67,8 +67,8 @@ zookeeper:
   url: zookeeper://192.168.1.102:2181
 dubbo:
   name: tp-oauth
-  host: 192.168.1.102
-  port: 20955
+  host: 127.0.0.1
+  port: 20901
   cachepath: cache
 logging:
   level: trace

@@ -1,14 +1,16 @@
 /**
  * Copyright:   北京互融时代软件有限公司
- * @author:      Gao Mimi
- * @version:      V1.0
- * @Date:        2015年10月13日 下午4:57:27
+ *
+ * @author: Gao Mimi
+ * @version: V1.0
+ * @Date: 2015年10月13日 下午4:57:27
  */
 package com.mz.shiro;
 
 /**
  * <p> TODO</p>
- * @author:         Gao Mimi
+ *
+ * @author: Gao Mimi
  * @Date :          2015年10月13日 下午4:57:27
  */
 
@@ -27,44 +29,40 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
+
   private static final Logger LOG = LoggerFactory.getLogger(CaptchaFormAuthenticationFilter.class);
 
   public CaptchaFormAuthenticationFilter() {
   }
 
   @Override
-  protected void issueSuccessRedirect(ServletRequest request, ServletResponse response) throws Exception {
-    String fallbackUrl = (String) getSubject(request, response).getSession().getAttribute("authc.fallbackUrl");
-    if(StringUtils.isEmpty(fallbackUrl)) {
-      fallbackUrl = getSuccessUrl();
-    }
-    HttpServletRequest req = (HttpServletRequest) request;
-    String successUrl = req.getParameter("successUrl");
-    //直接跳转主页
-    if(StringUtils.isEmpty(successUrl)){
-      WebUtils.issueRedirect(request, response, fallbackUrl);
-    }else{
-      WebUtils.issueRedirect(request, response, successUrl);
-    }
+  protected void issueSuccessRedirect(ServletRequest request, ServletResponse response)
+      throws Exception {
+    HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+    String indexHtml =
+        httpServletRequest.getScheme() + "://" + request.getServerName() + "/admin/#/index";
+    WebUtils.issueRedirect(request, response, indexHtml);
   }
 
   @Override
   /**
    * 登录验证
    */
-  protected boolean executeLogin(ServletRequest request,  ServletResponse response) throws Exception {
+  protected boolean executeLogin(ServletRequest request, ServletResponse response)
+      throws Exception {
     CaptchaUsernamePasswordToken token = null;
 
     try {//抓空异常
       token = createToken(request, response);
     } catch (UnknownAccountException e) {
-      LOG.info("用户名和密码不能为空-"+e);
+      LOG.info("用户名和密码不能为空-" + e);
       return onLoginFailure(token, e, request, response);
     }
 
     if (token == null) {
-      String msg = "createToken method implementation returned null. A valid non-null AuthenticationToken " +
-          "must be created in order to execute a login attempt.";
+      String msg =
+          "createToken method implementation returned null. A valid non-null AuthenticationToken " +
+              "must be created in order to execute a login attempt.";
       throw new IllegalStateException(msg);
     }
     Subject subject = getSubject(request, response);
@@ -74,11 +72,11 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
       subject.login(token);//正常验证
       PrincipalCollection principals = subject.getPrincipals();
       subject.getSession().setAttribute("loginUserName", principals.getPrimaryPrincipal());
-      LOG.info(token.getUsername()+"登录成功");
+      LOG.info(token.getUsername() + "登录成功");
       return onLoginSuccess(token, subject, request, response);
-    }catch (AuthenticationException e) {
+    } catch (AuthenticationException e) {
       subject.getSession().removeAttribute("loginUserName");
-      LOG.info(token.getUsername()+"登录失败--"+e);
+      LOG.info(token.getUsername() + "登录失败--" + e);
       return onLoginFailure(token, e, request, response);
     }
   }
@@ -89,8 +87,8 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
     //session中的图形码字符串
     String captcha = (String) request.getSession().getAttribute(
         com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-    if("qwer".equals(token.getCaptcha())){//交易中心首页登录，默认验证码
-      return ;
+    if ("qwer".equals(token.getCaptcha())) {//交易中心首页登录，默认验证码
+      return;
     }
     if (captcha != null && !captcha.equalsIgnoreCase(token.getCaptcha())) {
       throw new IncorrectCaptchaException("验证码错误！");
@@ -107,11 +105,12 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
     String host = getHost(request);
     String appuserprefix = getAppuserprefix(request);
 
-    if(StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
+    if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
       throw new UnknownAccountException("用户名和密码不能为空");//没找到帐号
     }
 
-    return new CaptchaUsernamePasswordToken(username,password.toCharArray(), rememberMe, host, captcha,appuserprefix);
+    return new CaptchaUsernamePasswordToken(username, password.toCharArray(), rememberMe, host,
+        captcha, appuserprefix);
   }
 
   public static final String DEFAULT_CAPTCHA_PARAM = "captcha";

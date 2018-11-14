@@ -85,7 +85,7 @@ zookeeper:
 dubbo:
   name: tp-front
   port: 20903
-  host: 192.168.1.102
+  host: 127.0.0.1
   cachepath: cache
 logging:
   level: trace

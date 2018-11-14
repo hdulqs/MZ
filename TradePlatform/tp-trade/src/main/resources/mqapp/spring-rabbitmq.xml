@@ -12,8 +12,8 @@
 	 
 	  
 	<rabbit:connection-factory id="connectionFactory"
-		host="${rabbitmq.url}" port="${rabbitmq.port}" username="${rabbitmq.username}" password="${rabbitmq.password}"
-		virtual-host="${rabbitmq.virtual-host}" />
+		host="${spring.rabbitmq.host}" port="${spring.rabbitmq.port}" username="${spring.rabbitmq.username}" password="${spring.rabbitmq.password}"
+		virtual-host="${spring.rabbitmq.virtual-host}" />
 		
 		<!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
 		<rabbit:admin id="connectAdmin" connection-factory="connectionFactory" />

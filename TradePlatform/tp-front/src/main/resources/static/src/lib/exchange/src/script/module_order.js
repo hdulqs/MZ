@@ -159,7 +159,7 @@ define(function (require, exports, module) {
                         break;
                     case 'success':
                         if(data.code === "success"&&data.data.indexOf("script")==-1&&data.data!=""){
-                         	var delegation=eval("("+data.data+")");
+                         	var delegation=eval(data.data);
                             var _h = D.md5(JSON.stringify(delegation));
                             
                             if(is_history==20){

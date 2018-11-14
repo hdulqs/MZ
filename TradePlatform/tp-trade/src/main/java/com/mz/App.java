@@ -16,9 +16,9 @@ import tk.mybatis.spring.annotation.MapperScan;
  * Spring Boot入口
  */
 @SpringBootApplication(scanBasePackages = {"com.mz.**.service", "com.mz.**.common",
-    "com.mz.util.sys"})
+        "com.mz.trade.listener", "com.mz.util.sys"})
 @PropertySource({"classpath:coinConfig/bitCoinConfig.properties",
-    "classpath:thirdpayConfig/thirdPayConfig.properties", "classpath:amqp.properties"})
+    "classpath:thirdpayConfig/thirdPayConfig.properties"})
 @ImportResource({"classpath:remote/*.xml", "classpath:mqapp/*.xml"})
 @MapperScan(basePackages = {"com.mz.**.dao"}, markerInterface = BaseDao.class)
 @EnableTransactionManagement

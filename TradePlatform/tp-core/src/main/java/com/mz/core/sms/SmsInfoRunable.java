@@ -7,10 +7,12 @@
 package com.mz.core.sms;
 
 import com.mz.manage.remote.RemoteSmsService;
+import com.mz.util.sys.SpringContextUtil;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
 * @Description:    发送短信线程
@@ -23,8 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 */
 public class SmsInfoRunable implements Runnable {
 
-	@Autowired
-	RemoteSmsService remoteSmsService;
+	private static RemoteSmsService remoteSmsService;
 
 	private final static Logger log = Logger.getLogger(SmsInfoRunable.class);
 
@@ -76,7 +77,19 @@ public class SmsInfoRunable implements Runnable {
 	public void run() {
 		log.info("发送短信：请求地址【"+url+"】");
 		log.info("发送短信：请求参数【"+smsParam.toJson()+"】");
-		remoteSmsService.sendSmsInfo(smsParam.toJson(),phoneType,phone,syscode,map);
+		if (remoteSmsService == null) {
+			synchronized (this) {
+				if (remoteSmsService == null) {
+					remoteSmsService = SpringContextUtil.getBean("remoteSmsService");
+				}
+			}
+		}
+		if (phoneType == null || phone.equals("86")) {
+			remoteSmsService.sendSmsInfo(smsParam.toJson(),phoneType,phone,syscode,map);
+		} else {
+			remoteSmsService.sendsmsHai(smsParam.toJson(),phoneType,phone);
+		}
+
 		log.info(result);
 	}
 }

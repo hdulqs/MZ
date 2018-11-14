@@ -10,9 +10,9 @@ define(function(require,exports,module){
             }
             var split = window.document.location.pathname+url;
 
-			$(".slide_lang_box").eq(0).find('a').attr("href",_ctx + "/language.do?language=zh_CN&split="+split);
-            $(".slide_lang_box").eq(1).find('a').attr("href",_ctx + "/language.do?language=tn&split="+split);
-            $(".slide_lang_box").eq(2).find('a').attr("href",_ctx + "/language.do?language=en&split="+split);
+			$(".slide_lang_box").eq(0).find('a').attr("href",_ctx + "?lang=zh_CN&split="+split);
+            $(".slide_lang_box").eq(1).find('a').attr("href",_ctx + "?lang=tn&split="+split);
+            $(".slide_lang_box").eq(2).find('a').attr("href",_ctx + "?lang=en&split="+split);
 
             var language = $("#language").val();
             if(language == 'zh_CN'){

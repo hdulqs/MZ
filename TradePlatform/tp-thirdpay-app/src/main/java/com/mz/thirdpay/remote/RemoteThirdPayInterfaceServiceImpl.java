@@ -124,7 +124,7 @@ public class RemoteThirdPayInterfaceServiceImpl extends PABankSDK implements
       FUNDSUMMARYACCTNO = ART_THIRD.getProperty("fund_summary_acctno");
 
       // 初始化配置
-      PABankSDK.init(ART_THIRD.getProperty("certificate_path"));
+      //PABankSDK.init(ART_THIRD.getProperty("certificate_path"));
       System.out.println("certificate_path::::::::" + ART_THIRD.getProperty("certificate_path"));
       // 验证开发者
       PABankSDK.getInstance().approveDev();

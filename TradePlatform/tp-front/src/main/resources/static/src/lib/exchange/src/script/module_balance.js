@@ -105,7 +105,7 @@ define(function(require, exports,module){
         
         function Process(data) {
         	try {
-	        	 data=JSON.parse(JSON.parse(data).obj);
+	        	 data=JSON.parse(data.obj);
 	        	 DOM['buyRate'].attr("data-tips",Lang.L("dangqianmairu_feilv")+ data.buyFeeRate +"%");
 	        	 DOM['sellRate'].attr("data-tips",Lang.L("dangqianmaichu_feilv")+ data.sellFeeRate +"%");
 	        	 

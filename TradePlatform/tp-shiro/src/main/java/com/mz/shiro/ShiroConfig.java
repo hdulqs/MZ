@@ -1,5 +1,6 @@
 package com.mz.shiro;
 
+import com.mz.util.properties.PropertiesUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -179,7 +180,7 @@ public class ShiroConfig {
     filterChainDefinitions.put("/kaptcha", "anon");
     filterChainDefinitions.put("/login.do", "anon");
     filterChainDefinitions.put("/authImage", "anon");
-    filterChainDefinitions.put("/layout.do", "anon");
+    filterChainDefinitions.put("/layout.do", "logout");
     filterChainDefinitions.put("/static/**", "anon");
     filterChainDefinitions.put("/js/**", "anon");
     filterChainDefinitions.put("/css/**", "anon");
@@ -215,12 +216,6 @@ public class ShiroConfig {
   }
 
   private String getUrl(String key) {
-    Properties properties = new Properties();
-    try {
-      properties.load(new ClassPathResource("shiro-client.properties").getInputStream());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return String.valueOf(properties.get(key));
+    return PropertiesUtils.SHIRO_PROPERTIES.getProperty(key);
   }
 }

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("coinController")
-@RequestMapping("/coin")
+@RequestMapping("/market")
 public class CoinController {
 
   @Resource

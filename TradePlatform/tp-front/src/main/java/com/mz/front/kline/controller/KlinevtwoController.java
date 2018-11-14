@@ -1293,7 +1293,7 @@ public class KlinevtwoController {
 						// 最新价格
 						if (marketTrades != null) {
 							List<MarketTradesSub> trades = marketTrades.getTrades();
-							if(trades!=null){
+							if(trades!=null && trades.size() > 0){
 								if(trades.size()>1){
 									MarketTradesSub marketTradesSub0 = trades.get(0);
 									data.put("currentExchangPrice", decimalFormatCurrency.format(marketTradesSub0.getPrice()));

@@ -208,6 +208,9 @@ public class RemoteManageServiceImpl implements RemoteManageService {
   @Autowired
   private UniqueRecordService uniqueRecordService;
 
+  @Autowired
+  private RemoteThirdPayInterfaceService remoteThirdPayInterfaceService;
+
   @Override
   public void cancelAllExEntrust(EntrustTrade entrustTrade) {
     exEntrustService.cancelAllExEntrust(entrustTrade);
@@ -915,9 +918,6 @@ public class RemoteManageServiceImpl implements RemoteManageService {
       }
 
       try {
-        // 是否开启实名认证接口
-        RemoteThirdPayInterfaceService remoteThirdPayInterfaceService = (RemoteThirdPayInterfaceService) ContextUtil
-            .getBean("remoteThirdPayInterfaceService");
         String checkIdentityIsOpen = remoteThirdPayInterfaceService
             .getIsOpen("checkIdentityInterface");
 
@@ -2028,8 +2028,6 @@ public class RemoteManageServiceImpl implements RemoteManageService {
 
       try {
         // 是否开启实名认证接口
-        RemoteThirdPayInterfaceService remoteThirdPayInterfaceService = (RemoteThirdPayInterfaceService) ContextUtil
-            .getBean("remoteThirdPayInterfaceService");
         String checkIdentityIsOpen = remoteThirdPayInterfaceService
             .getIsOpen("checkIdentityInterface");
 
@@ -2116,6 +2114,7 @@ public class RemoteManageServiceImpl implements RemoteManageService {
          */
         return new RemoteResult().setSuccess(true);
       } catch (Exception e) {
+        e.printStackTrace();
         return new RemoteResult().setMsg("card_id_chongfu");
       }
     }

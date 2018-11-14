@@ -94,8 +94,8 @@
       <version>0.0.1-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>hurong_trunk_manage_api</groupId>
-          <artifactId>hurong_trunk_manage_api</artifactId>
+          <groupId>com.mz</groupId>
+          <artifactId>tp-manage-api</artifactId>
         </exclusion>
       </exclusions>
     </dependency>

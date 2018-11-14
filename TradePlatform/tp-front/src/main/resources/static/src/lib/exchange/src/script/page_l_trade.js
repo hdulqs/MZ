@@ -622,7 +622,7 @@ define(function (require) {
             },
             callback: function (data, _form) {
                 _dDialog_trade.attr('data-init', '');
-                DOM.trigger('__TradeFormCallback', [_form, JSON.parse(data)]);
+                DOM.trigger('__TradeFormCallback', [_form, data]);
             },
             postData: function (data) {
             	var retData=[{"name":"coinCode","value":CURRENT_SYMBOL}];

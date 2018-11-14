@@ -102,12 +102,12 @@
                                               <!-- <i class="posa fa fa-envelope" style="top: 11px;font-size:22px;"></i>-->
                                                 <i class="posa" style="left: 23px;top: 14px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/email.png"/></i>
                                                <input type="hidden" class="market" value="${market}" >
-                                               <input name="username" id="username" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code="please_write_email_or_phone"/>"/>
+                                               <input name="username" id="username" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='please_write_email_or_phone'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                             	<!--<i class="posa fa fa-keyboard-o"></i>-->
                                                 <i class="posa" style="left: 23px;top: 11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
-                                                <input name="password" id="password" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code="please_write_pwd"/>"/>
+                                                <input name="password" id="password" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='please_write_pwd'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
                                                 <button class="btn btn-red-light btn-lg col-xs-12"  type="button"   id="loginBtn" style="margin-top: 33px;margin-bottom: 20px;"><@spring.message code="Login"/></button>

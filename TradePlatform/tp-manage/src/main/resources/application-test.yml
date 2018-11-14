@@ -68,7 +68,7 @@ zookeeper:
 dubbo:
   name: tp-manage
   port: 20902
-  host: middleware_zookeeper
+  host: 127.0.0.1
   cachepath: cache
 logging:
   level: trace

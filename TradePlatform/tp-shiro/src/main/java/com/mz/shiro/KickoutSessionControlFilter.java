@@ -70,7 +70,6 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
   @Override
   protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
       throws Exception {
-    System.out.println(((HttpServletRequest) request).getRequestURL());
     Subject subject = getSubject(request, response);
     Object object = subject.getSession().getAttribute("user");
     if (object == null) {
