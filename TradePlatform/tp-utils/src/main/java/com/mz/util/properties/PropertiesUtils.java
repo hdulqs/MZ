@@ -9,6 +9,7 @@ package com.mz.util.properties;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -56,10 +57,13 @@ public class PropertiesUtils {
     }
     SHIRO_PROPERTIES = new Properties();
     try {
-      InputStream inputStream = new FileInputStream(
-          PropertiesUtils.class.getClassLoader().getResource(
-              ("shiro-client.properties")).getPath());
-      SHIRO_PROPERTIES.load(inputStream);
+      URL url = PropertiesUtils.class.getClassLoader().getResource(
+          ("shiro-client.properties"));
+      if (url != null) {
+        InputStream inputStream = new FileInputStream(
+            url.getPath());
+        SHIRO_PROPERTIES.load(inputStream);
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
