@@ -67,7 +67,7 @@ zookeeper:
   url: zookeeper://middleware_zookeeper:2181
 dubbo:
   name: tp-oauth
-  host: 127.0.0.1
+  host: admin_oauth
   port: 20901
   cachepath: cache
 logging:

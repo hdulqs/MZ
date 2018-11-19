@@ -1,7 +1,7 @@
 package com.mz.utils;
 
 import com.mz.util.log.LogFactory;
-import com.mz.util.properties.PropertiesUtil;
+import com.mz.util.properties.PropertiesUtils;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -33,15 +33,15 @@ public class Properties {
 
   public static synchronized Map<String, String> appcoinMap() {
     if (Appcoin == null) {
-      Appcoin = PropertiesUtil.printAll("coinConfig/coins.properties");
+      Appcoin = PropertiesUtils.printAll("coinConfig/coins.properties");
       // 以太坊代币处理
       if (!Appcoin.isEmpty()) {
         Map<String, String> map2 = new HashMap<>(200);
         map2.putAll(Appcoin);
         Set<Entry<String, String>> entrys = map2.entrySet();
         for (Entry<String, String> entry : entrys) {
-          String key = entry.getKey().toString();
-          String value = entry.getValue().toString();
+          String key = entry.getKey();
+          String value = entry.getValue();
           if (key.startsWith(CommonUtil.HEXPREFIX)) {
             Appcoin.put(value, key);
           }
@@ -49,13 +49,6 @@ public class Properties {
       }
     }
     return Appcoin;
-  }
-
-  public static synchronized Map<String, String> appMap() {
-    if (App == null) {
-      App = PropertiesUtil.printAll("app.properties");
-    }
-    return App;
   }
 
   /**

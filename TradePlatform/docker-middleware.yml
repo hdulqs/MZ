@@ -8,12 +8,14 @@ services:
    - 80:80
    - 443:443
    networks:
-     - front
-     - admin
+     - tp-net
    deploy:
      replicas: 1
      restart_policy:
        condition: on-failure
+     placement:
+       constraints:
+       - node.labels.manage == 1
   redis1:
     image: 192.168.1.102:5000/middleware/redis:4.0.11
     volumes:
@@ -22,13 +24,15 @@ services:
     ports:
     - 6379:6379
     networks:
-    - front
-    - admin
+    - tp-net
     command: ["/etc/redis.conf"]
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
   redis2:
     image: 192.168.1.102:5000/middleware/redis:4.0.11
     volumes:
@@ -37,13 +41,15 @@ services:
     ports:
     - 6380:6379
     networks:
-    - front
-    - admin
+    - tp-net
     command: ["/etc/redis.conf"]
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
   zookeeper:
     image: 192.168.1.102:5000/middleware/zookeeper:3.4.13
     volumes:
@@ -56,24 +62,28 @@ services:
     - 20904:20904
     - 20905:20905
     networks:
-      - front
-      - admin
+      - tp-net
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
   rabbitmq:
     image: 192.168.1.102:5000/middleware/rabbitmq:3.7.8
     ports:
     - 5672:5672
     - 15672:15672
     networks:
-    - front
-    - admin
+    - tp-net
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
   node_index:
     image: 192.168.1.102:5000/middleware/node_index:1.0.0
 #    volumes:
@@ -81,15 +91,16 @@ services:
     ports:
     - 3000:3000
     networks:
-    - front
+    - tp-net
     depends_on:
     - redis1
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
 networks:
-  front:
-    external: true
-  admin:
+  tp-net:
     external: true

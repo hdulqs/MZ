@@ -25,7 +25,9 @@ define(['app'], function (app) {
             		   async :false,
             		   url: path+"/"+url,
             		   success: function(data){
-            			   data = $.parseJSON(data);
+                           if (typeof data === "string" && data.constructor === String) {
+                               data = $.parseJSON(data);
+                           }
             			   if(data!=null&&data.length>0){
             				   //回显key对应的值
             				//   scope.formData1=$.parseJSON(scope.formData)

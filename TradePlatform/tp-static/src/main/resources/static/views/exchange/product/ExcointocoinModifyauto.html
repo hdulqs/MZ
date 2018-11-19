@@ -32,11 +32,10 @@
 
 			<div class="col s12 m6">
 				  <div class="input-field">
-		              <select id="isSratAuto" name="isSratAuto" class="form-control">
-		                            		<option  value = "0">关闭自动交易</option>
-		                            		 <option  value = "1">开启自动交易</option>
-		                            	
-		                </select>
+					  <select id="isSratAuto" name="isSratAuto" class="form-control">
+						  <option value="0">关闭自动交易</option>
+						  <option value="1">开启自动交易</option>
+					  </select>
                  </div>
 			</div>
 			<div class="col s12 m6">
@@ -45,16 +44,15 @@
 						ng-model="formData.autoUsername" required />
 				</div>
 			</div>
-			
-		  <div class="col s12 m6">
-				  <div class="input-field">
-		              <select id="atuoPriceType" name="atuoPriceType" class="form-control">
-                         	
-                         		 <option  value = "1">定价下单</option>
-                         		 	<option  value = "2">市价下单</option>
-		                            	
-		                </select>
-                 </div>
+
+			<div class="col s12 m6">
+				<div class="input-field">
+					<select id="atuoPriceType" name="atuoPriceType" class="form-control">
+						<option value="1">定价下单</option>
+						<option value="2">市价下单</option>
+						<option value="3">参考火币限价下单</option>
+					</select>
+				</div>
 			</div>
 			
 			<div class="col s12 m6">
@@ -84,7 +82,14 @@
 						ng-model="formData.autoCountFloat" required/>
 				</div>
 			</div>
-		
+			<div class="col s12 m6">
+				<div class="input-field">
+					<select id="isHedge" name="isHedge" class="form-control">
+						<option  value = "0">关闭对冲交易</option>
+						<option  value = "1">开启对冲交易</option>
+					</select>
+				</div>
+			</div>
 		</div>
 
 		<div class="row">

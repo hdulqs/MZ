@@ -73,6 +73,8 @@ public interface RedisService {
    */
   public Long delete(String key);
 
+  public Long delete(String... keys);
+
   /**
    * 根据key设置一条记录的过期时间 定时多少秒之后自动删除
    * <p> TODO</p>

@@ -93,7 +93,9 @@ define(['app'], function (app) {
 	        			   var selectId = this.selectId;
 	        			   var str = "hry-dicselect[selectId="+this.selectId+"]"
 	        			   var select = $(str);
-	        			   data = $.parseJSON(data);
+                           if (typeof data === "string" && data.constructor === String) {
+                               data = $.parseJSON(data);
+                           }
 	        			   if(data!=null&&data.length>0){
 	        				   var html =createSelect(select);
 	            			   for(var i = 0 ; i < data.length; i++){
@@ -165,8 +167,9 @@ define(['app'], function (app) {
 			 	        			   var selectId = this.selectId;
 				        			   var str = "hry-dicselect[selectId="+this.selectId+"]"
 				        			   var select = $(str);
-			 	        			   data = $.parseJSON(data);
-			 	        			   
+                                   if (typeof data === "string" && data.constructor === String) {
+                                       data = $.parseJSON(data);
+                                   }
 			 	        			   if(data!=null&&data.length>0){
 			 	        				   
 			 	        				   var html = createSelect(select);

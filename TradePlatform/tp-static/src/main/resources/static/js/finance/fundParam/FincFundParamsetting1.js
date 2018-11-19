@@ -287,8 +287,10 @@ define(['app'], function (app) {
          		   async :false,
          		   url : HRY.modules.finance+ 'fundParam/fincfundparamsetting/listByone',
          		   success: function(data){
-         			    
-         			   $scope.formData=$.parseJSON(data)
+                       if (typeof data === "string" && data.constructor === String) {
+                           data = $.parseJSON(data);
+                       }
+         			   $scope.formData=data;
     			
          		  }, 
        		   error: function(e) { 

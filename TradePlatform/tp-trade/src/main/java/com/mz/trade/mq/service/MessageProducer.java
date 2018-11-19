@@ -28,16 +28,16 @@ public class MessageProducer {
     		e.printStackTrace();
     	}
     }  
-    public void reidsToRedisLog(Object message)  {  
+    public void redisToRedisLog(Object message)  {
     	try {  
-    		amqpTemplate.convertAndSend("reidsToRedisLogKey", message);  
+    		amqpTemplate.convertAndSend("redisToRedisLogKey", message);
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
     }  
-    public void reidsToMysql(Object message)  {  
+    public void redisToMysql(Object message)  {
     	try {  
-    		amqpTemplate.convertAndSend("reidsToMysqlKey", message);  
+    		amqpTemplate.convertAndSend("redisToMysqlKey", message);
     	} catch (Exception e) {
     		e.printStackTrace();
     	}

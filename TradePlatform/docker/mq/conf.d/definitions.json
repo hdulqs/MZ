@@ -3,13 +3,13 @@
   "users": [
     {
       "name": "admin",
-      "password_hash": "qOuBW8+nXnWiIO5u1Y49pYNMMUHhpy3Efz3q372Pr+Zwykp+",
+      "password_hash": "FC1PjqQ4ruIZMkuha065T/jWzATGe9WvqcEC1h4LaCK+chSN",
       "hashing_algorithm": "rabbit_password_hashing_sha256",
       "tags": "administrator"
     },
     {
       "name": "qq",
-      "password_hash": "mnDxBAMMe3KdDAuY5WgBwSl0+hkEbTttiDnzJzPxPGc1XhFu",
+      "password_hash": "nnFv8ZftmBQJbUNTA4QJ/O5Y+kaagtJsxLMBoVCDOtbwt13E",
       "hashing_algorithm": "rabbit_password_hashing_sha256",
       "tags": "management"
     }

@@ -160,10 +160,10 @@ define([ 'app', 'hryTable', 'layer','hryUtil' ], function(app, DT, layer,hryUtil
 			},
 			{
 				"data" : "state"   //开启/关闭交易
-            },
+			},
 			{
-                    "data" : "isOperate"   //是否操盘
-                }
+				"data" : "isOperate"   //是否操盘
+			}
 			]
 			config.columnDefs = [ {
 				"targets" : 0,
@@ -218,6 +218,46 @@ define([ 'app', 'hryTable', 'layer','hryUtil' ], function(app, DT, layer,hryUtil
 			$scope.fnList = function(){
 				table.DataTable().draw();
 			}
+
+            /**
+             * 从火币导入K线
+             */
+            $scope.fnImportKlineFromHuobi = function() {
+                var arrId = DT.getSelect(table);
+                if (arrId.length == 0) {
+                    growl.addInfoMessage('请选择数据')
+                    return false;
+                }else if (arrId.length > 1) {
+                    growl.addInfoMessage('只能选择一条数据')
+                    return false;
+                }
+
+                var ids = hryCore.ArrayToString(arrId);
+
+                layer.confirm("你确定要从火币导入K线吗？", {
+                    btn : [ '确定', '取消' ], // 按钮
+                    ids : ids
+                }, function() {
+
+                    layer.closeAll();
+
+                    hryCore.CURD({
+                        url : HRY.host + HRY.modules.web + "product/excointocoin/importKline/"+ ids
+                        }).remove(null, function(data) {
+                        if (data.success) {
+                            // 提示信息
+                            growl.addInfoMessage('后台同步火币K线中')
+                            // 重新加载list
+                            $scope.fnList();
+                        } else {
+                            growl.addInfoMessage(data.msg)
+                        }
+                    }, function(data) {
+                        growl.addInfoMessage("error:" + data.msg);
+                    });
+
+                });
+            }
 
 			/**
 			 * 开启操盘
@@ -504,6 +544,9 @@ if ($stateParams.page == "listauto") {
 			},
 			{
 				"data" : "autoCountFloat"   //
+			},
+			{
+				"data" : "isHedge"   //
 			}
 			]
 			config.columnDefs = [ {
@@ -546,7 +589,9 @@ if ($stateParams.page == "listauto") {
 						if (data == 2) {
 							return "市价下单"
 						}
-						
+						if (data == 3) {
+							return "参考火币限价下单"
+						}
 					}
 				}, {
 					"targets" : 7,
@@ -554,11 +599,21 @@ if ($stateParams.page == "listauto") {
 					"render" : function(data, type, row) {
 						if (row.atuoPriceType == 1) {
 							return data
-						}
-						if (row.atuoPriceType == 2) {
+						} else {
 							return ""
 						}
 						
+					}
+				}, {
+					"targets" : 11,
+					"orderable" : false,
+					"render" : function(data, type, row) {
+						if (data == 0) {
+							return "否"
+						}
+						if (data == 1) {
+							return "是"
+						}
 					}
 				}
 			]
@@ -628,8 +683,7 @@ if ($stateParams.page == "listauto") {
 					$scope.formData = data;
 					$("#isSratAuto").val(data.isSratAuto);
 					$("#atuoPriceType").val(data.atuoPriceType);
-					debugger
-					 if(data.atuoPriceType==2){
+					 if(data.atuoPriceType!=1){
 					     $("#autoPrice").val("");
 		                  $("#autoPrice").attr("disabled",true);
 		               }else{
@@ -639,7 +693,7 @@ if ($stateParams.page == "listauto") {
 					 hryCore.initPlugins();
 				});
 	            $("#atuoPriceType").change(function(){
-	               if($("#atuoPriceType").val()=="2"){
+	               if($("#atuoPriceType").val()!="1"){
 	                $("#autoPrice").attr("disabled",true);
 	               }else{
 	                $("#autoPrice").attr("disabled",false);
@@ -650,6 +704,7 @@ if ($stateParams.page == "listauto") {
 				$scope.processForm = function() {
 						$scope.formData.isSratAuto=$("#isSratAuto").val();
 							$scope.formData.atuoPriceType=$("#atuoPriceType").val();
+							$scope.formData.isHedge=$("#isHedge").val();
 					$http({
 						method : 'POST',
 						url : HRY.modules.exchange + 'product/excointocoin/modifyauto',

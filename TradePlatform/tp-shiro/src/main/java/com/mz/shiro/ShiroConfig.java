@@ -1,14 +1,9 @@
 package com.mz.shiro;
 
 import com.mz.util.properties.PropertiesUtils;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import javax.servlet.Filter;
-import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -144,7 +139,6 @@ public class ShiroConfig {
 
   public MyLogoutFilter myLogoutFilter() {
     MyLogoutFilter myLogoutFilter = new MyLogoutFilter();
-    myLogoutFilter.setRedirectUrl(getUrl("client.login.url"));
     return myLogoutFilter;
   }
 
@@ -166,8 +160,9 @@ public class ShiroConfig {
   public ShiroFilterFactoryBean shiroFilterFactoryBean() {
     ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
     shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager());
-    shiroFilterFactoryBean.setLoginUrl("/loginService.do");
-    shiroFilterFactoryBean.setSuccessUrl(getUrl("client.success.url"));
+    shiroFilterFactoryBean.setLoginUrl(this.getUrl("client.login.url"));
+    shiroFilterFactoryBean.setSuccessUrl(this.getUrl("client.success.url"));
+    shiroFilterFactoryBean.setUnauthorizedUrl(this.getUrl("client.failure.url"));
     Map<String, Filter> filterMap = new LinkedHashMap<>();
     filterMap.put("authc", captchaFormAuthenticationFilter());
     filterMap.put("kickout", kickoutSessionControlFilter());
@@ -178,7 +173,6 @@ public class ShiroConfig {
     filterChainDefinitions.put("/dwr/**", "anon");
     filterChainDefinitions.put("/app/appconfig/dataByConfigKey", "anon");
     filterChainDefinitions.put("/kaptcha", "anon");
-    filterChainDefinitions.put("/login.do", "anon");
     filterChainDefinitions.put("/authImage", "anon");
     filterChainDefinitions.put("/layout.do", "logout");
     filterChainDefinitions.put("/static/**", "anon");

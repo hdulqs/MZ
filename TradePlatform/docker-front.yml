@@ -5,7 +5,21 @@ services:
     volumes:
     - /home/logs/front:/logs
     networks:
-    - front
+    - tp-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+#        constraints: [node.labels.work == 1]
+        preferences:
+        - spread: node.labels.work
+  manage:
+    image: 192.168.1.102:5000/front/manage:0.0.1-SNAPSHOT
+    volumes:
+    - /home/logs/front_manage:/logs
+    networks:
+    - tp-net
     deploy:
       replicas: 1
       restart_policy:
@@ -14,26 +28,12 @@ services:
 #        constraints: [node.labels.work == a]
         preferences:
         - spread: node.labels.work
-#  manage:
-#    image: 192.168.1.102:5000/front/manage:0.0.1-SNAPSHOT
-#    volumes:
-#    - /home/logs/front_manage:/logs
-#    networks:
-#    - front
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#      placement:
-##        constraints: [node.labels.work == a]
-#        preferences:
-#        - spread: node.labels.work
   trade:
     image: 192.168.1.102:5000/front/trade:0.0.1-SNAPSHOT
     volumes:
     - /home/logs/trade:/logs
     networks:
-    - front
+    - tp-net
     deploy:
       replicas: 1
       restart_policy:
@@ -47,7 +47,7 @@ services:
     volumes:
     - /home/logs/coin:/logs
     networks:
-    - front
+    - tp-net
     deploy:
       replicas: 1
       restart_policy:
@@ -57,5 +57,5 @@ services:
         preferences:
         - spread: node.labels.work
 networks:
-  front:
+  tp-net:
     external: true

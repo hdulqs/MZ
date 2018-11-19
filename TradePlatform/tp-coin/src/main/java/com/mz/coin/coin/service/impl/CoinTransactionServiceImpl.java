@@ -40,6 +40,7 @@ import com.mz.redis.common.utils.RedisService;
 import com.mz.util.StringUtil;
 import com.mz.util.http.Httpclient;
 import com.mz.util.log.LogFactory;
+import com.mz.util.properties.PropertiesUtils;
 import com.mz.util.security.Check;
 import com.mz.utils.Properties;
 import java.math.BigDecimal;
@@ -139,7 +140,7 @@ public class CoinTransactionServiceImpl extends BaseServiceImpl<CoinTransaction,
   @Override
   public JsonResult rechargecoin(CoinTransaction tx) {
     JsonResult jsonResult = new JsonResult();
-    String url = Properties.appMap().get("notify_recharge_url");
+    String url = String.valueOf(PropertiesUtils.APP.get("notify_recharge_url"));
     if (StringUtils.isNotEmpty(url)) {
       // 查询币账户
       String publicKey = tx.getAddress();

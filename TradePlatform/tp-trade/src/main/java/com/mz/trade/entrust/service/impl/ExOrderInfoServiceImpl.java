@@ -120,8 +120,9 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 		// 订单开始详细
 		ExOrderInfo exOrderInfo = new ExOrderInfo();
 		exOrderInfo.setType(type);
+        // TODO: 10/24/18 这里的id会产生重复的交易流水号
 		String transactionNum = IdGenerate.transactionNum(NumConstant.Ex_Order);
-		exOrderInfo.setOrderNum("T" + transactionNum.substring(2, transactionNum.length()));
+		exOrderInfo.setOrderNum("T" + transactionNum.substring(2));
 		exOrderInfo.setTransactionCount(tradeCount);
 		exOrderInfo.setTransactionPrice(tradePrice);
 		exOrderInfo.setTransactionSum(tradePrice.multiply(tradeCount));
@@ -129,8 +130,8 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 		exOrderInfo.setOrderTimestapm(exOrderInfo.getTransactionTime().getTime());
 		exOrderInfo.setTransactionBuyFeeRate(buyExEntrust.getTransactionFeeRate());
 		exOrderInfo.setTransactionSellFeeRate(sellentrust.getTransactionFeeRate());
-		exOrderInfo.setTransactionBuyFee(exOrderInfo.getTransactionCount().multiply(exOrderInfo.getTransactionBuyFeeRate()).divide(new BigDecimal("100")));
-		exOrderInfo.setTransactionSellFee(exOrderInfo.getTransactionSum().multiply(exOrderInfo.getTransactionSellFeeRate()).divide(new BigDecimal("100")));
+		exOrderInfo.setTransactionBuyFee(exOrderInfo.getTransactionCount().multiply(exOrderInfo.getTransactionBuyFeeRate()).divide(BigDecimal.valueOf(100L)));
+		exOrderInfo.setTransactionSellFee(exOrderInfo.getTransactionSum().multiply(exOrderInfo.getTransactionSellFeeRate()).divide(BigDecimal.valueOf(100L)));
 		exOrderInfo.setBuyCustomId(buyExEntrust.getCustomerId());
 		exOrderInfo.setSellCustomId(sellentrust.getCustomerId());
 		exOrderInfo.setWebsite("cn");
@@ -138,17 +139,13 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 		exOrderInfo.setFixPriceCoinCode(buyExEntrust.getFixPriceCoinCode());
 		exOrderInfo.setFixPriceType(buyExEntrust.getFixPriceType());
 		exOrderInfo.setCoinCode(buyExEntrust.getCoinCode());
-
 		// 订单开始详细
 		exOrderInfo.setBuyEntrustNum(buyExEntrust.getEntrustNum());
 		exOrderInfo.setSellEntrustNum(sellentrust.getEntrustNum());
-		
 		exOrderInfo.setBuyUserName(buyExEntrust.getUserName());
 		exOrderInfo.setSellUserName(sellentrust.getUserName());
 		exOrderInfo.setTransactionTime(new Date());
 		exOrderInfo.setOrderTimestapm(exOrderInfo.getTransactionTime().getTime());
-		
-
 		// 订单结束详细
 		return exOrderInfo;
 	}
@@ -181,300 +178,254 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 	}
 
 	@Override
-	public void reidsToMysql() {
-		long start = System.currentTimeMillis();
-		// 委托信息入库
-		Map<String, EntrustTrade> map = new HashMap<String, EntrustTrade>();
-		long start4 = System.currentTimeMillis();
-		Set<String> keysTradeDealEntrustChange = redisService.noPerkeys(ExchangeDataCacheRedis.TradeDealEntrustChange + ":");
-		long end4 = System.currentTimeMillis();
-	//	LogFactory.info("TradeDealEntrustChange入库总耗时：" + (end4 - start4) + "ms");
-		List<BigDecimal> list2 = new ArrayList<BigDecimal>();
-		Iterator<String> iterator1 = keysTradeDealEntrustChange.iterator();
-		while (iterator1.hasNext()) {
-			String keystr = iterator1.next();
-			BigDecimal ks = new BigDecimal(keystr.split(":")[2]);
-			list2.add(ks);
-		}
-		Collections.sort(list2, new AscBigDecimalComparator());
-		long start5 = System.currentTimeMillis();
-		for (BigDecimal l : list2) {
-			String keystr = ExchangeDataCacheRedis.TradeDealEntrustChange + ":" + l;
-		
-			List<EntrustTrade> entrustTradeSlist = JSON.parseArray(redisService.get(keystr), EntrustTrade.class);
-			if (null != entrustTradeSlist) {
-				for (EntrustTrade es : entrustTradeSlist) {
-					map.put(es.getEntrustNum(), es);
-				}
-			}
-		//	redisService.delete(keystr);
-		}
-		long end5 = System.currentTimeMillis();
-//		LogFactory.info("TradeDealEntrustChange入库总耗时：" + (end5 - start5) + "ms");
-		List<EntrustTrade> entrustlisted = new ArrayList<EntrustTrade>(map.values());
-		if (null != entrustlisted && entrustlisted.size() > 0) {
-			List<ExEntrust> entrustupdatelist = exEntrustDao.getExEntrustListByNumstoMysql(entrustlisted);
-			List<EntrustTrade> entrustnewlist = new ArrayList<EntrustTrade>();
-			if(null != entrustupdatelist && entrustupdatelist.size()>0){
-				int k = 0;
-				int size = entrustlisted.size();
-				while (k < size) {
-					int i = 0;
-					EntrustTrade entrusted = entrustlisted.get(k);
-					for (ExEntrust entrustUpdate : entrustupdatelist) {
-						if (entrusted.getEntrustNum().equals(entrustUpdate.getEntrustNum())) {
-							entrustUpdate.setStatusint(entrusted.getStatus().intValue());
-							entrustUpdate.setSurplusEntrustCountDouble(entrusted.getSurplusEntrustCount().doubleValue());
-							entrustUpdate.setTransactionSumDouble(entrusted.getTransactionSum().doubleValue());
-							entrustUpdate.setTransactionFeeDouble(entrusted.getTransactionFee().doubleValue());
-							if(null==entrusted.getProcessedPrice()){
-								entrustUpdate.setProcessedPriceDouble(Double.valueOf("0"));
-							}else{
-								entrustUpdate.setProcessedPriceDouble(entrusted.getProcessedPrice().doubleValue());
-							}
-							
-							entrustUpdate.setModified(new Date());
-							i++;
-							break;
-						}
-					}
-					if (i == 0) {
-						if(null==entrusted.getProcessedPrice()){
-							entrusted.setProcessedPrice(new BigDecimal("0"));
-						}
-						entrustnewlist.add(entrusted);
-					}
-					k++;
-				}
-			}else{
-				entrustnewlist=entrustlisted;
-			}
-			
-			if (null != entrustupdatelist && entrustupdatelist.size() > 0) {//
-				long start1 = System.currentTimeMillis();
-				
-				exEntrustDao.updateExEntrust(entrustupdatelist);//
-				long end1 = System.currentTimeMillis();
-				//LogFactory.info("entrustupdatelist入库总耗时：" + (end1 - start1) + "ms");
-			}
-		//	LogFactory.info("entrustupdatelist.size=" + entrustupdatelist.size());
-			if (null != entrustnewlist && entrustnewlist.size() > 0) {//
-				long start2 = System.currentTimeMillis();
-				// LogFactory.info("entrustnewlist.size()=="+entrustnewlist.size());
-				exEntrustDao.insertExEntrust(entrustnewlist);
-				long end2 = System.currentTimeMillis();
-			//	LogFactory.info("entrustnewlist入库总耗时：" + (end2 - start2) + "ms");
-			}
-		//	LogFactory.info("entrustnewlist.size=" + entrustupdatelist.size());
-		}
-		
-		
-/*
-		for (Map.Entry<String, EntrustTrade> entry : map.entrySet()) {
-			EntrustTrade e = entry.getValue();
-			ExEntrust exEntrust = exEntrustDao.getExEntrustByentrustNum(e.getEntrustNum());
-			if (null == exEntrust) {
-				ExEntrust exEntrust1 = JSON.parseObject(JSON.toJSONString(e), ExEntrust.class);
-				exEntrust1.setWebsite("cn");
-				exEntrust1.setCurrencyType("cny");
-				exEntrustService.save(exEntrust1);
-			} else {
-				exEntrust.setSurplusEntrustCount(e.getSurplusEntrustCount());
-				exEntrust.setStatus(e.getStatus());
-				exEntrust.setTransactionSum(e.getTransactionSum());
-				 exEntrust.setTransactionFee(e.getTransactionFee());
-				 exEntrust.setProcessedPrice(e.getProcessedPrice());
-				// exEntrust.setTransactionTime(transactionTime);
-				exEntrustService.update(exEntrust);
-			}
+    public void redisToMysql() {
+        long start = System.currentTimeMillis();
+        this.exEntrustToMysql();
+        long enTrustEndTime = System.currentTimeMillis() - start;
+        this.exOrderInfoToMysql();
+        long time = System.currentTimeMillis() - start;
+        if (time > 800) {
+            LogFactory.info("redis(委托单和成交单)入库总耗时：" + (time) + "ms\n" +
+                    "委托单耗时：" + enTrustEndTime +
+                    "成交单耗时：" + (time - enTrustEndTime));
+        }
+    }
 
-		}*/
-	
+    /**
+     * 更新委托单信息
+     * 将{@link ExchangeDataCacheRedis#TradeDealEntrustChange}中的信息，录入数据库
+     */
+    private synchronized void exEntrustToMysql() {
+        // 获取需要入库的订单编号
+        Set<String> tradeDealEntrustChangeKeys = redisService.noPerkeys(ExchangeDataCacheRedis.TradeDealEntrustChange + ":");
+        if (tradeDealEntrustChangeKeys == null || tradeDealEntrustChangeKeys.size() < 1) {
+            return;
+        }
+        List<String> needDeleteKeys = new ArrayList<>();
+        // 在入库的间隔内，a委托未全部交易，b委托又和a委托撮合，导致a委托在deal:tradeDealEntrustChange：*中有过多的记录，此处需要过滤
+        // 当前的Map用于过滤，指存储deal:tradeDealEntrustChange：*中数字大的委托记录，上面排序就是为了在map中只存储一笔委托最新的信息
+        Map<String, EntrustTrade> dealEntrustMap = new HashMap<>();
+        for (String key : tradeDealEntrustChangeKeys) { // 不要在此处删除，录入数据库后再删除
+            List<EntrustTrade> entrustTradeSlist = JSON.parseArray(redisService.get(key), EntrustTrade.class);
+            if (null != entrustTradeSlist && entrustTradeSlist.size() > 0) {
+                for (EntrustTrade entrustTrade : entrustTradeSlist) {
+                    EntrustTrade mapEnTrustTrade = dealEntrustMap.get(entrustTrade.getEntrustNum());
+                    if (mapEnTrustTrade == null) {
+                        dealEntrustMap.put(entrustTrade.getEntrustNum(), entrustTrade);
+                        needDeleteKeys.add(key);
+                    } else {
+                        if (mapEnTrustTrade.getStatus() < entrustTrade.getStatus()) {
+                            dealEntrustMap.put(entrustTrade.getEntrustNum(), entrustTrade);
+                            needDeleteKeys.add(key);
+                        }
+                        if (mapEnTrustTrade.getSurplusEntrustCount().compareTo(entrustTrade.getSurplusEntrustCount()) > 0) {
+                            dealEntrustMap.put(entrustTrade.getEntrustNum(), entrustTrade);
+                            needDeleteKeys.add(key);
+                        }
+                    }
+                }
+            }
+        }
 
-		// 成交信息入库
-		List<ExOrderInfo> eExOrderInfolistss = new ArrayList<ExOrderInfo>();
-		Set<String> keysTradeDealOrderInfoChange = redisService.noPerkeys(ExchangeDataCacheRedis.TradeDealOrderInfoChange + ":");
-		Iterator<String> iteratorTradeDealOrderInfoChange = keysTradeDealOrderInfoChange.iterator();
-		while (iteratorTradeDealOrderInfoChange.hasNext()) {
-			String keystr = iteratorTradeDealOrderInfoChange.next();
-			List<ExOrderInfo> accountaddSlist = JSON.parseArray(redisService.get(keystr), ExOrderInfo.class);
-			if (null != accountaddSlist) {
-				eExOrderInfolistss.addAll(accountaddSlist);
-			}
-			//redisService.delete(keystr);
-		}
-		if (null != eExOrderInfolistss && eExOrderInfolistss.size() > 0) {
-			long start3 = System.currentTimeMillis();
-			exOrderInfoDao.insertExorderInfos(eExOrderInfolistss);
-			long end3 = System.currentTimeMillis();
-		//	LogFactory.info("eExOrderInfolistss入库总耗时：" + (end3 - start3) + "ms");
-		}
+        List<EntrustTrade> entrustTradeListed = new ArrayList<>(dealEntrustMap.values());
+        if (entrustTradeListed.size() == 0) {
+            return;
+        }
 
-	//	LogFactory.info("eExOrderInfolistss.size=" + eExOrderInfolistss.size());
-		
-		
-		//最后才删
-		Iterator<String> keysTradeDealEntrustChangedelete = keysTradeDealEntrustChange.iterator();
-		while (keysTradeDealEntrustChangedelete.hasNext()) {
-			String keystr = keysTradeDealEntrustChangedelete.next();
-			redisService.delete(keystr);
-		}
-		
-		Iterator<String> keysTradeDealOrderInfoChangedelete = keysTradeDealOrderInfoChange.iterator();
-		while (keysTradeDealOrderInfoChangedelete.hasNext()) {
-			String keystr = keysTradeDealOrderInfoChangedelete.next();
-			redisService.delete(keystr);
-		}
-	
-		long end = System.currentTimeMillis();
-		long time=end - start;
-		if(time>800){
-		   LogFactory.info("redis(委托单和成交单)入库总耗时：" + (time) + "ms");
-		}
-	}
+        // 获取需要更新状态的委托单信息，只有id和entrustNum
+        List<ExEntrust> entrustUpdateList = exEntrustDao.getExEntrustListByNumstoMysql(entrustTradeListed);
+        if (entrustUpdateList == null || entrustUpdateList.size() == 0) {
+            for (EntrustTrade entrustTrade: entrustTradeListed) {
+                if (null == entrustTrade.getProcessedPrice()) {
+                    entrustTrade.setProcessedPrice(new BigDecimal("0"));
+                }
+            }
+
+            exEntrustDao.insertEnEntrustTrade(entrustTradeListed);
+            redisService.delete(needDeleteKeys.toArray(new String[0]));
+            return;
+        }
+
+        // 根据已有的委托单信息，然后更新已有的委托单信息
+        List<EntrustTrade> newEntrustTradeList = new ArrayList<>();
+        outLoop:
+        for (EntrustTrade entrustTrade: entrustTradeListed) {
+            if (null == entrustTrade.getProcessedPrice()) {
+                entrustTrade.setProcessedPrice(new BigDecimal("0"));
+            }
+
+            for (ExEntrust exEntrust : entrustUpdateList) {
+                if (entrustTrade.getEntrustNum().equals(exEntrust.getEntrustNum())) {
+                    exEntrust.setModified(new Date());
+                    exEntrust.setStatus(entrustTrade.getStatus());
+                    exEntrust.setTransactionSum(entrustTrade.getTransactionSum());
+                    exEntrust.setTransactionFee(entrustTrade.getTransactionFee());
+                    exEntrust.setProcessedPrice(entrustTrade.getProcessedPrice());
+                    exEntrust.setSurplusEntrustCount(entrustTrade.getSurplusEntrustCount());
+                    continue outLoop;
+                }
+            }
+            newEntrustTradeList.add(entrustTrade);
+        }
+
+        // 查询重复的订单的id，并删除重复的订单
+        for (Iterator<ExEntrust> it = entrustUpdateList.iterator(); it.hasNext();) {
+            ExEntrust exEntrust = it.next();
+            if (exEntrust.getStatus() == null) {
+                exEntrustDao.deleteByPrimaryKey(exEntrust.getId());
+                // TODO: 10/22/18 这里需要某种通知管理员的机制 
+                LogFactory.info("`，委托单号为：" + exEntrust.getEntrustNum());
+                it.remove();
+            }
+        }
+        // 更新数据库中已有的数据
+        exEntrustDao.updateExEntrust(entrustUpdateList);
+
+        if (newEntrustTradeList.size() > 0) {
+            // 插入新有的数据
+            exEntrustDao.insertEnEntrustTrade(newEntrustTradeList);
+        }
+        // 删除redis中委托订单
+        redisService.delete(needDeleteKeys.toArray(new String[0]));
+    }
+
+    /**
+     * 更新交易记录信息
+     * 将{@link ExchangeDataCacheRedis#TradeDealOrderInfoChange}中的信息，录入数据库
+     */
+    private synchronized void exOrderInfoToMysql() {
+        // 成交信息入库
+        List<ExOrderInfo> eExOrderInfolist = new ArrayList<ExOrderInfo>();
+        Set<String> keysTradeDealOrderInfoChange = redisService.noPerkeys(ExchangeDataCacheRedis.TradeDealOrderInfoChange + ":");
+        if (keysTradeDealOrderInfoChange == null || keysTradeDealOrderInfoChange.size() < 1) {
+            return;
+        }
+        for (String keyStr : keysTradeDealOrderInfoChange) {
+            List<ExOrderInfo> accountaddSlist = JSON.parseArray(redisService.get(keyStr), ExOrderInfo.class);
+            if (null != accountaddSlist) {
+                eExOrderInfolist.addAll(accountaddSlist);
+            }
+        }
+        if (eExOrderInfolist.size() > 0) {
+            exOrderInfoDao.insertExorderInfos(eExOrderInfolist);
+        }
+
+        redisService.delete(keysTradeDealOrderInfoChange.toArray(new String[0]));
+    }
 
 	@Override
-	public void reidsToredisLog() {	// 资金流水入库
+	public synchronized void redisToredisLog() {	// 资金流水入库
 		long start = System.currentTimeMillis();
-		Set<Long> setaccount = new HashSet<Long>();
-		Set<Long> setaccountcoin = new HashSet<Long>();
-		List<Accountadd> accountaddSlistss = new ArrayList<Accountadd>();
+		Set<Long> accountIds = new HashSet<>(); // 资金账户Id
+		Set<Long> coinAccountIds = new HashSet<>(); // 币账户Id
+		List<Accountadd> accountaddSlistss = new ArrayList<>(); // 所有需要入库的币流水记录
 		Set<String> keysTradeDealAccountChange = redisService.noPerkeys(ExchangeDataCacheRedis.TradeDealAccountChange + ":");
-		Iterator<String> iteratorTradeDealAccountChange = keysTradeDealAccountChange.iterator();
-		while (iteratorTradeDealAccountChange.hasNext()) {
-			String keystr = iteratorTradeDealAccountChange.next();
-			List<Accountadd> accountaddSlist = JSON.parseArray(redisService.get(keystr), Accountadd.class);
-			if (null != accountaddSlist) {
-				accountaddSlistss.addAll(accountaddSlist);
-			}
-			//redisService.delete(keystr);
-		}
-		List<AppHotAccountRecord> listahar=new ArrayList<AppHotAccountRecord>();
-		List<AppColdAccountRecord> listacar=new ArrayList<AppColdAccountRecord>();
-		List<ExDmHotAccountRecord> listehar=new ArrayList<ExDmHotAccountRecord>();
-		List<ExDmColdAccountRecord> listedcar=new ArrayList<ExDmColdAccountRecord>();
-		if (null != accountaddSlistss) {
-			for (Accountadd accountadd : accountaddSlistss) {
-				if (accountadd.getAcccountType().equals(0)) { // 资金账户
-					AppAccount appAccount = appAccountService.get(accountadd.getAccountId());
-					if(null!=appAccount){
-						if (accountadd.getMonteyType().equals(1)) { // 热账户
-							if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == -1) {
-								AppHotAccountRecord appHotAccountRecord = appAccountService.createHotRecord(2, appAccount, BigDecimal.ZERO.subtract(accountadd.getMoney()), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listahar.add(appHotAccountRecord);
-							} else if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == 1) {
-								AppHotAccountRecord appHotAccountRecord = appAccountService.createHotRecord(1, appAccount, accountadd.getMoney(), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listahar.add(appHotAccountRecord);
-							}
+		if (keysTradeDealAccountChange == null || keysTradeDealAccountChange.size() == 0) {
+		    return;
+        }
+        for (String key : keysTradeDealAccountChange) { // 不要在此处删除，录入数据库后再删除
+            List<Accountadd> accountaddSlist = JSON.parseArray(redisService.get(key), Accountadd.class);
+            if (null != accountaddSlist) {
+                accountaddSlistss.addAll(accountaddSlist);
+            }
+        }
 
-						} else { // 冷账户
-							if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == -1) {
-								AppColdAccountRecord AppColdAccountRecord = appAccountService.createColdRecord(2, appAccount, BigDecimal.ZERO.subtract(accountadd.getMoney()), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listacar.add(AppColdAccountRecord);
-							} else if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == 1) {
-								AppColdAccountRecord AppColdAccountRecord = appAccountService.createColdRecord(1, appAccount, accountadd.getMoney(), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listacar.add(AppColdAccountRecord);
-							}
-						}
-						setaccount.add(appAccount.getId());
-					}
-					
-				} else {// 币账户
-					ExDigitalmoneyAccount exDigitalmoneyAccount = exDigitalmoneyAccountService.get(accountadd.getAccountId());
-					if(null!=exDigitalmoneyAccount){
-						if (accountadd.getMonteyType().equals(1)) { // 热账户
-							if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == -1) {
-								ExDmHotAccountRecord exDmHotAccountRecord = exDigitalmoneyAccountService.createHotRecord(2, exDigitalmoneyAccount, BigDecimal.ZERO.subtract(accountadd.getMoney()), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listehar.add(exDmHotAccountRecord);
-							} else if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == 1) {
-								ExDmHotAccountRecord exDmHotAccountRecord = exDigitalmoneyAccountService.createHotRecord(1, exDigitalmoneyAccount, accountadd.getMoney(), accountadd.getTransactionNum(), accountadd.getRemarks());
-							 	listehar.add(exDmHotAccountRecord);
-							}
-						} else { // 冷账户
-							if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == -1) {
-								ExDmColdAccountRecord exDmColdAccountRecord = exDigitalmoneyAccountService.createColdRecord(2, exDigitalmoneyAccount, BigDecimal.ZERO.subtract(accountadd.getMoney()), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listedcar.add(exDmColdAccountRecord);
-							} else if (accountadd.getMoney().compareTo(BigDecimal.ZERO) == 1) {
-								ExDmColdAccountRecord exDmColdAccountRecord = exDigitalmoneyAccountService.createColdRecord(1, exDigitalmoneyAccount, accountadd.getMoney(), accountadd.getTransactionNum(), accountadd.getRemarks());
-								listedcar.add(exDmColdAccountRecord);
-							}
-						}
-
-						setaccountcoin.add(exDigitalmoneyAccount.getId());
-					}
-					
-				}
-			}
+		List<AppHotAccountRecord> appHotAccountRecordArrayList= new ArrayList<>();      // 资金热钱记录
+		List<AppColdAccountRecord> appColdAccountRecordArrayList= new ArrayList<>();    // 资金冷钱记录
+		List<ExDmHotAccountRecord> exDmHotAccountRecordArrayList= new ArrayList<>();    // 币热钱记录
+		List<ExDmColdAccountRecord> exDmColdAccountRecordArrayList= new ArrayList<>();  // 币冷钱记录
+        for (Accountadd accountadd : accountaddSlistss) {
+            if (accountadd.getMoney() == null || BigDecimal.ZERO.compareTo(accountadd.getMoney()) == 0) {
+                continue;
+            }
+            int recordType = 1;
+            if (accountadd.getMoney().compareTo(BigDecimal.ZERO) < 0) {
+                recordType = 2;
+            }
+            if (accountadd.getAcccountType().equals(0)) { // 资金账户
+                AppAccount appAccount = appAccountService.get(accountadd.getAccountId());
+                if (appAccount == null) {
+                    continue;
+                }
+                if (accountadd.getMonteyType().equals(1)) { // 热账户
+                    AppHotAccountRecord appHotAccountRecord = appAccountService.createHotRecord(recordType, appAccount, accountadd.getMoney(), accountadd.getTransactionNum(), accountadd.getRemarks());
+                    appHotAccountRecordArrayList.add(appHotAccountRecord);
+                } else { // 冷账户
+                    AppColdAccountRecord AppColdAccountRecord = appAccountService.createColdRecord(recordType, appAccount, accountadd.getMoney(), accountadd.getTransactionNum(), accountadd.getRemarks());
+                    appColdAccountRecordArrayList.add(AppColdAccountRecord);
+                }
+                accountIds.add(appAccount.getId());
+            } else {// 币账户
+                ExDigitalmoneyAccount exDigitalmoneyAccount = exDigitalmoneyAccountService.get(accountadd.getAccountId());
+                if (exDigitalmoneyAccount == null) {
+                    continue;
+                }
+                if (accountadd.getMonteyType().equals(1)) { // 热账户
+                    ExDmHotAccountRecord exDmHotAccountRecord= exDigitalmoneyAccountService.createHotRecord(recordType, exDigitalmoneyAccount, accountadd.getMoney().abs(), accountadd.getTransactionNum(), accountadd.getRemarks());
+                    exDmHotAccountRecordArrayList.add(exDmHotAccountRecord);
+                } else { // 冷账户
+                    ExDmColdAccountRecord exDmColdAccountRecord = exDigitalmoneyAccountService.createColdRecord(recordType, exDigitalmoneyAccount, accountadd.getMoney().abs(), accountadd.getTransactionNum(), accountadd.getRemarks());
+                    exDmColdAccountRecordArrayList.add(exDmColdAccountRecord);
+                }
+                coinAccountIds.add(exDigitalmoneyAccount.getId());
+            }
+        }
+        //批量入库流水记录
+		if (appHotAccountRecordArrayList.size() > 0) {
+			appHotAccountRecordDao.insertRecord(appHotAccountRecordArrayList);
 		}
-		//批量入库流水记录
-		if (null != listahar && listahar.size() > 0) {
-			appHotAccountRecordDao.insertRecord(listahar);
+		if (appColdAccountRecordArrayList.size() > 0) {
+			appColdAccountRecordDao.insertRecord(appColdAccountRecordArrayList);
 		}
-		if (null != listacar && listacar.size() > 0) {
-			appColdAccountRecordDao.insertRecord(listacar);
+		if (exDmHotAccountRecordArrayList.size() > 0) {
+			exDmHotAccountRecordDao.insertRecord(exDmHotAccountRecordArrayList);
 		}
-		if (null != listehar && listehar.size() > 0) {
-			exDmHotAccountRecordDao.insertRecord(listehar);
+		if (exDmColdAccountRecordArrayList.size() > 0) {
+			exDmColdAccountRecordDao.insertRecord(exDmColdAccountRecordArrayList);
 		}
-		if (null != listedcar && listedcar.size() > 0) {
-			exDmColdAccountRecordDao.insertRecord(listedcar);
-		}
-    	
-    
-    	
 		// 账户批量入库
-		Iterator<Long> iteratora = setaccount.iterator();
-		List<AppAccountRedis> lista=new ArrayList<AppAccountRedis>();
-		while (iteratora.hasNext()) {
-			Long id = iteratora.next();
-			AppAccountRedis appAccountredis = appAccountService.getAppAccountByRedis(id.toString());
-			appAccountredis.setHotMoneyDouble(appAccountredis.getHotMoney().doubleValue());
-			appAccountredis.setColdMoneyDouble(appAccountredis.getColdMoney().doubleValue());
-			lista.add(appAccountredis);
-		}
-		if(null!=lista&&lista.size()>0){
+        List<AppAccountRedis> lista=new ArrayList<AppAccountRedis>();
+        for (Long accontId : accountIds) {
+            AppAccountRedis appAccountredis = appAccountService.getAppAccountByRedis(accontId.toString());
+            appAccountredis.setHotMoneyDouble(appAccountredis.getHotMoney().doubleValue());
+            appAccountredis.setColdMoneyDouble(appAccountredis.getColdMoney().doubleValue());
+            lista.add(appAccountredis);
+        }
+		if(lista.size() > 0){
 			appAccountDao.updateAppAccount(lista);
 		}
-		Iterator<Long> iteratorc = setaccountcoin.iterator();
-		List<ExDigitalmoneyAccountRedis> listd=new ArrayList<ExDigitalmoneyAccountRedis>();
-		while (iteratorc.hasNext()) {
-			Long id = iteratorc.next();
-			ExDigitalmoneyAccountRedis exDigitalmoneyAccountredis = exDigitalmoneyAccountService.getExDigitalmoneyAccountByRedis(id.toString());
-			exDigitalmoneyAccountredis.setHotMoneyDouble(exDigitalmoneyAccountredis.getHotMoney().doubleValue());
-			exDigitalmoneyAccountredis.setColdMoneyDouble(exDigitalmoneyAccountredis.getColdMoney().doubleValue());
-			listd.add(exDigitalmoneyAccountredis);
-		}
-		if(null!=listd&&listd.size()>0){
+        List<ExDigitalmoneyAccountRedis> listd=new ArrayList<ExDigitalmoneyAccountRedis>();
+        for (Long coinAccountId : coinAccountIds) {
+            ExDigitalmoneyAccountRedis exDigitalmoneyAccountredis = exDigitalmoneyAccountService.getExDigitalmoneyAccountByRedis(coinAccountId.toString());
+            listd.add(exDigitalmoneyAccountredis);
+        }
+		if(listd.size() > 0){
 			exDigitalmoneyAccountDao.updateExDigitalmoneyAccount(listd);
 		}
-	
-		
-		
-		
-		Iterator<String> iteratorTradeDealAccountChangedelete = keysTradeDealAccountChange.iterator();
-		while (iteratorTradeDealAccountChangedelete.hasNext()) {
-			String keystr = iteratorTradeDealAccountChangedelete.next();
-			redisService.delete(keystr);
-		}
-		long end = System.currentTimeMillis();
-		long time=end - start;
-		if(time>800){
-			LogFactory.info("accountredis（账户和资金流水）入库总耗时：" + (time) + "ms");
-		}
-		
+        redisService.delete(keysTradeDealAccountChange.toArray(new String[0]));
+        long time = System.currentTimeMillis() - start;
+        if (time > 800) {
+            LogFactory.info("accountredis（账户和资金流水）入库总耗时：" + (time) + "ms");
+        }
 	}
 
-	@Override
-	public void reidsToMysqlmq() {
-		MessageProducer messageProducer = (MessageProducer) ContextUtil.getBean("messageProducer");
-		messageProducer.reidsToMysql("111");
-		//System.out.println("发送定时消息");
-	}
+    @Override
+    public void redisToMysqlmq() {
+        try {
+            MessageProducer messageProducer = (MessageProducer) ContextUtil.getBean("messageProducer");
+            messageProducer.redisToMysql("111");
+        } catch (Exception e) {
+            LogFactory.info("redisToMysqlmq error.....");
+        }
+    }
 
-	@Override
-	public void reidsToredisLogmq() {
-		MessageProducer messageProducer = (MessageProducer) ContextUtil.getBean("messageProducer");
-		messageProducer.reidsToRedisLog("333");
-
-	}
+    @Override
+    public void redisToredisLogmq() {
+        try {
+            MessageProducer messageProducer = (MessageProducer) ContextUtil.getBean("messageProducer");
+            messageProducer.redisToRedisLog("333");
+        } catch (Exception e) {
+            LogFactory.info("redisToredisLogmq error.............");
+        }
+    }
 }

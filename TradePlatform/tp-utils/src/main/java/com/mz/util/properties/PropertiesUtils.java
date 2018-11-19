@@ -8,12 +8,13 @@
 package com.mz.util.properties;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
@@ -31,6 +32,7 @@ public class PropertiesUtils {
   public static Properties RMI;
   public static Properties SHIRO_PROPERTIES;
   public static Properties MULTIPLTEMAIL;
+  public static Properties COIN;
 
   public final static String SSOKEY = "app.sso";
 
@@ -39,29 +41,40 @@ public class PropertiesUtils {
   static {
     APP = new Properties();
     try {
-      InputStream inputStream = new FileInputStream(
-          PropertiesUtils.class.getClassLoader().getResource(
-              ("app.properties")).getPath());
-      APP.load(inputStream);
+      InputStream inputStream = PropertiesUtils.class.getClassLoader().getResourceAsStream(
+          ("app.properties"));
+      if (inputStream != null) {
+        APP.load(inputStream);
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
     MULTIPLTEMAIL = new Properties();
     try {
-      InputStream inputStream = new FileInputStream(
-          PropertiesUtils.class.getClassLoader().getResource(
-              ("multipleEmail.properties")).getPath());
-      MULTIPLTEMAIL.load(inputStream);
+      InputStream inputStream = PropertiesUtils.class.getClassLoader().getResourceAsStream(
+          ("multipleEmail.properties"));
+      if (inputStream != null) {
+        MULTIPLTEMAIL.load(inputStream);
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
+    COIN = new Properties();
+    try {
+      InputStream inputStream = PropertiesUtils.class.getClassLoader().getResourceAsStream(
+          ("coinConfig/coins.properties"));
+      if (inputStream != null) {
+        COIN.load(inputStream);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
     SHIRO_PROPERTIES = new Properties();
     try {
-      URL url = PropertiesUtils.class.getClassLoader().getResource(
+      InputStream inputStream = PropertiesUtils.class.getClassLoader().getResourceAsStream(
           ("shiro-client.properties"));
-      if (url != null) {
-        InputStream inputStream = new FileInputStream(
-            url.getPath());
+      if (inputStream != null) {
         SHIRO_PROPERTIES.load(inputStream);
       }
     } catch (Exception e) {
@@ -114,6 +127,50 @@ public class PropertiesUtils {
       if (key.contains(LOADWEBKEY)) {
         String[] split = APP.getProperty(key).split("=");
         map.put(split[0], split[1]);
+      }
+    }
+    return map;
+  }
+
+  /**
+   * 遍历properties
+   * <p> TODO</p>
+   *
+   * @author: Shangxl
+   * @param: @param url
+   * @param: @return
+   * @return: Map<String   ,   String>
+   * @Date :          2017年9月14日 上午11:29:07
+   * @throws:
+   */
+  public static Map<String, String> printAll(String url) {
+    Properties prop = new Properties();
+    Map<String, String> map = null;
+    InputStream input = null;
+    try {
+      input = new FileInputStream(
+          PropertiesUtils.class.getClassLoader().getResource(url).getPath());
+      if (input == null) {
+        System.out.println("Sorry, unable to find " + url);
+      }
+      prop.load(input);
+      Set<Entry<Object, Object>> entrys = prop.entrySet();// 返回的属性键值对实体
+      map = new HashMap<String, String>();
+      for (Entry<Object, Object> entry : entrys) {
+        String key = entry.getKey().toString();
+        String value = entry.getValue().toString();
+        map.put(key, value);
+      }
+      return map;
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    } finally {
+      if (input != null) {
+        try {
+          input.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
     }
     return map;

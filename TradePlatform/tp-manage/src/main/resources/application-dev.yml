@@ -42,6 +42,10 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: CST
   rabbitmq:
     host: 192.168.1.102
     port: 5672

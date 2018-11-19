@@ -1,12 +1,23 @@
 ﻿var app = require('express')();
-var http = require('http').Server(app);
+
+if (process.env.npm_package_config_protocal === 'https') {
+    var fs = require('fs');
+    //读取证书
+    var options = {
+        key: fs.readFileSync('thaisabc.key'),
+        cert: fs.readFileSync('thaisabc.com_bundle.crt')
+    }
+    var http = require('https').createServer(options, app);
+} else {
+    var http = require('http').Server(app);
+}
 var io = require('socket.io')(http);
-var redis = require("redis"),
-    RDS_PORT = 6379,
-    RDS_HOST = '127.0.0.1',
-    RDS_PWD = 'Credit2016Admin',
-    RDS_OPTS = {auth_pass: RDS_PWD},
-    redis_client = redis.createClient(RDS_PORT, RDS_HOST, RDS_OPTS);
+var redis = require("redis");
+RDS_PORT = 6379;
+RDS_HOST = '127.0.0.1';
+RDS_PWD = 'Credit2016Admin';
+RDS_OPTS = {auth_pass: RDS_PWD};
+redis_client = redis.createClient(RDS_PORT, RDS_HOST, RDS_OPTS);
 
 app.get('/', function (req, res) {
     res.send('<h1>Welcome Realtime Server</h1>');
@@ -26,10 +37,34 @@ function tochange(mobile, count) {
     io.in("user_room").emit('change', mobile, 200);
 }
 
+var otcjson = [];
+
+function uniqeByKeys(array, keys) {
+    var arr = [];
+    var hash = {};
+    for (var i = 0, j = array.length; i < j; i++) {
+        var k = obj2key(array[i], keys);
+        if (!(k in hash)) {
+            hash[k] = true;
+            arr.push(array[i]);
+        }
+    }
+    return arr;
+}
+
 function _tocahnge(mobile, count) {
     return function () {
         tochange(mobile, count);
     }
+}
+
+function obj2key(obj, keys) {
+    var n = keys.length,
+        key = [];
+    while (n--) {
+        key.push(obj[keys[n]]);
+    }
+    return key.join('|')
 }
 
 function getRedisData() {
@@ -235,7 +270,51 @@ io.on('connection', function (socket) {
     socket.on('error', function (type, obj) {
 
     });
+    // otc监听用户进入房间
+    socket.on('otclogin', function (obj) {
+        var data = {"coinCode": obj.coinCode};
+        for (var i = 0; i < otcjson.length; i++) {
+            if (otcjson[i] == data) {
+                null;
+            } else {
+                otcjson.push(data);
+            }
+        }
+        if (!otcjson.length) {
+            otcjson.push(data);
+        }
+        otcjson = uniqeByKeys(otcjson, ['coinCode'])
+        var user_room = "otc_" + obj.transactionType + "_" + obj.coinCode;
 
+        // 将新加入用户的唯一标识当作socket的名称，后面退出的时候会用到
+        socket.name = obj.userid;
+
+        // 检查在线列表，如果不在里面就加入
+        if (!onlineUsers.hasOwnProperty(obj.userid)) {
+            onlineUsers[obj.userid] = obj.username;
+            // 在线人数+1
+            onlineCount++;
+        }
+
+        // 向所有客户端广播用户加入
+        io.emit('login', {
+            onlineUsers: onlineUsers,
+            onlineCount: onlineCount,
+            user: obj
+        });
+        console.log("进入" + user_room + "房间");
+        socket.join(user_room);
+
+    });
+    // otc监听用户换房间
+    socket.on('otcloginroom', function (obj) {
+        console.log("otc换房间");
+        console.log("离开" + obj.room + "房间");
+        socket.leave(obj.room);
+        var user_room = "otc_" + obj.transactionType + "_" + obj.coinCode
+        console.log("进入" + user_room + "房间");
+        socket.join(user_room);
+    });
 });
 
 //分房机制
@@ -282,6 +361,71 @@ setInterval(function () {
             } catch (e) {
                 // TODO: handle exception
             }
+        }
+    });
+}, 1000);
+
+//otc定时请求
+setInterval(function () {
+    request(url_cn + '/otc/getOtcTransactionForSell', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            try {
+
+                var data = JSON.parse(body);
+                var otcdata = data.obj;
+                for (var j = 0; j < otcjson.length; j++) {
+                    var newData = [];
+                    for (var i = 0; i < otcdata.length; i++) {
+
+                        if (otcjson[j].coinCode == otcdata[i].coinCode) {
+                            newData.push(data.obj[i]);
+                        }
+                    }
+                    var user_room = "otc_buy_" + otcjson[j].coinCode;
+                    io.in(user_room).emit("otc_room", newData);
+                    //console.log(newData);
+                }
+            } catch (e) {
+                // TODO: handle exception
+            }
+        }
+    });
+
+    request(url_cn + '/otc/getOtcTransactionForBuy', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            try {
+                var data = JSON.parse(body);
+                var otcdata = data.obj;
+                for (var j = 0; j < otcjson.length; j++) {
+                    var newData = [];
+                    for (var i = 0; i < otcdata.length; i++) {
+
+                        if (otcjson[j].coinCode == otcdata[i].coinCode) {
+                            newData.push(data.obj[i]);
+                        }
+                    }
+                    var user_room = "otc_sell_" + otcjson[j].coinCode;
+                    io.in(user_room).emit("otc_room", newData);
+                    //console.log(newData);
+                }
+            } catch (e) {
+                // TODO: handle exception
+            }
+        } else {
+            //console.log("otc请求错误！");
+        }
+    });
+
+    request(url_cn + '/otc/getOtcTransactionAll', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            try {
+                var data = JSON.parse(body);
+                io.in("otc").emit("otc", data);
+            } catch (e) {
+                // TODO: handle exception
+            }
+        } else {
+            //console.log("otc请求错误！");
         }
     });
 }, 1000);

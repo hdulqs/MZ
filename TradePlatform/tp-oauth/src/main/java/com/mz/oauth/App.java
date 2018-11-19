@@ -26,7 +26,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * Spring Boot入口
  */
 @SpringBootApplication(scanBasePackages = {"com.mz.**.controller", "com.mz.redis.common",
-    "com.mz.**.service", "com.mz.oauth.listener", "com.mz.shiro"})
+    "com.mz.**.service", "com.mz.oauth.listener", "com.mz.shiro", "com.mz.util.sys"})
 @ImportResource({"classpath*:remote/*.xml", "classpath*:config/*.xml"})
 @MapperScan(basePackages = {"com.mz.**.dao"}, markerInterface = BaseDao.class)
 @EnableTransactionManagement

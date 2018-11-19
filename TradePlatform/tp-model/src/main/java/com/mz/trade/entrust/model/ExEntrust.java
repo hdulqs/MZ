@@ -150,52 +150,9 @@ public class ExEntrust extends BaseExModel {
   private Integer projectType;
   @Column(name = "customerIp")
   private String customerIp; // 下单用户的IP
-  @Transient
-  private double transactionSumDouble;
-  @Transient
-  private double transactionFeeDouble;
-  @Transient
-  private double surplusEntrustCountDouble;
-  @Transient
-  private double processedPriceDouble;
-
-  @Transient
-  private int statusint;
-
-  public double getProcessedPriceDouble() {
-    return processedPriceDouble;
-  }
-
-  public void setProcessedPriceDouble(double processedPriceDouble) {
-    this.processedPriceDouble = processedPriceDouble;
-  }
 
   public String getFixPriceCoinCode() {
     return fixPriceCoinCode;
-  }
-
-  public double getTransactionFeeDouble() {
-    return transactionFeeDouble;
-  }
-
-  public void setTransactionFeeDouble(double transactionFeeDouble) {
-    this.transactionFeeDouble = transactionFeeDouble;
-  }
-
-  public double getSurplusEntrustCountDouble() {
-    return surplusEntrustCountDouble;
-  }
-
-  public void setSurplusEntrustCountDouble(double surplusEntrustCountDouble) {
-    this.surplusEntrustCountDouble = surplusEntrustCountDouble;
-  }
-
-  public double getTransactionSumDouble() {
-    return transactionSumDouble;
-  }
-
-  public void setTransactionSumDouble(double transactionSumDouble) {
-    this.transactionSumDouble = transactionSumDouble;
   }
 
   public void setFixPriceCoinCode(String fixPriceCoinCode) {
@@ -867,14 +824,6 @@ public class ExEntrust extends BaseExModel {
 
   public void setSurname(String surname) {
     this.surname = surname;
-  }
-
-  public int getStatusint() {
-    return statusint;
-  }
-
-  public void setStatusint(int statusint) {
-    this.statusint = statusint;
   }
 
   @Override

@@ -37,7 +37,6 @@ define(function(require, exports, module){
 				});
 				
 				$("#sub").on("click",function(){
-					debugger;
 					var trueName = $("#trueName").val();
 					var surName = $("#surName").val();
 					var country = $("#country").val();

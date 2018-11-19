@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.apache.log4j.Logger;
@@ -37,6 +38,8 @@ public class MessageSyncKline implements MessageListener {
 
     private static final int HUOBI_RETRY_GAP = 3 * 1000;
 
+    private static final ConcurrentHashMap<String, Boolean> SYNC_CODE = new ConcurrentHashMap<>();
+
     static {
         periods.put(1, "1min");
         periods.put(5, "5min");
@@ -54,17 +57,24 @@ public class MessageSyncKline implements MessageListener {
 
     @Override
     public void onMessage(final Message message) {
-        executors.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
+        String coinCode = new String(message.getBody());
+        if (SYNC_CODE.containsKey(coinCode) && SYNC_CODE.get(coinCode)) {
+            logger.info(coinCode + " 在同步中，不在开始同步");
+        } else {
+            SYNC_CODE.put(coinCode, true);
+            executors.execute(new Runnable() {
+                @Override
+                public void run() {
                     String coinCode = new String(message.getBody());
-                    updateAllKline(coinCode);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    try {
+                        updateAllKline(coinCode);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    SYNC_CODE.put(coinCode, false);
                 }
-            }
-        });
+            });
+        }
     }
 
     /**

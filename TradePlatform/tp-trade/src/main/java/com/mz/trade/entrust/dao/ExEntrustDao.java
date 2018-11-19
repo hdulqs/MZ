@@ -22,8 +22,8 @@ import java.util.Map;
 public interface ExEntrustDao extends BaseDao<ExEntrust, Long> {
 	
 	public ExEntrust getExEntrustByentrustNum(String entrustNum);
-    public void  insertExEntrust(List<EntrustTrade> list);
-    public void  updateExEntrust(List<ExEntrust> list);
+    public void insertEnEntrustTrade(List<EntrustTrade> list);
+    public void updateExEntrust(List<ExEntrust> list);
     public  List<ExEntrust>   getExEntrustListByNums(List<EntrustTrade> list);
     List<ExEntrust> getExEdBycustomerId(Map<String,Object> map);
     public  List<ExEntrust>   getExEntrustListByNumstoMysql(List<EntrustTrade> list);

@@ -157,8 +157,11 @@ define(['app'], function (app) {
      		   type: "POST",
      		   url: conf.url,
      		   success: function(data){
-     			   
-     			  var jsonData = $.parseJSON(data)
+                   if (typeof data === "string" && data.constructor === String) {
+                       var jsonData = $.parseJSON(data);
+                   } else {
+                       var jsonData = data;
+                   }
      			  var html = $("<ul class='collection pt-0 mt-0' ><li  class='pink lighten-5 pt-14 pb-14 pl-5'><h4><i class='fa fa-sitemap'></i>组织架构</h4></li></ul>");
      			  //添加node
      			  element.append(html.append(makeNode(jsonData,conf)));

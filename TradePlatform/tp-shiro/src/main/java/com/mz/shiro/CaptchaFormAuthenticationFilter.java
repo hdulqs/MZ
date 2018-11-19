@@ -51,14 +51,12 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
   protected boolean executeLogin(ServletRequest request, ServletResponse response)
       throws Exception {
     CaptchaUsernamePasswordToken token = null;
-
     try {//抓空异常
       token = createToken(request, response);
     } catch (UnknownAccountException e) {
       LOG.info("用户名和密码不能为空-" + e);
       return onLoginFailure(token, e, request, response);
     }
-
     if (token == null) {
       String msg =
           "createToken method implementation returned null. A valid non-null AuthenticationToken " +
@@ -104,11 +102,9 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
     boolean rememberMe = isRememberMe(request);
     String host = getHost(request);
     String appuserprefix = getAppuserprefix(request);
-
     if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
       throw new UnknownAccountException("用户名和密码不能为空");//没找到帐号
     }
-
     return new CaptchaUsernamePasswordToken(username, password.toCharArray(), rememberMe, host,
         captcha, appuserprefix);
   }

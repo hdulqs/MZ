@@ -7,6 +7,7 @@
 package com.mz.trade.MQmanager;
 
 
+import com.mz.trade.entrust.service.TradeService;
 import com.mz.trade.mq.service.MessageProducer;
 import java.util.List;
 
@@ -49,7 +50,10 @@ public class MQEnter {
 			accountadd.setRemarks("11");
 		}*/
 		String accountadds=Mapper.objectToJson(aadds);
-		messageProducer.toAccount(accountadds);
+
+		TradeService tradeService = (TradeService) ContextUtil.getBean("tradeService");
+		Boolean flag= tradeService.accountaddQueue(accountadds);
+		messageProducer.toAccount("null");
 	}
 
 }

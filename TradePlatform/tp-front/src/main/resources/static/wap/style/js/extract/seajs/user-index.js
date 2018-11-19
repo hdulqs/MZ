@@ -37,7 +37,6 @@ define(function(require, exports, module){
 									$("#zhzcgj").text(data.obj.myAccount.hotMoney);
 								}
 								//币
-								debugger;
 								$("#index_ul1_tmpl").tmpl(data.obj.coinAccount).appendTo("#index_ul1");
 							}else{
 								layer.msg(data.msg, {icon: 2});

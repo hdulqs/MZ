@@ -26,11 +26,11 @@ public interface ExOrderInfoService extends BaseService<ExOrderInfo, Long> {
 
     public ExOrder createExOrder(ExOrderInfo exOrderInfo);
     
-    public void  reidsToMysql();
+    public void redisToMysql();
     
-    public void reidsToredisLog();
+    public void redisToredisLog();
     
-    public void reidsToMysqlmq();
-    public void reidsToredisLogmq();
+    public void redisToMysqlmq();
+    public void redisToredisLogmq();
 	
 }

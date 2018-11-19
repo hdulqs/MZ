@@ -4,7 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="huobiApiClient" class="com.huobi.api.ApiClient" scope="prototype">
-        <constructor-arg name="host" value="api.hadax.com" />
         <constructor-arg name="accessKeyId" value="KEY"/>
         <constructor-arg name="accessKeySecret" value="SECRET" />
     </bean>

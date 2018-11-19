@@ -115,6 +115,12 @@ public class AppReportSettlementCulImpl extends
   @Resource
   public AppCommendRebatDao appCommendRebatDao;
 
+  @Autowired
+  private AppAccountService appAccountService;
+
+  @Autowired
+  private AppConfigService remoteAppConfigService;
+
   @Resource
   private OtcAccountRecordService otcAccountRecordService;
 
@@ -860,8 +866,6 @@ public class AppReportSettlementCulImpl extends
   }
 
   public String getRMBCode() {
-    AppConfigService remoteAppConfigService = (AppConfigService) ContextUtil
-        .getBean("appConfigService");
     String language_code = remoteAppConfigService.getBykey("language_code");
     return language_code;
   }
@@ -870,8 +874,6 @@ public class AppReportSettlementCulImpl extends
   public Map<String, Object> culAccountByCustomer(Long customerId, String currencyType,
       String website, Boolean isSave, Boolean iserrorright) {
     long start = System.currentTimeMillis();
-    AppAccountService appAccountService = (AppAccountService) ContextUtil
-        .getBean("appAccountService");
     int rmbsacle = AccountFundInfo.sacle;
     int sacle = AccountFundInfo.sacle;
     ;

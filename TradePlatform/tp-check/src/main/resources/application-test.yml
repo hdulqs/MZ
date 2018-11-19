@@ -68,7 +68,7 @@ zookeeper:
 dubbo:
   name: tp-check
   port: 20905
-  host: 127.0.0.1
+  host: admin_check
   cachepath: cache
 logging:
   level: trace

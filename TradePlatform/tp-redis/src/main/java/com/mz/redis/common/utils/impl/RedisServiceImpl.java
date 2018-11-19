@@ -144,6 +144,19 @@ public class RedisServiceImpl implements RedisService {
     return null;
   }
 
+  @Override
+  public Long delete(String... keys) {
+    try (Jedis jedis = jedisPool.getResource()) {
+      if (keys != null && keys.length > 0) {
+        return jedis.del(keys);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return 0L;
+  }
+
   /**
    * 可以传一个数组(数组里都是map里面的key),然后返回这些key里所对应的value。
    */

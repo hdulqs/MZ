@@ -69,22 +69,6 @@ public class MessageProducer {
     }
   }
 
-  public void reidsToRedisLog(Object message) {
-    try {
-      amqpTemplate.convertAndSend("reidsToRedisLogKey", message);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  public void reidsToMysql(Object message) {
-    try {
-      amqpTemplate.convertAndSend("reidsToMysqlKey", message);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   public void sendChongbiCallBack(Object message) {
     try {
       logger.info("to send message:{}" + message);

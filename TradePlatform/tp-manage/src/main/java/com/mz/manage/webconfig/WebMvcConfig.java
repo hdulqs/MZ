@@ -1,4 +1,4 @@
-package com.mz;
+package com.mz.manage.webconfig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

@@ -1,12 +1,12 @@
 package com.mz.shiro;
 
+import com.mz.oauth.user.model.AppUser;
 import com.mz.shiro.authorization.service.AuthorizationService;
 import com.mz.shiro.service.AppUserService;
 import com.mz.util.QueryFilter;
 import com.mz.util.log.LogFactory;
 import com.mz.util.properties.PropertiesUtils;
 import com.mz.util.sys.ContextUtil;
-import com.mz.oauth.user.model.AppUser;
 import java.util.Set;
 import javax.annotation.Resource;
 import org.apache.shiro.SecurityUtils;

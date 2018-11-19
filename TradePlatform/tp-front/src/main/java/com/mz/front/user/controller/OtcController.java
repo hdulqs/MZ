@@ -267,7 +267,7 @@ public class OtcController {
                 if (remoteResult.getSuccess()) {
                     return new JsonResult().setSuccess(true).setObj(remoteResult.getObj()).setMsg(SpringContextUtil.diff("success"));
                 } else {
-                    return new JsonResult().setMsg(SpringContextUtil.diff(remoteResult.getMsg()));
+                    return new JsonResult().setMsg(remoteResult.getMsg());
                 }
             } else {
                 return new JsonResult().setMsg("remote错误");

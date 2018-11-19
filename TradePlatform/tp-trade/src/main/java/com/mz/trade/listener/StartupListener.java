@@ -43,6 +43,12 @@ public class StartupListener implements CommandLineRunner {
     //加载每个应用的启动方法
     String isStartRobot = PropertiesUtils.APP.getProperty("app.isStartRobot");
     if (!StringUtil.isEmpty(isStartRobot) && isStartRobot.equals("true")) {
+      // 刷新参考价格，参考价格可以为火币价格
+      ScheduleJob refreshReferencePriceJob = new ScheduleJob();
+      refreshReferencePriceJob.setSpringId("exEntrustService");
+      refreshReferencePriceJob.setMethodName("refreshReferencePrice");
+      QuartzManager.addJob("refreshReferencePrice", refreshReferencePriceJob, QuartzJob.class, "* 0/2 * * * ?");  // 2分钟刷新一次
+
       //机器人定时器
       ScheduleJob autoAddExEntrust = new ScheduleJob();
       autoAddExEntrust.setSpringId("exEntrustService");
@@ -59,21 +65,21 @@ public class StartupListener implements CommandLineRunner {
     }
 
     //缓存定时入库
-    ScheduleJob reidsToMysql = new ScheduleJob();
-    reidsToMysql.setSpringId("exOrderInfoService");
-    reidsToMysql.setMethodName("reidsToMysqlmq");
-    QuartzManager.addJob("reidsToMysql", reidsToMysql, QuartzJob.class, "0/2 * * * * ?");// 两秒
+    ScheduleJob redisToMysql = new ScheduleJob();
+    redisToMysql.setSpringId("exOrderInfoService");
+    redisToMysql.setMethodName("redisToMysqlmq");
+    QuartzManager.addJob("redisToMysql", redisToMysql, QuartzJob.class, "0/2 * * * * ?");// 两秒
     try {
       Thread.sleep(300);
     } catch (InterruptedException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    //缓存定时入reids日志，委托定时入库
-    ScheduleJob reidsToredisLog = new ScheduleJob();
-    reidsToredisLog.setSpringId("exOrderInfoService");
-    reidsToredisLog.setMethodName("reidsToredisLogmq");
-    QuartzManager.addJob("reidsToredisLog", reidsToredisLog, QuartzJob.class,
+    //缓存定时入redis日志，委托定时入库
+    ScheduleJob redisToredisLog = new ScheduleJob();
+    redisToredisLog.setSpringId("exOrderInfoService");
+    redisToredisLog.setMethodName("redisToredisLogmq");
+    QuartzManager.addJob("redisToredisLog", redisToredisLog, QuartzJob.class,
         "0/2 * * * * ?");// 两秒 0/2 * * * * ?
 
     //委托单
@@ -100,7 +106,7 @@ public class StartupListener implements CommandLineRunner {
 
     //启动的时候要把这个设置成1，不然刚启动完之后，所有的数据都没了，必须下一单才会出来
     CommonDao commonDao = (CommonDao) ContextUtil.getBean("commonDao");
-    List<ExCointoCoin> listExCointoCoin = commonDao.getExointocoinValid();
+    List<ExCointoCoin> listExCointoCoin = commonDao.getExCointoCoinValid();
     RedisTradeService redisTradeService = (RedisTradeService) ContextUtil
         .getBean("redisTradeService");
     for (ExCointoCoin exCointoCoin : listExCointoCoin) {

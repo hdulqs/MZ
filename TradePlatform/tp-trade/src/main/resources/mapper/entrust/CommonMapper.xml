@@ -20,10 +20,33 @@
 		<result column="autoPriceFloat" property="autoPriceFloat" javaType="java.math.BigDecimal" />
 		<result column="isSratAuto" property="isSratAuto" javaType="java.lang.Integer" />
 		<result column="isFromChbtc" property="isFromChbtc" javaType="java.lang.Integer" />
-		
-	</resultMap>  
-    <select id="getExointocoinValid"  parameterType="java.util.Map" resultMap="getExcointocoin" > 
-    
-       select * from ex_cointo_coin a where a.state=1 
-    </select>  
+
+	</resultMap>
+    <select id="getExCointoCoinValid" parameterType="java.util.Map" resultMap="getExcointocoin" >
+
+       select * from ex_cointo_coin a where a.state=1
+    </select>
+
+	<select id="getSratAutoExCointoCoin" resultMap="exCointoCoin">
+		select * from ex_cointo_coin a where a.state=1 and a.isSratAuto=1 and trim(a.autoUsername) != '';
+	</select>
+
+	<resultMap id="exCointoCoin" type="com.mz.exchange.product.model.ExCointoCoin">
+		<result column="autoUsername" property="autoUsername" javaType="java.lang.String"/>
+		<result column="customerId" property="customerId" javaType="java.lang.Long"/>
+		<result column="autoCount" property="autoCount" javaType="java.math.BigDecimal"/>
+		<result column="autoCountFloat" property="autoCountFloat" javaType="java.math.BigDecimal"/>
+		<result column="autoPrice" property="autoPrice" javaType="java.math.BigDecimal"/>
+		<result column="autoPriceFloat" property="autoPriceFloat" javaType="java.math.BigDecimal"/>
+		<result column="isSratAuto" property="isSratAuto" javaType="java.lang.Integer"/>
+		<result column="isFromChbtc" property="isFromChbtc" javaType="java.lang.Integer"/>
+		<result column="isHedge" property="isHedge" javaType="java.lang.Integer"/>
+	</resultMap>
+
+	<select id="getExCointoCoinByCoinCode"  parameterType="java.util.Map" resultMap="exCointoCoin" >
+       select * from ex_cointo_coin a
+           where a.state=1
+           and a.coinCode=#{coinCode, jdbcType=VARCHAR}
+           and a.fixPriceCoinCode=#{fixPriceCoinCode, jdbcType=VARCHAR}
+    </select>
 </mapper>

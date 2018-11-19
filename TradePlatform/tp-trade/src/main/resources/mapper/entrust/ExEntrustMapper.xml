@@ -24,7 +24,7 @@
 		<result column="floatDownPrice" property="floatDownPrice" javaType="java.math.BigDecimal" />
 		<result column="surname" property="surname" javaType="java.lang.String" />
 	</resultMap> 
-	<insert id ="insertExEntrust" parameterType="java.util.List" >
+	<insert id ="insertEnEntrustTrade" parameterType="java.util.List" >
              insert into ex_entrust
              (floatDownPrice, floatUpPrice, transactionSum,transactionFeeRate,
              source, surplusEntrustCount, entrustWay, entrustTime,entrustSum,entrustCount,
@@ -34,35 +34,34 @@
              )
              values
 		<foreach collection ="list" item="exEntrust" index= "index" separator =",">
-                 (
-                  #{exEntrust.floatDownPrice},
-                  #{exEntrust.floatUpPrice},
-                  #{exEntrust.transactionSum},
-                  #{exEntrust.transactionFeeRate},
-                  #{exEntrust.source},
-                  #{exEntrust.surplusEntrustCount},
-                  #{exEntrust.entrustWay},
-                  #{exEntrust.entrustTime},
-                  #{exEntrust.entrustSum},
-                  #{exEntrust.entrustCount},
-                  #{exEntrust.entrustPrice},
-                  #{exEntrust.status},
-                  #{exEntrust.type},
-                  #{exEntrust.customerIp},
-                  #{exEntrust.coinCode},
-                  #{exEntrust.fixPriceType},
-                   #{exEntrust.fixPriceCoinCode},
-                  #{exEntrust.accountId},
-                  #{exEntrust.customerId},
-                  #{exEntrust.entrustNum},
-                  #{exEntrust.transactionFee},
-                  #{exEntrust.userName},
-                   #{exEntrust.coinAccountId},
-                   #{exEntrust.trueName},
-                    #{exEntrust.surName},
-                     #{exEntrust.processedPrice}
-                 
-                )
+			(
+			#{exEntrust.floatDownPrice},
+			#{exEntrust.floatUpPrice},
+			#{exEntrust.transactionSum},
+			#{exEntrust.transactionFeeRate},
+			#{exEntrust.source},
+			#{exEntrust.surplusEntrustCount},
+			#{exEntrust.entrustWay},
+			#{exEntrust.entrustTime},
+			#{exEntrust.entrustSum},
+			#{exEntrust.entrustCount},
+			#{exEntrust.entrustPrice},
+			#{exEntrust.status},
+			#{exEntrust.type},
+			#{exEntrust.customerIp},
+			#{exEntrust.coinCode},
+			#{exEntrust.fixPriceType},
+			#{exEntrust.fixPriceCoinCode},
+			#{exEntrust.accountId},
+			#{exEntrust.customerId},
+			#{exEntrust.entrustNum},
+			#{exEntrust.transactionFee},
+			#{exEntrust.userName},
+			#{exEntrust.coinAccountId},
+			#{exEntrust.trueName},
+			#{exEntrust.surName},
+			#{exEntrust.processedPrice}
+			)
 		</foreach>
 		
 	</insert >
@@ -112,27 +111,27 @@
 		<trim prefix="set" suffixOverrides=",">
 			<trim prefix="surplusEntrustCount = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.surplusEntrustCountDouble}
+                    when id=#{item.id} then #{item.surplusEntrustCount}
 				</foreach>
 			</trim>
 			<trim prefix="status = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.statusint}
+                    when id=#{item.id} then #{item.status}
 				</foreach>
 			</trim>
 			<trim prefix="transactionSum = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.transactionSumDouble}
+                    when id=#{item.id} then #{item.transactionSum}
 				</foreach>
 			</trim>
 			<trim prefix="transactionFee = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.transactionFeeDouble}
+                    when id=#{item.id} then #{item.transactionFee}
 				</foreach>
 			</trim>
 			<trim prefix="processedPrice = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.processedPriceDouble}
+                    when id=#{item.id} then #{item.processedPrice}
 				</foreach>
 			</trim>
 			<trim prefix="modified = case" suffix="end,">

@@ -475,7 +475,9 @@ define([ 'app', 'angular' ], function(app, angular) {
 									var name = select.attr("name"); // 显示字段
 									var value = select.attr("value"); // 值字段
 
-									data = $.parseJSON(data);
+                                    if (typeof data === "string" && data.constructor === String) {
+                                        data = $.parseJSON(data);
+                                    }
 									if (data != null && data.length > 0) {
 
 										// 回显key对应的值
@@ -639,8 +641,9 @@ define([ 'app', 'angular' ], function(app, angular) {
 												var str = "hry-select[selectId=" + this.selectId + "]"
 												var select = $(str);
 												select.children().remove();
-												data = $.parseJSON(data);
-
+                                                if (typeof data === "string" && data.constructor === String) {
+                                                    data = $.parseJSON(data);
+                                                }
 												if (data != null && data.length > 0) {
 													// 回显key对应的值
 													try {

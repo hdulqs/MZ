@@ -1,12 +1,19 @@
 /**
  * Copyright:   北京互融时代软件有限公司
  * @author:      Wu Shuiming
- * @version:      V1.0 
+ * @version:      V1.0
  * @Date:        2016年3月24日 下午2:04:29
  */
 package com.mz.trade.entrust.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huobi.api.ApiClient;
+import com.huobi.api.ApiException;
+import com.huobi.response.HistoryTrade;
+import com.huobi.response.TradeResponse;
 import com.mz.core.mvc.dao.base.BaseDao;
 import com.mz.core.mvc.service.base.impl.BaseServiceImpl;
 import com.mz.customer.user.model.AppCustomer;
@@ -35,14 +42,11 @@ import com.mz.trade.redis.model.EntrustTrade;
 import com.mz.trade.redis.model.ExchangeDataCacheRedis;
 import com.mz.trade.websoketContext.model.MarketDepths;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.util.StringUtil;
 
@@ -50,12 +54,14 @@ import tk.mybatis.mapper.util.StringUtil;
  * <p>
  * TODO
  * </p>
- * 
+ *
  * @author: Gao Mimi
  * @Date : 2016年4月12日 下午4:45:50
  */
 @Service("exEntrustService")
 public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> implements ExEntrustService {
+
+    private Logger logger = Logger.getLogger(ExEntrustServiceImpl.class);
 
 	@Resource(name = "exEntrustDao")
 	@Override
@@ -64,184 +70,157 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 	}
 
 	@Resource
-	private ExOrderInfoService exOrderInfoService;
-	@Resource
-	private ExOrderService exOrderService;
-	@Resource
 	public RedisService redisService;
 	@Resource
 	public CommonDao commonDao;
-	@Resource
-	public ExEntrustDao exEntrustDao;
+	@Autowired
+	private ApiClient huobiApiClient;
 
-	@Override
-	public void initTradeRedis() {
-		RedisService redisService = (RedisService) ContextUtil.getBean("redisService");
-		ExEntrustService exEntrustService = (ExEntrustService) ContextUtil.getBean("exEntrustService");
-		// 先清空所有的挂单数据
-		// 查询出所有的未成交的委托单status<2
-		// 买
-		List<ExCointoCoin> listExCointoCoin = commonDao.getExointocoinValid();
-		for (ExCointoCoin exCointoCoin : listExCointoCoin) {
-			String header = this.getHeader(exCointoCoin.getCoinCode(), exCointoCoin.getFixPriceCoinCode());
-			exOrderService.setLastExchangPrice(header); // 当前成交最新成交价格
-			exOrderService.setCurrentExchangPrice(header);// 当前上个成交价
+	private static int entrustType=1;
 
-		}
+    @Override
+    public void tradeInit() {
+        RedisTradeService redisTradeService = (RedisTradeService) ContextUtil.getBean("redisTradeService");
 
-	}
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
 
-	@Override
-	public void tradeInit() {
-		RedisTradeService redisTradeService = (RedisTradeService) ContextUtil.getBean("redisTradeService");
-		
-		redisTradeService.delkeys(":buy:");
-		redisTradeService.delkeys(":sell:");
-	//	redisService.delkeys(":EntrustByUser:");
-		// 初始化交易数据==========================================================================================
-		List<ExCointoCoin> listExCointoCoin = commonDao.getExointocoinValid();
-		for (ExCointoCoin exCointoCoin : listExCointoCoin) {
-			String header = this.getHeader(exCointoCoin.getCoinCode(), exCointoCoin.getFixPriceCoinCode());
-			// 买
-			QueryFilter filterbuy = new QueryFilter(ExEntrust.class);
-			filterbuy.addFilter("status<", 2);
-			filterbuy.addFilter("type=", 1);
-			filterbuy.addFilter("coinCode=", exCointoCoin.getCoinCode());
-			filterbuy.addFilter("fixPriceCoinCode=", exCointoCoin.getFixPriceCoinCode());
-			filterbuy.setOrderby("entrustPrice desc");
-			List<ExEntrust> listbuy = this.find(filterbuy);
-			List<EntrustTrade> listbuypricesame = new ArrayList<EntrustTrade>();
-			String buyonePricekey = header + ":" + ExchangeDataCacheRedis.BuyOnePrice; // 买一
-			if (null != listbuy && listbuy.size() > 0) {
-				BigDecimal sameprice = listbuy.get(0).getEntrustPrice();
-				EntrustTrade entrustTrade = null;
-				for (ExEntrust l : listbuy) {
-					String exentrust = JSON.toJSONString(l);
-					entrustTrade = JSON.parseObject(exentrust, EntrustTrade.class);
-					if (l.getEntrustPrice().compareTo(sameprice) == 0) {
-						listbuypricesame.add(entrustTrade);
-					} else {
-						String key = getHeader(entrustTrade) + ":buy:" + sameprice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
-						redisTradeService.save(key, JSON.toJSONString(listbuypricesame));
-						listbuypricesame = new ArrayList<EntrustTrade>();
-						listbuypricesame.add(entrustTrade);
-						sameprice = l.getEntrustPrice();
-					}
-				}
-				String key = header + ":buy:" +sameprice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
-				redisTradeService.save(key, JSON.toJSONString(listbuypricesame));
-				
-				
-				redisService.save(buyonePricekey, JSON.toJSONString( listbuy.get(0).getEntrustPrice()));
-			}else{
-				redisService.delete(buyonePricekey);
-			}
-			
-			
-			// 卖
-			QueryFilter filtersell = new QueryFilter(ExEntrust.class);
-			filtersell.addFilter("status<", 2);
-			filtersell.addFilter("type=", 2);
-			filtersell.addFilter("coinCode=", exCointoCoin.getCoinCode());
-			filtersell.addFilter("fixPriceCoinCode=", exCointoCoin.getFixPriceCoinCode());
-			filtersell.setOrderby("entrustPrice asc");
-			List<ExEntrust> listsell = this.find(filtersell);
-			List<EntrustTrade> listsellpricesame = new ArrayList<EntrustTrade>();
-			String sellonePricekey = header + ":" + ExchangeDataCacheRedis.SellOnePrice; // 对手单的卖一
-			if (null != listsell && listsell.size() > 0) {
-				BigDecimal sameprice = listsell.get(0).getEntrustPrice();
-				EntrustTrade entrustTrade = null;
-				for (ExEntrust l : listsell) {
-					String exentrust = JSON.toJSONString(l);
-					entrustTrade = JSON.parseObject(exentrust, EntrustTrade.class);
-					if (l.getEntrustPrice().compareTo(sameprice) == 0) {
-						listsellpricesame.add(entrustTrade);
-					} else {
-						String key = getHeader(entrustTrade) + ":sell:" +sameprice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
-						redisTradeService.save(key, JSON.toJSONString(listsellpricesame));
-						listsellpricesame = new ArrayList<EntrustTrade>();
-						listsellpricesame.add(entrustTrade);
-						sameprice = l.getEntrustPrice();
-					}
+        redisTradeService.delkeys(":buy:");
+        redisTradeService.delkeys(":sell:");
+        // 初始化交易数据==========================================================================================
+        List<ExCointoCoin> listExCointoCoin = commonDao.getExCointoCoinValid();
+        for (ExCointoCoin exCointoCoin : listExCointoCoin) {
+            String header = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode();
+            // 买
+            QueryFilter filterbuy = new QueryFilter(ExEntrust.class);
+            filterbuy.addFilter("status<", 2)
+                    .addFilter("type=", 1)
+                    .addFilter("coinCode=", exCointoCoin.getCoinCode())
+                    .addFilter("fixPriceCoinCode=", exCointoCoin.getFixPriceCoinCode())
+                    .setOrderby("entrustPrice desc");
+            List<ExEntrust> buyList = this.find(filterbuy);
+            String buyonePricekey = header + ":" + ExchangeDataCacheRedis.BuyOnePrice; // 买一
+            filterEntrust(buyList); // 过滤重复的委托
+            if (null != buyList && buyList.size() > 0) {
+                List<EntrustTrade> sameBuyPriceList = new ArrayList<>();
+                BigDecimal sameprice = buyList.get(0).getEntrustPrice();
+                for (ExEntrust buyExEntrust : buyList) {
+                    if (buyExEntrust.getSurplusEntrustCount() == null
+                            || buyExEntrust.getSurplusEntrustCount().compareTo(BigDecimal.ZERO) == 0) {
+                        continue;
+                    }
+                    EntrustTrade entrustTrade = objectMapper.convertValue(buyExEntrust, EntrustTrade.class);
+                    if (buyExEntrust.getEntrustPrice().compareTo(sameprice) == 0) {
+                        sameBuyPriceList.add(entrustTrade);
+                    } else {
+                        String key = header + ":buy:" + sameprice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
+                        redisTradeService.save(key, JSON.toJSONString(sameBuyPriceList));
+                        sameBuyPriceList.clear();
+                        sameBuyPriceList.add(entrustTrade);
+                        sameprice = buyExEntrust.getEntrustPrice();
+                    }
+                }
+                String key = header + ":buy:" + sameprice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
+                redisTradeService.save(key, JSON.toJSONString(sameBuyPriceList));
+                redisService.save(buyonePricekey, JSON.toJSONString(buyList.get(0).getEntrustPrice()));
+            } else {
+                redisService.delete(buyonePricekey);
+            }
+            // 卖
+            QueryFilter filtersell = new QueryFilter(ExEntrust.class);
+            filtersell.addFilter("status<", 2)
+                    .addFilter("type=", 2)
+                    .addFilter("coinCode=", exCointoCoin.getCoinCode())
+                    .addFilter("fixPriceCoinCode=", exCointoCoin.getFixPriceCoinCode())
+                    .setOrderby("entrustPrice asc");
+            List<ExEntrust> sellList = this.find(filtersell);
+            String sellonePricekey = header + ":" + ExchangeDataCacheRedis.SellOnePrice; // 对手单的卖一
+            filterEntrust(sellList); // 过滤重复的委托
+            if (null != sellList && sellList.size() > 0) {
+                List<EntrustTrade> listsellpricesame = new ArrayList<>();
+                BigDecimal entrustPrice = sellList.get(0).getEntrustPrice();
+                for (ExEntrust sellExEntrust : sellList) {
+                    if (sellExEntrust.getSurplusEntrustCount() == null
+                            || sellExEntrust.getSurplusEntrustCount().compareTo(BigDecimal.ZERO) == 0) {
+                        continue;
+                    }
+                    EntrustTrade entrustTrade = objectMapper.convertValue(sellExEntrust, EntrustTrade.class);
+                    if (sellExEntrust.getEntrustPrice().compareTo(entrustPrice) == 0) {
+                        listsellpricesame.add(entrustTrade);
+                    } else {
+                        String key = header + ":sell:" + entrustPrice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
+                        redisTradeService.save(key, JSON.toJSONString(listsellpricesame));
+                        listsellpricesame.clear();
+                        listsellpricesame.add(entrustTrade);
+                        entrustPrice = sellExEntrust.getEntrustPrice();
+                    }
+                }
+                String key = header + ":sell:" + entrustPrice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
+                redisTradeService.save(key, JSON.toJSONString(listsellpricesame));
+                redisService.save(sellonePricekey, JSON.toJSONString(sellList.get(0).getEntrustPrice()));
+            } else {
+                redisService.delete(sellonePricekey);
+            }
+        }
+    }
 
-				}
+    private void filterEntrust(List<ExEntrust> exEntrustList) {
+        if (exEntrustList == null) {
+            return;
+        }
+        List<ExEntrust> filteredList = new ArrayList<>();
+        Set<String> entrustNums = new HashSet<>();
+        for (Iterator<ExEntrust> it = exEntrustList.iterator(); it.hasNext(); ) {
+            ExEntrust exEntrust = it.next();
+            if (!entrustNums.contains(exEntrust.getEntrustNum())) {
+                entrustNums.add(exEntrust.getEntrustNum());
+                filteredList.add(exEntrust);
+            }
+        }
+        exEntrustList.clear();
+        exEntrustList.addAll(filteredList);
+    }
 
-				String key = header + ":sell:" + sameprice.setScale(10, BigDecimal.ROUND_HALF_EVEN).toString();
-				redisTradeService.save(key, JSON.toJSONString(listsellpricesame));
-				
-				redisService.save(sellonePricekey, JSON.toJSONString( listsell.get(0).getEntrustPrice()));
-			}else{
-				redisService.delete(sellonePricekey);
-			}
-			
+    @Override
+    public void cancelAutoAddExEntrust() {
+        Map<String, String> mapLoadWeb = PropertiesUtils.getLoadWeb();
+        for (String Website : mapLoadWeb.keySet()) {
+            List<ExCointoCoin> listExCointoCoin = commonDao.getSratAutoExCointoCoin();
+            for (ExCointoCoin exCointoCoin : listExCointoCoin) {
+                Integer isSratAuto = exCointoCoin.getIsSratAuto();
+                if (isSratAuto.equals(1)) {
+                    String autoUsernames = exCointoCoin.getAutoUsername();
+                    String[] autoUsernameArr = autoUsernames.split(",");
+                    if (null == autoUsernameArr) {
+                        continue;
+                    }
+                    for (String autoUsername : autoUsernameArr) {
+                        if (null == autoUsername) {
+                            System.out.println("填写的手机号有误，请检查重试！");
+                            continue;
+                        }
+                        AppCustomer customer = commonDao.getAppUserByuserName(autoUsername);
+                        Long customerId = customer.getId();
+                        exCointoCoin.setCustomerId(customerId);
 
-		}
+                        EntrustTrade entrustTrade = new EntrustTrade();
+                        entrustTrade.setCustomerId(customerId);
+                        entrustTrade.setCoinCode(exCointoCoin.getCoinCode());
+                        entrustTrade.setFixPriceCoinCode(exCointoCoin.getFixPriceCoinCode());
+                        entrustTrade.setCancelKeepN(10);
+                        MQEnter.pushExEntrustMQ(entrustTrade);
+                    }
+                }
+            }
+        }
+    }
 
-	}
-	@Override
-	public void cancelAutoAddExEntrust(){
+    public BigDecimal getTime() {
+        return getFloatNum(new BigDecimal("1500"), new BigDecimal("90"), null);
+    }
 
-		Map<String, String> mapLoadWeb = PropertiesUtils.getLoadWeb();
-		for (String Website : mapLoadWeb.keySet()) {
-			List<ExCointoCoin> listExCointoCoin = commonDao.getExointocoinValid();
-			for (ExCointoCoin exCointoCoin : listExCointoCoin) {
-				String autoUsernames = exCointoCoin.getAutoUsername();
-				Long customerId = exCointoCoin.getCustomerId();
-				Integer isSratAuto = exCointoCoin.getIsSratAuto();
-				Integer isFromChbtc = exCointoCoin.getIsFromChbtc();
-				
-				
-			    if (isSratAuto.equals(1)) {
-			    	String[] autoUsernameArr=null;
-					if (null == customerId) {
-						 autoUsernameArr=autoUsernames.split(",");
-					}
-			    	if(null==autoUsernameArr){break;}
-						for(String autoUsername:autoUsernameArr){
-					    if (null == customerId) {
-							AppCustomer customer = commonDao.getAppUserByuserName(autoUsername);
-							if (null == autoUsername) {
-								System.out.println("填写的手机号有误，请检查重试！");
-								break;
-							} else {
-								customerId = customer.getId();
-								exCointoCoin.setCustomerId(customerId);
-							}
-					 }
-					if (isFromChbtc.equals(0)) {
-						
-						  EntrustTrade entrustTrade=new EntrustTrade();
-						  entrustTrade.setCustomerId(customerId);
-						  entrustTrade.setCoinCode(exCointoCoin.getCoinCode());
-						  entrustTrade.setFixPriceCoinCode(exCointoCoin.getFixPriceCoinCode());
-						  entrustTrade.setCancelKeepN(10);
-							// 序列化
-							String str = JSON.toJSONString(entrustTrade);
-							MessageProducer messageProducer =(MessageProducer)ContextUtil.getBean("messageProducer");
-							// 发送消息
-							messageProducer.toTrade(str);
-							
-					} else {
-
-					}
-						}
-			}
-		}
-	
-		}
-		
-		
-	}
-	
-	public  static int entrustType=1;
-	
-	public BigDecimal getTime(){
-		BigDecimal[] a=getFloatNum1(new BigDecimal("1500"),new BigDecimal("90"));
-		return a[1];
-	}
-	
 	public Integer[] getCoinToCoinKeep(String coinCode,String fixPriceCoinCode){
-		
+
 		int keepDecimalForCoin = 4;
 		int keepDecimalForCurrency = 4;
 
@@ -264,199 +243,350 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 		Integer[] keepDec=new Integer[2];
 		keepDec[0]=keepDecimalForCurrency;
 		keepDec[1]=keepDecimalForCoin;
-		
+
 		return keepDec;
 	}
-	
+
 	/**
 	 * 自动刷单
 	 */
 	@Override
 	public void autoAddExEntrust() {
-		long sleeptiem=getTime().longValue();
-		
-		try {
-			Thread.sleep(sleeptiem);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Map<String, String> mapLoadWeb = PropertiesUtils.getLoadWeb();
-		for (String Website : mapLoadWeb.keySet()) {
-			List<ExCointoCoin> listExCointoCoin = commonDao.getExointocoinValid();
-			int max=20;// 最多能走10个机器人，1秒1单那就是总共1秒10单
-			int maxjs=1;
-			for (ExCointoCoin exCointoCoin : listExCointoCoin) {
-			
-				if(maxjs>max){
-					if(entrustType==1){
-						// 生成刷单价格1
-					    entrustType=2;
-					}else{
-						entrustType=1;
-					}
-					return;
-				}
-				String autoUsernames = exCointoCoin.getAutoUsername();
-				Long customerId = exCointoCoin.getCustomerId();
-				BigDecimal autoCount = exCointoCoin.getAutoCount();
-				BigDecimal autoCountFloat = exCointoCoin.getAutoCountFloat();
-				BigDecimal autoPrice = exCointoCoin.getAutoPrice();
-				BigDecimal autoPriceFloat = exCointoCoin.getAutoPriceFloat();
-				Integer isSratAuto = exCointoCoin.getIsSratAuto();
-				Integer isFromChbtc = exCointoCoin.getIsFromChbtc();
-				Integer fixPriceType = exCointoCoin.getFixPriceType();
-				if (isSratAuto.equals(1)) {
-					String[] autoUsernameArr=null;
-					if (null == customerId) {
-						 autoUsernameArr=autoUsernames.split(",");
-					}
-					if(null==autoUsernameArr){break;}
-					for(String autoUsername:autoUsernameArr){
-						
-						AppCustomer customer = commonDao.getAppUserByuserName(autoUsername);
-						if (null == autoUsername) {
-							System.out.println("填写的手机号有误，请检查重试！");
-							break;
-						} else {
-							customerId = customer.getId();
-							exCointoCoin.setCustomerId(customerId);
-						}
-						maxjs++;
-						if (isFromChbtc.equals(0)) {
-							// Coin
-							// productCommon=productCommonService.getProductCommon(exCointoCoin.getCoinCode(),
-							// exCointoCoin.getFixPriceCoinCode());
+        if(entrustType==1){
+            // 生成刷单价格1
+            entrustType=2;
+        }else{
+            entrustType=1;
+        }
+        long start = System.currentTimeMillis();
+        // 获取允许交易的交易对
+        List<ExCointoCoin> exCointoCoinList = commonDao.getSratAutoExCointoCoin();
+        if (exCointoCoinList == null) { // 存在 可以交易 开启了自动交易 有自动下委托的帐号 的交易对
+            return;
+        }
 
-							for (int i = 0; i < 1; i++) {
-								if(entrustType==1){
-									// 生成刷单价格1
-									BigDecimal buyautoPrice = getPrcie(exCointoCoin.getAtuoPriceType(),exCointoCoin.getUpFloatPer(),
-											exCointoCoin.getCoinCode(),exCointoCoin.getFixPriceCoinCode(),autoPrice, autoPriceFloat);
-							//		buyautoPrice = buyautoPrice.setScale(8, BigDecimal.ROUND_HALF_DOWN);
-									// 生成刷单数量1
-									BigDecimal buytrueNum = getFloatNum1(autoCount, autoCountFloat)[1];
-								//	buytrueNum = buytrueNum.setScale(8, BigDecimal.ROUND_HALF_DOWN);
-									String coinCodebuy = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode();
-									addExEntrust(fixPriceType, 1, customerId, buyautoPrice, autoUsername, coinCodebuy, buytrueNum, "cny", "cn");
-								}else{
-									// 生成刷单价格2
-									BigDecimal sellautoPrice = getPrcie(exCointoCoin.getAtuoPriceType(),exCointoCoin.getUpFloatPer(),
-											exCointoCoin.getCoinCode(),exCointoCoin.getFixPriceCoinCode(),autoPrice, autoPriceFloat);
-								//	sellautoPrice = sellautoPrice.setScale(8, BigDecimal.ROUND_HALF_DOWN);
-									// 生成刷单数量2
-									BigDecimal selltrueNum = getFloatNum1(autoCount, autoCountFloat)[1];
-							//		selltrueNum = selltrueNum.setScale(8, BigDecimal.ROUND_HALF_DOWN);
-									String coinCodesell = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode();
-									addExEntrust(fixPriceType, 2, customerId, sellautoPrice, autoUsername, coinCodesell, selltrueNum, "cny", "cn");
-								}
-							
-								
-							}
+        List<ExCointoCoin> hedgeCointoCoinList = new ArrayList<>();      // 对冲交易对
+        List<ExCointoCoin> normalCointoCoinList = new ArrayList<>();    // 非对冲交易对
+        for (ExCointoCoin exCointoCoin : exCointoCoinList) {
+            if (exCointoCoin.getIsSratAuto()== null || exCointoCoin.getIsSratAuto().equals(0)) {
+                continue;
+            }
+            if (exCointoCoin.getIsHedge() != null && exCointoCoin.getIsHedge().equals(1)) {
+                hedgeCointoCoinList.add(exCointoCoin);
+            } else {
+                normalCointoCoinList.add(exCointoCoin);
+            }
+        }
+        Map<String, String> mapLoadWeb = PropertiesUtils.getLoadWeb();
+        for (String website : mapLoadWeb.keySet()) {
+            for (ExCointoCoin exCointoCoin : hedgeCointoCoinList) {
+                addHedgeEntrustByAutoAccount(exCointoCoin, entrustType, mapLoadWeb.get(website), website);
+            }
+        }
+        long speedTime = System.currentTimeMillis() - start;
+        if (speedTime > 300) {
+            logger.info("对冲委托耗时: " + speedTime);
+        }
+        // 未开启对冲交易的交易对，最好睡眠后进行自动委托
+        long sleepTime = getTime().longValue();
+        if (sleepTime > speedTime) {
+            sleepTime -= speedTime;
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        for (String website : mapLoadWeb.keySet()) {
+            for (ExCointoCoin exCointoCoin : normalCointoCoinList) {
+                addEntrustByAutoAccount(exCointoCoin, entrustType, mapLoadWeb.get(website), website);
+            }
+        }
+    }
 
-						} else {
 
-						}
-					}
-			
+    /**
+     * @param exCointoCoin
+     * @param entrustType  1：获取匹配的
+     * @return
+     */
+    private static List<EntrustTrade> getMatchEntrustTradebyType(ExCointoCoin exCointoCoin, Long customerId, int entrustType) {
+        List<EntrustTrade> matchEnTrustTradeList = new ArrayList<>();
+        if (exCointoCoin != null && entrustType != 0) {
+            RedisTradeService redisTradeService = (RedisTradeService) ContextUtil.getBean("redisTradeService");
+            Set<String> keys = null;
+            if (entrustType == 1) {
+                String buyKey = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode() + ":buy";
+                keys = redisTradeService.noPerkeys(buyKey + ":");
+            } else if (entrustType == 2) {
+                String sellKey = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode() + ":sell";
+                keys = redisTradeService.noPerkeys(sellKey + ":");
+            }
+            if (keys == null) {
+                return null;
+            }
+            for (String key : keys) {
+                String v = redisTradeService.get(key);
+                List<EntrustTrade> entrustTradeList = JSON.parseArray(v, EntrustTrade.class);
+                if (entrustTradeList == null) {
+                    continue;
+                }
+                for (EntrustTrade entrustTrade : entrustTradeList) {
+                    if (entrustTrade.getCustomerId().equals(customerId)) {
+                        matchEnTrustTradeList.add(entrustTrade);
+                    }
+                }
+            }
+        }
 
-				}
-			}
-		}
-		
-		
+        return matchEnTrustTradeList;
+    }
 
-		if(entrustType==1){
-			// 生成刷单价格1
-		    entrustType=2;
-		}else{
-			entrustType=1;
-		}
-	
-	//	System.out.println("entrustType=="+entrustType);
-	
-	}
+    /**
+     * 从火币获取最新的一条成交记录，并以该成交记录作为火币的参考价格
+     * @param coinCouple
+     * @return
+     */
+    private BigDecimal getHuobiReferencePriceByApi(String coinCouple) throws ApiException {
+        if (huobiApiClient == null) {
+            huobiApiClient = (ApiClient) ContextUtil.getBean("huobiApiClient");
+        }
 
-	/**
-	 * 调用该方法
-	 * <p>
-	 * TODO
-	 * </p>
-	 * 
-	 * @author: Zhang Lei
-	 * @param: @param
-	 *             type 买还是卖类型 1 买 2 卖
-	 * @param: @param
-	 *             customerId 用户ID
-	 * @param: @param
-	 *             price 价格（机器人随机浮动范围内生成）
-	 * @param: @param
-	 *             userCode 用户code
-	 * @param: @param
-	 *             coinCode 币种
-	 * @param: @param
-	 *             entrustCount 数量
-	 * @param: @param
-	 *             currencyType 固定cny
-	 * @param: @param
-	 *             website 固定cn
-	 * @return: void
-	 * @Date : 2017年2月9日 下午4:25:01
-	 * @throws:
-	 */
-	@Override
-	public String addExEntrust(Integer fixPriceType, Integer type, Long customerId, BigDecimal price, String autoUsername, String coinCode, BigDecimal entrustCount, String currencyType, String website) {
-		long start1 = System.currentTimeMillis();
-		EntrustTrade exEntrust = new EntrustTrade();
-		String[] rtd = coinCode.split("_");
-		if (rtd.length == 1) {
-			return "";
-		} else {
-			exEntrust.setFixPriceCoinCode(rtd[1]);
-			exEntrust.setCoinCode(rtd[0]);
-		}
-		exEntrust.setFixPriceType(fixPriceType);
-		exEntrust.setType(type);
-		if(price.compareTo(new BigDecimal(0))==0 || entrustCount.compareTo(new BigDecimal(0))==0){
-			return "";
-		}
-		exEntrust.setEntrustSum(new BigDecimal("0"));
-		
-		Integer[] keepDec= getCoinToCoinKeep(exEntrust.getCoinCode(),exEntrust.getFixPriceCoinCode());
-		int keepDecimalForCoin = keepDec[1];
-		int keepDecimalForCurrency =keepDec[0];
+        TradeResponse tradeResponse = huobiApiClient.trade(coinCouple.replace("_", "").toLowerCase());
+        if (!tradeResponse.getStatus().equals("ok")) {
+            return null;
+        }
 
-	//	double num = Math.random();// 获取随机小数
-		double num =0.8;// 获取随机小数
-		if(num>0.5){
-			exEntrust.setEntrustWay(1);// 1.限价--> 表示以固定的价格 , 2.市价--->
-			exEntrust.setEntrustPrice(price.setScale(keepDecimalForCurrency, BigDecimal.ROUND_HALF_DOWN));
-			exEntrust.setEntrustCount(entrustCount.setScale(keepDecimalForCoin, BigDecimal.ROUND_HALF_DOWN));
-		}else{
-			exEntrust.setEntrustWay(2);// 1.限价--> 表示以固定的价格 , 2.市价--->
-			if(exEntrust.getType().intValue()==1){
-				exEntrust.setEntrustSum(price.multiply(entrustCount));
-				exEntrust.setEntrustSum(exEntrust.getEntrustSum().setScale(keepDecimalForCurrency, BigDecimal.ROUND_HALF_DOWN));
-			}else{
-				exEntrust.setEntrustCount(entrustCount.setScale(keepDecimalForCoin, BigDecimal.ROUND_HALF_DOWN));
-			}
-		}
-	
-		exEntrust.setCustomerId(customerId);
-		// exEntrust.setUserCode(userCode);
-		// exEntrust.setCustomerType(1);
-		// exEntrust.setMatchPriority(5);
-		// exEntrust.setCurrencyType(currencyType);
-		// exEntrust.setWebsite(website);
-		 exEntrust.setSource(2);
-		 exEntrust.setUserName(autoUsername);
-		 exEntrust.setTrueName("机器人");
-		ExEntrustService exEntrustService = (ExEntrustService) ContextUtil.getBean("exEntrustService");
-		initExEntrust(exEntrust);
-		MQEnter.pushExEntrustMQ(exEntrust);
-		return "";
-	}
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<HistoryTrade> historyTradeList = objectMapper.convertValue(tradeResponse.getTick().getData(),
+                new TypeReference<List<HistoryTrade>>() {
+                });
+        if (historyTradeList != null) {
+            for (HistoryTrade historyTrade : historyTradeList) {
+                return new BigDecimal(historyTrade.getPrice());
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 定时器刷新参考价格
+     */
+    public void refreshReferencePrice() {
+        List<ExCointoCoin> exCointoCoinList = commonDao.getSratAutoExCointoCoin();
+        if (exCointoCoinList == null || exCointoCoinList.size() == 0) {
+            return;
+        }
+        for (ExCointoCoin exCointoCoin : exCointoCoinList) {
+            String coinCouple = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode();
+            String referencePriceKey = coinCouple + ":" + ExchangeDataCacheRedis.ReferenceExchangPrice;
+            BigDecimal referencePrice = null;
+            if (exCointoCoin.getAtuoPriceType() == 3) { // 参考火币的价格
+                for (int i = 0; i < 3; i++) {
+                    try {
+                        referencePrice = getHuobiReferencePriceByApi(coinCouple);
+                        if (referencePrice != null && BigDecimal.ZERO.compareTo(referencePrice) > 0) {
+                            break;
+                        }
+                    } catch (ApiException e) {
+                        logger.error("refresh <" + i + "> "+ referencePriceKey + " error!");
+                    }
+                }
+            }
+            if (referencePrice == null || BigDecimal.ZERO.compareTo(referencePrice) == 0) {
+                continue;
+            }
+
+            RedisService redisService = (RedisService) ContextUtil.getBean("redisService");
+            redisService.save(referencePriceKey, referencePrice.toString());
+        }
+    }
+
+    /**
+     * 调用该方法
+     * <p>
+     * TODO
+     * </p>
+     *
+     * @author: Zhang Lei
+     * @param: @param
+     * type 买还是卖类型 1 买 2 卖
+     * @param: @param
+     * customerId 用户ID
+     * @param: @param
+     * price 价格（机器人随机浮动范围内生成）
+     * @param: @param
+     * userCode 用户code
+     * @param: @param
+     * coinCode 币种
+     * @param: @param
+     * entrustCount 数量
+     * @param: @param
+     * currencyType 固定cny
+     * @param: @param
+     * website 固定cn
+     * @return: void
+     * @Date : 2017年2月9日 下午4:25:01
+     * @throws:
+     */
+    @Override
+    public boolean addExEntrust(String coinCode, String fixPriceCoinCode, Integer fixPriceType, Integer type, Integer entrustWay, Long customerId, BigDecimal price, String autoUsername, BigDecimal entrustCount, String currencyType, String website) {
+        EntrustTrade entrustTrade = new EntrustTrade();
+        if (coinCode == null || fixPriceCoinCode == null) {
+            return false;
+        }
+        entrustTrade.setFixPriceCoinCode(fixPriceCoinCode);
+        entrustTrade.setCoinCode(coinCode);
+        entrustTrade.setFixPriceType(fixPriceType);
+        entrustTrade.setType(type);
+        if (price.compareTo(BigDecimal.ZERO) == 0 || entrustCount.compareTo(BigDecimal.ZERO) == 0) {
+            return false;
+        }
+        entrustTrade.setEntrustSum(BigDecimal.ZERO);
+
+        Integer[] keepDec = getCoinToCoinKeep(coinCode, fixPriceCoinCode);
+        int keepDecimalForCoin = keepDec[1];
+        int keepDecimalForCurrency = keepDec[0];
+
+        if (entrustWay != null) {
+            if (entrustWay == 1) {
+                entrustTrade.setEntrustWay(entrustWay);// 1.限价--> 表示以固定的价格 , 2.市价--->
+                entrustTrade.setEntrustPrice(price.setScale(keepDecimalForCurrency, BigDecimal.ROUND_HALF_DOWN));
+                entrustTrade.setEntrustCount(entrustCount.setScale(keepDecimalForCoin, BigDecimal.ROUND_HALF_DOWN));
+            } else {
+                entrustTrade.setEntrustWay(entrustWay);// 1.限价--> 表示以固定的价格 , 2.市价--->
+                if (type == 1) {
+                    entrustTrade.setEntrustSum(price.multiply(entrustCount).setScale(keepDecimalForCurrency, BigDecimal.ROUND_HALF_DOWN));
+                } else {
+                    entrustTrade.setEntrustCount(entrustCount.setScale(keepDecimalForCoin, BigDecimal.ROUND_HALF_DOWN));
+                }
+            }
+        }
+
+        entrustTrade.setCustomerId(customerId);
+        entrustTrade.setSource(2);
+        entrustTrade.setUserName(autoUsername);
+        entrustTrade.setSurName("");
+        entrustTrade.setTrueName("机器人");
+        initExEntrust(entrustTrade);
+        MQEnter.pushExEntrustMQ(entrustTrade);
+        return true;
+    }
+
+    public void addHedgeEntrustByAutoAccount(ExCointoCoin exCointoCoin, Integer entrustType, String currencyType, String website) {
+        if (exCointoCoin == null || exCointoCoin.getIsHedge() == null || exCointoCoin.getIsHedge() != 1) {
+            return;
+        }
+        String coinCouple = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode();
+        String autoUsernames = exCointoCoin.getAutoUsername();
+        if (autoUsernames == null) {
+            return;
+        }
+        String[] autoUsernameArr = autoUsernames.split(",");
+        for (String autoUsername : autoUsernameArr) {
+            if (null == autoUsername) {
+                System.out.println("填写的手机号有误，请检查重试！");
+                continue;
+            }
+            AppCustomer customer = commonDao.getAppUserByuserName(autoUsername);
+            if (customer == null) {
+                System.out.println("填写的手机号有误，请检查重试！======no account");
+                continue;
+            }
+            exCointoCoin.setCustomerId(customer.getId());
+
+            BigDecimal autoPrice = BigDecimal.ZERO;
+            BigDecimal entrustNum = BigDecimal.ZERO;
+
+            Integer fixPriceType = exCointoCoin.getFixPriceType();
+            for (int i = 0; i < 2; i++) {
+                List<EntrustTrade> entrustTradeList = getMatchEntrustTradebyType(exCointoCoin, exCointoCoin.getCustomerId(), entrustType);
+                if (entrustTradeList != null && entrustTradeList.size() > 0) {  // 不能再下这个类型的委托了，必须换类型
+                    // 切换委托类型，卖切换为买，买切换为卖
+                    if (entrustType == 1) {
+                        entrustType = 2;
+                    } else {
+                        entrustType = 1;
+                    }
+                    // 如果是卖找到卖中的最大价格，如果是买找到最小价格，并获取所有委托数量
+                    for (EntrustTrade entrustTrade : entrustTradeList) {
+                        if (autoPrice == null || autoPrice.compareTo(BigDecimal.ZERO) <= 0) {
+                            autoPrice = entrustTrade.getEntrustPrice();
+                        }
+                        if (entrustType == 1) { // 买,找到卖单中最大的价格
+                            autoPrice = autoPrice.max(entrustTrade.getEntrustPrice());
+                        } else { // 卖，找到买单中的最小的价格
+                            autoPrice = autoPrice.min(entrustTrade.getEntrustPrice());
+                        }
+                        entrustNum = entrustNum.add(entrustTrade.getSurplusEntrustCount());
+                    }
+                    // 根据价格浮动一下，并保证卖价格下浮，买价格上浮，数量不能采用浮动，如果采用浮动则无法参考火币的价格
+                    if (autoPrice != null && autoPrice.compareTo(BigDecimal.ZERO) > 0) {
+                        if (entrustType == 1) { // 买
+                            autoPrice = getFloatNum(autoPrice, exCointoCoin.getAutoPriceFloat(), true);
+                        } else { // 卖
+                            autoPrice = getFloatNum(autoPrice, exCointoCoin.getAutoPriceFloat(), false);
+                        }
+                    }
+                    if (autoPrice != null && autoPrice.compareTo(BigDecimal.ZERO) > 0
+                            && entrustNum != null && entrustNum.compareTo(BigDecimal.ZERO) > 0) {
+                        break;
+                    }
+                }
+            }
+
+            if (autoPrice == null || autoPrice.compareTo(BigDecimal.ZERO) <= 0) {
+                autoPrice = getPrcie(exCointoCoin.getAtuoPriceType(), exCointoCoin.getUpFloatPer(),
+                        coinCouple, exCointoCoin.getAutoPrice(), exCointoCoin.getAutoPriceFloat());
+            }
+            if (entrustNum == null || entrustNum.compareTo(BigDecimal.ZERO) <= 0) {
+                entrustNum = getFloatNum(exCointoCoin.getAutoCount(), exCointoCoin.getAutoCountFloat(), null);
+            }
+            if (!addExEntrust(exCointoCoin.getCoinCode(), exCointoCoin.getFixPriceCoinCode(),
+                    fixPriceType, entrustType, 1, exCointoCoin.getCustomerId(),
+                    autoPrice, autoUsername, entrustNum, currencyType, website)) {
+                logger.info("委托失败");
+            }
+        }
+    }
+
+
+    /**
+     * 根据ex_cointo_coin中的自动交易进行下单
+     * @param exCointoCoin
+     * @param entrustType 1为买，2为卖
+     * @param currencyType
+     * @param website
+     * @return
+     */
+    public void addEntrustByAutoAccount(ExCointoCoin exCointoCoin, Integer entrustType, String currencyType, String website) {
+        String autoUsernames = exCointoCoin.getAutoUsername();
+        if (autoUsernames == null) {
+            return ;
+        }
+        String[] autoUsernameArr = autoUsernames.split(",");
+        for (String autoUsername : autoUsernameArr) {
+            if (null == autoUsername) {
+                System.out.println("填写的手机号有误，请检查重试！");
+                continue;
+            }
+            AppCustomer customer = commonDao.getAppUserByuserName(autoUsername);
+            if (customer == null) {
+                System.out.println("填写的手机号有误，请检查重试！======no account");
+                continue;
+            }
+            exCointoCoin.setCustomerId(customer.getId());
+            String coinCouple = exCointoCoin.getCoinCode() + "_" + exCointoCoin.getFixPriceCoinCode();
+            BigDecimal autoPrice = getPrcie(exCointoCoin.getAtuoPriceType(), exCointoCoin.getUpFloatPer(),
+                    coinCouple, exCointoCoin.getAutoPrice(), exCointoCoin.getAutoPriceFloat());
+            BigDecimal entrustNum = getFloatNum(exCointoCoin.getAutoCount(), exCointoCoin.getAutoCountFloat(), null);
+            if (!addExEntrust(exCointoCoin.getCoinCode(), exCointoCoin.getFixPriceCoinCode(), exCointoCoin.getFixPriceType(),
+                    entrustType, 1, exCointoCoin.getCustomerId(),
+                    autoPrice, autoUsername, entrustNum, currencyType, website)) {
+                logger.info("委托失败");
+            }
+        }
+    }
 
 	public void initExEntrust(EntrustTrade exEntrust) {
 		String saasId = PropertiesUtils.APP.getProperty("app.saasId");
@@ -521,80 +651,70 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 
 	}
 
-	/**
-	 * 根据浮动比例获取浮动值
-	 * <p>
-	 * TODO
-	 * </p>
-	 * 
-	 * @author: Zhang Lei
-	 * @param: @param
-	 *             number 固定值
-	 * @param: @param
-	 *             floatNum 浮动比例
-	 * @param: @return
-	 * @return: BigDecimal
-	 * @Date : 2017年2月10日 下午2:57:24
-	 * @throws:
-	 */
-	
-	public  BigDecimal getPrcie(Integer atuoPriceType,BigDecimal upFloatPer,String coinCode,String fixPriceCoinCode,BigDecimal number, BigDecimal floatNum){
-		if(atuoPriceType.intValue()==1){	//1按定价浮动2，按市价浮动
-			return getFloatNum1(number,floatNum)[1];
-		}else{
-			  
-			 String  currentPrice=	TradeRedis.getStringData(coinCode + "_" + fixPriceCoinCode + ":" + ExchangeDataCacheRedis.CurrentExchangPrice);
-		     if(!StringUtil.isEmpty(currentPrice)){
-		    	 BigDecimal[] price=getFloatNum1(new BigDecimal(currentPrice),floatNum);
-				 if(price[0].compareTo(new BigDecimal(1))==0){
-					return price[1].multiply(upFloatPer);
-				 }else{
-					return price[1];
-				 }
-		     }else{
-		    	 
-		    	 return null;
-		     }		
-			 
-		}
-	}
-	
-	public BigDecimal[] getFloatNum1(BigDecimal number, BigDecimal floatNum) {
-		 BigDecimal[] price=new  BigDecimal[2];
-		BigDecimal truePrice = number;
-		// 获取浮动值 刷币价格 * (浮动比例 * 随机小数 )
-		double num = Math.random();// 获取随机小数
-		BigDecimal fudongNum = number.multiply(floatNum).divide(new BigDecimal("100")).multiply(new BigDecimal(num));
+    /**
+     * 根据浮动比例获取浮动值
+     * 当@param autoPriceType大于3的时候，就是获取参考价格{@link #refreshReferencePrice}
+     * @param autoPriceType 价格类型，1定价下单，2市价下单，3参考火币价格
+     * @param upFloatPer
+     * @param coinCouple
+     * @param basePrice
+     * @param floatPrice
+     * @return
+     */
+    public BigDecimal getPrcie(Integer autoPriceType, BigDecimal upFloatPer, String coinCouple, BigDecimal basePrice, BigDecimal floatPrice) {
+        if (autoPriceType == null) {
+            return BigDecimal.ZERO;
+        }
+        switch (autoPriceType) {
+            case 1:     // 按定价浮动
+                break;
+            case 2: {   // 按市价浮动
+                String currentPrice = TradeRedis.getStringData(coinCouple + ":" + ExchangeDataCacheRedis.CurrentExchangPrice);
+                if (!StringUtil.isEmpty(currentPrice)) {
+                    Boolean upDown = (Math.random() > 0.5);
+                    BigDecimal price = getFloatNum(new BigDecimal(currentPrice), floatPrice, upDown);
+                    if (upDown && upFloatPer != null) {
+                        return price.multiply(upFloatPer);
+                    }
+                    return price;
+                }
+                break;
+            }
+            case 3: { // 获取参考价格
+                String currentPrice = TradeRedis.getStringData(coinCouple + ":" + ExchangeDataCacheRedis.ReferenceExchangPrice);
+                if (!StringUtil.isEmpty(currentPrice)) {
+                    return getFloatNum(new BigDecimal(currentPrice), floatPrice, null);
+                }
+                break;
+            }
+        }
 
-		int number1 = (int) (Math.random() * 2);
-		if (number1 == 0) {// 这里向下浮动吧
-			truePrice = number.subtract(fudongNum);
-			price[0]=new BigDecimal(-1); //向下
-		} else {// 这里向上浮动吧
-			truePrice = number.add(fudongNum);
-			price[0]=new BigDecimal(1); //向上
-		}
-		price[1]=truePrice;
-		return price;
-	}
+        return getFloatNum(basePrice,floatPrice, null);
+    }
 
-	@Override
-	public String getHeader(String coinCode, String fixPriceCoinCode) {
-		String header = coinCode + "_" + fixPriceCoinCode;
-		return header;
-	}
+    /**
+     * 根据基准价格和浮动比率获取一个浮动价格
+     * 获取浮动值 刷币价格 * (浮动比例 * 随机小数 )
+     * @param base
+     * @param floatRange
+     * @param isUp null的时候，随机，true上浮，false下浮
+     * @return
+     */
+    private BigDecimal getFloatNum(BigDecimal base, BigDecimal floatRange, Boolean isUp) {
+        BigDecimal singleFloatPrice = base
+                .multiply(floatRange.divide(new BigDecimal("100")))
+                .multiply(BigDecimal.valueOf(Math.random()));
 
-	@Override
-	public String getHeader(EntrustTrade exEntrust) {
-		String header = exEntrust.getCoinCode() + "_" + exEntrust.getFixPriceCoinCode();
-		return header;
-	}
+        if (isUp == null) {
+            isUp = (Math.random() > 0.5);
+        }
 
-	@Override
-	public String getHeader(ExOrderInfo exEntrust) {
-		String header = exEntrust.getCoinCode() + "_" + exEntrust.getFixPriceCoinCode();
-		return header;
-	}
+        if (isUp) {
+            return base.add(singleFloatPrice);
+        } else {
+            return base.subtract(singleFloatPrice);
+        }
+    }
 
 	@Override
 	public ExEntrust getExEntrustByentrustNum(String entrustNum) {
@@ -637,9 +757,9 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 		List<BigDecimal> keyslistbuy = TradeRedis.getMatchkeys(sellexEntrust);// 查所有的keys
 		int i = 0;
 		while (i < keyslistbuy.size()) {
-			
-			
-			
+
+
+
 			BigDecimal keybig = keyslistbuy.get(i);
 			String keyall = TradeRedis.getHeaderMatch(sellexEntrust) + ":" + keybig.toString();
 			List<EntrustTrade> list = TradeRedis.getMatchEntrustTradeBykey(keyall);
@@ -649,6 +769,9 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 				for (EntrustTrade entrustTrade : list) {
 					entrustPrice = entrustTrade.getEntrustPrice();
 					surplusEntrustCount = surplusEntrustCount.add(entrustTrade.getSurplusEntrustCount());
+				}
+				if (surplusEntrustCount.compareTo(BigDecimal.ZERO) <= 0) {
+					continue;
 				}
 				BigDecimal[] array = new BigDecimal[2];
 				array[0] = entrustPrice.setScale(keepDecimalForCurrency, BigDecimal.ROUND_HALF_EVEN);
@@ -688,6 +811,9 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 					entrustPrice = entrustTrade.getEntrustPrice();
 					surplusEntrustCount = surplusEntrustCount.add(entrustTrade.getSurplusEntrustCount());
 				}
+				if (surplusEntrustCount.compareTo(BigDecimal.ZERO) <= 0) {
+					continue;
+				}
 				BigDecimal[] array = new BigDecimal[2];
 				array[0] = entrustPrice.setScale(keepDecimalForCurrency, BigDecimal.ROUND_HALF_EVEN);
 				array[1] = surplusEntrustCount.setScale(keepDecimalForCoin, BigDecimal.ROUND_HALF_EVEN);
@@ -707,7 +833,7 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 
 		}
 		marketDepths.setDepths(map);
-		return JSON.toJSONString(marketDepths).toString();
+		return JSON.toJSONString(marketDepths);
 	}
 
 	public BigDecimal getByn(int n) {
@@ -844,7 +970,7 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 		}
 		map.put("asks", asks);
 		marketDepths.setDepths(map);
-		return JSON.toJSONString(marketDepths).toString();
+		return JSON.toJSONString(marketDepths);
 	}
 
 }

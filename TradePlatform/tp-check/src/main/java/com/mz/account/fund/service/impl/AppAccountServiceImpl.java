@@ -18,6 +18,8 @@ import com.mz.core.constant.CodeConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * <p> TODO</p>
  * @author:         Liu Shilei 
@@ -26,8 +28,7 @@ import org.springframework.stereotype.Service;
 @Service("appAccountService")
 public class AppAccountServiceImpl extends BaseServiceImpl<AppAccount, Long> implements AppAccountService{
 	
-	/*@Resource(name="appAccountDao")*/
-	@Override
+	@Resource(name="appAccountDao")
 	public void setDao(BaseDao<AppAccount, Long> dao) {
 		super.dao = dao;
 	}

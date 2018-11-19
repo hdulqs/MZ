@@ -34,16 +34,16 @@
 		<!--定义queue -->
 		<rabbit:queue name="toTrade" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
 		<rabbit:queue name="toAccount" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
-    	<rabbit:queue name="reidsToRedisLog" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
-	    <rabbit:queue name="reidsToMysql" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
+    	<rabbit:queue name="redisToRedisLog" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
+	    <rabbit:queue name="redisToMysql" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
 	
 		<!-- 定义direct exchange，绑定queueTest -->
 		<rabbit:direct-exchange name="exchangeToTrade" durable="true" auto-delete="false" declared-by="connectAdmin">
 			<rabbit:bindings>
 				<rabbit:binding queue="toTrade" key="toTradeKey"></rabbit:binding>
 				<rabbit:binding queue="toAccount" key="toAccountKey"></rabbit:binding>
-				<rabbit:binding queue="reidsToRedisLog" key="reidsToRedisLogKey"></rabbit:binding>
-				<rabbit:binding queue="reidsToMysql" key="reidsToMysqlKey"></rabbit:binding>
+				<rabbit:binding queue="redisToRedisLog" key="redisToRedisLogKey"></rabbit:binding>
+				<rabbit:binding queue="redisToMysql" key="redisToMysqlKey"></rabbit:binding>
 			</rabbit:bindings>
 		</rabbit:direct-exchange>
 	
@@ -54,12 +54,12 @@
 		<!-- 消息接收者 -->
 		<bean id="messageTrade" class="com.mz.trade.mq.MessageTrade"></bean>
 		<bean id="messageAccount" class="com.mz.trade.mq.MessageAccount"></bean>
-		<bean id="messageReidsToRedisLog" class="com.mz.trade.mq.MessageReidsToRedisLog"></bean>
-		<bean id="messageReidsToMysql" class="com.mz.trade.mq.MessageReidsToMysql"></bean>
+		<bean id="messageRedisToRedisLog" class="com.mz.trade.mq.MessageRedisToRedisLog"></bean>
+		<bean id="messageRedisToMysql" class="com.mz.trade.mq.MessageRedisToMysql"></bean>
 		<rabbit:listener-container connection-factory="connectionFactory" requeue-rejected="false" acknowledge="auto">
 			<rabbit:listener queues="toTrade" ref="messageTrade" />
-			<rabbit:listener queues="reidsToRedisLog" ref="messageReidsToRedisLog" />
-			<rabbit:listener queues="reidsToMysql" ref="messageReidsToMysql" />
+			<rabbit:listener queues="redisToRedisLog" ref="messageRedisToRedisLog" />
+			<rabbit:listener queues="redisToMysql" ref="messageRedisToMysql" />
 		</rabbit:listener-container>
 		 
 		<rabbit:listener-container connection-factory="connectionFactory" requeue-rejected="false" acknowledge="manual">

@@ -231,9 +231,9 @@ define(['app','hryTable'], function (app, DT) {
 	        		   url: HRY.modules.oauth+"user/appresource/findToJsonOnRolesAdd.do",
 	        		   myData : myData,//异步回调时鉴别下拉框
 	        		   success: function(data){
-	        			    
-	        			    var data = $.parseJSON(data);
-	        			    
+                           if (typeof data === "string" && data.constructor === String) {
+                               data = $.parseJSON(data);
+                           }
 	        	 			for(var i = 0 ; i < data.length ; i++) {
 	        	 				var item 
 	        	 				var flag = false;

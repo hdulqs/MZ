@@ -25,7 +25,18 @@ public interface CommonDao extends BaseDao<EntrustTrade, Long> {
 
   AppCustomer getAppUserByuserName(@Param(value = "userName") String userName);
 
-  List<ExCointoCoin> getExointocoinValid();
+  List<ExCointoCoin> getExCointoCoinValid();
 
-  List<AppCustomer> getAppUserAll();
+    /**
+     * 获取需要自动交易的交易对，因为自动交易用户需要验证，所有需要取出来
+     * @return
+     */
+    List<ExCointoCoin> getSratAutoExCointoCoin();
+	/**
+	 * 根据交易币种和定价币种获取相关信息
+	 * @param coinCode 交易币种
+	 * @param fixPriceCoinCode 定价币种
+	 * @return
+	 */
+	 List<ExCointoCoin> getExCointoCoinByCoinCode(@Param(value="coinCode")String coinCode, @Param(value="fixPriceCoinCode")String fixPriceCoinCode);
 }

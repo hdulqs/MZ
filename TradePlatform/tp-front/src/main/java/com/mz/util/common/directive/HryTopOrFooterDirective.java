@@ -44,6 +44,9 @@ public class HryTopOrFooterDirective implements TemplateDirectiveModel {
   @Autowired
   FreeMarkerConfigurer freeMarkerConfigurer;
 
+  @Autowired
+  RemoteAppTransactionManageService remoteAppTransactionManageService;
+
   @Override
   public void execute(Environment env, Map map, TemplateModel[] models,
       TemplateDirectiveBody directiveBody) throws TemplateException, IOException {
@@ -115,8 +118,6 @@ public class HryTopOrFooterDirective implements TemplateDirectiveModel {
     }
 
     //是否开启建议
-    RemoteAppTransactionManageService remoteAppTransactionManageService = SpringContextUtil
-        .getBean("remoteAppTransactionManageService");
     List<AppConfig> configInfo = remoteAppTransactionManageService.getConfigInfo("isProposal");
     if (configInfo.size() == 0) {
       root.put("isProposal", "1");
