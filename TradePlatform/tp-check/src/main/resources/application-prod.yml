@@ -70,13 +70,6 @@ dubbo:
   port: 20905
   host: admin_check
   cachepath: cache
-<<<<<<< .mine
 logging:
   level: trace
   config: classpath:logback.xml
-||||||| .r229
-logging:
-  level: trace
-  config: logback.xml
-=======
->>>>>>> .r230
