@@ -14,7 +14,7 @@
 <#assign  hasc2c="true">
 <#assign  hasotc="true">
 <#assign  marketPrice="false">
-<#assign socketioUrl="ws://192.168.1.101:3000">
+<#assign socketioUrl="wss://hq.babyex.net">
 <script type="text/JavaScript">
 	var _ctx = "${ctx}";
 	var _version="${version}";

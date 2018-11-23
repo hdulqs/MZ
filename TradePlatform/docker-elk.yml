@@ -13,7 +13,7 @@ services:
         condition: on-failure
       placement:
         constraints:
-        - node.labels.manage == 1
+        - node.labels.work == 1
 #        preferences:
 #        - spread: node.labels.work
   logstash:
@@ -28,7 +28,7 @@ services:
         condition: on-failure
       placement:
         constraints:
-        - node.labels.manage == 1
+        - node.labels.work == 1
 #        preferences:
 #        - spread: node.labels.work
     depends_on:
@@ -45,7 +45,7 @@ services:
         condition: on-failure
       placement:
         constraints:
-        - node.labels.manage == 1
+        - node.labels.work == 1
 #        preferences:
 #        - spread: node.labels.work
     depends_on:

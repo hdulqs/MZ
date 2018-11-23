@@ -153,8 +153,14 @@ public class CoinTransactionServiceImpl extends BaseServiceImpl<CoinTransaction,
         String transactionMoney = new BigDecimal(txamount.toString()).toPlainString();
         String fee = new BigDecimal(txfee != null ? txfee.toString() : "0").toPlainString();
         String userName = coinAccount.getUserName();
-        String surname = coinAccount.getSurname();
-        String trueName = coinAccount.getTrueName();
+        String surname =
+            StringUtils.isNotBlank(coinAccount.getSurname()) && coinAccount.getSurname()
+                .contains(" ") ? coinAccount.getSurname().replaceAll(" ", "")
+                : coinAccount.getSurname();
+        String trueName =
+            StringUtils.isNotBlank(coinAccount.getTrueName()) && coinAccount.getTrueName()
+                .contains(" ") ? coinAccount.getTrueName().replaceAll(" ", "")
+                : coinAccount.getTrueName();
         String CurrencyType = coinAccount.getCurrencyType();
         String inAddress = coinAccount.getPublicKey();
         String orderNo = tx.getTxId();

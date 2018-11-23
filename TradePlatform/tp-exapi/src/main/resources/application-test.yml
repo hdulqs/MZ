@@ -54,8 +54,7 @@ zookeeper:
 dubbo:
   name: tp-exapi
   port: 20904
-  host: admin_exapi
   cachepath: cache
 logging:
   level: trace
-  path: logback.xml
+  config: classpath:logback.xml

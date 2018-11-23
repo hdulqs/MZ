@@ -67,9 +67,8 @@ zookeeper:
   url: zookeeper://middleware_zookeeper:2181
 dubbo:
   name: tp-oauth
-  host: admin_oauth
   port: 20901
   cachepath: cache
 logging:
   level: trace
-  path: logback.xml
+  config: classpath:logback.xml

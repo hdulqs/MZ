@@ -23,6 +23,7 @@ import com.mz.core.mvc.service.base.impl.BaseServiceImpl;
 import com.mz.exchange.lend.model.ExDmLend;
 import com.mz.exchange.transaction.model.ExDmTransaction;
 import com.mz.remote.RemoteThirdPayInterfaceService;
+import com.mz.trade.model.AccountRemarkEnum;
 import com.mz.util.QueryFilter;
 import com.mz.util.date.DateUtil;
 import com.mz.util.sys.ContextUtil;
@@ -112,7 +113,7 @@ public class AppTransactionServiceImpl extends BaseServiceImpl<AppTransaction, L
       accountadd.setMoney(appTransaction.getTransactionMoney().subtract(appTransaction.getFee()));
       accountadd.setMonteyType(1);
       accountadd.setAcccountType(0);
-      accountadd.setRemarks(21);
+      accountadd.setRemarks(AccountRemarkEnum.TYPE21.getIndex());
       accountadd.setTransactionNum(appTransaction.getTransactionNum());
       List<Accountadd> list = new ArrayList<Accountadd>();
       list.add(accountadd);
@@ -597,7 +598,6 @@ public class AppTransactionServiceImpl extends BaseServiceImpl<AppTransaction, L
     }
 
     return false;
-
   }
 
 

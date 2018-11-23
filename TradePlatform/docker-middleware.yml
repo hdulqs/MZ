@@ -20,7 +20,7 @@ services:
     image: 192.168.1.102:5000/middleware/redis:4.0.11
     volumes:
     - /home/logs/redis1:/logs
-    privileged: true
+    - /data/redis/1:/data
     ports:
     - 6379:6379
     networks:
@@ -37,7 +37,7 @@ services:
     image: 192.168.1.102:5000/middleware/redis:4.0.11
     volumes:
     - /home/logs/redis2:/logs
-    privileged: true
+    - /data/redis/2:/data
     ports:
     - 6380:6379
     networks:

@@ -1,7 +1,7 @@
 /**
  * Copyright:   北京互融时代软件有限公司
  * @author:      Wu Shuiming
- * @version:      V1.0 
+ * @version:      V1.0
  * @Date:        2016年3月24日 下午2:04:29
  */
 package com.mz.trade.entrust.service.impl;
@@ -27,7 +27,6 @@ import com.mz.trade.entrust.model.ExOrder;
 import com.mz.trade.entrust.model.ExOrderInfo;
 import com.mz.util.idgenerate.IdGenerate;
 import com.mz.util.idgenerate.NumConstant;
-import com.mz.util.log.LogFactory;
 import com.mz.util.sys.ContextUtil;
 import com.mz.trade.account.dao.AppAccountDao;
 import com.mz.trade.account.dao.AppColdAccountRecordDao;
@@ -35,7 +34,6 @@ import com.mz.trade.account.dao.AppHotAccountRecordDao;
 import com.mz.trade.account.dao.ExDigitalmoneyAccountDao;
 import com.mz.trade.account.dao.ExDmColdAccountRecordDao;
 import com.mz.trade.account.dao.ExDmHotAccountRecordDao;
-import com.mz.trade.comparator.AscBigDecimalComparator;
 import com.mz.trade.entrust.dao.ExEntrustDao;
 import com.mz.trade.entrust.dao.ExOrderInfoDao;
 import com.mz.trade.entrust.service.ExEntrustService;
@@ -49,7 +47,6 @@ import com.mz.trade.redis.model.ExDigitalmoneyAccountRedis;
 import com.mz.trade.redis.model.ExchangeDataCacheRedis;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -58,6 +55,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,12 +64,14 @@ import org.springframework.stereotype.Service;
  * <p>
  * TODO
  * </p>
- * 
+ *
  * @author: Gao Mimi
  * @Date : 2016年4月12日 下午4:45:50
  */
 @Service("exOrderInfoService")
 public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> implements ExOrderInfoService {
+
+    Logger logger = Logger.getLogger(ExOrderInfoServiceImpl.class);
 
 	@Resource(name = "exOrderInfoDao")
 	@Override
@@ -78,15 +79,8 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 		super.dao = dao;
 	}
 
-	@Resource(name = "exOrderService")
-	public ExOrderService exOrderService;
-
-	@Resource
-	public ExEntrustService exEntrustService;
 	@Autowired
 	private RedisService redisService;
-	@Resource
-	private ExOrderInfoService exOrderInfoService;
 	@Resource
 	public ExDigitalmoneyAccountService exDigitalmoneyAccountService;
 	@Resource
@@ -99,14 +93,6 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 	private ExEntrustDao exEntrustDao;
 	@Resource
 	private ExOrderInfoDao exOrderInfoDao;
-	@Resource
-	private ExDmColdAccountRecordService exDmColdAccountRecordService;
-	@Resource
-	private ExDmHotAccountRecordService exDmHotAccountRecordService;
-	@Resource
-	private AppColdAccountRecordService appColdAccountRecordService;
-	@Resource
-	private AppHotAccountRecordService appHotAccountRecordService;
 	@Resource
 	private ExDmColdAccountRecordDao exDmColdAccountRecordDao;
 	@Resource
@@ -151,33 +137,6 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
 	}
 
 	@Override
-	public ExOrder createExOrder(ExOrderInfo exOrderInfo) {
-
-		// 订单开始
-		ExOrder exOrder = new ExOrder();
-		exOrder.setOrderNum(exOrderInfo.getOrderNum());
-		exOrder.setTransactionTime(exOrderInfo.getTransactionTime());
-		exOrder.setOrderTimestapm(exOrderInfo.getOrderTimestapm());
-		exOrder.setSaasId(exOrderInfo.getSaasId());
-		exOrder.setCurrencyType(exOrderInfo.getCurrencyType());
-		exOrder.setWebsite(exOrderInfo.getWebsite());
-		exOrder.setTransactionCount(exOrderInfo.getTransactionCount());
-		exOrder.setTransactionPrice(exOrderInfo.getTransactionPrice());
-		exOrder.setTransactionSum(exOrderInfo.getTransactionSum());
-		exOrder.setCoinCode(exOrderInfo.getCoinCode());
-		exOrder.setWebsite(exOrderInfo.getWebsite());
-		exOrder.setCurrencyType(exOrderInfo.getCurrencyType());
-		exOrder.setProductName(exOrderInfo.getProductName());
-		exOrder.setInOrOutTransaction(exOrderInfo.getInOrOutTransaction());
-		exOrder.setFixPriceCoinCode(exOrderInfo.getFixPriceCoinCode());
-		exOrder.setFixPriceType(exOrderInfo.getFixPriceType());
-
-		// 订单结束
-		return exOrder;
-
-	}
-
-	@Override
     public void redisToMysql() {
         long start = System.currentTimeMillis();
         this.exEntrustToMysql();
@@ -185,7 +144,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
         this.exOrderInfoToMysql();
         long time = System.currentTimeMillis() - start;
         if (time > 800) {
-            LogFactory.info("redis(委托单和成交单)入库总耗时：" + (time) + "ms\n" +
+            logger.info("redis(委托单和成交单)入库总耗时：" + (time) + "ms\n" +
                     "委托单耗时：" + enTrustEndTime +
                     "成交单耗时：" + (time - enTrustEndTime));
         }
@@ -201,7 +160,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
         if (tradeDealEntrustChangeKeys == null || tradeDealEntrustChangeKeys.size() < 1) {
             return;
         }
-        List<String> needDeleteKeys = new ArrayList<>();
+        Set<String> needDeleteKeys = new HashSet<>();
         // 在入库的间隔内，a委托未全部交易，b委托又和a委托撮合，导致a委托在deal:tradeDealEntrustChange：*中有过多的记录，此处需要过滤
         // 当前的Map用于过滤，指存储deal:tradeDealEntrustChange：*中数字大的委托记录，上面排序就是为了在map中只存储一笔委托最新的信息
         Map<String, EntrustTrade> dealEntrustMap = new HashMap<>();
@@ -214,13 +173,12 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
                         dealEntrustMap.put(entrustTrade.getEntrustNum(), entrustTrade);
                         needDeleteKeys.add(key);
                     } else {
-                        if (mapEnTrustTrade.getStatus() < entrustTrade.getStatus()) {
+                        if (mapEnTrustTrade.getStatus() < entrustTrade.getStatus()  // 状态改变
+                                || mapEnTrustTrade.getSurplusEntrustCount().compareTo(entrustTrade.getSurplusEntrustCount()) > 0) { // 资金发生改变
                             dealEntrustMap.put(entrustTrade.getEntrustNum(), entrustTrade);
                             needDeleteKeys.add(key);
-                        }
-                        if (mapEnTrustTrade.getSurplusEntrustCount().compareTo(entrustTrade.getSurplusEntrustCount()) > 0) {
-                            dealEntrustMap.put(entrustTrade.getEntrustNum(), entrustTrade);
-                            needDeleteKeys.add(key);
+                        } else {
+                            logger.info("有可能有错误的订单: " + entrustTrade.getEntrustNum() + " status: " + entrustTrade.getStatus());
                         }
                     }
                 }
@@ -237,7 +195,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
         if (entrustUpdateList == null || entrustUpdateList.size() == 0) {
             for (EntrustTrade entrustTrade: entrustTradeListed) {
                 if (null == entrustTrade.getProcessedPrice()) {
-                    entrustTrade.setProcessedPrice(new BigDecimal("0"));
+                    entrustTrade.setProcessedPrice(BigDecimal.ZERO);
                 }
             }
 
@@ -251,7 +209,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
         outLoop:
         for (EntrustTrade entrustTrade: entrustTradeListed) {
             if (null == entrustTrade.getProcessedPrice()) {
-                entrustTrade.setProcessedPrice(new BigDecimal("0"));
+                entrustTrade.setProcessedPrice(BigDecimal.ZERO);
             }
 
             for (ExEntrust exEntrust : entrustUpdateList) {
@@ -273,16 +231,15 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
             ExEntrust exEntrust = it.next();
             if (exEntrust.getStatus() == null) {
                 exEntrustDao.deleteByPrimaryKey(exEntrust.getId());
-                // TODO: 10/22/18 这里需要某种通知管理员的机制 
-                LogFactory.info("`，委托单号为：" + exEntrust.getEntrustNum());
+                // TODO: 10/22/18 这里需要某种通知管理员的机制
+                logger.info("`，委托单号为：" + exEntrust.getEntrustNum());
                 it.remove();
             }
         }
         // 更新数据库中已有的数据
         exEntrustDao.updateExEntrust(entrustUpdateList);
 
-        if (newEntrustTradeList.size() > 0) {
-            // 插入新有的数据
+        if (newEntrustTradeList.size() > 0) {   // 插入新有的数据
             exEntrustDao.insertEnEntrustTrade(newEntrustTradeList);
         }
         // 删除redis中委托订单
@@ -387,8 +344,6 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
         List<AppAccountRedis> lista=new ArrayList<AppAccountRedis>();
         for (Long accontId : accountIds) {
             AppAccountRedis appAccountredis = appAccountService.getAppAccountByRedis(accontId.toString());
-            appAccountredis.setHotMoneyDouble(appAccountredis.getHotMoney().doubleValue());
-            appAccountredis.setColdMoneyDouble(appAccountredis.getColdMoney().doubleValue());
             lista.add(appAccountredis);
         }
 		if(lista.size() > 0){
@@ -405,7 +360,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
         redisService.delete(keysTradeDealAccountChange.toArray(new String[0]));
         long time = System.currentTimeMillis() - start;
         if (time > 800) {
-            LogFactory.info("accountredis（账户和资金流水）入库总耗时：" + (time) + "ms");
+            logger.info("accountredis（账户和资金流水）入库总耗时：" + (time) + "ms");
         }
 	}
 
@@ -415,7 +370,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
             MessageProducer messageProducer = (MessageProducer) ContextUtil.getBean("messageProducer");
             messageProducer.redisToMysql("111");
         } catch (Exception e) {
-            LogFactory.info("redisToMysqlmq error.....");
+            logger.info("redisToMysqlmq error.....");
         }
     }
 
@@ -425,7 +380,7 @@ public class ExOrderInfoServiceImpl extends BaseServiceImpl<ExOrderInfo, Long> i
             MessageProducer messageProducer = (MessageProducer) ContextUtil.getBean("messageProducer");
             messageProducer.redisToRedisLog("333");
         } catch (Exception e) {
-            LogFactory.info("redisToredisLogmq error.............");
+            logger.info("redisToredisLogmq error.............");
         }
     }
 }

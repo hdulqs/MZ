@@ -22,25 +22,18 @@ import com.mz.redis.common.utils.RedisService;
 import com.mz.redis.common.utils.RedisTradeService;
 import com.mz.redis.common.utils.RedisUtil;
 import com.mz.trade.entrust.model.ExEntrust;
-import com.mz.trade.entrust.model.ExOrderInfo;
+import com.mz.trade.websoketContext.model.MarketDepths;
 import com.mz.util.QueryFilter;
-import com.mz.util.idgenerate.IdGenerate;
-import com.mz.util.idgenerate.NumConstant;
 import com.mz.util.properties.PropertiesUtils;
 import com.mz.util.sys.ContextUtil;
 import com.mz.front.redis.model.UserRedis;
 import com.mz.trade.MQmanager.MQEnter;
 import com.mz.trade.entrust.dao.CommonDao;
-import com.mz.trade.entrust.dao.ExEntrustDao;
 import com.mz.trade.entrust.service.ExEntrustService;
-import com.mz.trade.entrust.service.ExOrderInfoService;
-import com.mz.trade.entrust.service.ExOrderService;
 import com.mz.trade.model.CoinKeepDecimal;
 import com.mz.trade.model.TradeRedis;
-import com.mz.trade.mq.service.MessageProducer;
 import com.mz.trade.redis.model.EntrustTrade;
 import com.mz.trade.redis.model.ExchangeDataCacheRedis;
-import com.mz.trade.websoketContext.model.MarketDepths;
 import java.math.BigDecimal;
 import java.util.*;
 import javax.annotation.Resource;
@@ -594,7 +587,6 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 			exEntrust.setEntrustTime(new Date());
 		}
 
-		exEntrust.setEntrustNum(IdGenerate.transactionNum(NumConstant.Ex_Entrust));
 		// String transactionNum =
 		// IdGenerate.transactionNum(NumConstant.Ex_Entrust);
 		if (exEntrust.getType() == 1) {
@@ -606,6 +598,9 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 		// 查redis缓存
 		RedisUtil<UserRedis> redisUtil = new RedisUtil<UserRedis>(UserRedis.class);
 		UserRedis userRedis = redisUtil.get(exEntrust.getCustomerId().toString());
+		if (userRedis == null) {
+		    logger.warn("请前台机器人账户：" + exEntrust.getUserName());
+        }
 		// 获得缓存中所有的币账户id
 		if (exEntrust.getFixPriceType().equals(0)) { // 真实货币
 			exEntrust.setAccountId(userRedis.getAccountId());
@@ -722,7 +717,6 @@ public class ExEntrustServiceImpl extends BaseServiceImpl<ExEntrust, Long> imple
 		filter.addFilter("entrustNum=", entrustNum);
 		filter.setSaasId("hurong_system");
 		return this.get(filter);
-
 	}
 
 	@Override

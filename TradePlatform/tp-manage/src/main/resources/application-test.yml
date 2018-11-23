@@ -68,8 +68,7 @@ zookeeper:
 dubbo:
   name: tp-manage
   port: 20902
-  host: front_manage
   cachepath: cache
 logging:
   level: trace
-  path: logback.xml
+  config: classpath:logback.xml

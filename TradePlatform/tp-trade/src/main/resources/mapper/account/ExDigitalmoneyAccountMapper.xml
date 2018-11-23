@@ -39,12 +39,12 @@
 		<trim prefix="set" suffixOverrides=",">
 			<trim prefix="hotMoney = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.hotMoneyDouble}
+                    when id=#{item.id} then #{item.hotMoney}
 				</foreach>
 			</trim>
 			<trim prefix="coldMoney = case" suffix="end,">
 				<foreach collection="list" item="item" index="index">
-                    when id=#{item.id} then #{item.coldMoneyDouble}
+                    when id=#{item.id} then #{item.coldMoney}
 				</foreach>
 			</trim>
 		</trim>

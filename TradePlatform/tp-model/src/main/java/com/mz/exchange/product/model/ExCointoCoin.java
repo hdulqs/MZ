@@ -6,19 +6,12 @@
  */
 package com.mz.exchange.product.model;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-import java.math.BigDecimal;
-
-import com.mz.core.mvc.model.BaseExModel;
 import com.mz.core.mvc.model.BaseModel;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * <p> ExCointoCoin </p>
@@ -33,7 +26,6 @@ public class ExCointoCoin extends BaseModel {
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;  //id
-	
 
 	@Column(name= "coinCode")
 	private String coinCode;  //交易币种
@@ -50,11 +42,7 @@ public class ExCointoCoin extends BaseModel {
 		
 	@Column(name = "state")
 	private Integer state;
-	
-	
-	
 
-	
 	// 买方手续费 率
 	@Column(name = "buyFeeRate")
 	private BigDecimal buyFeeRate;
@@ -85,14 +73,10 @@ public class ExCointoCoin extends BaseModel {
 	//均价（收盘价）
 	@Column(name="averagePrice")
 	private BigDecimal averagePrice;
-		
 	
 	// 每次下单的最大数量(20170207币银网添加)
 	@Column(name = "oneTimeOrderNum")
 	private BigDecimal oneTimeOrderNum;
-	
-	
-	
 	
 	@Column(name = "isSratAuto")
 	private Integer isSratAuto;
@@ -140,8 +124,6 @@ public class ExCointoCoin extends BaseModel {
 	@Column(name= "isOperate")
 	private Integer isOperate; //是否操盘
 
-	@Column(name="isSyncKline")
-	private Integer isSyncKline; //是否同步火币网k线
 	// 是否对冲，如果对冲只能同source的交易
 	@Column(name = "isHedge")
 	private Integer isHedge;
@@ -152,15 +134,6 @@ public class ExCointoCoin extends BaseModel {
 
 	public void setIsHedge(Integer isHedge) {
 		this.isHedge = isHedge;
-	}
-
-
-	public Integer getIsSyncKline() {
-		return isSyncKline;
-	}
-
-	public void setIsSyncKline(Integer isSyncKline) {
-		this.isSyncKline = isSyncKline;
 	}
 
 	public Integer getIsOperate() {
@@ -343,15 +316,6 @@ public class ExCointoCoin extends BaseModel {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
-
-	
-	
-	
-
-	
-
 
 	public String getCoinCode() {
 		return coinCode;

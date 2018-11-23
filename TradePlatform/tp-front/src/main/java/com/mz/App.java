@@ -29,7 +29,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication(scanBasePackages = {"com.mz.**.controller", "com.mz.**.service",
     "com.mz.redis.common", "com.mz.util.sys", "com.mz.util.common", "com.mz.webConfig",
-    "com.mz.**.mvc"})
+    "com.mz.**.mvc", "com.mz.**.mobile"})
 @PropertySource({"classpath:app.properties"})
 @ImportResource({"classpath*:remote/*.xml"})
 @MapperScan(basePackages = {"com.mz.**.dao"}, markerInterface = BaseDao.class)

@@ -20,7 +20,7 @@
     <dubbo:registry address="${zookeeper.url}" file="${dubbo.cachepath}/dubbo/${dubbo.name}.cache"/>
     
     <!-- 用dubbo协议在20880端口暴露服务 -->  
-    <dubbo:protocol name="dubbo" host="${dubbo.host}" port="${dubbo.port}" />  
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" />
     <!-- 提供者-->
     <dubbo:provider timeout="600000" retries="0" />
 	

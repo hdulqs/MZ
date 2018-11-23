@@ -1,23 +1,15 @@
-﻿var app = require('express')();
-
-if (process.env.npm_package_config_protocal === 'https') {
-    var fs = require('fs');
-    //读取证书
-    var options = {
-        key: fs.readFileSync('thaisabc.key'),
-        cert: fs.readFileSync('thaisabc.com_bundle.crt')
-    }
-    var http = require('https').createServer(options, app);
-} else {
-    var http = require('http').Server(app);
-}
+var app = require('express')();
+var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var request = require('request');
 var redis = require("redis");
-RDS_PORT = 6379;
-RDS_HOST = '127.0.0.1';
-RDS_PWD = 'Credit2016Admin';
-RDS_OPTS = {auth_pass: RDS_PWD};
-redis_client = redis.createClient(RDS_PORT, RDS_HOST, RDS_OPTS);
+
+var redis_password = process.env.npm_package_config_redis_password;
+redis_client = redis.createClient({
+    host: process.env.npm_package_config_redis_host,
+    port: process.env.npm_package_config_redis_port,
+    password: redis_password
+});
 
 app.get('/', function (req, res) {
     res.send('<h1>Welcome Realtime Server</h1>');
@@ -28,9 +20,7 @@ var onlineUsers = {};
 // 当前在线人数
 var onlineCount = 0;
 
-var request = require('request');
-
-var url_cn = "http://127.0.0.1"
+var url_cn = process.env.npm_package_config_front_url;
 
 function tochange(mobile, count) {
     console.log(count + "秒后再次提醒" + mobile + "更新")
@@ -68,7 +58,7 @@ function obj2key(obj, keys) {
 }
 
 function getRedisData() {
-    redis_client.auth(RDS_PWD, function () {
+    redis_client.auth(redis_password, function () {
         console.log("redis连接成功");
     });
     //客户端连接redis成功后执行回调

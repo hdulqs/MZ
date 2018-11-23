@@ -48,4 +48,4 @@ server:
   context-path: /admin
 logging:
   level: trace
-  path: logback.xml
+  config: classpath:logback.xml

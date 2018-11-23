@@ -10,33 +10,34 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mz.core.annotation.MyRequiresPermissions;
 import com.mz.core.annotation.base.MethodName;
+import com.mz.core.mvc.controller.base.BaseController;
 import com.mz.core.mvc.model.page.JsonResult;
 import com.mz.core.mvc.model.page.PageResult;
 import com.mz.core.mvc.service.base.BaseService;
 import com.mz.customer.user.model.AppCustomer;
+import com.mz.customer.user.service.AppCustomerService;
 import com.mz.exchange.product.model.ExCointoCoin;
 import com.mz.exchange.product.model.ExProduct;
-import com.mz.util.QueryFilter;
-import com.mz.util.sys.ContextUtil;
-import com.mz.core.mvc.controller.base.BaseController;
-import com.mz.customer.user.service.AppCustomerService;
 import com.mz.exchange.product.service.ExCointoCoinService;
 import com.mz.exchange.product.service.ExProductService;
 import com.mz.manage.remote.model.Coin2;
 import com.mz.mq.producer.service.MessageProducer;
 import com.mz.trade.entrust.ExchangeDataCache;
 import com.mz.trade.entrust.service.ExOrderInfoService;
+import com.mz.util.QueryFilter;
+import com.mz.util.sys.ContextUtil;
 import com.mz.web.app.service.AppConfigService;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Copyright:   北京互融时代软件有限公司
@@ -254,28 +255,6 @@ public class ExCointoCoinController extends BaseController<ExCointoCoin, Long> {
         exCointoCoinService.initRedisCode();
         return jsonResult;
 	}
-
-	/*@MethodName(name = "开启自动同步火币的K线")
-    @RequestMapping(value = "/ensyncKline/{id}")
-	@ResponseBody
-	public JsonResult ensyncKlineFromHuobi(@PathVariable Long id) {
-        ExCointoCoin exCointoCoin=this.service.get(id);
-        exCointoCoin.setIsSyncKline(1);
-        JsonResult jsonResult=super.update(exCointoCoin);
-        exCointoCoinService.initRedisCode();
-        return jsonResult;
-	}
-
-	@MethodName(name = "关闭自动同步火币的K线")
-    @RequestMapping(value = "/dissyncKline/{id}")
-	@ResponseBody
-	public JsonResult dissyncKlineFromHuobi(@PathVariable Long id) {
-        ExCointoCoin exCointoCoin=this.service.get(id);
-        exCointoCoin.setIsSyncKline(0);
-        JsonResult jsonResult=super.update(exCointoCoin);
-        exCointoCoinService.initRedisCode();
-        return jsonResult;
-	}*/
 
 	@RequestMapping("/selectlistFixPriceCoinCode")
 	@MethodName(name = "查询")

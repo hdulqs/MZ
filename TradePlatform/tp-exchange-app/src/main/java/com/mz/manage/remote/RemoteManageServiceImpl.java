@@ -36,6 +36,9 @@ import com.mz.shiro.PasswordHelper;
 import com.mz.sms.JuheSendUtils;
 import com.mz.trade.entrust.model.ExEntrust;
 import com.mz.trade.entrust.model.ExOrderInfo;
+import com.mz.trade.entrust.service.RedisAccountService;
+import com.mz.trade.model.AccountResultEnum;
+import com.mz.trade.redis.model.*;
 import com.mz.util.QueryFilter;
 import com.mz.util.UUIDUtil;
 import com.mz.util.UniqueRecord;
@@ -91,16 +94,10 @@ import com.mz.manage.remote.model.c2c.C2cOrder;
 import com.mz.manage.remote.model.commendCode;
 import com.mz.manage.remote.model.otc.OtcOrderTransactionMange;
 import com.mz.manage.remote.model.otc.OtcTransactionOrder;
-import com.mz.mq.producer.MessageAccountUtil;
 import com.mz.mq.producer.service.MessageProducer;
 import com.mz.trade.entrust.dao.ExEntrustDao;
 import com.mz.trade.entrust.service.ExEntrustService;
 import com.mz.trade.entrust.service.ExOrderInfoService;
-import com.mz.trade.redis.model.AppAccountRedis;
-import com.mz.trade.redis.model.EntrustByUser;
-import com.mz.trade.redis.model.EntrustTrade;
-import com.mz.trade.redis.model.ExDigitalmoneyAccountRedis;
-import com.mz.trade.redis.model.ExchangeDataCacheRedis;
 import com.mz.util.UniqueRecordService;
 import com.mz.web.dictionary.service.AppDicOnelevelService;
 import com.mz.web.remote.RemoteAppConfigService;
@@ -118,6 +115,8 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import com.mz.util.UserRedisUtils;
+
+import static org.nutz.dao.util.Pojos.log;
 
 public class RemoteManageServiceImpl implements RemoteManageService {
 
@@ -210,6 +209,9 @@ public class RemoteManageServiceImpl implements RemoteManageService {
 
   @Autowired
   private RemoteThirdPayInterfaceService remoteThirdPayInterfaceService;
+
+  @Autowired
+  private RedisAccountService redisAccountService;
 
   @Override
   public void cancelAllExEntrust(EntrustTrade entrustTrade) {
@@ -475,11 +477,11 @@ public class RemoteManageServiceImpl implements RemoteManageService {
       if (!appCustomer.getPassWord().equals(encryString)) {
         return new RemoteResult().setSuccess(false).setMsg("mimacuowu");
       }
-      if (appCustomer.getIsDelete().equals(Integer.valueOf(1))) {
+      if (appCustomer.getIsDelete().equals(1)) {
         return new RemoteResult().setSuccess(false).setMsg("user_forbidden");
       }
       if (appCustomer.getHasEmail() == null || appCustomer.getHasEmail()
-          .equals(Integer.valueOf(0))) {
+          .equals(0)) {
         return new RemoteResult().setSuccess(false).setMsg("zhanghaoweijihuo");
       }
       /*
@@ -873,12 +875,40 @@ public class RemoteManageServiceImpl implements RemoteManageService {
           exDmTransactionService.save(exDmTransaction);
 
           // 发送消息
-          MessageAccountUtil.addCoin(_digitalmoneyAccount.getId(), exProduct.getCommendCoin(),
+          addCoin(_digitalmoneyAccount.getId(), exProduct.getCommendCoin(),
               exDmTransaction.getTransactionNum());
 
         }
       }
     }
+  }
+
+  /**
+   * 充币方法
+   *
+   * @param exdigaccountId 充币账户
+   * @param count 充币数量
+   * @param transactionNum 订单号
+   */
+  public boolean addCoin(Long exdigaccountId, BigDecimal count, String transactionNum) {
+    try {
+      Accountadd accountadd = new Accountadd();
+      accountadd.setAccountId(exdigaccountId);
+      accountadd.setMoney(count);
+      accountadd.setMonteyType(1);
+      accountadd.setAcccountType(1);
+      accountadd.setRemarks(31);
+      accountadd.setTransactionNum(transactionNum);
+
+      List<Accountadd> list = new ArrayList<Accountadd>();
+      list.add(accountadd);
+      MessageProducer messageProducer =(MessageProducer)ContextUtil.getBean("messageProducer");
+      messageProducer.toAccount(Mapper.objectToJson(list));
+      return true;
+    } catch (Exception e) {
+      log.error("充币失败");
+    }
+    return false;
   }
 
   @Override

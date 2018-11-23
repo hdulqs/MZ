@@ -59,4 +59,4 @@ pagehelper:
   page-size-zero: !!str true
 logging:
   level: trace
-  path: logback.xml
+  config: classpath:logback.xml

@@ -1,21 +1,17 @@
 /**
  * Copyright:   北京互融时代软件有限公司
  * @author:      Wu Shuiming
- * @version:      V1.0 
+ * @version:      V1.0
  * @Date:        2016年3月24日 下午2:04:29
  */
 package com.mz.trade.entrust.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.dyuproject.protostuff.LinkedBuffer;
-import com.dyuproject.protostuff.ProtostuffIOUtil;
-import com.dyuproject.protostuff.runtime.RuntimeSchema;
 import com.github.pagehelper.util.StringUtil;
-import com.mz.core.mvc.model.log.AppException;
-import com.mz.core.mvc.service.log.AppExceptionService;
 import com.mz.customer.person.model.AppPersonInfo;
 import com.mz.customer.user.model.AppCustomer;
 import com.mz.exchange.product.model.ExCointoCoin;
+import com.mz.front.redis.model.UserRedis;
 import com.mz.redis.common.utils.RedisService;
 import com.mz.redis.common.utils.RedisUtil;
 import com.mz.redis.common.utils.impl.RedisServiceImpl;
@@ -24,39 +20,36 @@ import com.mz.trade.account.service.ExDigitalmoneyAccountService;
 import com.mz.trade.comparator.AscBigDecimalComparator;
 import com.mz.trade.comparator.DescBigDecimalComparator;
 import com.mz.trade.entrust.dao.CommonDao;
+import com.mz.trade.entrust.dao.ExEntrustDao;
 import com.mz.trade.entrust.model.ExEntrust;
 import com.mz.trade.entrust.model.ExOrderInfo;
-import com.mz.util.QueryFilter;
-import com.mz.util.log.LogFactory;
-import com.mz.util.sys.ContextUtil;
-import com.mz.front.redis.model.UserRedis;
-import com.mz.trade.comparator.AccountaddComparator;
-import com.mz.trade.entrust.dao.ExEntrustDao;
 import com.mz.trade.entrust.service.AppPersonInfoService;
 import com.mz.trade.entrust.service.ExOrderInfoService;
+import com.mz.trade.entrust.service.RedisAccountService;
 import com.mz.trade.entrust.service.TradeService;
 import com.mz.trade.model.TradeRedis;
 import com.mz.trade.redis.model.Accountadd;
 import com.mz.trade.redis.model.AppAccountRedis;
 import com.mz.trade.redis.model.EntrustTrade;
 import com.mz.trade.redis.model.ExDigitalmoneyAccountRedis;
+import com.mz.util.QueryFilter;
+import com.mz.util.log.LogFactory;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import javax.annotation.Resource;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.log4j.Logger;
-import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.Transaction;
 
 /**
  * <p>
  * TODO
  * </p>
- * 
+ *
  * @author: Gao Mimi
  * @Date : 2016年4月12日 下午4:45:50
  */
@@ -83,6 +76,10 @@ public class TradeServiceImpl implements TradeService {
 
 	@Resource
 	public ExEntrustDao exEntrustDao;
+
+	@Autowired
+    private RedisAccountService redisAccountService;
+
 	public void canceltype(EntrustTrade entrustTrade1) {
 
 		if (null == entrustTrade1.getEntrustNum()) { // 委托单号为空，表示全部撤销某个用户的某个交易对的所有委托
@@ -112,31 +109,31 @@ public class TradeServiceImpl implements TradeService {
 							entrustTrade.setEntrustPrice(l.getEntrustPrice().setScale(10, BigDecimal.ROUND_HALF_EVEN));
 							cancelExEntrust(entrustTrade);
 		                    i++;
-						
+
 						}
-						
+
 					  long end = System.currentTimeMillis();
 					  LogFactory.info("("+(i.toString())+")全部单一币种mq撤销总耗时：" + (end - start) + "毫秒");
-				   
-					   
-					   
+
+
+
 				   }else{
 					    Integer i=0;
-			            //如果光判断这个也是有问题的，如果满了，但是单个撤销了几个，个数就少于满的，但实际上还有不在缓存里的		
+			            //如果光判断这个也是有问题的，如果满了，但是单个撤销了几个，个数就少于满的，但实际上还有不在缓存里的
 				        //	if(list.size()>=EntrustByUser.ingMAXsize-1){  //说明已经满了，需要从数据那全部的未成交委托单
 				        //		LogFactory.info("list.size()>=EntrustByUser.ingMAXsize");
-						
-						Map<String,Object> map =new  HashMap<String,Object>(); 
+
+						Map<String,Object> map =new  HashMap<String,Object>();
 						map.put("customerId", entrustTrade1.getCustomerId().toString());
 						map.put("fixPriceCoinCode", entrustTrade1.getFixPriceCoinCode());
 						map.put("coinCode", entrustTrade1.getCoinCode());
 					    List<ExEntrust>	listex=exEntrustDao.getEntrustingByCustomerId(map);
 					    if(null==listex||listex.size()==0){
-					    	
+
 					    	return ;
 					    }
 						for(ExEntrust l:listex){
-	
+
 							EntrustTrade entrustTrade = new EntrustTrade();
 							entrustTrade.setEntrustNum(l.getEntrustNum());
 							entrustTrade.setCoinCode(l.getCoinCode());
@@ -146,15 +143,15 @@ public class TradeServiceImpl implements TradeService {
 							entrustTrade.setEntrustPrice(l.getEntrustPrice().setScale(10, BigDecimal.ROUND_HALF_EVEN));
 							cancelExEntrust(entrustTrade);
 		                    i++;
-						
+
 						}
-						
+
 					  long end = System.currentTimeMillis();
 					  LogFactory.info("("+(i.toString())+")全部单一币种mq撤销总耗时：" + (end - start) + "毫秒");
 				   }
 			} else {
 				Integer i=0;
-				Map<String,Object> map =new  HashMap<String,Object>(); 
+				Map<String,Object> map =new  HashMap<String,Object>();
 				map.put("customerId", entrustTrade1.getCustomerId().toString());
 			    List<ExEntrust>	listex=exEntrustDao.getEntrustingByCustomerId(map);
 			    if(null==listex||listex.size()==0){
@@ -171,7 +168,7 @@ public class TradeServiceImpl implements TradeService {
 					entrustTrade.setEntrustPrice(l.getEntrustPrice().setScale(10, BigDecimal.ROUND_HALF_EVEN));
 					cancelExEntrust(entrustTrade);
                     i++;
-				
+
 				}
 				long end = System.currentTimeMillis();
 				LogFactory.info("("+(i.toString())+")全部撤销总耗时：" + (end - start) + "毫秒");
@@ -281,7 +278,11 @@ public class TradeServiceImpl implements TradeService {
 		String key = TradeRedis.getHeader(exEntrust.getCoinCode(), exEntrust.getFixPriceCoinCode(), exEntrust.getType()) + ":" + exEntrust.getEntrustPrice();
 		String entrustredis = TradeRedis.getTradeStringData(key);
 		if (StringUtil.isEmpty(entrustredis) || entrustredis.equals("[]")) {
-			LogFactory.info("撤销失败，keylist为空" + key);
+			if (exEntrust != null) {
+				LogFactory.info("trade: 撤销失败，keylist为空" + key + " entrustNum: " + exEntrust.getEntrustNum());
+			} else {
+				LogFactory.info("trade: 撤销失败，keylist为空" + key);
+			}
 			return;
 		}
 		List<EntrustTrade> list = JSON.parseArray(entrustredis, EntrustTrade.class);
@@ -416,11 +417,11 @@ public class TradeServiceImpl implements TradeService {
     }
 
 	/**
-	 * 
+	 *
 	 * <p>
 	 * (1)买家限价，卖家限价 (2)买家限价，卖家市价 (3)买家市价，卖家限价 (4)买家市价，卖家市价 暂不考虑
 	 * </p>
-	 * 
+	 *
 	 * @author: Gao Mimi
 	 * @param: @param
 	 *             exEntrust
@@ -535,17 +536,17 @@ public class TradeServiceImpl implements TradeService {
 			 * TradeRedis.matchOneEnd(dealFundEntrust(buyexEntrust),
 			 * buyexEntrust, null, listed); } } else { // 保存
 			 * dealFundNoMatch(buyexEntrust); }
-			 * 
+			 *
 			 */}
 
 	}
 
 	/**
-	 * 
+	 *
 	 * <p>
 	 * (1)卖家限价，买家限价 (3)卖家限价，买家市价 (2)卖家市价，买家限价 (4)卖家市价，买家市价 暂不考虑
 	 * </p>
-	 * 
+	 *
 	 * @author: Gao Mimi
 	 * @param: @param
 	 *             exEntrust
@@ -650,7 +651,7 @@ public class TradeServiceImpl implements TradeService {
 			 * dealFundNoMatch(sellentrust); } else {
 			 * TradeRedis.matchOneEnd(dealFundEntrust(sellentrust), sellentrust,
 			 * null, listed); } } else { // 保存 dealFundNoMatch(sellentrust);
-			 * 
+			 *
 			 * }
 			 */}
 	}
@@ -717,7 +718,7 @@ public class TradeServiceImpl implements TradeService {
 		if (sellentrust.getEntrustPrice().compareTo(BigDecimal.ZERO) == 0) {
 			return;
 		}
-		
+
 		// 不相等的情况说明是有浮动的，得求最优成交价（卖家限价，并且价格不相等）
 		if (sellentrust.getEntrustWay().equals(1) && buyexEntrust.getEntrustPrice().compareTo(sellentrust.getEntrustPrice()) != 0) {
 			BigDecimal[] array = new BigDecimal[4];
@@ -778,12 +779,12 @@ public class TradeServiceImpl implements TradeService {
 	// (4)买家市价，卖家市价
 	public void fourCase(EntrustTrade buyexEntrust, EntrustTrade sellentrust) {
 		/*
-		 * 
+		 *
 		 * String tradePricestring =
 		 * ExchangeDataCache.getStringData(buyexEntrust.getWebsite() + ":" +
 		 * buyexEntrust.getCurrencyType() + ":" + buyexEntrust.getCoinCode() +
 		 * ":" + ExchangeDataCache.CurrentExchangPrice);
-		 * 
+		 *
 		 * if (null != tradePricestring && new
 		 * BigDecimal(tradePricestring).compareTo(new BigDecimal("0")) != 0) {
 		 * BigDecimal tradePrice = new BigDecimal(tradePricestring); if
@@ -798,11 +799,11 @@ public class TradeServiceImpl implements TradeService {
 		 * BigDecimal.ROUND_DOWN); buyexEntrust.setStatus(2); } if
 		 * (buysurplusEntrusMoney.compareTo(sellsurplusEntrusMoney) == 1) {
 		 * tradeCount = sellentrust.getSurplusEntrustCount();
-		 * 
+		 *
 		 * } if (tradeCount.compareTo(new BigDecimal(0)) == 0) { return; }
 		 * dealmatchend( buyexEntrust, sellentrust, tradeCount, tradePrice,
 		 * "buy");
-		 * 
+		 *
 		 * }
 		 */}
 
@@ -833,10 +834,6 @@ public class TradeServiceImpl implements TradeService {
 		accountadd.setRemarks(remarks);
 		// accountadd.setRemarks(remarks);
 		return accountadd;
-	}
-// todo meld
-	public BigDecimal fu(BigDecimal money) {
-		return new BigDecimal("0").subtract(money);
 	}
 
 	public void deductMoneyByaccount(ExOrderInfo exOrderInfo, EntrustTrade buyexEntrust, EntrustTrade sellentrust) {
@@ -959,7 +956,7 @@ public class TradeServiceImpl implements TradeService {
 		aaddlists.add(accountadd7);
 		// 卖家手续费
 		if (exOrderInfo.getTransactionSellFee().compareTo(new BigDecimal("0")) == 1 && seller.getCustomerType()!=2) {
-			Accountadd accountadd8 = getAccountadd(1, sellentrust.getAccountId(), fu(exOrderInfo.getTransactionSellFee()), 1, 8, transactionNumsell);
+			Accountadd accountadd8 = getAccountadd(1, sellentrust.getAccountId(), exOrderInfo.getTransactionSellFee().negate(), 1, 8, transactionNumsell);
 			aaddlists.add(accountadd8);
 		}
 
@@ -971,11 +968,11 @@ public class TradeServiceImpl implements TradeService {
 		aaddlists.add(coinaccountadd1);
 		// 买家支出手续费
 		if (exOrderInfo.getTransactionBuyFee().compareTo(new BigDecimal("0")) == 1 && appPersonInfo.getCustomerType()!=2) {
-			Accountadd accountadd6 = getAccountadd(1, buyexEntrust.getCoinAccountId(), fu(exOrderInfo.getTransactionBuyFee()), 1, 10, transactionNumbuy);
+			Accountadd accountadd6 = getAccountadd(1, buyexEntrust.getCoinAccountId(), exOrderInfo.getTransactionBuyFee().negate(), 1, 10, transactionNumbuy);
 			aaddlists.add(accountadd6);
 		}
 		// 卖家支出币
-		Accountadd coinaccountadd2 = getAccountadd(1, sellentrust.getCoinAccountId(), fu(incomecoin), 2, 11, transactionNumsell);
+		Accountadd coinaccountadd2 = getAccountadd(1, sellentrust.getCoinAccountId(), incomecoin.negate(), 2, 11, transactionNumsell);
 		aaddlists.add(coinaccountadd2);
 
 
@@ -1069,138 +1066,5 @@ public class TradeServiceImpl implements TradeService {
 		}
 
 		return aaddlists;
-	}
-
-	@Override
-	public Boolean accountaddQueue(String accoutadds) {
-		Boolean  flag=true;
-		JedisPool jedisPool = (JedisPool) ContextUtil.getBean("jedisPool");
-		Jedis jedis=jedisPool.getResource();
-		try {
-		
-		Transaction transaction = jedis.multi();
-		List<Accountadd> accountaddlist = JSON.parseArray(accoutadds, Accountadd.class);
-		transaction.set(TradeRedis.getTradeDealAccountChangeNum(), JSON.toJSONString(accountaddlist));
-	
-		
-		AccountaddComparator accountaddComparator=new AccountaddComparator();
-		Collections.sort(accountaddlist,accountaddComparator);
-		Long coinaccountId=null;
-    	ExDigitalmoneyAccountRedis coinaccount =null;
-    	Long accountId=null;
-    	AppAccountRedis appAccount =null;
-		for (Accountadd accountadd : accountaddlist) {
-			if (accountadd.getAcccountType().equals(1)) {
-				if(null==coinaccountId||accountadd.getAccountId().compareTo(coinaccountId)!=0){
-					if(null!=coinaccount){
-						RuntimeSchema<ExDigitalmoneyAccountRedis>  schema = RuntimeSchema.createFrom(ExDigitalmoneyAccountRedis.class);
-						byte[] bytes = ProtostuffIOUtil.toByteArray(coinaccount, schema, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
-						String key = "RedisDB:" +ExDigitalmoneyAccountRedis.class.getName().replace(".", ":")+ ":" + coinaccount.getId();
-						transaction.del(key.getBytes());
-						transaction.set(key.getBytes(), bytes);
-						}
-					
-					 coinaccount = exDigitalmoneyAccountService.getExDigitalmoneyAccountByRedis(accountadd.getAccountId().toString());
-					 coinaccountId=accountadd.getAccountId();
-				}
-				if (null != coinaccount) {
-					if (accountadd.getMonteyType().equals(1)) {
-						coinaccount.setHotMoney(coinaccount.getHotMoney().add(accountadd.getMoney()));
-					} else {
-						coinaccount.setColdMoney(coinaccount.getColdMoney().add(accountadd.getMoney()));
-					}
-				
-				//	exDigitalmoneyAccountService.setExDigitalmoneyAccounttoRedis(coinaccount);
-				}else{
-					 LogFactory.info("mq:redis资金账户没有查到=="+accountadd.getAccountId());
-				}
-
-			} else {
-				if(null==accountId||accountadd.getAccountId().compareTo(accountId)!=0){
-					if(null!=appAccount){
-						RuntimeSchema<AppAccountRedis>  schema = RuntimeSchema.createFrom(AppAccountRedis.class);
-						byte[] bytes = ProtostuffIOUtil.toByteArray(appAccount, schema, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
-						String key = "RedisDB:" +AppAccountRedis.class.getName().replace(".", ":")+ ":" + appAccount.getId();
-						transaction.del(key.getBytes());
-						transaction.set(key.getBytes(), bytes);
-					
-					}
-					 appAccount = appAccountService.getAppAccountByRedis(accountadd.getAccountId().toString());
-					
-					 accountId=accountadd.getAccountId();
-				}
-				
-				if (null != appAccount) {
-					if (accountadd.getMonteyType().equals(1)) {
-						appAccount.setHotMoney(appAccount.getHotMoney().add(accountadd.getMoney()));
-					} else {
-						appAccount.setColdMoney(appAccount.getColdMoney().add(accountadd.getMoney()));
-					}
-					
-					
-				}else{
-					
-					 LogFactory.info("mq:redis虚拟账户没有查到=="+accountadd.getAccountId());
-				}
-
-			}
-			
-		
-		}	
-		if(null!=coinaccount){
-			RuntimeSchema<ExDigitalmoneyAccountRedis>  schema = RuntimeSchema.createFrom(ExDigitalmoneyAccountRedis.class);
-			byte[] bytes = ProtostuffIOUtil.toByteArray(coinaccount, schema, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
-			String key = "RedisDB:" +ExDigitalmoneyAccountRedis.class.getName().replace(".", ":")+ ":" + coinaccount.getId();
-			transaction.del(key.getBytes());
-			transaction.set(key.getBytes(), bytes);
-			 LogFactory.info("coinaccount.getHotMoney()=="+coinaccount.getHotMoney()+"=="+coinaccount.getUserName());
-		}
-	
-		if(null!=appAccount){
-			RuntimeSchema<AppAccountRedis>  schema1 = RuntimeSchema.createFrom(AppAccountRedis.class);
-			byte[] bytes1 = ProtostuffIOUtil.toByteArray(appAccount, schema1, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
-			String key1 = "RedisDB:" +AppAccountRedis.class.getName().replace(".", ":")+ ":" + appAccount.getId();
-			transaction.del(key1.getBytes());
-			transaction.set(key1.getBytes(), bytes1);
-			 LogFactory.info("appAccount.getHotMoney()"+appAccount.getHotMoney()+"=="+appAccount.getUserName());
-		}
-		
-		
-		
-		
-		List<Object> list =transaction.exec();
-		if(null==list||list.size()==0){
-		    flag=false;
-		}
-		
-		
-		 LogFactory.info("accoutadds==="+accoutadds);
-		
-		}catch(Exception e	) {
-			 AppException exceptionLog = new AppException();
-			 exceptionLog.setName("mq==accountaddQueue==");
-	         AppExceptionService appExceptionService=(AppExceptionService) ContextUtil.getBean("appExceptionService");
-			 appExceptionService.save(exceptionLog);
-			 System.out.println("mq==accountaddQueue=="+accoutadds);
-			e.printStackTrace();
-			throw e;
-		}finally {
-			jedis.close();
-		}
-		
-		return flag;
-	//	return flag;
-		
-		/*
-		 * // 添加资金记录 RedisService redisService = (RedisService)
-		 * ContextUtil.getBean("redisService"); String v =
-		 * redisService.get(ExchangeDataCacheRedis.AccountAddS);
-		 * List<Accountadd> list = JSON.parseArray(v, Accountadd.class); if
-		 * (null == list) { list = new ArrayList<Accountadd>(); }
-		 * list.addAll(accountaddlist);
-		 * redisService.save(ExchangeDataCacheRedis.AccountAddS,
-		 * JSON.toJSONString(list));
-		 */
-     
 	}
 }

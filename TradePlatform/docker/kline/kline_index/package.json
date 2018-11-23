@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.3",
-    "forever": "^0.15.3",
     "redis": "^2.8.0",
     "request": "^2.88.0",
     "socket.io": "^2.1.1"
@@ -13,12 +12,19 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "forever start index.js",
-    "stop": "forever stop index.js",
-    "start-node": "node index.js"
+    "start": "node index.js",
+    "start-dev": "node $NODE_DEBUG_OPTION index.js"
   },
   "config": {
-    "port": "3000"
+    "port": "3000",
+    "redis": {
+      "port": "6379",
+      "host": "middleware_redis1",
+      "password": "123456"
+    },
+    "front": {
+      "url": "http://front_root:8083"
+    }
   },
   "author": "mz",
   "license": "ISC"

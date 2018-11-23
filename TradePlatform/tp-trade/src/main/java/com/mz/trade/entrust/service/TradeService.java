@@ -27,18 +27,4 @@ public interface TradeService{
 
 	 */
 	public void matchExtrustToOrderQueue(String id);
-	
-	/**
-	 * 
-	 * <p> 资金队列</p>
-	 * @author:         Gao Mimi
-	 * @param:    @param exEntrust
-	 * @return: void 
-	 * @Date :          2016年4月15日 下午2:56:57   
-	 * @throws:
-	 * 
-	 *
-
-	 */
-	public Boolean accountaddQueue(String accoutadd);
 }

@@ -16,7 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * Spring Boot入口
  */
 @SpringBootApplication(scanBasePackages = {"com.mz.**.controller", "com.mz.**.service",
-    "com.mz.redis.common", "com.mz.**.service", "com.mz.util.sys", "com.mz.coin"})
+    "com.mz.**.dao", "com.mz.redis.common", "com.mz.**.service", "com.mz.util.sys", "com.mz.coin",})
 @MapperScan(basePackages = {"com.mz.**.dao"}, markerInterface = BaseDao.class)
 @EnableTransactionManagement
 public class App extends SpringBootServletInitializer {

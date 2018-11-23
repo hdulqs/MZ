@@ -8,20 +8,21 @@
 package com.mz.trade.listener;
 
 import com.github.pagehelper.util.StringUtil;
-import com.mz.exchange.product.model.ExCointoCoin;
-import com.mz.redis.common.utils.RedisTradeService;
-import com.mz.trade.entrust.service.ExEntrustService;
-import com.mz.util.log.LogFactory;
-import com.mz.util.properties.PropertiesUtils;
-import com.mz.util.sys.ContextUtil;
 import com.mz.core.quartz.QuartzJob;
 import com.mz.core.quartz.QuartzManager;
 import com.mz.core.quartz.ScheduleJob;
+import com.mz.exchange.product.model.ExCointoCoin;
+import com.mz.redis.common.utils.RedisTradeService;
 import com.mz.trade.entrust.dao.CommonDao;
+import com.mz.trade.entrust.service.ExEntrustService;
 import com.mz.trade.model.TradeRedis;
-import java.util.List;
+import com.mz.util.log.LogFactory;
+import com.mz.util.properties.PropertiesUtils;
+import com.mz.util.sys.ContextUtil;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  *
@@ -64,7 +65,7 @@ public class StartupListener implements CommandLineRunner {
 
     }
 
-    //缓存定时入库
+    // 委托单入库
     ScheduleJob redisToMysql = new ScheduleJob();
     redisToMysql.setSpringId("exOrderInfoService");
     redisToMysql.setMethodName("redisToMysqlmq");
@@ -75,27 +76,19 @@ public class StartupListener implements CommandLineRunner {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    //缓存定时入redis日志，委托定时入库
+    // 资金变化入库
     ScheduleJob redisToredisLog = new ScheduleJob();
     redisToredisLog.setSpringId("exOrderInfoService");
     redisToredisLog.setMethodName("redisToredisLogmq");
     QuartzManager.addJob("redisToredisLog", redisToredisLog, QuartzJob.class,
         "0/2 * * * * ?");// 两秒 0/2 * * * * ?
 
-    //委托单
+    // 深度更新
     ScheduleJob jobRunTimepushMarket = new ScheduleJob();
     jobRunTimepushMarket.setSpringId("webSocketScheduleService");
     jobRunTimepushMarket.setMethodName("pushMarket");
     QuartzManager.addJob("jobRunTimepushMarket", jobRunTimepushMarket, QuartzJob.class,
         "0/1 * * * * ?");// 两秒
-		
-		
-	/*	//委托单深度
-		ScheduleJob jobRunTimepushEntrusDephMarket= new ScheduleJob();
-		jobRunTimepushEntrusDephMarket.setSpringId("webSocketScheduleService");
-		jobRunTimepushEntrusDephMarket.setMethodName("pushEntrusDephMarket");
-		QuartzManager.addJob("jobRunTimepushEntrusDephMarket", jobRunTimepushEntrusDephMarket, QuartzJob.class, "0/6 * * * * ?");// 两秒
-	*/
 
     ExEntrustService exEntrustService = (ExEntrustService) ContextUtil.getBean("exEntrustService");
     long start1 = System.currentTimeMillis();

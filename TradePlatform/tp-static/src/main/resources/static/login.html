@@ -208,11 +208,12 @@
 
     $("#login").on("click", function (btn) {
       login();
-
     });
 
     function login() {
-      $("#loginForm").submit();
+        var password = hbmd5($("#password").val());
+        $("#password").val(password);
+        $("#loginForm").submit();
     }
 
     //添加登录名前缀

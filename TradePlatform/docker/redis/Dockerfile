@@ -64,14 +64,18 @@ RUN set -ex; \
 	\
 	redis-server --version
 
-RUN mkdir /data && chown redis:redis /data
+RUN mkdir /data && chown redis:redis /data 
 VOLUME /data
 WORKDIR /data
 
 COPY ./conf.d/redis.conf /etc/redis.conf
 
+EXPOSE 6379
+
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-EXPOSE 6379
+
+
+

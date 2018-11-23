@@ -15,4 +15,5 @@ fi
 
 exec "$@"
 
+
 chmod 777 -R /logs

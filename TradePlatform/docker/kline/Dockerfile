@@ -10,5 +10,4 @@ RUN npm install
 ADD kline_index/index.js ./
 
 EXPOSE 3000
-#ENTRYPOINT ["docker-entrypoint.sh"]
-CMD [ "node", "index.js" ]
+CMD "npm" "run" "start"

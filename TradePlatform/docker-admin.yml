@@ -11,7 +11,7 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-        #constraints: [node.labels.work == a]
+#        constraints: [node.labels.work == 2]
         preferences:
         - spread: node.labels.work
   oauth:
@@ -25,7 +25,7 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-#        constraints: [node.labels.work == a]
+#        constraints: [node.labels.work == 2]
         preferences:
         - spread: node.labels.work
 #  manage:
@@ -53,7 +53,7 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-#        constraints: [node.labels.work == a]
+#        constraints: [node.labels.work == 2]
         preferences:
         - spread: node.labels.work
   exapi:
@@ -67,7 +67,7 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-#        constraints: [node.labels.work == a]
+#        constraints: [node.labels.work == 2]
         preferences:
         - spread: node.labels.work
 networks:

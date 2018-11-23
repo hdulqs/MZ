@@ -25,6 +25,7 @@
     <dubbo:provider timeout="600000" retries="0" />
 	
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~接口实现和发布~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <bean id="redisAccountServiceImpl" class="com.mz.trade.entrust.service.impl.RedisAccountServiceImpl" />
+    <dubbo:service interface="com.mz.trade.entrust.service.RedisAccountService" ref="redisAccountServiceImpl"/>
 
-
-</beans>  
+</beans>

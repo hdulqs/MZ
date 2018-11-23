@@ -44,8 +44,14 @@ public class ExchangeDataCacheRedis {
     public static final String TradeDealEntrustChangeNum = "deal:tradeDealEntrustChangeNum"; //委托，撤销的处理顺序的号码
     public static final String TradeDealEntrustChange = "deal:tradeDealEntrustChange"; //
 
-    public static final String TradeDealAccountChangeNum = "deal:tradeDealAccountChangeNum"; //委托，撤销的处理顺序的号码
-    public static final String TradeDealAccountChange = "deal:TradeDealAccountChange"; //
+    /**
+     * 资金变化处理顺序的号码
+     */
+    public static final String TradeDealAccountChangeNum = "deal:tradeDealAccountChangeNum";
+    /**
+     * 资金变化需要处理的头部
+     */
+    public static final String TradeDealAccountChange = "deal:TradeDealAccountChange";
 
     public static final String TradeDealOrderInfoChangeNum = "deal:tradeDealOrderInfoChangeNum"; //委托，撤销的处理顺序的号码
     public static final String TradeDealOrderInfoChange = "deal:tradeDealOrderInfoChange"; //

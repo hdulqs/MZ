@@ -13,7 +13,6 @@ public class MessageProducer {
   @Autowired
   private AmqpTemplate amqpTemplate;
 
-
   /**
    * 发送账户操作信息
    */
@@ -59,7 +58,7 @@ public class MessageProducer {
   }
 
   /**
-   * 发送委托信息
+   * 同步火币k线
    */
   public void syncKline(Object message) {
     try {
@@ -67,16 +66,5 @@ public class MessageProducer {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  }
-
-  public void sendChongbiCallBack(Object message) {
-    try {
-      logger.info("to send message:{}" + message);
-      amqpTemplate.convertAndSend("chongbiCallBackKey", message);
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
   }
 }

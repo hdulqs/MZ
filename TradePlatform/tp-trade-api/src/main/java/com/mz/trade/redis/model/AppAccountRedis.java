@@ -54,21 +54,4 @@ public class AppAccountRedis implements Serializable{
 	public void setColdMoney(BigDecimal coldMoney) {
 		this.coldMoney = coldMoney;
 	}
-	private Double hotMoneyDouble;
-	private Double coldMoneyDouble;
-	public Double getHotMoneyDouble() {
-		return hotMoneyDouble;
-	}
-	public void setHotMoneyDouble(Double hotMoneyDouble) {
-		this.hotMoneyDouble = hotMoneyDouble;
-	}
-	public Double getColdMoneyDouble() {
-		return coldMoneyDouble;
-	}
-	public void setColdMoneyDouble(Double coldMoneyDouble) {
-		this.coldMoneyDouble = coldMoneyDouble;
-	}
-	
-	
-
 }
