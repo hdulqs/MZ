@@ -6,32 +6,30 @@ import com.mz.util.QueryFilter;
 import com.mz.util.file.FileUtil;
 import com.mz.util.sys.ContextUtil;
 import com.mz.web.file.model.AppFile;
+import com.mz.web.file.service.AppFileService;
 import com.mz.web.util.FileInfo;
 import com.mz.web.util.FileUpload;
-import com.mz.web.file.service.AppFileService;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.DefaultMultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 /**
  * 上传文件
  * <p> TODO</p>
  *
- * @author: Liu Shilei
+ * @au: Liu Shilei
  * @Date :          2015年12月8日 下午5:08:18
  */
-@Controller
+@RestController
 @RequestMapping("/file")
 public class FileController {
 
@@ -47,49 +45,41 @@ public class FileController {
    * 上传临时文件
    */
   @RequestMapping("/upload")
-  @ResponseBody
-  public JsonResult upload(DefaultMultipartHttpServletRequest multipartRequest, HttpSession session,
-      String otherString) {
+  public JsonResult upload(HttpServletRequest request) {
     JsonResult json = new JsonResult();
     json.setSuccess(true);
-    List<AppFile> list = new ArrayList<AppFile>();
-    List<FileInfo> listInfo = new ArrayList<FileInfo>();
+    List<AppFile> list = new ArrayList<>();
+    List<FileInfo> listInfo = new ArrayList<>();
     final AppUser currentUser = ContextUtil.getCurrentUser();
-    if (multipartRequest != null) {
-      //得到文件名称迭代器
-      Iterator<String> iterator = multipartRequest.getFileNames();
-      //遍历
-      while (iterator.hasNext()) {
-        //获得文件
-        MultipartFile file = multipartRequest.getFile(iterator.next());
-        String names = file.getOriginalFilename();
-        if (names != null && (names.endsWith("jpg") || names.endsWith("png") || names
-            .endsWith("gif") || names.endsWith("bmp"))) {
-        } else {
-          JsonResult jsonResult = new JsonResult();
-          jsonResult.setMsg("图片格式不正确");
-          jsonResult.setSuccess(false);
-          return jsonResult;
-        }
-
-        //判断文件是否为空
-        if (!file.isEmpty()) {
-          try {
-
-            FileInfo fileInfo = FileUpload.saveFile(file);
-            listInfo.add(fileInfo);
-
-          } catch (Exception e) {
-            json.setSuccess(false);
-            json.setMsg(e.getLocalizedMessage());
-            e.printStackTrace();
+    try {
+      List<MultipartFile> files = ((MultipartHttpServletRequest) request)
+          .getFiles("myfile");
+      if (CollectionUtils.isNotEmpty(files)) {
+        for (MultipartFile file : files) {
+          String names = file.getOriginalFilename();
+          if (names != null && (names.endsWith("jpg") || names.endsWith("png") || names
+              .endsWith("gif") || names.endsWith("bmp"))) {
+          } else {
+            JsonResult jsonResult = new JsonResult();
+            jsonResult.setMsg("图片格式不正确");
+            jsonResult.setSuccess(false);
+            return jsonResult;
           }
+          FileInfo fileInfo = FileUpload.saveFile(file);
+          listInfo.add(fileInfo);
         }
+      } else {
+        json.setSuccess(false);
+        json.setMsg("文件不能为空");
       }
-    }
-    for (FileInfo fileInfo : listInfo) {
-      //维护关系
-      list.add(appFileService.setFileRelation(currentUser, fileInfo));
+      for (FileInfo fileInfo : listInfo) {
+        //维护关系
+        list.add(appFileService.setFileRelation(currentUser, fileInfo));
+      }
+    } catch (Exception e) {
+      json.setSuccess(false);
+      json.setMsg(e.getLocalizedMessage());
+      e.printStackTrace();
     }
     json.setObj(list);
     json.setSuccess(true);
@@ -117,7 +107,6 @@ public class FileController {
    * 校验文件是否存在
    */
   @RequestMapping("/checkfile")
-  @ResponseBody
   public JsonResult checkfile(HttpServletRequest request) {
     JsonResult jsonResult = new JsonResult();
     String fileWebPath = request.getParameter("fileWebPath");
@@ -140,7 +129,6 @@ public class FileController {
    * 校验文件是否存在
    */
   @RequestMapping("/delete")
-  @ResponseBody
   public JsonResult delete(HttpServletRequest request) {
     JsonResult jsonResult = new JsonResult();
     String fileWebPath = request.getParameter("fileWebPath");
