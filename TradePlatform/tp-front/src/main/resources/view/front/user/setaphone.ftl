@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
         <#include "/base/base.ftl">
-    
+
     <link rel="stylesheet" type="text/css" href="${ctx}/static/${version}/lib/google/css/global.css">
     <link rel="stylesheet" type="text/css" href="${ctx}/static/${version}/lib/google/css/google.css">
     <link rel="stylesheet" type="text/css" href="${ctx}/static/${version}/lib/google/css/intlTelInput.css">
@@ -77,5 +77,5 @@ seajs.use(["js/front/user/setaphone","js/i18n_base"],function(o){
 
 });
 
-   
-</script>	
+
+</script>

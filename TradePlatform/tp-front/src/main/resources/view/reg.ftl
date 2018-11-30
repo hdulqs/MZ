@@ -71,7 +71,7 @@
     .navbar-brand img{
         display: block;
         margin: 0 auto;
-        width: 206px;
+        width: 60px;
         height: 60px;
     }
 </style>
@@ -99,11 +99,11 @@
                                 <form method="post"  class="login-form" >
                                     <div class="login-container">
                                         <div style="height: 25px;">
-                                            <div onclick="tabActive(this)" class="tabItem borderActive" style="cursor:pointer;width:50%;font-size: 20px;color: #ff4646;float: left;" class="text-center"><@spring.message code="youxiangzhuce"/></div>
-                                            <div onclick="tabActive(this)" class="tabItem" style="cursor:pointer;width:50%;font-size: 20px;color: #999;float: left" class="text-center"><@spring.message code="shoujizhuce"/></div>
+                                            <#--<div onclick="tabActive(this)" class="tabItem borderActive" style="cursor:pointer;width:50%;font-size: 20px;color: #ff4646;float: left;" class="text-center"><@spring.message code="youxiangzhuce"/></div>-->
+                                            <div onclick="tabActive(this)" class="tabItem borderActive" style="cursor:pointer;width:100%;font-size: 20px;color: #ff4646;padding: 5px 0;" class="text-center"><@spring.message code="shoujizhuce"/></div>
                                         </div>
 
-                                        <script>
+                                        <#--<script>
                                             function
                                             tabActive(obj){
                                                 $(".tabItem").removeClass("borderActive");
@@ -122,26 +122,26 @@
                                                     $("#img_captcha").click();
                                                 }
                                             }
-                                        </script>
+                                        </script>-->
                                         <!-- 邮箱注册 -->
-                                        <div class="row form form0" style="padding-top: 30px;">
+                                        <#--<div class="row form form0" style="padding-top: 30px;">
                                             <div class="form-group  col-xs-12 col-sm-12">
-                                                <!--<i class="posa fa fa-envelope" style="top: 11px; font-size:22px;"></i>-->
+                                                <!--<i class="posa fa fa-envelope" style="top: 11px; font-size:22px;"></i>&ndash;&gt;
                                                 <i class="posa" style="left: 23px;top:15px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/email.png"/></i>
                                                 <input name="email" id="email" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='please_write_email'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
-                                                <!--<i class="posa fa fa-keyboard-o"></i>-->
+                                                <!--<i class="posa fa fa-keyboard-o"></i>&ndash;&gt;
                                                 <i class="posa" style="left: 23px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
                                                 <input name="password" id="password" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='denglumimma'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
-                                                <!--<i class="posa fa fa-keyboard-o"></i>-->
+                                                <!--<i class="posa fa fa-keyboard-o"></i>&ndash;&gt;
                                                 <i class="posa" style="left: 23px;top:11px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/lock.png"/></i>
                                                 <input name="rePassword" id="rePassword" class="form-control input-lg" style="padding-left:50px" type="password" placeholder="<@spring.message code='denglumimma'/>"/>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
-                                                <!--<i class="posa megico"></i>-->
+                                                <!--<i class="posa megico"></i>&ndash;&gt;
                                                 <div class="code-form-input clearfix">
                                                     <i class="posa" style="left: 23px;top:12px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/qrcode.png"/></i>
                                                     <input style="padding-left:50px;outline:none;border:1px solid #ccc" name="registCode" id="registCode" class="form-picode input-lg" type="text" placeholder="<@spring.message code='tuxingyanzhengma'/>">
@@ -149,7 +149,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group  col-xs-12 col-sm-12">
-                                                <!--<i class="posa fa fa-user"></i>-->
+                                                <!--<i class="posa fa fa-user"></i>&ndash;&gt;
                                                 <i class="posa" style="left: 23px;top:12px;"><img src="${ctx}/static/${version}/lib/view_v1/dist/images/login/recommend.png"/></i>
                                                 <input name="referralCode" id="referralCode" value="${commendCode}" class="form-control input-lg" style="padding-left:50px" type="text" placeholder="<@spring.message code='tuijianrenshoujihao'/>"/>
                                             </div>
@@ -162,9 +162,9 @@
                                                     <input type="checkbox" id="check_deal"> <@spring.message code="woyiyuedu"/>  <a href="javascript:;" data-toggle="modal" data-target="#reg_pro">《<@spring.message code="zhucexieyi"/>》</a>
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <!-- 手机注册 -->
-                                        <div class="row form form1" style="padding-top: 30px;display:none;">
+                                        <div class="row form form1" style="padding-top: 30px">
                                             <div class="col-xs-12 col-sm-12">
                                                 <!--<i class="posa fa fa-mobile" style="top: 11px; font-size:22px;"></i>-->
                                                 <div class="form-group  col-xs-8 col-sm-8" style="padding:0 !important;float: left !important;">

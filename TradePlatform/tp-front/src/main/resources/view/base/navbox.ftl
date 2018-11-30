@@ -64,7 +64,7 @@
 <div class="navbox clear">
         <div class="nav">
         <div class="logo" style="width:20%;text-align: right">
-            <img src="${siteLogo!}" alt="" style="width: 187px;height: 55px;">
+            <img src="${siteLogo!}" alt="" style="height: 55px;">
         </div>
         <UL class="nav-list">
             <li class="active"><a href="${ctx}"><@spring.message code="Index"/></a></li>

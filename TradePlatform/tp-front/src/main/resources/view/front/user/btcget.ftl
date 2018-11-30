@@ -3,6 +3,9 @@
     i.form-control-feedback {
         right: 10px;
     }
+    #header .container,#page-container{
+        margin: 0 auto !important;
+    }
 </style>
 <div class="container-fluid person-con">
 

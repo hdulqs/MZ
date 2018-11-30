@@ -8,23 +8,28 @@
 					padding: 0;
 					margin: 0;
 				}
-				
+
 				.navbar-brand .open .dropdown-menu {
 					display: inline-flex;
 				}
+
+				#header .container,#page-container{
+					margin: 0 auto !important;
+				}
+
 			</style>
 
-			
+
 <!--=logo-->
-			<div style="margin-top: -30px;">
+			<div>
 			<@HryTopOrFooter url="base/logo.ftl"/>
 			</div>
            <!-- <div class="navbar-brand ng-scope">
 				<span class="brand-logo">
 					<a href="/">
 					  	<h1 class="brand-logo" style="height:auto; margin-top:12px;">
-					  	            					
-					  	
+
+
 					  		<img id="logo_img" src="/${siteLogo!}" style="vertical-align:top;height:33px;"/>
 					    </h1>
 			 		 </a>
@@ -42,7 +47,7 @@
 			<!--<ul class="nav navbar-nav navbar-right navbar-login">
 
 				<li class="dropdown navbar-user">
-				   <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="padding: 15px 0;"> 
+				   <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="padding: 15px 0;">
 				   <span class="hidden-xs ng-binding" style="color: #1a85e3; background: #f0f3f5; padding-left: 10px; font-size: 12px; font-weight: 600; display: inline-block; height: 35px; line-height: 1px;"> 您好, ${user.username} <span style="border-left: 1px solid #e6e4e5; display: inline-block;"> <i style="margin: 10px;" class="fa fa-angle-down"></i>
 						</span>
 					</span>
@@ -57,7 +62,7 @@
 				</li>
 
 			</ul>-->
-			<input id="language" value="${locale}" type="hidden"> 
+			<input id="language" value="${locale}" type="hidden">
 			<#if isOpenLanguage=='0'>
 			 <div class="foot_lang" style="margin-top:23px;">
                 <dl id="slide_lang"  class="">
@@ -86,8 +91,8 @@
 						<span class="text-gray">or</span>
 						<a class="text-bold text-primary  no-underline" href="${ctx}/reg"><@spring.message code="register"/></a>
 					</li>
-					
-					<#else>                   
+
+					<#else>
 					<li user-Islogin class="dropdown clearfix" style="margin-top:23px; line-height:20px;">
 					  <i><img src="${ctx}/static/${version}/lib/exstatic/img/avator2.png" width="20" alt=""></i>
 					  <a href="${ctx}/user/center"  >${user.username}<!--<b class="caret"></b>--></a>
@@ -97,9 +102,9 @@
 							<li><a href="${ctx}/logout"><@spring.message code="logout"/></a></li>
 						</ul>-->
 					</li>
-					
+
 					</#if>
-                          
+
                   </ul>
 
 			<!-- ngInclude: 'static/views/common/layout/nav.html' -->

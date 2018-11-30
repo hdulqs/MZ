@@ -70,6 +70,18 @@ spring:
   messages:
     basename: messages/message
     fallback-to-system-locale: false
+  mvc:
+    favicon:
+      enabled: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
 server:
   port: 8083
   context-path: /

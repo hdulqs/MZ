@@ -84,6 +84,19 @@ services:
       placement:
         constraints:
         - node.labels.manage == 1
+  dubbo-admin:
+    image: 192.168.1.102:5000/middleware/dubbo-admin:0.0.1-SNAPSHOT
+    ports:
+    - 8080:8080
+    networks:
+    - tp-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
   node_index:
     image: 192.168.1.102:5000/middleware/node_index:1.0.0
 #    volumes:
@@ -93,7 +106,7 @@ services:
     networks:
     - tp-net
     depends_on:
-    - redis1
+    - zookeeper
     deploy:
       replicas: 1
       restart_policy:

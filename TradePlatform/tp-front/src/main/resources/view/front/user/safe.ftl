@@ -125,7 +125,7 @@
 		<!--交易密码end-->
 
 		<!--邮箱绑定start-->
-		<li class="list-group-item">
+		<#--<li class="list-group-item">
 			<div class="media">
 				<a href="#" class="pull-left">
 					<#if user.mail!=null>
@@ -154,7 +154,7 @@
 				<a href="#" onclick="loadUrl('${ctx}/user/setmail')" class="color-o editlink"><@spring.message code="lijishezhi"/></a>
 			</#if>
 			</div>
-		</li>
+		</li>-->
 		<!--邮箱绑定end-->
 
 			<!--谷歌认证start-->

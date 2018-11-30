@@ -9,18 +9,18 @@
 </script>
 <style type="text/css">
 	.navbar-brand{
-		position: absolute;
+		/*position: absolute;
 		z-index: 2;
 		width: 100%;
 		height: 60px;
 		line-height: 60px;
-		margin-top: 80px;
+		margin-top: 80px;*/
 	}
 	.navbar-brand img{
 		display: block;
-		margin: 0 auto;
-		width: 206px;
-		height: 60px;
+		margin: 5px auto;
+		/*width: 206px;*/
+		height: 55px;
 	}
 </style>
 <div class="navbar-brand ng-scope">

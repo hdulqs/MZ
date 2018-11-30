@@ -13,6 +13,9 @@
   .intl-tel-input{
    display:inline-block;
   }
+  #header .container,#page-container{
+      margin: 0 auto !important;
+  }
   </style>
   <body>
   <div class="container-fluid person-con">

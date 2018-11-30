@@ -34,10 +34,10 @@ public class FileUpload {
 
 
 	//七牛云信息  add by zongwei  20180702
-	public static String accessKey=PropertiesUtils.APP.getProperty("app.qiniuyunaccessKey");
-	public static String secretKey=PropertiesUtils.APP.getProperty("app.qiniuyunsecretKey");
-	public static String http=PropertiesUtils.APP.getProperty("app.qiniuyunhttp");
-	public static String fileprefix=PropertiesUtils.APP.getProperty("app.qiniuyunfileprefix");
+	public static final String accessKey=PropertiesUtils.APP.getProperty("app.qiniuyunaccessKey");
+	public static final String secretKey=PropertiesUtils.APP.getProperty("app.qiniuyunsecretKey");
+	public static final String http=PropertiesUtils.APP.getProperty("app.qiniuyunhttp");
+	public static final String fileprefix=PropertiesUtils.APP.getProperty("app.qiniuyunfileprefix");
 
 
 
@@ -54,11 +54,11 @@ public class FileUpload {
 		String[] pathImg = new String[files.length];
 		//============七牛云================
 		// 构造一个带指定Zone对象的配置类   zone0()华东  zone1()华北  zone2()华南 zoneNa0()北美
-		Configuration cfg = new Configuration(Zone.zone2());
+		Configuration cfg = new Configuration(Zone.autoZone());
 		// ...其他参数参考类注释
 		UploadManager uploadManager = new UploadManager(cfg);
 		// ...生成上传凭证，然后准备上传
-		String bucket = "nncai";
+		String bucket = fileprefix;
 		// 默认不指定key的情况下，以文件内容的hash值作为文件名
 		//String key = null;
 		Auth auth = Auth.create(accessKey, secretKey);

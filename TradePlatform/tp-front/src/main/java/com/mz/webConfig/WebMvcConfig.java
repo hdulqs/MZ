@@ -24,19 +24,6 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
   /**
-   * 指定FastJson为JSON处理器
-   */
-  @Override
-  public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-    super.configureMessageConverters(converters);
-    FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-    FastJsonConfig fastJsonConfig = new FastJsonConfig();
-    fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
-    fastConverter.setFastJsonConfig(fastJsonConfig);
-    converters.add(fastConverter);
-  }
-
-  /**
    * 静态资源配置
    */
   @Override

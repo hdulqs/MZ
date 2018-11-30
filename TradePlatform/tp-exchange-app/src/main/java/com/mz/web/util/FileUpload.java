@@ -35,10 +35,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUpload {
 
   //七牛云信息  add by zongwei  20180702
-  public static String accessKey = PropertiesUtils.APP.getProperty("app.qiniuyunaccessKey");
-  public static String secretKey = PropertiesUtils.APP.getProperty("app.qiniuyunsecretKey");
-  public static String http = PropertiesUtils.APP.getProperty("app.qiniuyunhttp");
-  public static String fileprefix = PropertiesUtils.APP.getProperty("app.qiniuyunfileprefix");
+  public static final String accessKey = PropertiesUtils.APP.getProperty("app.qiniuyunaccessKey");
+  public static final String secretKey = PropertiesUtils.APP.getProperty("app.qiniuyunsecretKey");
+  public static final String http = PropertiesUtils.APP.getProperty("app.qiniuyunhttp");
+  public static final String fileprefix = PropertiesUtils.APP.getProperty("app.qiniuyunfileprefix");
 
 
   /**
@@ -97,7 +97,10 @@ public class FileUpload {
       //文件上传七牛云
       fileInfo.setFileRemotePath(fileprefix + fileInfo.getFileTrueName());
       //
-      Boolean falg = QiniuFileUpload(fileInfo.getFileLocalPath(), fileInfo.getFileRemotePath());
+      Boolean flag = QiniuFileUpload(fileInfo.getFileLocalPath(), fileInfo.getFileRemotePath());
+      if (!flag) {
+        return null;
+      }
       fileInfo.setFileRemotePath(http + fileInfo.getFileRemotePath());
       //返回文件信息对象
       fileInfo.setFileWebPath(fileInfo.getFileRemotePath());
@@ -152,11 +155,11 @@ public class FileUpload {
 
   public static boolean QiniuFileUpload(String path, String newFileName) {
 
-    Configuration cfg = new Configuration(Zone.zone2());
+    Configuration cfg = new Configuration(Zone.autoZone());
     // ...其他参数参考类注释
     UploadManager uploadManager = new UploadManager(cfg);
     // ...生成上传凭证，然后准备上传
-    String bucket = "nncai";
+    String bucket = fileprefix;
     // 默认不指定key的情况下，以文件内容的hash值作为文件名
     //String key = null;
     Auth auth = Auth.create(accessKey, secretKey);
@@ -164,6 +167,9 @@ public class FileUpload {
 
     try {
       Response respons = uploadManager.put(path, newFileName, upToken);
+      if (respons.statusCode == 200) {
+        return true;
+      }
     } catch (Exception e) {
       return false;
     }
@@ -171,7 +177,7 @@ public class FileUpload {
     File delFile = new File(path);
     //删除本地图片
     delFile.delete();
-    return true;
+    return false;
   }
 
 }

@@ -2051,9 +2051,9 @@ public class RemoteManageServiceImpl implements RemoteManageService {
       appPersonInfo.setSurname(suranme);
       appPersonInfo.setTrueName(trueName);
       appPersonInfo.setCardType(Integer.valueOf(cardType));
-			/*appPersonInfo.setPersonBank(pathImg[0]);
-			appPersonInfo.setPersonCard(pathImg[1]);
-			appPersonInfo.setFrontpersonCard(pathImg[2]);*/
+      appPersonInfo.setPersonBank(pathImg[0]);
+      appPersonInfo.setPersonCard(pathImg[1]);
+      appPersonInfo.setFrontpersonCard(pathImg[2]);
       appPersonInfoService.update(appPersonInfo);
 
       try {

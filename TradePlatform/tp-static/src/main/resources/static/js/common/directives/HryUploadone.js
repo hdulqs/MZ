@@ -94,6 +94,7 @@ define(['app','layer'], function (app,layer) {
 				
 				new AjaxUpload(uploadBtn, {
 					action : HRY.modules.web+ "/file/upload",
+                    responseType: 'json',
 					data : {},
 					name : 'myfile',
 					onSubmit : function(file, ext) {
@@ -103,11 +104,9 @@ define(['app','layer'], function (app,layer) {
 						}
 					},
 					onComplete : function(file, response) {
-						
-						var resp = JSON.parse(response)
-						if(resp!=undefined&&resp.success){
-							uploadPathShow.value=attributes.prefix+"/" +resp.obj[0].fileWebPath;
-							uploadPath.value = resp.obj[0].fileWebPath;
+						if(response!=undefined && response.success){
+							uploadPathShow.value=response.obj[0].fileWebPath;
+							uploadPath.value = response.obj[0].fileWebPath;
 						}else{
 							layer.msg("上传失败", {
 				    		    icon: 1,
