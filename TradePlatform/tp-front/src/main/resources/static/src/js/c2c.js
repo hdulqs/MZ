@@ -213,7 +213,7 @@ define(function(require, exports, module) {
 				
 				var price = 0;
 				if($("#buyUnitPrice").val()!=""){
-					price = parseFloat($("#buyUnitPrice").val()).toFixed(2);
+					price = parseFloat($("#buyUnitPrice").val().replace(/,/g, "")).toFixed(2);
 				}
 				
 				$($("#buyfinish").find("span")[0]).html(Math.floor(count*price*100)/100);
@@ -229,7 +229,7 @@ define(function(require, exports, module) {
 				
 				var price = 0;
 				if($("#sellUnitPrice").val()!=""){
-					price = parseFloat($("#sellUnitPrice").val()).toFixed(2);
+					price = parseFloat($("#sellUnitPrice").val().replace(/,/g, "")).toFixed(2);
 				}
 				
 				$($("#sellfinish").find("span")[0]).html(Math.floor(count*price*100)/100);
@@ -257,7 +257,7 @@ define(function(require, exports, module) {
 				 			});
 				 		return 
 				 	}
-				 	var transactionPrice = $("#buyUnitPrice").val();
+				 	var transactionPrice = $("#buyUnitPrice").val().replace(/,/g, "");
 				 	
 					$.ajax({
 						type : "post",
@@ -314,7 +314,7 @@ define(function(require, exports, module) {
 				 	
 				 	var coinCode = $("#coinCode").val();
 				 	var transactionCount = $("#sellNumber").val();
-				 	var transactionPrice = $("#sellUnitPrice").val();
+				 	var transactionPrice = $("#sellUnitPrice").val().replace(/,/g, "");
 				 	if(!transactionCount || transactionCount==0){
 				 		layer.alert('请输入正确的数量', {
 				 			  skin: 'layui-layer-molv' //样式类名
@@ -415,7 +415,7 @@ define(function(require, exports, module) {
 
                 var coinCode = $("#coinCode").val();
                 var transactionCount = $("#sellNumber").val();
-                var transactionPrice = $("#sellUnitPrice").val();
+                var transactionPrice = $("#sellUnitPrice").val().replace(/,/g, "");
                 if(!transactionCount || transactionCount==0){
                     layer.alert('请输入正确的数量', {
                         skin: 'layui-layer-molv' //样式类名

@@ -18,6 +18,7 @@ import com.mz.util.DrawPictureUtil;
 import com.mz.util.IpUtil;
 import com.mz.util.SessionUtils;
 import com.mz.core.thread.ThreadPool;
+import com.mz.util.httpRequest.HttpUtil;
 import com.mz.util.properties.PropertiesUtils;
 import com.mz.util.sys.SpringContextUtil;
 import com.mz.web.app.model.AppBanner;
@@ -197,7 +198,7 @@ public class IndexMobileController {
       if (regist != null) {
         if (regist.getSuccess()) {
           String url =
-              PropertiesUtils.APP.getProperty("app.url") + "/activation/" + username + "/" + regist
+                  HttpUtil.getAppUrl(request) + "/activation/" + username + "/" + regist
                   .getObj();
           // 发送邮件
           StringBuffer sb = new StringBuffer();

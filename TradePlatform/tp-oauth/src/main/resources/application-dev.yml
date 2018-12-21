@@ -24,7 +24,7 @@ spring:
   datasource:
     druid:
       filters: config,stat,wall
-      connect-properties: config.file=http://47.75.200.109/druid-pool.properties
+      connect-properties: config.file=http://47.75.200.109/druid/druid-pool.properties
       driver-class-name: com.mysql.jdbc.Driver
       url:
       username:

@@ -90,7 +90,7 @@ define(function(require, exports, module) {
 								$("#regBtn").removeAttr("disabled");// 按钮可用
 								layer.msg(data.msg, {icon: 2})
 								//刷新验证码
-								$("#img_captcha").attr("src", _ctx + "/sms/registcode.jpg?t=" + new Date().getTime());
+								$("#img_captcha").attr("src", _ctx + "/sms/registcode?t=" + new Date().getTime());
 							}
 						}else{
 							layer.msg(zheceshibai, {icon: 2})
@@ -166,7 +166,7 @@ define(function(require, exports, module) {
 								$("#regBtn2").removeAttr("disabled");// 按钮可用
 								layer.msg(data.msg, {icon: 2})
 								//刷新验证码
-								$("#img_captcha2").attr("src", _ctx + "/sms/registcode.jpg?t=" + new Date().getTime());
+								$("#img_captcha2").attr("src", _ctx + "/sms/registcode?t=" + new Date().getTime());
 							}
 						}else{
 							layer.msg(zheceshibai, {icon: 2})
@@ -185,10 +185,10 @@ define(function(require, exports, module) {
 		refreshCode : function(){
 			
 			$("#img_captcha").on("click",function(){
-				$(this).attr("src", _ctx + "/sms/registcode.jpg?t=" + new Date().getTime());
+				$(this).attr("src", _ctx + "/sms/registcode?t=" + new Date().getTime());
 			})
 			$("#img_captcha2").on("click",function(){
-				$(this).attr("src", _ctx + "/sms/registcode.jpg?t=" + new Date().getTime());
+				$(this).attr("src", _ctx + "/sms/registcode?t=" + new Date().getTime());
 			})
 		},
 		//发送短信
@@ -254,12 +254,12 @@ define(function(require, exports, module) {
 							}else{
 								$("#sendsmsBtn").removeAttr("disabled");// 按钮可用
 								layer.msg(data.msg, {icon: 2});
-								$("#img_captcha2").attr("src", _ctx + "/sms/registcode.jpg?t=" + new Date().getTime());
+								$("#img_captcha2").attr("src", _ctx + "/sms/registcode?t=" + new Date().getTime());
 							}
 						}else{
 							$("#sendsmsBtn").removeAttr("disabled");// 按钮可用
 							layer.msg(fasongshibai, {icon: 2})
-							$("#img_captcha2").attr("src", _ctx + "/sms/registcode.jpg?t=" + new Date().getTime());
+							$("#img_captcha2").attr("src", _ctx + "/sms/registcode?t=" + new Date().getTime());
 						}
 					},
 					error : function(e) {

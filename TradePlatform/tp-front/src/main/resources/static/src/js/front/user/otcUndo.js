@@ -23,8 +23,7 @@ define(function(require, exports, module) {
                     cache: false,
                     contentType: false,
                     processData: false,
-                    success: function (responseText) {
-                        var data =  JSON.parse(responseText)
+                    success: function (data) {
                         if(data.success) {
                             layer.msg(data.msg, {icon: 1, time: 1000},function() {
                                 var index = parent.layer.getFrameIndex(window.name); //获取窗口索引

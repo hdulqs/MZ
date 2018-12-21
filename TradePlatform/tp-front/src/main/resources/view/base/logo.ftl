@@ -15,17 +15,20 @@
 		height: 60px;
 		line-height: 60px;
 		margin-top: 80px;*/
+
 	}
 	.navbar-brand img{
 		display: block;
 		margin: 5px auto;
+        max-height: 60px;
 		/*width: 206px;*/
-		height: 55px;
+		/*height: 55px;*/
 	}
 </style>
+
 <div class="navbar-brand ng-scope">
 	<a href="${ctx}/index">
-		<img id="logo_img" src="${siteLogo!}"/>
+		<img src="${siteLogo!}"/>
 		<!--<img id="logo_img" src="${ctx}/static/${version}/img/drd/logo.png"/>-->
  	</a>
 </div>

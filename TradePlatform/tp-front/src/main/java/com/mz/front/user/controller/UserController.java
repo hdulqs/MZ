@@ -6,6 +6,7 @@ import com.mz.core.mvc.model.AppConfig;
 import com.mz.core.mvc.model.page.JsonResult;
 import com.mz.manage.remote.RemoteManageService;
 import com.mz.redis.common.utils.RedisService;
+import com.mz.util.httpRequest.HttpUtil;
 import com.mz.util.properties.PropertiesUtils;
 import com.mz.util.springmvcPropertyeditor.DateTimePropertyEditorSupport;
 import com.mz.util.springmvcPropertyeditor.StringPropertyEditorSupport;
@@ -816,7 +817,7 @@ public class UserController {
         //未前置，前往设置页
         User user = SessionUtils.getUser(request);
         RemoteManageService remoteManageService = SpringContextUtil.getBean("remoteManageService");
-        String property = PropertiesUtils.APP.getProperty("app.url");
+        String property = HttpUtil.getAppUrl(request);
         RemoteResult selectCommend = remoteManageService.selectCommend(user.getMobile(), property);
         mav.addObject("info", selectCommend.getObj());
         mav.setViewName("front/user/invite");

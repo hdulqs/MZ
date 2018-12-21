@@ -2,6 +2,7 @@ version: '3.3'
 services:
   nginx:
    image: 192.168.1.102:5000/middleware/nginx:1.14.0
+   hostname: middleware_nginx
    volumes:
    - /home/logs/nginx:/usr/local/nginx/logs
    ports:
@@ -18,6 +19,7 @@ services:
        - node.labels.manage == 1
   redis1:
     image: 192.168.1.102:5000/middleware/redis:4.0.11
+    hostname: middleware_redis1
     volumes:
     - /home/logs/redis1:/logs
     - /data/redis/1:/data
@@ -35,6 +37,7 @@ services:
         - node.labels.manage == 1
   redis2:
     image: 192.168.1.102:5000/middleware/redis:4.0.11
+    hostname: middleware_redis2
     volumes:
     - /home/logs/redis2:/logs
     - /data/redis/2:/data
@@ -52,6 +55,7 @@ services:
         - node.labels.manage == 1
   zookeeper:
     image: 192.168.1.102:5000/middleware/zookeeper:3.4.13
+    hostname: middleware_zookeeper
     volumes:
     - /home/logs/zookeeper:/datalog
     ports:
@@ -72,6 +76,7 @@ services:
         - node.labels.manage == 1
   rabbitmq:
     image: 192.168.1.102:5000/middleware/rabbitmq:3.7.8
+    hostname: middleware_rabbitmq
     ports:
     - 5672:5672
     - 15672:15672
@@ -86,6 +91,7 @@ services:
         - node.labels.manage == 1
   dubbo-admin:
     image: 192.168.1.102:5000/middleware/dubbo-admin:0.0.1-SNAPSHOT
+    hostname: middleware_dubbo
     ports:
     - 8080:8080
     networks:
@@ -99,6 +105,7 @@ services:
         - node.labels.manage == 1
   node_index:
     image: 192.168.1.102:5000/middleware/node_index:1.0.0
+    hostname: middleware_node_index
 #    volumes:
 #    - /home/logs/node_index:/logs
     ports:

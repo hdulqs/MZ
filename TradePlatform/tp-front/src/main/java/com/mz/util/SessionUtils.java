@@ -43,6 +43,9 @@ public class SessionUtils {
 	 */
 	public static boolean logout(HttpServletRequest request,HttpServletResponse response){
 		User user = (User) request.getSession().getAttribute("user");
+		if (user == null) {
+			return true;
+		}
 		RedisService redisService = SpringContextUtil.getBean("redisService");
 		redisService.delete("mobile:"+user.getUuid());
 		request.getSession().removeAttribute("user");

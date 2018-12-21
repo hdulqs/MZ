@@ -98,17 +98,6 @@ public class AppCustomerController extends BaseController<AppCustomer, Long> {
   @RequestMapping("/list")
   @ResponseBody
   public PageResult list(HttpServletRequest request) {
-    RedisService redisService = (RedisService) ContextUtil.getBean("redisService");
-    redisService.save("a1", "a1");
-    String a1 = redisService.get("a1");
-    System.out.println(a1);
-
-    RedisTradeService redisTradeService = (RedisTradeService) ContextUtil
-        .getBean("redisTradeService");
-    redisTradeService.save("abcdefg1", "aa2");
-    redisTradeService.save("abcdefg2", "aa2");
-    Set<String> keys = redisTradeService.keys("abcdefg");
-
     QueryFilter filter = new QueryFilter(AppCustomer.class, request);
     PageResult findPageBySql = ((AppCustomerService) service).findPageBySql(filter);
     return findPageBySql;

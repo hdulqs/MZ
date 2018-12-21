@@ -85,7 +85,7 @@ public class App extends SpringBootServletInitializer {
   public FilterRegistrationBean mobileLoginFilter() {
     FilterRegistrationBean registration = new FilterRegistrationBean();
     registration.setFilter(new MobileLoginFilter());
-    registration.addUrlPatterns("/*");
+    registration.addUrlPatterns("*.do");
     registration.setName("mobileLoginFilter");
     return registration;
   }

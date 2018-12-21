@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.mz.core.mvc.model.page.JsonResult;
 import com.mz.core.sms.SmsParam;
 import com.mz.core.sms.SmsSendUtil;
+import com.mz.sms.sdk.service.impl.WuMingServiceImpl;
 import com.mz.sms.send.model.AppSmsSend;
 import com.mz.util.log.LogFactory;
 import com.mz.util.properties.PropertiesUtils;
@@ -221,11 +222,12 @@ public class RemoteSmsServiceImpl implements RemoteSmsService {
         String code = smsParam.getHryCode();
         LogFactory.info("短信验证码为:" + code);
         //创建一个云片对象
-        YunpianServiceImpl serviceImpl = new YunpianServiceImpl();
+        // YunpianServiceImpl serviceImpl = new YunpianServiceImpl();
+        WuMingServiceImpl serviceImpl = new WuMingServiceImpl();
         //设置短信发送类型
         appSmsSend.setType(SmsSendUtil.getSendTypeValue(hrySmstype));
         appSmsSend.setPostParam(JSON.toJSONString(smsParam));
-        boolean sendSms = serviceImpl.sendSms(appSmsSend, smsParam, phone, map);
+        boolean sendSms = serviceImpl.sendSms(appSmsSend, smsParam, phone);
         // 如果发送标记为成功,则标记为已发送
         if (sendSms) {
           appSmsSend.setSendStatus("1");
@@ -288,11 +290,12 @@ public class RemoteSmsServiceImpl implements RemoteSmsService {
       if (!StringUtils.isEmpty(smsKey) && "hurongyuseen".equals(smsKey)) {
         String code = smsParam.getHryCode();
         LogFactory.info("短信验证码为:" + code);
-        YunpianServiceImpl serviceImpl = new YunpianServiceImpl();
+        // YunpianServiceImpl serviceImpl = new YunpianServiceImpl();
+        WuMingServiceImpl serviceImpl = new WuMingServiceImpl();
         //设置短信发送类型
         appSmsSend.setType(SmsSendUtil.getSendTypeValue(smsParam.getHrySmstype()));
         appSmsSend.setPostParam(JSON.toJSONString(smsParam));
-        boolean sendSmsHai = serviceImpl.sendSmsHai(appSmsSend, smsParam, phone, map);
+        boolean sendSmsHai = serviceImpl.sendSmsHai(appSmsSend, smsParam, phone);
         // 如果发送标记为成功,则标记为已发送
         if (sendSmsHai) {
           appSmsSend.setSendStatus("1");

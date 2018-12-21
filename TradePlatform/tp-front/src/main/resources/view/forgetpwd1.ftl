@@ -9,7 +9,7 @@
     <meta name="author" content="">
 	<@HryTopOrFooter url="base/title.ftl"/>
 	<link rel="icon" type="image/x-icon"  />
-	
+
 	<!-- ================== BEGIN BASE CSS STYLE =============== -->
 	<link href="${ctx}/static/${version}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="${ctx}/static/${version}/lib/exstatic/css/font-awesome.min.css" rel="stylesheet" />
@@ -18,14 +18,14 @@
 	<link href="${ctx}/static/${version}/lib/exstatic/css/mdefault.css" id="theme" rel="stylesheet" />
 	<link href="${ctx}/static/${version}/lib/exstatic/css/index.css" rel="stylesheet"/>
 	<!-- ================== END BASE CSS STYLE ================== -->
-	
+
 	<link href="${ctx}/static/${version}/lib/exstatic/css/web.min.css" rel="stylesheet" />
 	<link href="${ctx}/static/${version}/lib/exstatic/css/item/index.css" rel="stylesheet" />
 	<link href="${ctx}/static/${version}/lib/exstatic/css/item/global.css" rel="stylesheet" />
 	<link href="${ctx}/static/${version}/lib/exstatic/css/item/common.css" rel="stylesheet" />
-	
-	
-	
+
+
+
 	<link rel="stylesheet" type="text/css" href="${ctx}/static/${version}/lib/google/css/global.css">
 	<link rel="stylesheet" type="text/css" href="${ctx}/static/${version}/lib/google/css/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="${ctx}/static/${version}/lib/google/css/google.css">
@@ -40,6 +40,36 @@
         }
         .verifyLayout{
             background: transparent;
+        }
+        .navbar-brand{
+            width: 100%;
+            float: none !important;
+            height: auto !important;
+            padding: 0px !important;
+            line-height: normal !important;
+            max-height: 75px !important;
+            position: absolute;
+            top: 50px !important;
+            z-index: 999999;
+            /*height: 60px;
+            line-height: 60px;*/
+        }
+        .navbar-brand img{
+            display: block;
+            margin: 0 auto;
+            max-height: 75px !important;
+            /*width: 60px;*/
+            /* height: 60px;*/
+        }
+        .verifyLayout{
+            height: auto !important;
+            min-height: auto !important;
+            min-width: auto !important;
+
+        }
+        .container-drd{
+            position: absolute !important;
+            bottom: 100px !important;
         }
         .verifyLayout .main {
             width: 518px;
@@ -130,7 +160,7 @@
 		['.js','.js?v=${t}']//映射规则
 	]
   });
- 
+
  seajs.use(["js/main","js/forgetpwdemail","js/i18n_base","js/base/switchlan"],function(m,f,o,switchlan){
 	 m.init();
 	 //登录页js

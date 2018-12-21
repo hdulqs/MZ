@@ -43,8 +43,8 @@ define(function(require, exports, module) {
                     cache: false,
                     contentType: false,
                     processData: false,
-                    success: function (responseText) {
-                        var data =  JSON.parse(responseText)
+                    success: function (data) {
+                        /*var data =  JSON.parse(responseText)*/
                         console.log(data);
                         debugger;
                         if(data.success) {

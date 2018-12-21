@@ -65,14 +65,27 @@
 <style type="text/css">
     .navbar-brand{
         width: 100%;
-        height: 60px;
-        line-height: 60px;
+        margin-top: 50px;
+        float: none !important;
+        height: auto !important;
+        padding: 0px !important;
+        line-height: normal !important;
+        max-height: 75px !important;
+        /*height: 60px;
+        line-height: 60px;*/
     }
     .navbar-brand img{
         display: block;
         margin: 0 auto;
-        width: 60px;
-        height: 60px;
+        max-height: 75px !important;
+        /*width: 60px;*/
+       /* height: 60px;*/
+    }
+    .page-banner{
+        padding: 0 !important;
+    }
+    .login-form{
+        margin-top: 30px;
     }
 </style>
 <!-- begin #page-container -->
@@ -84,16 +97,20 @@
         		border-bottom: 2px solid #ff4646;
         	}
         </style>
-            <!-- begin #header -->
-            <@HryTopOrFooter url="base/logo.ftl"/>
-            <!-- end #header -->
-
             <div class="page-banner page-banner-home login-h">
+
                 <div class="banner-slogan">
                     <div class="container">
 
-                        <div role="tabpanel" class="reg-container col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 
+                        <div role="tabpanel" class="reg-container col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                            <#--<div class="navbar-brand1 ng-scope">
+                                <a href="${ctx}/index">
+                                    &lt;#&ndash;<img src="${siteLogo!}"/>&ndash;&gt;
+                                    <img id="logo_img" src="${ctx}/static/${version}/img/reg_logo.png"/>
+                                </a>
+                            </div>-->
+                            <@HryTopOrFooter url="base/logo.ftl"/>
                             <!--注册表{{' A84 '| translate}}-->
                             <div role="tabpanel" class="tab-pane " id="reg1" >
                                 <form method="post"  class="login-form" >

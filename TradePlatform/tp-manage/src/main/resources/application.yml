@@ -1,8 +1,3 @@
 spring:
   profiles:
-<<<<<<< .mine
-    active: test||||||| .r255
-    active: test
-=======
-    active: prod
->>>>>>> .r274
+    active: dev

@@ -2,6 +2,7 @@ version: '3.3'
 services:
   root:
     image: 192.168.1.102:5000/front/root:0.0.1-SNAPSHOT
+    hostname: front_root
     volumes:
     - /home/logs/front:/logs
     networks:
@@ -16,6 +17,7 @@ services:
         - spread: node.labels.work
   manage:
     image: 192.168.1.102:5000/front/manage:0.0.1-SNAPSHOT
+    hostname: front_manage
     volumes:
     - /home/logs/front_manage:/logs
     networks:
@@ -30,6 +32,7 @@ services:
         - spread: node.labels.work
   trade:
     image: 192.168.1.102:5000/front/trade:0.0.1-SNAPSHOT
+    hostname: front_trade
     volumes:
     - /home/logs/trade:/logs
     networks:
@@ -44,6 +47,7 @@ services:
         - spread: node.labels.work
   coin:
     image: 192.168.1.102:5000/front/coin:0.0.1-SNAPSHOT
+    hostname: front_coin
     volumes:
     - /home/logs/coin:/logs
     networks:

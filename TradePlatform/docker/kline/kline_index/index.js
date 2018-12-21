@@ -250,23 +250,21 @@ io.on('connection', function (socket) {
 
     // 监听用户退出
     socket.on('disconnect', function (type, obj) {
-        console.log("退出了" + obj);
+        console.log("退出了：" + obj);
     });
 
     socket.on('reconnect', function (type, obj) {
-
+        console.log("重新连接, type: " + type + ", 信息：" + obj);
     });
 
     socket.on('error', function (type, obj) {
-
+        console.log("连接错误, type: " + type + ", 错误信息：" + obj);
     });
     // otc监听用户进入房间
     socket.on('otclogin', function (obj) {
         var data = {"coinCode": obj.coinCode};
         for (var i = 0; i < otcjson.length; i++) {
-            if (otcjson[i] == data) {
-                null;
-            } else {
+            if (otcjson[i] != data) {
                 otcjson.push(data);
             }
         }
@@ -344,12 +342,11 @@ setInterval(function () {
                     for (var j = 0; j < lastKLine.length; j++) {
                         var kroom = "cn" + symbol + lastKLine[j].payload.period;
 
-                        //console.log(kroom);
                         io.in(kroom).emit('message', lastKLine[j], 200);
                     }
                 }
             } catch (e) {
-                // TODO: handle exception
+                console.log("kline error: " + e)
             }
         }
     });
@@ -373,11 +370,12 @@ setInterval(function () {
                     }
                     var user_room = "otc_buy_" + otcjson[j].coinCode;
                     io.in(user_room).emit("otc_room", newData);
-                    //console.log(newData);
                 }
             } catch (e) {
-                // TODO: handle exception
+                console.log("otc sell error: " + e)
             }
+        } else {
+            console.log("otc sell 请求错误！");
         }
     });
 
@@ -399,10 +397,10 @@ setInterval(function () {
                     //console.log(newData);
                 }
             } catch (e) {
-                // TODO: handle exception
+                console.log("otc buy error: " + e)
             }
         } else {
-            //console.log("otc请求错误！");
+            console.log("otc buy 请求错误！");
         }
     });
 
@@ -412,10 +410,10 @@ setInterval(function () {
                 var data = JSON.parse(body);
                 io.in("otc").emit("otc", data);
             } catch (e) {
-                // TODO: handle exception
+                console.log("otc all error: " + e)
             }
         } else {
-            //console.log("otc请求错误！");
+            console.log("otc all 请求错误！");
         }
     });
 }, 1000);

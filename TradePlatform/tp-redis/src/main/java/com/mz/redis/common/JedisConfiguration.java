@@ -63,12 +63,12 @@ public class JedisConfiguration {
     }
     jedisShardInfo.setConnectionTimeout(Integer.parseInt(timeout));
     shardList.add(jedisShardInfo);
-    JedisShardInfo jedisShardInfo1 = new JedisShardInfo(host1, Integer.parseInt(port1), 0, "");
-    if (!StringUtils.isEmpty(password1)) {
-      jedisShardInfo1.setPassword(password1);
-    }
-    shardList.add(jedisShardInfo1);
-    jedisShardInfo1.setConnectionTimeout(Integer.parseInt(timeout1));
+    // JedisShardInfo jedisShardInfo1 = new JedisShardInfo(host1, Integer.parseInt(port1), 0, "");
+    // if (!StringUtils.isEmpty(password1)) {
+    //   jedisShardInfo1.setPassword(password1);
+    // }
+    // shardList.add(jedisShardInfo1);
+    // jedisShardInfo1.setConnectionTimeout(Integer.parseInt(timeout1));
     return new ShardedJedisPool(new JedisPoolConfig(), shardList);
   }
 }

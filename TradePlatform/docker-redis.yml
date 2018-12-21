@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  redis:
+    image: 192.168.1.102:5000/middleware/redis:4.0.11
+    hostname: middleware_redis1
+    volumes:
+    - /home/logs/redis1:/logs
+    - /data/redis/1:/data
+    ports:
+    - 6379:6379
+    networks:
+    - tp-net
+    command: ["/etc/redis.conf"]
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+        - node.labels.manage == 1
+networks:
+  tp-net:
+    external: true

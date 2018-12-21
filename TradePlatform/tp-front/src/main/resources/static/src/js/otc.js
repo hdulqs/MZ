@@ -33,9 +33,9 @@ define(function(require, exports, module) {
                 var money = formatNum(data[i].transactionMoney, 3);
                 html = ' <tr> <td style="width:110px">' + transaction_type + '</td>' +
                     '<td style="width:110px">' + data[i].coinCode + '</td>' +
-                    '<td style="width:110px;text-align: right;">' + data[i].transactionPrice + '</td>' +
-                    '<td style="width:110px;text-align: right;">' + data[i].transactionCount + '</td>' +
-                    '<td style="width:110px;text-align: right;">￥' + money + '</td>' ;
+                    '<td style="width:110px;">' + data[i].transactionPrice + '</td>' +
+                    '<td style="width:110px;">' + data[i].transactionCount + '</td>' +
+                    '<td style="width:110px;">￥' + money + '</td>' ;
                 //在线判断
                 if(data[i].online == "true") {
                     html = html + '<td style="width:110px"><div style="display: flex;justify-content: center;align-items: center;"><div style="width: 10px;height: 10px;background: green;border-radius: 100%;"></div><div>' + data[i].customerName + '</div></div></td>';
@@ -334,6 +334,11 @@ define(function(require, exports, module) {
 
             $("#diaConfirm").click(function(){
                 // $(".mask").fadeOut(500);
+                var layerdiaConfirm =  layer.msg("数据提交中，请稍等！", {
+                    icon:16,
+                    shade:[0.1, '#fff'],
+                    time:false  //取消自动关闭
+                })
                 $.ajax({
                     type: "post",
                     url: _ctx + "/otc/createOrder",
@@ -344,6 +349,7 @@ define(function(require, exports, module) {
                     },
                     dataType: "json",
                     success: function (data) {
+                        layer.close(layerdiaConfirm)
                         layer.msg(data.msg);
                         $(".mask").fadeOut(500);
                     },
@@ -352,9 +358,16 @@ define(function(require, exports, module) {
                     }
                 });
             });
+
             $("#diaConfirm2").click(function(){
                 // $(".mask").fadeOut(500);
+
                 debugger;
+                var layerdiaConfirm2 =  layer.msg("数据提交中，请稍等！", {
+                    icon:16,
+                    shade:[0.1, '#fff'],
+                    time:false  //取消自动关闭
+                })
                 $.ajax({
                     type: "post",
                     url: _ctx + "/otc/createOrder",
@@ -365,6 +378,7 @@ define(function(require, exports, module) {
                     },
                     dataType: "json",
                     success: function (data) {
+                        layer.close(layerdiaConfirm2)
                         layer.msg(data.msg);
                         $(".mask2").fadeOut(500);
                     },
@@ -374,15 +388,20 @@ define(function(require, exports, module) {
                 });
             });
 
+            var opts = {
+                timeout: 50000
+            };
 
             //连接websocket后端服务器
-            this.socket = io.connect(hry_socketioUrl);
+            this.socket = io.connect(hry_socketioUrl,  opts);
             var websocket = this.socket;
 
+            console.log(websocket);
             //告诉服务器端有用户登录
             var username = $("#username").val();
             if(username==undefined||username=="") {
                 var coinCode = $("#otccoinCode").val();
+                // console.log(coinCode);
                 this.socket.emit('otclogin', {
                     userid: "1",
                     username: "游客登录",
@@ -392,6 +411,7 @@ define(function(require, exports, module) {
                 });
             }else {
                 var coinCode = $("#otccoinCode").val();
+                // console.log(coinCode + " username: " + username);
                 this.socket.emit('otclogin', {
                     userid: $("#otcuserid").val(),
                     username: $("#username").val(),
@@ -405,19 +425,22 @@ define(function(require, exports, module) {
             this.socket.on('login', function(o){
                 //CHAT.updateSysMsg(o, 'login');
                // alert('login');
+               //  console.log("login: ");
+               //  console.log(o);
             });
 
             //监听用户退出
             this.socket.on('logout', function(o){
                 //CHAT.updateSysMsg(o, 'logout');
-                console.log(o);
+                // console.log("logout: ");
+                // console.log(o);
             });
 
             //监听用户index
             this.socket.on('otc_room', function(o){
                 //CHAT.updateSysMsg(o, 'logout');
                 Refreshtable(o);
-               // console.log(o);
+               // console.log("otc_room::   " + o);
 
             });
 

@@ -242,7 +242,7 @@ define([ 'app', 'hryTable', 'layer','hryUtil' ], function(app, DT, layer,hryUtil
                     layer.closeAll();
 
                     hryCore.CURD({
-                        url : HRY.host + HRY.modules.web + "product/excointocoin/importKline/"+ ids
+                        url : HRY.modules.web + '/product/excointocoin/importKline/'+ ids
                         }).remove(null, function(data) {
                         if (data.success) {
                             // 提示信息

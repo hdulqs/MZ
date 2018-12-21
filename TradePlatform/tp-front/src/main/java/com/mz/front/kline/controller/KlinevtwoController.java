@@ -175,10 +175,12 @@ public class KlinevtwoController {
 		String financeByKey = "";
 		String string = redisService.get(StringConstant.CONFIG_CACHE + ":financeConfig");
 		JSONArray obj = JSON.parseArray(string);
-		for (Object o : obj) {
-			JSONObject oo = JSON.parseObject(o.toString());
-			if (oo.getString("configkey").equals("openAndclosePlateTime")) {
-				financeByKey = oo.getString("value");
+		if (obj != null) {
+			for (Object o : obj) {
+				JSONObject oo = JSON.parseObject(o.toString());
+				if (oo.getString("configkey").equals("openAndclosePlateTime")) {
+					financeByKey = oo.getString("value");
+				}
 			}
 		}
 

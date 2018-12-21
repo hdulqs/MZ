@@ -67,7 +67,7 @@
                                        <@spring.message code="bianji"/>：<a href="javascript:void(0)" title="${article.writer}" target="_blank" class="ng-binding">${article.writer}</a>
                             </span>
                             <span id="taggreen" class="ng-binding"><@spring.message code="yuedu"/>：${article.hits}</span>
-                            <span id="updated" class="ng-binding"><@spring.message code="fabushijian"/>：${article.modified?string("yyyy-MM-dd HH:dd:ss")!}</span>
+                            <span id="updated" class="ng-binding"><@spring.message code="fabushijian"/>：${(article.modified?string("yyyy-MM-dd HH:dd:ss"))!}</span>
                         </div>
                     </h5>
                 </div>

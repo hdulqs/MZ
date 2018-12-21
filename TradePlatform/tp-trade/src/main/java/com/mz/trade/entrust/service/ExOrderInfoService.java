@@ -23,6 +23,8 @@ public interface ExOrderInfoService extends BaseService<ExOrderInfo, Long> {
 
     public ExOrderInfo createExOrderInfo(Integer type, EntrustTrade buyExEntrust, EntrustTrade sellentrust, BigDecimal tradeCount, BigDecimal tradePrice);
 
+    public ExOrder createExOrder(ExOrderInfo exOrderInfo);
+
     public void redisToMysql();
 
     public void redisToredisLog();

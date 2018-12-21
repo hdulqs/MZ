@@ -3,9 +3,9 @@
 		host : '${ctx!}',
 		ver : '20151203cn',
 		user : '${user.username!}',
-		marketProtocol: 'https',
-		marketUrl : "www.babyex.net",
-		socketioUrl : "wss://hq.babyex.net",
+		marketProtocol: '',
+		marketUrl : '',
+		socketioUrl : 'wss://hq.babyex.net',
 		head : '互融云软件',
 		redispush : 'no',
 		modules : {

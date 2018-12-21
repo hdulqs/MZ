@@ -7,8 +7,6 @@
 package com.mz.trade.MQmanager;
 
 
-import com.mz.trade.entrust.service.RedisAccountService;
-import com.mz.trade.model.AccountResultEnum;
 import com.mz.trade.mq.service.MessageProducer;
 import java.util.List;
 
@@ -16,7 +14,6 @@ import com.mz.util.serialize.Mapper;
 import com.mz.util.sys.ContextUtil;
 import com.mz.trade.redis.model.Accountadd;
 import com.mz.trade.redis.model.EntrustTrade;
-import com.mz.util.sys.SpringContextUtil;
 
 /**
  * <p> TODO</p>
@@ -25,11 +22,11 @@ import com.mz.util.sys.SpringContextUtil;
  */
 public class MQEnter {
 	/**
-	 * 
+	 *
 	 * <p>
 	 * 放进匹配队列
 	 * </p>
-	 * 
+	 *
 	 * @author: Gao Mimi
 	 * @param: @param exEntrust
 	 * @return: void
@@ -43,17 +40,16 @@ public class MQEnter {
 	}
 	/**
 	 * 放进资金处理队列
-	 * @param aaddlists
+	 * @param exEntrust
 	 */
-	public static void pushDealFundMQ(List<Accountadd> aaddlists) {
-		RedisAccountService redisAccountService = SpringContextUtil.getBean(RedisAccountService.class);
-		AccountResultEnum result = redisAccountService.accountChange(aaddlists, false);
-		if (result == AccountResultEnum.SUCCESS) {
-			return;
-		} else {
-			MessageProducer messageProducer =(MessageProducer)ContextUtil.getBean("messageProducer");
-			messageProducer.toAccount(Mapper.objectToJson(aaddlists));
-		}
+	public static void pushDealFundMQ(List<Accountadd> aadds) {
+
+		MessageProducer messageProducer =(MessageProducer)ContextUtil.getBean("messageProducer");
+	/*	for(Accountadd accountadd:aadds){
+			accountadd.setRemarks("11");
+		}*/
+		String accountadds=Mapper.objectToJson(aadds);
+		messageProducer.toAccount(accountadds);
 	}
 
 }

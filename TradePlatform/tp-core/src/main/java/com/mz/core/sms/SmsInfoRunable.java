@@ -68,7 +68,16 @@ public class SmsInfoRunable implements Runnable {
 		this.url = url;
 		this.smsParam = smsParam;
 		this.phoneType=phoneType;
-		this.phone=phone;
+		if (phone == null) {
+			this.phone = smsParam.getHryMobilephone();
+		} else {
+			this.phone=phone;
+		}
+		if (syscode == null) {
+			this.syscode = smsParam.getHryCode();
+		} else {
+			this.syscode = syscode;
+		}
 		this.syscode =syscode;
 		this.map = map;
 	}
@@ -84,7 +93,7 @@ public class SmsInfoRunable implements Runnable {
 				}
 			}
 		}
-		if (phoneType == null || phone.equals("86")) {
+		if (phoneType == null || phoneType.equals("86") || phoneType.equals("+86")) {
 			remoteSmsService.sendSmsInfo(smsParam.toJson(),phoneType,phone,syscode,map);
 		} else {
 			remoteSmsService.sendsmsHai(smsParam.toJson(),phoneType,phone);

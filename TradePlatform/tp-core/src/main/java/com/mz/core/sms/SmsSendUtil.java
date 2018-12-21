@@ -262,8 +262,10 @@ public class SmsSendUtil {
       return "谷歌验证";
     } else if (TAKE_PHONE.equals(hrySmstype)) {
       return "手机验证";
-    } else if (TAKE_PHONE.equals(hrySmstype)) {
+    } else if (TAKE_ENPHONE.equals(hrySmstype)) {
       return "海外手机验证";
+    } else if (SMS_COINWITHDRAW_INVALID.equals(hrySmstype)) {
+      return "币提现驳回";
     }
     return "";
   }

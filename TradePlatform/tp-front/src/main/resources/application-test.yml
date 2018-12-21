@@ -67,6 +67,7 @@ spring:
       date_format: yyyy-MM-dd
       time_format: HH:mm:ss
       datetime_format: yyyy-MM-dd HH:mm:ss
+      number_format: 0.##
   messages:
     basename: messages/message
     fallback-to-system-locale: false

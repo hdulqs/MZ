@@ -6,16 +6,15 @@
  */
 package com.mz.util;
 
+import com.alibaba.fastjson.JSON;
+import org.nutz.lang.Strings;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import org.nutz.lang.Strings;
-
-import com.alibaba.fastjson.JSON;
 /**
  * 字符串工具类
  * 
@@ -262,5 +261,16 @@ public class StringUtil {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 去除字符串中特殊字符
+	 * @param s
+	 * @return
+	 */
+
+	public static String format(String s){
+		String str=s.replaceAll("[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]", "");
+		return str;
 	}
 }

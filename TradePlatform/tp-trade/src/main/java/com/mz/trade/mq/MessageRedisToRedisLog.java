@@ -13,23 +13,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class MessageRedisToRedisLog implements MessageListener {
 	private Logger logger = Logger.getLogger(MessageRedisToRedisLog.class);
-	private static ExecutorService executors = Executors.newFixedThreadPool(1);
 
 	@Override
 	public void onMessage(Message message) {
-		if (((ThreadPoolExecutor)executors).getQueue().size() == 0) {
-			executors.execute(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						ExOrderInfoService exOrderInfoService = (ExOrderInfoService) ContextUtil.getBean("exOrderInfoService");
-						exOrderInfoService.redisToredisLog();
-					} catch (Exception e) {
-						logger.error("redisToredisLog error: ", e);
-					}
-				}
-			});
-		}
+		ExOrderInfoService exOrderInfoService = (ExOrderInfoService) ContextUtil.getBean("exOrderInfoService");
+		exOrderInfoService.redisToredisLog();
 	}
 
 }

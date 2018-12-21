@@ -36,8 +36,6 @@ import com.mz.shiro.PasswordHelper;
 import com.mz.sms.JuheSendUtils;
 import com.mz.trade.entrust.model.ExEntrust;
 import com.mz.trade.entrust.model.ExOrderInfo;
-import com.mz.trade.entrust.service.RedisAccountService;
-import com.mz.trade.model.AccountResultEnum;
 import com.mz.trade.redis.model.*;
 import com.mz.util.QueryFilter;
 import com.mz.util.UUIDUtil;
@@ -209,9 +207,6 @@ public class RemoteManageServiceImpl implements RemoteManageService {
 
   @Autowired
   private RemoteThirdPayInterfaceService remoteThirdPayInterfaceService;
-
-  @Autowired
-  private RedisAccountService redisAccountService;
 
   @Override
   public void cancelAllExEntrust(EntrustTrade entrustTrade) {

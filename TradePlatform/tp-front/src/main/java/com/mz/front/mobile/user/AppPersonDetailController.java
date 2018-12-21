@@ -3,6 +3,7 @@ package com.mz.front.mobile.user;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.mz.core.mvc.model.page.HttpServletRequestUtils;
 import com.mz.core.mvc.model.page.JsonResult;
 import com.mz.core.sms.SmsParam;
 import com.mz.core.sms.SmsSendUtil;
@@ -18,12 +19,14 @@ import com.mz.manage.remote.model.MyAccountTO;
 import com.mz.manage.remote.model.RemoteResult;
 import com.mz.manage.remote.model.User;
 import com.mz.manage.remote.model.UserInfo;
+import com.mz.manage.remote.model.base.FrontPage;
 import com.mz.manage.remote.model.commendCode;
 import com.mz.redis.common.utils.RedisService;
 import com.mz.util.FileType;
 import com.mz.util.FileUpload;
 import com.mz.util.GoogleAuthenticatorUtil;
 import com.mz.util.SessionUtils;
+import com.mz.util.httpRequest.HttpUtil;
 import com.mz.util.properties.PropertiesUtils;
 import com.mz.util.sys.SpringContextUtil;
 import io.swagger.annotations.Api;
@@ -478,25 +481,25 @@ public class AppPersonDetailController {
   public JsonResult getRecommend(HttpServletRequest request) {
     JsonResult result = new JsonResult();
     JSONObject json = new JSONObject();
-    String tokenId = request.getParameter("tokenId");
+    RemoteManageService remoteManageService = SpringContextUtil.getBean("remoteManageService");
+    String type = request.getParameter("transactionType");
     RedisService redisService = SpringContextUtil.getBean("redisService");
+    String tokenId = request.getParameter("tokenId");
     String value = redisService.get("mobile:" + tokenId);
-    if (value != null) {
+    if(value !=null){
       String tel = JSONObject.parseObject(value).getString("mobile");
-      RemoteManageService remoteManageService = (RemoteManageService) SpringContextUtil
-          .getBean("remoteManageService");
       User user = remoteManageService.selectByTel(tel);
-      if (user != null) {
-        String property = PropertiesUtils.APP.getProperty("app.url");
-        RemoteResult selectCommend = remoteManageService
-            .selectCommend(user.getUsername(), property);
-        List<commendCode> selectCommendfind = remoteManageService
-            .selectCommendfind(user.getUsername());
-        json.put("Commend", selectCommend);
-        json.put("CommendInfo", selectCommendfind);
-        result.setSuccess(true).setObj(json);
-        return result;
+      Map<String, String> params = HttpServletRequestUtils.getParams(request);
+      params.put("username", user.getMobile().toString());
+      if ("0".equals(type)) {// 0查全部
+        params.put("transactionType", null);
       }
+      String property = HttpUtil.getAppUrl(request);
+      RemoteResult selectCommend = remoteManageService.selectCommend(user.getUsername(),property);
+      FrontPage findTrades = remoteManageService.rakebake(params);
+      json.put("findTrades", findTrades);
+      json.put("CommendInfo", selectCommend);
+      return result.setSuccess(true).setObj(json);
     }
     return new JsonResult().setSuccess(false).setMsg("请登录或重新登录");
   }

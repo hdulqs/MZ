@@ -517,7 +517,7 @@ $(function(){
          maimai  = '买/卖';
         dealQuantity='成交量';
         businessQuantity='交易量';
-         mairu = '卖入';
+         mairu = '买入';
          maiichu = '卖出';
          
          jinxinzhong = '进行中';

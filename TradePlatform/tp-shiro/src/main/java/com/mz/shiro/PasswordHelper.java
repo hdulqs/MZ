@@ -151,7 +151,7 @@ public class PasswordHelper {
 
   public static void main(String[] args) {
     PasswordHelper passwordHelper = new PasswordHelper();
-    System.out.println(passwordHelper.encryString("admin", "6041cba24445856284dcd6d9c07d0967hy"));
+    System.out.println(passwordHelper.encryString("admin", "a96fdca5ff384cb0185bb787f2fd0a2f"));
   }
 
 }

@@ -89,17 +89,19 @@ public class AppReportSettlementImpl extends BaseServiceImpl<AppReportSettlement
       while (i < ids.length) {
         Long id = Long.valueOf(ids[i]);
         AppCustomer appCustomer = appCustomerService.get(id);
+        if(appCustomer!=null) {
+          Map<String, Object> map = appReportSettlementCulService
+              .culAccountByCustomer(appCustomer.getId(), currencyType, website, true, false);
 
-        Map<String, Object> map = appReportSettlementCulService
-            .culAccountByCustomer(appCustomer.getId(), currencyType, website, true, false);
+          if (null != map) {
+            map.put("customerId", id);
+            map.put("createTime", new Date());
+            listErrorInfo.add(map);
+          }
 
-        if (null != map) {
-          map.put("customerId", id);
-          map.put("createTime", new Date());
-          listErrorInfo.add(map);
+          //	 userNames.append(appCustomer.getUserName()+",");
+          userNames.append(appCustomer.getUserName());
         }
-        //	 userNames.append(appCustomer.getUserName()+",");
-        userNames.append(appCustomer.getUserName());
         i++;
       }
     }

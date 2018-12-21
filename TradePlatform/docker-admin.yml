@@ -2,6 +2,7 @@ version: '3.3'
 services:
   static:
     image: 192.168.1.102:5000/admin/static:0.0.1-SNAPSHOT
+    hostname: admin_static
     volumes:
     - /home/logs/static:/logs
     networks:
@@ -16,6 +17,7 @@ services:
         - spread: node.labels.work
   oauth:
     image: 192.168.1.102:5000/admin/oauth:0.0.1-SNAPSHOT
+    hostname: admin_oauth
     volumes:
     - /home/logs/oauth:/logs
     networks:
@@ -44,6 +46,7 @@ services:
 #        - spread: node.labels.work
   check:
     image: 192.168.1.102:5000/admin/check:0.0.1-SNAPSHOT
+    hostname: admin_check
     volumes:
     - /home/logs/check:/logs
     networks:
@@ -58,6 +61,7 @@ services:
         - spread: node.labels.work
   exapi:
     image: 192.168.1.102:5000/admin/exapi:0.0.1-SNAPSHOT
+    hostname: admin_exapi
     volumes:
     - /home/logs/exapi:/logs
     networks:

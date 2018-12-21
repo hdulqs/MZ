@@ -13,22 +13,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class MessageRedisToMysql implements MessageListener {
 	private Logger logger = Logger.getLogger(MessageRedisToMysql.class);
-	// 当且仅当使用一个线程来保持后台的redisToMysql保持运行
-	private static ExecutorService executors = Executors.newFixedThreadPool(1);
 
 	@Override
 	public void onMessage(Message message) {
-		if (((ThreadPoolExecutor)executors).getQueue().size() == 0) {
-			executors.execute(() -> {
-				try {
-					ExOrderInfoService exOrderInfoService = (ExOrderInfoService) ContextUtil.getBean("exOrderInfoService");
-					exOrderInfoService.redisToMysql();
-				} catch (Exception e) {
-					e.printStackTrace();
-					logger.error("redisToMysql error", e);
-				}
-			});
-		}
+		ExOrderInfoService exOrderInfoService = (ExOrderInfoService) ContextUtil.getBean("exOrderInfoService");
+		exOrderInfoService.redisToMysql();
 	}
 
 }

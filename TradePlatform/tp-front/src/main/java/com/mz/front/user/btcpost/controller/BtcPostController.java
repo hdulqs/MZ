@@ -1,29 +1,8 @@
 package com.mz.front.user.btcpost.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.alibaba.fastjson.JSONObject;
-
 import com.mz.core.mvc.model.page.HttpServletRequestUtils;
 import com.mz.core.mvc.model.page.JsonResult;
-import com.mz.util.springmvcPropertyeditor.DateTimePropertyEditorSupport;
-import com.mz.util.springmvcPropertyeditor.StringPropertyEditorSupport;
 import com.mz.manage.remote.RemoteAppTransactionManageService;
 import com.mz.manage.remote.RemoteManageService;
 import com.mz.manage.remote.model.ExDigitalmoneyAccountManage;
@@ -34,7 +13,28 @@ import com.mz.manage.remote.model.UserInfo;
 import com.mz.manage.remote.model.base.FrontPage;
 import com.mz.redis.common.utils.RedisService;
 import com.mz.util.SessionUtils;
-import com.mz.util.sys.SpringContextUtil;;
+import com.mz.util.StringUtil;
+import com.mz.util.springmvcPropertyeditor.DateTimePropertyEditorSupport;
+import com.mz.util.springmvcPropertyeditor.StringPropertyEditorSupport;
+import com.mz.util.sys.SpringContextUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+;
 
 @Controller
 @RequestMapping("/user/btc")
@@ -160,6 +160,11 @@ public class BtcPostController {
         Locale locale = LocaleContextHolder.getLocale();
         ModelAndView mav = new ModelAndView();
         User user = SessionUtils.getUser(request);
+        String accountPassWord = user.getAccountPassWord();
+        if(StringUtils.isEmpty(accountPassWord)){
+            mav.setViewName("front/user/setapw");
+            return mav;
+        }
         RemoteManageService remoteManageService = SpringContextUtil.getBean("remoteManageService");
         User selectByTel = remoteManageService.selectByTel(user.getUsername());
         String config = redisService.get("configCache:all");
@@ -377,7 +382,7 @@ public class BtcPostController {
     @ResponseBody
     public JsonResult getPublicKey(HttpServletRequest request) {
         JsonResult jsonResult = new JsonResult();
-        String accountId = request.getParameter("accountId");
+        String  accountId = request.getParameter("accountId");
         if (!StringUtils.isEmpty(accountId)) {
             RemoteManageService remoteManageService = SpringContextUtil.getBean("remoteManageService");
             RemoteResult remoteResult = remoteManageService.getPublicKey(Long.valueOf(accountId));

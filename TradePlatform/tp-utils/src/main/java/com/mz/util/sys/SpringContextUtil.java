@@ -90,8 +90,9 @@ public class SpringContextUtil implements ApplicationContextAware {
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
-      return "错误002";
+      // e.printStackTrace();
+      message = code;
+      // return "错误002";
 
     }
     return message;
@@ -132,9 +133,7 @@ public class SpringContextUtil implements ApplicationContextAware {
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
-      return "错误002";
-
+      message = code;
     }
     return message;
   }
